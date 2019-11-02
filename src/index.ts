@@ -1,1 +1,1 @@
-export { isHex, isRgb } from './types/types'
+export { isHex, isRgb, isRgba } from './types/types'
