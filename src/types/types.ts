@@ -2,9 +2,10 @@ import { between, sameContent } from '../lib/utils'
 
 export type HEX = string
 export type RGB = { r: number, g: number, b: number }
-export type RGBA = { r: number; g: number; b: number; a: number };
+export type RGBA = { r: number; g: number; b: number; a: number }
+export type CMYK = { c: number; m: number; y: number; k: number }
 
-export type COLOR = HEX | RGB
+export type COLOR = HEX | RGB | RGBA | CMYK
 
 export function isHex(color: any): color is HEX {
   const reg = /^#([0-9A-Fa-f]{3}){1,2}$/
@@ -22,6 +23,8 @@ export function isRgb(color: any): color is RGB {
   return r && g && b
 }
 
+// TODO: add support for values in [0, 100]%
+// TODO: accept also rgba without a, consider it 1 as default
 export function isRgba(color: any): color is RGBA {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false
@@ -32,4 +35,16 @@ export function isRgba(color: any): color is RGBA {
   const b = isValid(color.b)
   const a = typeof color.a === "number" && between(color.a, [0, 1])
   return r && g && b && a
+}
+
+export function isCmyk(color: any): color is CMYK {
+  const keys = Object.keys(color)
+  if (keys.length !== 4) return false
+  if (!sameContent(keys, ['c', 'm', 'y', 'k'])) return false
+  const isValid = (value: any) => typeof value === "number" && between(value, [0, 100])
+  const c = isValid(color.c)
+  const m = isValid(color.m)
+  const y = isValid(color.y)
+  const k = isValid(color.k)
+  return c && m && y && k
 }
