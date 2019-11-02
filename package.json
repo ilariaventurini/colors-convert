@@ -1,0 +1,33 @@
+{
+  "name": "colors-convert",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": "https://github.com/ilariaventurini/colors-convert.git",
+  "author": "Ilaria Venturini <venturini.ila@gmail.com>",
+  "keywords": [
+    "color",
+    "converter",
+    "transform"
+  ],
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^24.0.21",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.6.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jestconfig.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
