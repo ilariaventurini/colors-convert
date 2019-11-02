@@ -1,8 +1,8 @@
 {
   "name": "colors-convert",
   "version": "1.0.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/ilariaventurini/colors-convert.git",
   "author": "Ilaria Venturini <venturini.ila@gmail.com>",
   "keywords": [
@@ -28,6 +28,9 @@
     "lint": "tslint -p tsconfig.json"
   },
   "files": [
-    "lib/**/*"
-  ]
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@babel/types": "^7.6.3"
+  }
 }
