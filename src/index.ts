@@ -1,1 +1,1 @@
-export const Hello = (name: string) => `Hello ${name}`
+export { isHex } from './types/types'
