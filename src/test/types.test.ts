@@ -1,4 +1,4 @@
-import { isHex, isRgb, isRgba, isCmyk } from '../index'
+import { isHex, isRgb, isRgba, isCmyk, color2string, color2cssString } from '../index'
 
 ////////////////////////////////////////////////////////
 // isHex
@@ -48,3 +48,22 @@ CMYK_VALID.forEach(color => test(JSON.stringify(color), () => expect(isCmyk(colo
 // test not valid cmyk
 const CMYK_NOT_VALID = [{}, { c: 0 }, { y: 0 }, { c: 0, m: 0, y: 0, k: 0, o: 3 }, { c: -1, m: 0, y: 0, k: 0 }, { c: 300, m: 0, y: 0, k: 0 }, { c: 'twenty', m: 0, y: 0, k: 0 }]
 CMYK_NOT_VALID.forEach(color => test(JSON.stringify(color), () => expect(isCmyk(color)).toBe(false)))
+
+////////////////////////////////////////////////////////
+// color2string
+////////////////////////////////////////////////////////
+
+// test valid string
+const STRING_VALID = ['#ffffff', { r: 0, g: 0, b: 0 }, { r: 0, g: 0, b: 0, a: 0 }, { c: 0, m: 0, y: 0, k: 0 }]
+const STRING_VALID_CHECK = ['#FFFFFF', `0, 0, 0`, `0, 0, 0, 0`, `0%, 0%, 0%, 0%`]
+STRING_VALID.forEach((color, i) => test(JSON.stringify(color), () => expect(color2string(color)).toBe(STRING_VALID_CHECK[i])))
+
+////////////////////////////////////////////////////////
+// color2cssString
+////////////////////////////////////////////////////////
+
+// test valid string
+const STRING_CSS_VALID = ['#ffffff', { r: 0, g: 0, b: 0 }, { r: 0, g: 0, b: 0, a: 0 }, { c: 0, m: 0, y: 0, k: 0 }]
+const STRING_CSS_VALID_CHECK = ['#FFFFFF', `rgb(0, 0, 0)`, `rgba(0, 0, 0, 0)`, `cmyk(0%, 0%, 0%, 0%)`]
+STRING_CSS_VALID.forEach((color, i) => test(JSON.stringify(color), () => expect(color2cssString(color)).toBe(STRING_CSS_VALID_CHECK[i])))
+
