@@ -51,3 +51,21 @@ export const rgb2hex = (rgb: RGB): HEX => {
   const rgbTmp = b | (g << 8) | (r << 16);
   return `#${(0x1000000 + rgbTmp).toString(16).slice(1)}`;
 }
+
+const rgba2rgb = (background: RGB, color: RGBA): RGB => {
+  const alpha = color.a;
+  const r = Math.floor((1 - alpha) * background.r + alpha * color.r + 0.5);
+  const g = Math.floor((1 - alpha) * background.g + alpha * color.g + 0.5);
+  const b = Math.floor((1 - alpha) * background.b + alpha * color.b + 0.5);
+  return { r: r, g: g, b: b };
+};
+
+/**
+ * Return the solid (alpha = 1) hex color equals to hex original color with opacity = alpha.
+ */
+export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
+  const rgba = hex2rgba(hex, alpha);
+  const rgb = rgba2rgb({ r: 255, g: 255, b: 255 }, rgba);
+  const hexWithAlpha = rgb2hex(rgb);
+  return hexWithAlpha;
+};
