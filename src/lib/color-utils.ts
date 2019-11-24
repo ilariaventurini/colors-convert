@@ -1,5 +1,6 @@
 import { COLOR, HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk } from '../types/types'
 import { toUpper } from 'lodash'
+import { between } from '../lib/utils'
 
 export const color2string = (color: COLOR): string | undefined => {
   if (isHex(color)) {
@@ -22,10 +23,10 @@ export const color2cssString = (color: COLOR): string | undefined => {
     return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`
   } else if (isCmyk(color)) {
     return `cmyk(${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%)`
-  } else return ''
+  } else throw new Error(`${color} is not a valid type of color.`)
 }
 
-export const hex2rgb = (hex: HEX): RGB | undefined => {
+export const hex2rgb = (hex: HEX): RGB => {
   const RGB_HEX = /^#?(?:([0-9a-f]{3})[0-9a-f]?|([0-9a-f]{6})(?:[0-9a-f]{2})?)$/i
   // short and long are or undefined or the original_hex without #
   const [original_hex, short, long] = hex.match(RGB_HEX) || []
@@ -33,7 +34,14 @@ export const hex2rgb = (hex: HEX): RGB | undefined => {
     const value = Number.parseInt(long, 16)
     return { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff }
   } else {
-    const rgbArray = Array.from(short, s => Number.parseInt(s, 16)).map(n => (n << 4) | n)
-    return { r: rgbArray[0], g: rgbArray[1], b: rgbArray[2] }
+    // expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    const [r, g, b] = Array.from(short, s => Number.parseInt(s, 16)).map(n => (n << 4) | n)
+    return { r, g, b }
   }
+}
+
+export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  const rgb = hex2rgb(hex)
+  return { ...rgb, a: alpha }
 }

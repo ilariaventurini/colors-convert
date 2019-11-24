@@ -196,7 +196,7 @@ export const colors = [
     hex: '#3cf',
     opacity: 1,
     rgb: { r: 51, g: 204, b: 255 },
-    rgba: { r: 52, g: 204, b: 255, a: 1 },
+    rgba: { r: 51, g: 204, b: 255, a: 1 },
     cmyk: { c: 80, m: 20, y: 0, k: 0 }
   },
 ]
