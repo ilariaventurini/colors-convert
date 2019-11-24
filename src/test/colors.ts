@@ -175,6 +175,7 @@ export const colors = [
     rgba: { r: 170, g: 255, b: 195, a: 1 },
     cmyk: { c: 33, m: 0, y: 23, k: 0 }
   },
+  // hex short form
   {
     name: 'salmon',
     hex: '#f99',
@@ -198,5 +199,30 @@ export const colors = [
     rgb: { r: 51, g: 204, b: 255 },
     rgba: { r: 51, g: 204, b: 255, a: 1 },
     cmyk: { c: 80, m: 20, y: 0, k: 0 }
+  },
+  // hex with opacity
+  {
+    name: 'red with opacity 1',
+    hex: '#e6194bff',
+    opacity: 1,
+    rgb: { r: 230, g: 25, b: 75 },
+    rgba: { r: 230, g: 25, b: 75, a: 1 },
+    cmyk: { c: 0, m: 100, y: 66, k: 0 }
+  },
+  {
+    name: 'red with opacity 0.5',
+    hex: '#e6194b80',
+    opacity: 0.5,
+    rgb: { r: 230, g: 25, b: 75 },
+    rgba: { r: 230, g: 25, b: 75, a: 0.5 },
+    cmyk: { c: 0, m: 100, y: 66, k: 0 }
+  },
+  {
+    name: 'red with opacity 0',
+    hex: '#e6194b00',
+    opacity: 0,
+    rgb: { r: 230, g: 25, b: 75 },
+    rgba: { r: 230, g: 25, b: 75, a: 0 },
+    cmyk: { c: 0, m: 100, y: 66, k: 0 }
   },
 ]

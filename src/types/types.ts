@@ -7,8 +7,12 @@ export type CMYK = { c: number; m: number; y: number; k: number }
 
 export type COLOR = HEX | RGB | RGBA | CMYK
 
+// Accept:
+//  - long form: #FFFFFF
+//  - short form: #FFF
+//  - long form with opacity: #FFFFFFFF (white with opacity FF=1)
 export function isHex(color: any): color is HEX {
-  const reg = /^#([0-9A-F]{3}){1,2}$/i
+  const reg = /^#([0-9A-F]{3}){1,2}([0-9A-F]{2})?$/i
   return reg.test(color)
 }
 

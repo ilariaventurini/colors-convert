@@ -1,8 +1,9 @@
 import { COLOR, HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk } from '../types/types'
-import { toUpper } from 'lodash'
+import { toUpper, round } from 'lodash'
 import { between } from '../lib/utils'
 
-export const color2string = (color: COLOR): string | undefined => {
+// TODO: add check that color is a valid color
+export const color2string = (color: COLOR): string => {
   if (isHex(color)) {
     return toUpper(color)
   } else if (isRgb(color)) {
@@ -11,10 +12,11 @@ export const color2string = (color: COLOR): string | undefined => {
     return `${color.r}, ${color.g}, ${color.b}, ${color.a}`
   } else if (isCmyk(color)) {
     return `${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%`
-  } else return ''
+  } else throw new Error(`${color} is not a valid type of color.`)
 }
 
-export const color2cssString = (color: COLOR): string | undefined => {
+// TODO: add check that color is a valid color
+export const color2cssString = (color: COLOR): string => {
   if (isHex(color)) {
     return toUpper(color)
   } else if (isRgb(color)) {
@@ -26,13 +28,20 @@ export const color2cssString = (color: COLOR): string | undefined => {
   } else throw new Error(`${color} is not a valid type of color.`)
 }
 
-export const hex2rgb = (hex: HEX): RGB => {
-  const RGB_HEX = /^#?(?:([0-9a-f]{3})[0-9a-f]?|([0-9a-f]{6})(?:[0-9a-f]{2})?)$/i
+// TODO: add check that hex is a valid hex
+export const hex2rgbOrRgba = (hex: HEX): RGB | RGBA => {
+  const RGB_HEX = /^#?(?:([0-9a-f]{3})|([0-9a-f]{6})([0-9a-f]{2})?)$/i
   // short and long are or undefined or the original_hex without #
-  const [original_hex, short, long] = hex.match(RGB_HEX) || []
+  const [original_hex, short, long, opacity] = hex.match(RGB_HEX) || []
   if (long) {
     const value = Number.parseInt(long, 16)
-    return { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff }
+    const rgb = { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff }
+    if (opacity) {
+      const alpha = round(parseInt(opacity, 16) / 255, 2)
+      return { ...rgb, a: alpha }
+    } else {
+      return rgb
+    }
   } else {
     // expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
     const [r, g, b] = Array.from(short, s => Number.parseInt(s, 16)).map(n => (n << 4) | n)
@@ -40,32 +49,40 @@ export const hex2rgb = (hex: HEX): RGB => {
   }
 }
 
+// TODO: add check that hex is a valid hex
 export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
-  const rgb = hex2rgb(hex)
-  return { ...rgb, a: alpha }
+  if (!between(alpha, [0, 1])) {
+    throw new Error(`${alpha} is not in the range [0, 1].`)
+  }
+  const rgbOrRgba = hex2rgbOrRgba(hex)
+  if (isRgb(rgbOrRgba)) {
+    return { ...rgbOrRgba, a: alpha }
+  }
+  else if (isRgba(rgbOrRgba)) {
+    return rgbOrRgba
+  }
+  else {
+    throw new Error(`${rgbOrRgba} is neither RGB nor RGBA.`)
+  }
 }
 
+// TODO: add check that rgb is a valid rgb
 export const rgb2hex = (rgb: RGB): HEX => {
-  const { r, g, b } = rgb;
-  const rgbTmp = b | (g << 8) | (r << 16);
-  return `#${(0x1000000 + rgbTmp).toString(16).slice(1)}`;
+  const { r, g, b } = rgb
+  const hex = [r, g, b].map(value => {
+    const hex = value.toString(16)
+    const paddedHex = hex.length === 1 ? `0${hex}` : hex
+    return paddedHex
+  }).join('')
+  return `#${hex}`
 }
 
-const rgba2rgb = (background: RGB, color: RGBA): RGB => {
-  const alpha = color.a;
-  const r = Math.floor((1 - alpha) * background.r + alpha * color.r + 0.5);
-  const g = Math.floor((1 - alpha) * background.g + alpha * color.g + 0.5);
-  const b = Math.floor((1 - alpha) * background.b + alpha * color.b + 0.5);
-  return { r: r, g: g, b: b };
-};
-
-/**
- * Return the solid (alpha = 1) hex color equals to hex original color with opacity = alpha.
- */
 export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
-  const rgba = hex2rgba(hex, alpha);
-  const rgb = rgba2rgb({ r: 255, g: 255, b: 255 }, rgba);
-  const hexWithAlpha = rgb2hex(rgb);
-  return hexWithAlpha;
-};
+  if (!between(alpha, [0, 1])) {
+    throw new Error(`${alpha} is not in the range [0, 1].`)
+  }
+  const alpha255 = Math.round(alpha * 255)
+  const alphaHex = alpha255.toString(16)
+  const alphaHexPadded = alphaHex.length === 1 ? `0${alphaHex}` : alphaHex
+  return `${hex}${alphaHexPadded}`
+}
