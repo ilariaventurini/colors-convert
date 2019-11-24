@@ -6,7 +6,9 @@ import { colors } from './colors'
 ////////////////////////////////////////////////////////
 
 // test valid hex
-colors.forEach(({ name, hex, opacity }) => test(`isHex: ${name} (${hex}, ${opacity})`, () => expect(isHex(hex)).toBe(true)))
+colors.forEach(({ name, hex, opacity }) =>
+  test(`isHex: ${name} (${hex}, ${opacity})`, () => expect(isHex(hex)).toBe(true))
+)
 
 // test not valid hex
 const HEX_NOT_VALID = ['', '#', '#0', '#00', '#0000', '0a0A00', '#000ZGF', '#FFFFFFGG']
@@ -17,7 +19,9 @@ HEX_NOT_VALID.forEach(color => test(color, () => expect(isHex(color)).toBe(false
 ////////////////////////////////////////////////////////
 
 // test valid rgb
-colors.forEach(({ name, rgb }) => test(`isHex: ${name} (${rgb})`, () => expect(isRgb(rgb)).toBe(true)))
+colors.forEach(({ name, rgb }) =>
+  test(`isHex: ${name} (${rgb})`, () => expect(isRgb(rgb)).toBe(true))
+)
 
 // test not valid rgb
 const RGB_NOT_VALID = [
@@ -36,7 +40,9 @@ RGB_NOT_VALID.forEach(color => test(JSON.stringify(color), () => expect(isRgb(co
 ////////////////////////////////////////////////////////
 
 // test valid rgba
-colors.forEach(({ name, rgba }) => test(`isHex: ${name} (${rgba})`, () => expect(isRgba(rgba)).toBe(true)))
+colors.forEach(({ name, rgba }) =>
+  test(`isHex: ${name} (${rgba})`, () => expect(isRgba(rgba)).toBe(true))
+)
 
 // test not valid rgba
 const RGBA_NOT_VALID = [
@@ -57,7 +63,9 @@ RGBA_NOT_VALID.forEach(color =>
 ////////////////////////////////////////////////////////
 
 // test valid cmyk
-colors.forEach(({ name, cmyk }) => test(`isHex: ${name} (${cmyk})`, () => expect(isCmyk(cmyk)).toBe(true)))
+colors.forEach(({ name, cmyk }) =>
+  test(`isHex: ${name} (${cmyk})`, () => expect(isCmyk(cmyk)).toBe(true))
+)
 
 // test not valid cmyk
 const CMYK_NOT_VALID = [
@@ -77,4 +85,3 @@ CMYK_NOT_VALID.forEach(color =>
 // isColor
 ////////////////////////////////////////////////////////
 // TODO: add tests
-

@@ -57,11 +57,9 @@ export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
   const rgbOrRgba = hex2rgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) {
     return { ...rgbOrRgba, a: alpha }
-  }
-  else if (isRgba(rgbOrRgba)) {
+  } else if (isRgba(rgbOrRgba)) {
     return rgbOrRgba
-  }
-  else {
+  } else {
     throw new Error(`${rgbOrRgba} is neither RGB nor RGBA.`)
   }
 }
@@ -69,11 +67,13 @@ export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
 // TODO: add check that rgb is a valid rgb
 export const rgb2hex = (rgb: RGB): HEX => {
   const { r, g, b } = rgb
-  const hex = [r, g, b].map(value => {
-    const hex = value.toString(16)
-    const paddedHex = hex.length === 1 ? `0${hex}` : hex
-    return paddedHex
-  }).join('')
+  const hex = [r, g, b]
+    .map(value => {
+      const hex = value.toString(16)
+      const paddedHex = hex.length === 1 ? `0${hex}` : hex
+      return paddedHex
+    })
+    .join('')
   return `#${hex}`
 }
 
