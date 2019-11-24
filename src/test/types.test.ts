@@ -1,4 +1,5 @@
 import { isHex, isRgb, isRgba, isCmyk, isColor, color2string, color2cssString, hex2rgb } from '../index'
+import { colors } from './colors'
 
 ////////////////////////////////////////////////////////
 // isHex
@@ -135,12 +136,4 @@ STRING_CSS_VALID.forEach((color, i) =>
 // hex2rgb
 ////////////////////////////////////////////////////////
 
-const HEX = [
-  { color: '#000000', check: { r: 0, g: 0, b: 0 } },
-  { color: '#FFFFFF', check: { r: 255, g: 255, b: 255 } },
-  { color: '#efefef', check: { r: 239, g: 239, b: 239 } },
-  { color: '#eFeeFa', check: { r: 239, g: 238, b: 250 } },
-  { color: '#FFF', check: { r: 255, g: 255, b: 255 } },
-  { color: '#00000000', check: { r: 0, g: 0, b: 0 } },
-]
-HEX.forEach(({ color, check }) => test(color, () => expect(hex2rgb(color)).toStrictEqual(check)))
+colors.forEach(({ name, hex, rgb }) => test(`hex2rgb: ${name} (${hex})`, () => expect(hex2rgb(hex)).toStrictEqual(rgb)))
