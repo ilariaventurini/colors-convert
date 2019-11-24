@@ -1,6 +1,6 @@
 import { isHex, isRgb, isRgba, isCmyk, isColor, color2string, color2cssString, hex2rgb } from '../index'
 import { colors } from './colors'
-import { hex2rgba } from '../lib/color-utils'
+import { hex2rgba, rgb2hex } from '../lib/color-utils'
 
 ////////////////////////////////////////////////////////
 // isHex
@@ -144,3 +144,9 @@ colors.forEach(({ name, hex, rgb }) => test(`hex2rgb: ${name} (${hex})`, () => e
 ////////////////////////////////////////////////////////
 
 colors.forEach(({ name, hex, rgba, opacity }) => test(`hex2rgba: ${name} (${hex}, ${opacity})`, () => expect(hex2rgba(hex)).toStrictEqual(rgba)))
+
+////////////////////////////////////////////////////////
+// rgb2hex
+////////////////////////////////////////////////////////
+
+colors.filter(c => c.hex.length !== 4).forEach(({ name, hex, rgb }) => test(`hex2rgba: ${name} (${hex})`, () => expect(rgb2hex(rgb)).toStrictEqual(hex)))

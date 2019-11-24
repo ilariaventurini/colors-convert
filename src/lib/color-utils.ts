@@ -45,3 +45,9 @@ export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
   const rgb = hex2rgb(hex)
   return { ...rgb, a: alpha }
 }
+
+export const rgb2hex = (rgb: RGB): HEX => {
+  const { r, g, b } = rgb;
+  const rgbTmp = b | (g << 8) | (r << 16);
+  return `#${(0x1000000 + rgbTmp).toString(16).slice(1)}`;
+}
