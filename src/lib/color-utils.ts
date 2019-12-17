@@ -92,3 +92,27 @@ export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
   const alphaHexPadded = alphaHex.length === 1 ? `0${alphaHex}` : alphaHex
   return `${hex}${alphaHexPadded}`
 }
+
+// TODO: consider also alpha
+// TODO: check all types of hex formats
+// Convert an hex to a cmyk
+export const hex2cmyk = (hex: HEX): CMYK => {
+  const { r, g, b } = hex2rgba(hex)
+  let c = 0
+  let m = 0
+  let y = 0
+  let k = 0
+  if (r === 0 && g === 0 && b === 0) {
+    k = 1
+    return { c, m, y, k }
+  }
+  c = 1 - r / 255
+  m = 1 - g / 255
+  y = 1 - b / 255
+  const minCMY = Math.min(c, Math.min(m, y))
+  c = (c - minCMY) / (1 - minCMY)
+  m = (m - minCMY) / (1 - minCMY)
+  y = (y - minCMY) / (1 - minCMY)
+  k = minCMY
+  return { c, m, y, k }
+}

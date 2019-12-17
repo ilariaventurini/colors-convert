@@ -5,6 +5,7 @@ import {
   hex2rgba,
   rgb2hex,
   hex2hexWithAlpha,
+  hex2cmyk
 } from '../index'
 
 ////////////////////////////////////////////////////////
@@ -69,4 +70,12 @@ test(`hex2hexWithAlpha`, () => {
   expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000ff')
   expect(hex2hexWithAlpha('#000', 1)).toBe('#000ff')
   // expect(hex2hexWithAlpha('#000000', 3)).toThrow(new Error('3 is not in the range [0, 1].'))
+})
+
+////////////////////////////////////////////////////////
+// hex2cmyk
+////////////////////////////////////////////////////////
+
+test(`hex2cmyk`, () => {
+  expect(hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 1 })
 })
