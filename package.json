@@ -23,9 +23,13 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json",
+    "watch-test": "jest --watch --config jestconfig.json",
+    "watch-tsc": "tsc --watch",
+    "lib": "rm -rf dist/ && tsc",
+    "prepublish": "yarn lib"
   },
   "files": [
     "dist/**/*"
