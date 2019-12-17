@@ -8,3 +8,4 @@ export {
   hex2hexWithAlpha,
   hex2cmyk
 } from './lib/color-utils'
+export { getRandomColor } from './lib/random'

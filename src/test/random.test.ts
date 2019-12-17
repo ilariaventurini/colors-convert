@@ -1,0 +1,9 @@
+import { getRandomColor, isHex } from '../index'
+
+////////////////////////////////////////////////////////
+// getRandomColor
+////////////////////////////////////////////////////////
+
+test(`getRandomColor`, () => {
+  expect(isHex(getRandomColor())).toBe(true)
+})
