@@ -6,80 +6,67 @@ import {
   rgb2hex,
   hex2hexWithAlpha,
 } from '../index'
-import { colors } from './colors'
 
 ////////////////////////////////////////////////////////
 // color2string
 ////////////////////////////////////////////////////////
 
-const STRING_VALID = [
-  '#ffffff',
-  { r: 0, g: 0, b: 0 },
-  { r: 0, g: 0, b: 0, a: 0 },
-  { c: 0, m: 0, y: 0, k: 0 },
-]
-const STRING_VALID_CHECK = ['#FFFFFF', `0, 0, 0`, `0, 0, 0, 0`, `0%, 0%, 0%, 0%`]
-STRING_VALID.forEach((color, i) =>
-  test(JSON.stringify(color), () => expect(color2string(color)).toBe(STRING_VALID_CHECK[i]))
-)
+test(`color2string`, () => {
+  expect(color2string('#000000')).toBe('#000000')
+  expect(color2string({ r: 0, g: 0, b: 0 })).toBe('0, 0, 0')
+  expect(color2string({ r: 0, g: 0, b: 0, a: 0 })).toBe('0, 0, 0, 0')
+  expect(color2string({ c: 0, m: 0, y: 0, k: 0 })).toBe('0%, 0%, 0%, 0%')
+})
 
 ////////////////////////////////////////////////////////
 // color2cssString
 ////////////////////////////////////////////////////////
 
-const STRING_CSS_VALID = [
-  '#ffffff',
-  { r: 0, g: 0, b: 0 },
-  { r: 0, g: 0, b: 0, a: 0 },
-  { c: 0, m: 0, y: 0, k: 0 },
-]
-const STRING_CSS_VALID_CHECK = [
-  '#FFFFFF',
-  `rgb(0, 0, 0)`,
-  `rgba(0, 0, 0, 0)`,
-  `cmyk(0%, 0%, 0%, 0%)`,
-]
-STRING_CSS_VALID.forEach((color, i) =>
-  test(JSON.stringify(color), () => expect(color2cssString(color)).toBe(STRING_CSS_VALID_CHECK[i]))
-)
+test(`color2cssString`, () => {
+  expect(color2cssString('#000000')).toBe('#000000')
+  expect(color2cssString({ r: 0, g: 0, b: 0 })).toBe('rgb(0, 0, 0)')
+  expect(color2cssString({ r: 0, g: 0, b: 0, a: 0 })).toBe('rgba(0, 0, 0, 0)')
+  expect(color2cssString({ c: 0, m: 0, y: 0, k: 0 })).toBe('cmyk(0%, 0%, 0%, 0%)')
+})
 
 ////////////////////////////////////////////////////////
 // hex2rgbOrRgba
 ////////////////////////////////////////////////////////
 
-colors.forEach(({ name, hex, rgb, rgba }) =>
-  test(`hex2rgbOrRgba: ${name} (${hex})`, () => {
-    if (hex.length > 7) expect(hex2rgbOrRgba(hex)).toStrictEqual(rgba)
-    else expect(hex2rgbOrRgba(hex)).toStrictEqual(rgb)
-  })
-)
+test(`hex2rgbOrRgba`, () => {
+  expect(hex2rgbOrRgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hex2rgbOrRgba('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 })
+})
 
 ////////////////////////////////////////////////////////
 // hex2rgba
 ////////////////////////////////////////////////////////
 
-colors.forEach(({ name, hex, rgba, opacity }) =>
-  test(`hex2rgba: ${name} (${hex}, ${opacity})`, () => expect(hex2rgba(hex)).toStrictEqual(rgba))
-)
+test(`hex2rgba`, () => {
+  expect(hex2rgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(hex2rgba('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 })
+  expect(hex2rgba('#000000', 0)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 })
+  expect(hex2rgba('#000000', 1)).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(hex2rgba('#000000', 0.5)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0.5 })
+  // expect(hex2rgba('#000000', 3)).toThrow(new Error('3 is not in the range [0, 1].'))
+})
 
 ////////////////////////////////////////////////////////
 // rgb2hex
 ////////////////////////////////////////////////////////
 
-colors
-  .filter(c => c.hex.length === 7)
-  .forEach(({ name, hex, rgb }) =>
-    test(`rgb2hex: ${name} (${hex})`, () => expect(rgb2hex(rgb)).toStrictEqual(hex))
-  )
+test(`rgb2hex`, () => {
+  expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
+  expect(rgb2hex({ r: 255, g: 255, b: 255 })).toBe('#ffffff')
+})
 
 ////////////////////////////////////////////////////////
 // hex2hexWithAlpha
 ////////////////////////////////////////////////////////
 
-colors
-  .filter(c => c.hex.length === 9)
-  .forEach(({ name, hex, opacity }) => {
-    const hexWithoutAlpha = hex.slice(0, 7)
-    return test(`hex2hexWithAlpha: ${name} (${hexWithoutAlpha})`, () =>
-      expect(hex2hexWithAlpha(hexWithoutAlpha, opacity)).toStrictEqual(hex))
-  })
+test(`hex2hexWithAlpha`, () => {
+  expect(hex2hexWithAlpha('#000000', 0)).toBe('#00000000')
+  expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000ff')
+  expect(hex2hexWithAlpha('#000', 1)).toBe('#000ff')
+  // expect(hex2hexWithAlpha('#000000', 3)).toThrow(new Error('3 is not in the range [0, 1].'))
+})
