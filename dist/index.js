@@ -13,3 +13,6 @@ exports.hex2rgbOrRgba = color_utils_1.hex2rgbOrRgba;
 exports.hex2rgba = color_utils_1.hex2rgba;
 exports.rgb2hex = color_utils_1.rgb2hex;
 exports.hex2hexWithAlpha = color_utils_1.hex2hexWithAlpha;
+exports.hex2cmyk = color_utils_1.hex2cmyk;
+var random_1 = require("./lib/random");
+exports.getRandomColor = random_1.getRandomColor;

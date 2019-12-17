@@ -1,80 +1,72 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../index");
-var colors_1 = require("./colors");
 ////////////////////////////////////////////////////////
 // isHex
 ////////////////////////////////////////////////////////
-// test valid hex
-colors_1.colors.forEach(function (_a) {
-    var name = _a.name, hex = _a.hex, opacity = _a.opacity;
-    return test("isHex: " + name + " (" + hex + ", " + opacity + ")", function () { return expect(index_1.isHex(hex)).toBe(true); });
+test("isHex", function () {
+    expect(index_1.isHex('#000000')).toBe(true);
+    expect(index_1.isHex('#a00000')).toBe(true);
+    expect(index_1.isHex('#A00000')).toBe(true);
+    expect(index_1.isHex('#000')).toBe(true);
+    expect(index_1.isHex('#00000')).toBe(true);
+    expect(index_1.isHex('#00000000')).toBe(true);
+    expect(index_1.isHex('')).toBe(false);
+    expect(index_1.isHex('#')).toBe(false);
+    expect(index_1.isHex('#0')).toBe(false);
+    expect(index_1.isHex('#00')).toBe(false);
+    expect(index_1.isHex('000')).toBe(false);
+    expect(index_1.isHex('#0000000')).toBe(false);
+    expect(index_1.isHex('#000000000')).toBe(false);
+    expect(index_1.isHex('#00000Z')).toBe(false);
 });
-// test not valid hex
-var HEX_NOT_VALID = ['', '#', '#0', '#00', '#0000', '0a0A00', '#000ZGF', '#FFFFFFGG'];
-HEX_NOT_VALID.forEach(function (color) { return test(color, function () { return expect(index_1.isHex(color)).toBe(false); }); });
 ////////////////////////////////////////////////////////
 // isRgb
 ////////////////////////////////////////////////////////
-// test valid rgb
-colors_1.colors.forEach(function (_a) {
-    var name = _a.name, rgb = _a.rgb;
-    return test("isHex: " + name + " (" + rgb + ")", function () { return expect(index_1.isRgb(rgb)).toBe(true); });
+test("isRgb", function () {
+    expect(index_1.isRgb({ r: 0, g: 0, b: 0 })).toBe(true);
+    expect(index_1.isRgb({ r: 255, g: 255, b: 255 })).toBe(true);
+    expect(index_1.isRgb({})).toBe(false);
+    expect(index_1.isRgb({ r: 0 })).toBe(false);
+    expect(index_1.isRgb({ b: 0 })).toBe(false);
+    expect(index_1.isRgb({ r: 0, g: 0, b: 0, a: 1 })).toBe(false);
+    expect(index_1.isRgb({ r: -1, g: 0, b: 0 })).toBe(false);
+    expect(index_1.isRgb({ r: 300, g: 0, b: 0 })).toBe(false);
+    expect(index_1.isRgb({ r: 'zero', g: 0, b: 0 })).toBe(false);
 });
-// test not valid rgb
-var RGB_NOT_VALID = [
-    {},
-    { r: 0 },
-    { b: 0 },
-    { r: 0, g: 0, b: 0, a: 1 },
-    { r: -1, g: 0, b: 0 },
-    { r: 300, g: 0, b: 0 },
-    { r: 'twenty', g: 0, b: 0 },
-];
-RGB_NOT_VALID.forEach(function (color) { return test(JSON.stringify(color), function () { return expect(index_1.isRgb(color)).toBe(false); }); });
 ////////////////////////////////////////////////////////
 // isRgba
 ////////////////////////////////////////////////////////
-// test valid rgba
-colors_1.colors.forEach(function (_a) {
-    var name = _a.name, rgba = _a.rgba;
-    return test("isHex: " + name + " (" + rgba + ")", function () { return expect(index_1.isRgba(rgba)).toBe(true); });
-});
-// test not valid rgba
-var RGBA_NOT_VALID = [
-    {},
-    { r: 0 },
-    { b: 0 },
-    { r: 0, g: 0, b: 0, a: 0, o: 3 },
-    { r: -1, g: 0, b: 0, a: 0 },
-    { r: 300, g: 0, b: 0, a: 0 },
-    { r: 'twenty', g: 0, b: 0, a: 0 },
-];
-RGBA_NOT_VALID.forEach(function (color) {
-    return test(JSON.stringify(color), function () { return expect(index_1.isRgba(color)).toBe(false); });
+test("isRgba", function () {
+    expect(index_1.isRgba({ r: 0, g: 0, b: 0, a: 0 })).toBe(true);
+    expect(index_1.isRgba({ r: 255, g: 255, b: 255, a: 1 })).toBe(true);
+    expect(index_1.isRgba({})).toBe(false);
+    expect(index_1.isRgba({ r: 0 })).toBe(false);
+    expect(index_1.isRgba({ b: 0 })).toBe(false);
+    expect(index_1.isRgba({ r: 0, g: 0, b: 0, a: 0, o: 3 })).toBe(false);
+    expect(index_1.isRgba({ r: -1, g: 0, b: 0, a: 0 })).toBe(false);
+    expect(index_1.isRgba({ r: 300, g: 0, b: 0, a: 0 })).toBe(false);
+    expect(index_1.isRgba({ r: 'zero', g: 0, b: 0, a: 0 })).toBe(false);
+    expect(index_1.isRgba({ r: 0, g: 0, b: 0, a: 3 })).toBe(false);
 });
 ////////////////////////////////////////////////////////
 // isCmyk
 ////////////////////////////////////////////////////////
-// test valid cmyk
-colors_1.colors.forEach(function (_a) {
-    var name = _a.name, cmyk = _a.cmyk;
-    return test("isHex: " + name + " (" + cmyk + ")", function () { return expect(index_1.isCmyk(cmyk)).toBe(true); });
-});
-// test not valid cmyk
-var CMYK_NOT_VALID = [
-    {},
-    { c: 0 },
-    { y: 0 },
-    { c: 0, m: 0, y: 0, k: 0, o: 3 },
-    { c: -1, m: 0, y: 0, k: 0 },
-    { c: 300, m: 0, y: 0, k: 0 },
-    { c: 'twenty', m: 0, y: 0, k: 0 },
-];
-CMYK_NOT_VALID.forEach(function (color) {
-    return test(JSON.stringify(color), function () { return expect(index_1.isCmyk(color)).toBe(false); });
+test("isCmyk", function () {
+    expect(index_1.isCmyk({ c: 0, m: 0, y: 0, k: 0 })).toBe(true);
+    expect(index_1.isCmyk({ c: 100, m: 100, y: 100, k: 100 })).toBe(true);
+    expect(index_1.isCmyk({})).toBe(false);
+    expect(index_1.isCmyk({ c: 0 })).toBe(false);
+    expect(index_1.isCmyk({ y: 0 })).toBe(false);
+    expect(index_1.isCmyk({ c: 0, m: 0, y: 0, k: 0, o: 3 })).toBe(false);
+    expect(index_1.isCmyk({ c: -1, m: 0, y: 0, k: 0 })).toBe(false);
+    expect(index_1.isCmyk({ c: 300, m: 0, y: 0, k: 0 })).toBe(false);
+    expect(index_1.isCmyk({ c: 'twenty', m: 0, y: 0, k: 0 })).toBe(false);
 });
 ////////////////////////////////////////////////////////
 // isColor
 ////////////////////////////////////////////////////////
-// TODO: add tests
+test("isColor", function () {
+    expect(index_1.isColor('#000000')).toBe(true);
+    expect(index_1.isColor({ a: '' })).toBe(false);
+});

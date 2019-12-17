@@ -1,75 +1,61 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("../index");
-var colors_1 = require("./colors");
 ////////////////////////////////////////////////////////
 // color2string
 ////////////////////////////////////////////////////////
-var STRING_VALID = [
-    '#ffffff',
-    { r: 0, g: 0, b: 0 },
-    { r: 0, g: 0, b: 0, a: 0 },
-    { c: 0, m: 0, y: 0, k: 0 },
-];
-var STRING_VALID_CHECK = ['#FFFFFF', "0, 0, 0", "0, 0, 0, 0", "0%, 0%, 0%, 0%"];
-STRING_VALID.forEach(function (color, i) {
-    return test(JSON.stringify(color), function () { return expect(index_1.color2string(color)).toBe(STRING_VALID_CHECK[i]); });
+test("color2string", function () {
+    expect(index_1.color2string('#000000')).toBe('#000000');
+    expect(index_1.color2string({ r: 0, g: 0, b: 0 })).toBe('0, 0, 0');
+    expect(index_1.color2string({ r: 0, g: 0, b: 0, a: 0 })).toBe('0, 0, 0, 0');
+    expect(index_1.color2string({ c: 0, m: 0, y: 0, k: 0 })).toBe('0%, 0%, 0%, 0%');
 });
 ////////////////////////////////////////////////////////
 // color2cssString
 ////////////////////////////////////////////////////////
-var STRING_CSS_VALID = [
-    '#ffffff',
-    { r: 0, g: 0, b: 0 },
-    { r: 0, g: 0, b: 0, a: 0 },
-    { c: 0, m: 0, y: 0, k: 0 },
-];
-var STRING_CSS_VALID_CHECK = [
-    '#FFFFFF',
-    "rgb(0, 0, 0)",
-    "rgba(0, 0, 0, 0)",
-    "cmyk(0%, 0%, 0%, 0%)",
-];
-STRING_CSS_VALID.forEach(function (color, i) {
-    return test(JSON.stringify(color), function () { return expect(index_1.color2cssString(color)).toBe(STRING_CSS_VALID_CHECK[i]); });
+test("color2cssString", function () {
+    expect(index_1.color2cssString('#000000')).toBe('#000000');
+    expect(index_1.color2cssString({ r: 0, g: 0, b: 0 })).toBe('rgb(0, 0, 0)');
+    expect(index_1.color2cssString({ r: 0, g: 0, b: 0, a: 0 })).toBe('rgba(0, 0, 0, 0)');
+    expect(index_1.color2cssString({ c: 0, m: 0, y: 0, k: 0 })).toBe('cmyk(0%, 0%, 0%, 0%)');
 });
 ////////////////////////////////////////////////////////
 // hex2rgbOrRgba
 ////////////////////////////////////////////////////////
-colors_1.colors.forEach(function (_a) {
-    var name = _a.name, hex = _a.hex, rgb = _a.rgb, rgba = _a.rgba;
-    return test("hex2rgbOrRgba: " + name + " (" + hex + ")", function () {
-        if (hex.length > 7)
-            expect(index_1.hex2rgbOrRgba(hex)).toStrictEqual(rgba);
-        else
-            expect(index_1.hex2rgbOrRgba(hex)).toStrictEqual(rgb);
-    });
+test("hex2rgbOrRgba", function () {
+    expect(index_1.hex2rgbOrRgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 });
+    expect(index_1.hex2rgbOrRgba('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 });
 });
 ////////////////////////////////////////////////////////
 // hex2rgba
 ////////////////////////////////////////////////////////
-colors_1.colors.forEach(function (_a) {
-    var name = _a.name, hex = _a.hex, rgba = _a.rgba, opacity = _a.opacity;
-    return test("hex2rgba: " + name + " (" + hex + ", " + opacity + ")", function () { return expect(index_1.hex2rgba(hex)).toStrictEqual(rgba); });
+test("hex2rgba", function () {
+    expect(index_1.hex2rgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 });
+    expect(index_1.hex2rgba('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 });
+    expect(index_1.hex2rgba('#000000', 0)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 });
+    expect(index_1.hex2rgba('#000000', 1)).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 });
+    expect(index_1.hex2rgba('#000000', 0.5)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0.5 });
+    // expect(hex2rgba('#000000', 3)).toThrow(new Error('3 is not in the range [0, 1].'))
 });
 ////////////////////////////////////////////////////////
 // rgb2hex
 ////////////////////////////////////////////////////////
-colors_1.colors
-    .filter(function (c) { return c.hex.length === 7; })
-    .forEach(function (_a) {
-    var name = _a.name, hex = _a.hex, rgb = _a.rgb;
-    return test("rgb2hex: " + name + " (" + hex + ")", function () { return expect(index_1.rgb2hex(rgb)).toStrictEqual(hex); });
+test("rgb2hex", function () {
+    expect(index_1.rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000');
+    expect(index_1.rgb2hex({ r: 255, g: 255, b: 255 })).toBe('#ffffff');
 });
 ////////////////////////////////////////////////////////
 // hex2hexWithAlpha
 ////////////////////////////////////////////////////////
-colors_1.colors
-    .filter(function (c) { return c.hex.length === 9; })
-    .forEach(function (_a) {
-    var name = _a.name, hex = _a.hex, opacity = _a.opacity;
-    var hexWithoutAlpha = hex.slice(0, 7);
-    return test("hex2hexWithAlpha: " + name + " (" + hexWithoutAlpha + ")", function () {
-        return expect(index_1.hex2hexWithAlpha(hexWithoutAlpha, opacity)).toStrictEqual(hex);
-    });
+test("hex2hexWithAlpha", function () {
+    expect(index_1.hex2hexWithAlpha('#000000', 0)).toBe('#00000000');
+    expect(index_1.hex2hexWithAlpha('#000000', 1)).toBe('#000000ff');
+    expect(index_1.hex2hexWithAlpha('#000', 1)).toBe('#000ff');
+    // expect(hex2hexWithAlpha('#000000', 3)).toThrow(new Error('3 is not in the range [0, 1].'))
+});
+////////////////////////////////////////////////////////
+// hex2cmyk
+////////////////////////////////////////////////////////
+test("hex2cmyk", function () {
+    expect(index_1.hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 1 });
 });

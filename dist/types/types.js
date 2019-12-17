@@ -10,6 +10,7 @@ function isHex(color) {
     return reg.test(color);
 }
 exports.isHex = isHex;
+// Accept an object like this {r, g, b} with r,b,g numeric values in range [0, 255]
 function isRgb(color) {
     var keys = Object.keys(color);
     if (keys.length !== 3)
@@ -25,6 +26,7 @@ function isRgb(color) {
 exports.isRgb = isRgb;
 // TODO: add support for values in [0, 100]%
 // TODO: accept also rgba without a, consider it 1 as default
+// Accept an object like this {r, g, b, a} with r,g,b numeric values in range [0, 255] and a in range [0,1]
 function isRgba(color) {
     var keys = Object.keys(color);
     if (keys.length !== 4)
@@ -39,6 +41,8 @@ function isRgba(color) {
     return r && g && b && a;
 }
 exports.isRgba = isRgba;
+// TODO: add support for values in [0, 1]
+// Accept an object like this {c, m, y, k} with c,m,y,k numeric values in range [0, 100]
 function isCmyk(color) {
     var keys = Object.keys(color);
     if (keys.length !== 4)
