@@ -16,6 +16,7 @@ export function isHex(color: any): color is HEX {
   return reg.test(color)
 }
 
+// Accept an object like this {r, g, b} with r,b,g numeric values in range [0, 255]
 export function isRgb(color: any): color is RGB {
   const keys = Object.keys(color)
   if (keys.length !== 3) return false
@@ -29,6 +30,7 @@ export function isRgb(color: any): color is RGB {
 
 // TODO: add support for values in [0, 100]%
 // TODO: accept also rgba without a, consider it 1 as default
+// Accept an object like this {r, g, b, a} with r,g,b numeric values in range [0, 255] and a in range [0,1]
 export function isRgba(color: any): color is RGBA {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false
@@ -41,6 +43,8 @@ export function isRgba(color: any): color is RGBA {
   return r && g && b && a
 }
 
+// TODO: add support for values in [0, 1]
+// Accept an object like this {c, m, y, k} with c,m,y,k numeric values in range [0, 100]
 export function isCmyk(color: any): color is CMYK {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false

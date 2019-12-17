@@ -1,87 +1,85 @@
-import { isHex, isRgb, isRgba, isCmyk } from '../index'
-import { colors } from './colors'
+import { isHex, isRgb, isRgba, isCmyk, isColor } from '../index'
 
 ////////////////////////////////////////////////////////
 // isHex
 ////////////////////////////////////////////////////////
 
-// test valid hex
-colors.forEach(({ name, hex, opacity }) =>
-  test(`isHex: ${name} (${hex}, ${opacity})`, () => expect(isHex(hex)).toBe(true))
-)
+test(`isHex`, () => {
+  expect(isHex('#000000')).toBe(true)
+  expect(isHex('#a00000')).toBe(true)
+  expect(isHex('#A00000')).toBe(true)
+  expect(isHex('#000')).toBe(true)
+  expect(isHex('#00000')).toBe(true)
+  expect(isHex('#00000000')).toBe(true)
 
-// test not valid hex
-const HEX_NOT_VALID = ['', '#', '#0', '#00', '#0000', '0a0A00', '#000ZGF', '#FFFFFFGG']
-HEX_NOT_VALID.forEach(color => test(color, () => expect(isHex(color)).toBe(false)))
+  expect(isHex('')).toBe(false)
+  expect(isHex('#')).toBe(false)
+  expect(isHex('#0')).toBe(false)
+  expect(isHex('#00')).toBe(false)
+  expect(isHex('000')).toBe(false)
+  expect(isHex('#0000000')).toBe(false)
+  expect(isHex('#000000000')).toBe(false)
+  expect(isHex('#00000Z')).toBe(false)
+})
 
 ////////////////////////////////////////////////////////
 // isRgb
 ////////////////////////////////////////////////////////
 
-// test valid rgb
-colors.forEach(({ name, rgb }) =>
-  test(`isHex: ${name} (${rgb})`, () => expect(isRgb(rgb)).toBe(true))
-)
+test(`isRgb`, () => {
+  expect(isRgb({ r: 0, g: 0, b: 0 })).toBe(true)
+  expect(isRgb({ r: 255, g: 255, b: 255 })).toBe(true)
 
-// test not valid rgb
-const RGB_NOT_VALID = [
-  {},
-  { r: 0 },
-  { b: 0 },
-  { r: 0, g: 0, b: 0, a: 1 },
-  { r: -1, g: 0, b: 0 },
-  { r: 300, g: 0, b: 0 },
-  { r: 'twenty', g: 0, b: 0 },
-]
-RGB_NOT_VALID.forEach(color => test(JSON.stringify(color), () => expect(isRgb(color)).toBe(false)))
+  expect(isRgb({})).toBe(false)
+  expect(isRgb({ r: 0 })).toBe(false)
+  expect(isRgb({ b: 0 })).toBe(false)
+  expect(isRgb({ r: 0, g: 0, b: 0, a: 1 })).toBe(false)
+  expect(isRgb({ r: -1, g: 0, b: 0 })).toBe(false)
+  expect(isRgb({ r: 300, g: 0, b: 0 })).toBe(false)
+  expect(isRgb({ r: 'zero', g: 0, b: 0 })).toBe(false)
+})
 
 ////////////////////////////////////////////////////////
 // isRgba
 ////////////////////////////////////////////////////////
 
-// test valid rgba
-colors.forEach(({ name, rgba }) =>
-  test(`isHex: ${name} (${rgba})`, () => expect(isRgba(rgba)).toBe(true))
-)
+test(`isRgba`, () => {
+  expect(isRgba({ r: 0, g: 0, b: 0, a: 0 })).toBe(true)
+  expect(isRgba({ r: 255, g: 255, b: 255, a: 1 })).toBe(true)
 
-// test not valid rgba
-const RGBA_NOT_VALID = [
-  {},
-  { r: 0 },
-  { b: 0 },
-  { r: 0, g: 0, b: 0, a: 0, o: 3 },
-  { r: -1, g: 0, b: 0, a: 0 },
-  { r: 300, g: 0, b: 0, a: 0 },
-  { r: 'twenty', g: 0, b: 0, a: 0 },
-]
-RGBA_NOT_VALID.forEach(color =>
-  test(JSON.stringify(color), () => expect(isRgba(color)).toBe(false))
-)
+  expect(isRgba({})).toBe(false)
+  expect(isRgba({ r: 0 })).toBe(false)
+  expect(isRgba({ b: 0 })).toBe(false)
+  expect(isRgba({ r: 0, g: 0, b: 0, a: 0, o: 3 })).toBe(false)
+  expect(isRgba({ r: -1, g: 0, b: 0, a: 0 })).toBe(false)
+  expect(isRgba({ r: 300, g: 0, b: 0, a: 0 })).toBe(false)
+  expect(isRgba({ r: 'zero', g: 0, b: 0, a: 0 })).toBe(false)
+  expect(isRgba({ r: 0, g: 0, b: 0, a: 3 })).toBe(false)
+})
 
 ////////////////////////////////////////////////////////
 // isCmyk
 ////////////////////////////////////////////////////////
 
-// test valid cmyk
-colors.forEach(({ name, cmyk }) =>
-  test(`isHex: ${name} (${cmyk})`, () => expect(isCmyk(cmyk)).toBe(true))
-)
+test(`isCmyk`, () => {
+  expect(isCmyk({ c: 0, m: 0, y: 0, k: 0 })).toBe(true)
+  expect(isCmyk({ c: 100, m: 100, y: 100, k: 100 })).toBe(true)
 
-// test not valid cmyk
-const CMYK_NOT_VALID = [
-  {},
-  { c: 0 },
-  { y: 0 },
-  { c: 0, m: 0, y: 0, k: 0, o: 3 },
-  { c: -1, m: 0, y: 0, k: 0 },
-  { c: 300, m: 0, y: 0, k: 0 },
-  { c: 'twenty', m: 0, y: 0, k: 0 },
-]
-CMYK_NOT_VALID.forEach(color =>
-  test(JSON.stringify(color), () => expect(isCmyk(color)).toBe(false))
-)
+  expect(isCmyk({})).toBe(false)
+  expect(isCmyk({ c: 0 })).toBe(false)
+  expect(isCmyk({ y: 0 })).toBe(false)
+  expect(isCmyk({ c: 0, m: 0, y: 0, k: 0, o: 3 })).toBe(false)
+  expect(isCmyk({ c: -1, m: 0, y: 0, k: 0 })).toBe(false)
+  expect(isCmyk({ c: 300, m: 0, y: 0, k: 0 })).toBe(false)
+  expect(isCmyk({ c: 'twenty', m: 0, y: 0, k: 0 })).toBe(false)
+})
 
 ////////////////////////////////////////////////////////
 // isColor
 ////////////////////////////////////////////////////////
-// TODO: add tests
+
+test(`isColor`, () => {
+  expect(isColor('#000000')).toBe(true)
+
+  expect(isColor({ a: '' })).toBe(false)
+})
