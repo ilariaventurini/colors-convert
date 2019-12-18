@@ -1,6 +1,6 @@
 {
   "name": "colors-convert",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/ilariaventurini/colors-convert.git",
