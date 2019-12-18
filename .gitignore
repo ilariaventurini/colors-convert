@@ -1,1 +1,8 @@
-node_modules
+# dependencies
+node_modules/
+
+# testing
+coverage/
+
+# npm and yarn log
+*.log
