@@ -9,5 +9,6 @@ export {
   rgb2cmyk,
   hex2cmyk,
   cmyk2rgb,
+  cmyk2hex,
 } from './lib/color-utils'
 export { getRandomColor } from './lib/random'

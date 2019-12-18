@@ -175,8 +175,13 @@ export const cmyk2rgb = (cmyk: CMYK): RGB => {
   return rgb
 }
 
-// // TODO: implement it
-// // Convert a cmyk color to a hex
-// export const cmyk2hex = (cmyk: CMYK): HEX => {
-//   return '#FFFFFF'
-// }
+// Convert a cmyk color to a hex
+export const cmyk2hex = (cmyk: CMYK): HEX => {
+  if (!isCmyk(cmyk)) {
+    throw new Error(`${cmyk} is not a cmyk color.`)
+  }
+
+  const rgb = cmyk2rgb(cmyk)
+  const hex = rgb2hex(rgb)
+  return hex
+}
