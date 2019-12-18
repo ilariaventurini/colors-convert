@@ -1,5 +1,9 @@
 # Colors-convert
 
+A simple colors library.
+
+<!---
+
 Commands:
 
 - `yarn compile` to compile Typescript
@@ -17,3 +21,5 @@ So, to publish on NPM:
 - `yarn prepublish`
 - `yarn publish`
 - then push with push all tags flag.
+
+-->
