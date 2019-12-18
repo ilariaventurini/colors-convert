@@ -59,3 +59,4 @@ test("hex2hexWithAlpha", function () {
 test("hex2cmyk", function () {
     expect(index_1.hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 1 });
 });
+//# sourceMappingURL=conversion.test.js.map

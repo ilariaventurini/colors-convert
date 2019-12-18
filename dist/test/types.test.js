@@ -70,3 +70,4 @@ test("isColor", function () {
     expect(index_1.isColor('#000000')).toBe(true);
     expect(index_1.isColor({ a: '' })).toBe(false);
 });
+//# sourceMappingURL=types.test.js.map

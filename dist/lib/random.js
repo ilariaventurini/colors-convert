@@ -12,3 +12,4 @@ exports.getRandomColor = function () {
     }
     return color;
 };
+//# sourceMappingURL=random.js.map

@@ -7,3 +7,4 @@ var index_1 = require("../index");
 test("getRandomColor", function () {
     expect(index_1.isHex(index_1.getRandomColor())).toBe(true);
 });
+//# sourceMappingURL=random.test.js.map

@@ -137,3 +137,4 @@ exports.hex2cmyk = function (hex) {
     k = minCMY;
     return { c: c, m: m, y: y, k: k };
 };
+//# sourceMappingURL=color-utils.js.map

@@ -61,3 +61,4 @@ function isColor(color) {
     return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color);
 }
 exports.isColor = isColor;
+//# sourceMappingURL=types.js.map
