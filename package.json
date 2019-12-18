@@ -36,7 +36,7 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@babel/types": "^7.6.3",
+    "@babel/types": "^7.7.4",
     "@types/lodash": "^4.14.144",
     "@types/source-map": "^0.5.7",
     "lodash": "^4.17.15"
