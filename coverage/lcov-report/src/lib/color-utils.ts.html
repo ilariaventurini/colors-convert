@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.62% </span>
+        <span class="strong">88.03% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>92/105</span>
+        <span class='fraction'>103/117</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75.44% </span>
+        <span class="strong">74.58% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>43/57</span>
+        <span class='fraction'>44/59</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>11/11</span>
+        <span class='fraction'>14/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.87% </span>
+        <span class="strong">85.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>79/92</span>
+        <span class='fraction'>85/99</span>
       </div>
     </div>
     <p class="quiet">
@@ -206,7 +206,28 @@
 <a name='L158'></a><a href='#L158'>158</a>
 <a name='L159'></a><a href='#L159'>159</a>
 <a name='L160'></a><a href='#L160'>160</a>
-<a name='L161'></a><a href='#L161'>161</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -365,6 +386,27 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { COLOR, HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk, isColor } from '../types/types'
 import { toUpper, round } from 'lodash'
@@ -526,13 +568,34 @@ export const hex2cmyk = (hex: HEX): CMYK =&gt; {
 &nbsp;
   return cmyk
 }
-&nbsp;</pre></td></tr>
+&nbsp;
+// Convert a cmyk color to a rgb
+export const cmyk2rgb = (cmyk: CMYK): RGB =&gt; {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!isCmyk(cmyk)) {
+<span class="cstat-no" title="statement not covered" >    throw new Error(`${cmyk} is not a cmyk color.`)</span>
+  }
+&nbsp;
+  const { c, m, y, k } = applyFnToEachObjValue(cmyk, (c: number) =&gt; c / 100) as CMYK
+  const rgb01 = {
+    r: 1 - Math.min(1, c * (1 - k) + k),
+    g: 1 - Math.min(1, m * (1 - k) + k),
+    b: 1 - Math.min(1, y * (1 - k) + k)
+  }
+  const rgb = applyFnToEachObjValue(rgb01, (c: number) =&gt; c * 255) as RGB
+  return rgb
+}
+&nbsp;
+// // TODO: implement it
+// // Convert a cmyk color to a hex
+// export const cmyk2hex = (cmyk: CMYK): HEX =&gt; {
+//   return '#FFFFFF'
+// }</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 18 2019 15:49:43 GMT+0100 (Central European Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 18 2019 16:04:03 GMT+0100 (Central European Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

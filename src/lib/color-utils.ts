@@ -158,3 +158,25 @@ export const hex2cmyk = (hex: HEX): CMYK => {
 
   return cmyk
 }
+
+// Convert a cmyk color to a rgb
+export const cmyk2rgb = (cmyk: CMYK): RGB => {
+  if (!isCmyk(cmyk)) {
+    throw new Error(`${cmyk} is not a cmyk color.`)
+  }
+
+  const { c, m, y, k } = applyFnToEachObjValue(cmyk, (c: number) => c / 100) as CMYK
+  const rgb01 = {
+    r: 1 - Math.min(1, c * (1 - k) + k),
+    g: 1 - Math.min(1, m * (1 - k) + k),
+    b: 1 - Math.min(1, y * (1 - k) + k)
+  }
+  const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
+  return rgb
+}
+
+// // TODO: implement it
+// // Convert a cmyk color to a hex
+// export const cmyk2hex = (cmyk: CMYK): HEX => {
+//   return '#FFFFFF'
+// }

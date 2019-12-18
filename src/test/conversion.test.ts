@@ -6,7 +6,8 @@ import {
   rgb2hex,
   hex2hexWithAlpha,
   hex2cmyk,
-  rgb2cmyk
+  rgb2cmyk,
+  cmyk2rgb
 } from '../index'
 
 ////////////////////////////////////////////////////////
@@ -101,4 +102,15 @@ test(`hex2cmyk`, () => {
   expect(hex2cmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   expect(hex2cmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   // expect(hex2cmyk('')).toThrow(new Error(' is not a hex color.'))
+})
+
+////////////////////////////////////////////////////////
+// cmyk2rgb
+////////////////////////////////////////////////////////
+
+test(`cmyk2rgb`, () => {
+  expect(cmyk2rgb({ c: 0, m: 0, y: 0, k: 100 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(cmyk2rgb({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(cmyk2rgb({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual({ r: 66, g: 135, b: 245 })
+  // expect(hex2cmyk('')).toThrow(new Error(' is not a cmyk color.'))
 })
