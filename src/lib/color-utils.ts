@@ -144,3 +144,17 @@ export const rgb2cmyk = (rgb: RGB): CMYK => {
 
   return roundedCmyk
 }
+
+// Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
+export const hex2cmyk = (hex: HEX): CMYK => {
+  if (!isHex(hex)) {
+    throw new Error(`${hex} is not a hex color.`)
+  }
+
+  // remove opacity chars
+  const hexShortFormat = hex.substring(0, 7)
+  const rgb = hex2rgbOrRgba(hexShortFormat)
+  const cmyk = rgb2cmyk(rgb)
+
+  return cmyk
+}
