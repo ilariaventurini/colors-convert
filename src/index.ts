@@ -6,6 +6,6 @@ export {
   hex2rgba,
   rgb2hex,
   hex2hexWithAlpha,
-  hex2cmyk
+  rgb2cmyk
 } from './lib/color-utils'
 export { getRandomColor } from './lib/random'

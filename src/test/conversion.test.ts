@@ -5,7 +5,7 @@ import {
   hex2rgba,
   rgb2hex,
   hex2hexWithAlpha,
-  hex2cmyk
+  rgb2cmyk
 } from '../index'
 
 ////////////////////////////////////////////////////////
@@ -79,14 +79,12 @@ test(`hex2hexWithAlpha`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// hex2cmyk
+// rgb2cmyk
 ////////////////////////////////////////////////////////
 
-test(`hex2cmyk`, () => {
-  expect(hex2cmyk('#ffffff')).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
-  expect(hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hex2cmyk('#4287f5')).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
-  expect(hex2cmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hex2cmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  // expect(hex2cmyk('')).toThrow(new Error(' is not a hex color.'))
+test(`rgb2cmyk`, () => {
+  expect(rgb2cmyk({ r: 0, g: 0, b: 0 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(rgb2cmyk({ r: 255, g: 255, b: 255 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(rgb2cmyk({ r: 66, g: 135, b: 245 })).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
+  // expect(rgb2cmyk('')).toThrow(new Error(' is not a rgb color.'))
 })

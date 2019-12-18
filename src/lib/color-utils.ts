@@ -118,15 +118,13 @@ export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
   return `${hex}${alphaHexPadded}`
 }
 
-// Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
-export const hex2cmyk = (hex: HEX): CMYK => {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
+// Convert an rgb to a cmyk
+export const rgb2cmyk = (rgb: RGB): CMYK => {
+  if (!isRgb(rgb)) {
+    throw new Error(`${rgb} is not a rgb color.`)
   }
 
-  // remove opacity chars
-  const hexShortFormat = hex.substring(0, 7)
-  const { r, g, b } = hex2rgba(hexShortFormat)
+  const { r, g, b } = rgb
 
   // normalize r,g,b values (from 0-255 to 0-1)
   const r01 = r / 255
