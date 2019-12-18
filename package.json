@@ -1,6 +1,6 @@
 {
   "name": "colors-convert",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/ilariaventurini/colors-convert.git",
@@ -22,14 +22,13 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
+    "compile": "tsc",
+    "compile-watch": "tsc --watch",
     "test": "jest --config jestconfig.json",
-    "watch-test": "jest --watch --config jestconfig.json",
-    "watch-tsc": "tsc --watch",
-    "lib": "rm -rf dist/ && tsc",
-    "prepublish": "yarn lib"
+    "test-watch": "jest --watch --config jestconfig.json",
+    "prepublish": "rm -rf dist/ && tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
   },
   "files": [
     "dist/**/*"
@@ -37,6 +36,7 @@
   "dependencies": {
     "@babel/types": "^7.6.3",
     "@types/lodash": "^4.14.144",
+    "@types/source-map": "^0.5.7",
     "lodash": "^4.17.15"
   }
 }

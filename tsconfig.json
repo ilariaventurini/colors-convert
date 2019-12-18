@@ -2,12 +2,14 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
     "outDir": "./dist",
-    "strict": true,
     "lib": ["es6", "dom"],
-    "allowJs": true
+    "strict": true,
+    "declaration": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "typeRoots": ["typings", "node_modules/@types"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/tests/*"]
+  "exclude": ["node_modules", "typings", "**/tests/*"]
 }
