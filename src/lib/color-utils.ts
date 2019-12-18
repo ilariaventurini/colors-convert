@@ -1,6 +1,6 @@
 import { COLOR, HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk, isColor } from '../types/types'
 import { toUpper, round } from 'lodash'
-import { between } from '../lib/utils'
+import { between, applyFnToEachObjValue } from '../lib/utils'
 
 // Convert a color to a string format
 export const color2string = (color: COLOR): string => {
@@ -118,30 +118,31 @@ export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
   return `${hex}${alphaHexPadded}`
 }
 
-// TODO: consider also alpha
-// TODO: check that work with all types of hex formats
-// Convert an hex to a cmyk
+// Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
 export const hex2cmyk = (hex: HEX): CMYK => {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
   }
 
-  const { r, g, b } = hex2rgba(hex)
-  let c = 0
-  let m = 0
-  let y = 0
-  let k = 0
-  if (r === 0 && g === 0 && b === 0) {
-    k = 1
-    return { c, m, y, k }
+  // remove opacity chars
+  const hexShortFormat = hex.substring(0, 7)
+  const { r, g, b } = hex2rgba(hexShortFormat)
+
+  // normalize r,g,b values (from 0-255 to 0-1)
+  const r01 = r / 255
+  const g01 = g / 255
+  const b01 = b / 255
+
+  if (r01 === 0 && g01 === 0 && b01 === 0) {
+    return { c: 0, m: 0, y: 0, k: 100 }
   }
-  c = 1 - r / 255
-  m = 1 - g / 255
-  y = 1 - b / 255
-  const minCMY = Math.min(c, Math.min(m, y))
-  c = (c - minCMY) / (1 - minCMY)
-  m = (m - minCMY) / (1 - minCMY)
-  y = (y - minCMY) / (1 - minCMY)
-  k = minCMY
-  return { c, m, y, k }
+
+  const k = 1 - Math.max(r01, g01, b01)
+  const c = (1 - r01 - k) / (1 - k)
+  const m = (1 - g01 - k) / (1 - k)
+  const y = (1 - b01 - k) / (1 - k)
+
+  const roundedCmyk = applyFnToEachObjValue({ c, m, y, k }, (c: number) => round(c * 100)) as CMYK
+
+  return roundedCmyk
 }

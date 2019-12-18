@@ -64,6 +64,7 @@ test(`isRgba`, () => {
 test(`isCmyk`, () => {
   expect(isCmyk({ c: 0, m: 0, y: 0, k: 0 })).toBe(true)
   expect(isCmyk({ c: 100, m: 100, y: 100, k: 100 })).toBe(true)
+  expect(isCmyk({ c: 73, m: 45, y: 0, k: 4 })).toBe(true)
 
   expect(isCmyk({})).toBe(false)
   expect(isCmyk({ c: 0 })).toBe(false)

@@ -83,6 +83,10 @@ test(`hex2hexWithAlpha`, () => {
 ////////////////////////////////////////////////////////
 
 test(`hex2cmyk`, () => {
-  expect(hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 1 })
+  expect(hex2cmyk('#ffffff')).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(hex2cmyk('#4287f5')).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
+  expect(hex2cmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(hex2cmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   // expect(hex2cmyk('')).toThrow(new Error(' is not a hex color.'))
 })

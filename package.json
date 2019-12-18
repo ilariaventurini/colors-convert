@@ -26,6 +26,8 @@
     "compile-watch": "tsc --watch",
     "test": "jest --config jestconfig.json",
     "test-watch": "jest --watch --config jestconfig.json",
+    "coverage-watch": "yarn test --watchAll --coverage",
+    "coverage-interactive-watch": "npx live-server --port=9000 coverage",
     "prepublish": "rm -rf dist/ && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
