@@ -1,6 +1,8 @@
-import { HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk } from '../types/types'
+import { HEX, RGB, RGBA, CMYK } from '../types/types'
+import { isHex, isRgb, isRgba } from '../types/isType'
 import { round } from 'lodash'
-import { between, applyFnToEachObjValue } from './utils'
+import { between } from './utils'
+import { rgb2cmyk } from './rgb'
 
 // Convert an hex to a rgb or rgba color (depeds on hex format)
 export const hex2rgbOrRgba = (hex: HEX): RGB | RGBA => {
@@ -47,23 +49,6 @@ export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
   }
 }
 
-// Convert an rgb object to hex
-export const rgb2hex = (rgb: RGB): HEX => {
-  if (!isRgb(rgb)) {
-    throw new Error(`${rgb} is not a rgb color.`)
-  }
-
-  const { r, g, b } = rgb
-  const hex = [r, g, b]
-    .map(value => {
-      const hex = value.toString(16)
-      const paddedHex = hex.length === 1 ? `0${hex}` : hex
-      return paddedHex
-    })
-    .join('')
-  return `#${hex}`
-}
-
 // Convert an hex to another hex with the given alpha
 export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
   if (!isHex(hex)) {
@@ -80,33 +65,6 @@ export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
   return `${hex}${alphaHexPadded}`
 }
 
-// Convert an rgb to a cmyk
-export const rgb2cmyk = (rgb: RGB): CMYK => {
-  if (!isRgb(rgb)) {
-    throw new Error(`${rgb} is not a rgb color.`)
-  }
-
-  const { r, g, b } = rgb
-
-  // normalize r,g,b values (from 0-255 to 0-1)
-  const r01 = r / 255
-  const g01 = g / 255
-  const b01 = b / 255
-
-  if (r01 === 0 && g01 === 0 && b01 === 0) {
-    return { c: 0, m: 0, y: 0, k: 100 }
-  }
-
-  const k = 1 - Math.max(r01, g01, b01)
-  const c = (1 - r01 - k) / (1 - k)
-  const m = (1 - g01 - k) / (1 - k)
-  const y = (1 - b01 - k) / (1 - k)
-
-  const roundedCmyk = applyFnToEachObjValue({ c, m, y, k }, (c: number) => round(c * 100)) as CMYK
-
-  return roundedCmyk
-}
-
 // Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
 export const hex2cmyk = (hex: HEX): CMYK => {
   if (!isHex(hex)) {
@@ -119,31 +77,4 @@ export const hex2cmyk = (hex: HEX): CMYK => {
   const cmyk = rgb2cmyk(rgb)
 
   return cmyk
-}
-
-// Convert a cmyk color to a rgb
-export const cmyk2rgb = (cmyk: CMYK): RGB => {
-  if (!isCmyk(cmyk)) {
-    throw new Error(`${cmyk} is not a cmyk color.`)
-  }
-
-  const { c, m, y, k } = applyFnToEachObjValue(cmyk, (c: number) => c / 100) as CMYK
-  const rgb01 = {
-    r: 1 - Math.min(1, c * (1 - k) + k),
-    g: 1 - Math.min(1, m * (1 - k) + k),
-    b: 1 - Math.min(1, y * (1 - k) + k)
-  }
-  const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
-  return rgb
-}
-
-// Convert a cmyk color to a hex
-export const cmyk2hex = (cmyk: CMYK): HEX => {
-  if (!isCmyk(cmyk)) {
-    throw new Error(`${cmyk} is not a cmyk color.`)
-  }
-
-  const rgb = cmyk2rgb(cmyk)
-  const hex = rgb2hex(rgb)
-  return hex
 }

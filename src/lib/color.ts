@@ -1,4 +1,5 @@
-import { COLOR, isHex, isRgb, isRgba, isCmyk, isColor } from '../types/types'
+import { COLOR } from '../types/types'
+import { isHex, isRgb, isRgba, isCmyk, isColor } from '../types/isType'
 import { toUpper } from 'lodash'
 
 // Convert a color to a string format
