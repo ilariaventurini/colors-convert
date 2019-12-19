@@ -30,7 +30,8 @@
     "coverage-interactive-watch": "npx live-server --port=9000 coverage",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "prepublish": "yarn format && yarn lint && rm -rf dist/ && tsc"
+    "prepublish": "rm -rf dist/ && tsc",
+    "clean": "yarn format && yarn lint"
   },
   "files": [
     "dist/**/*"

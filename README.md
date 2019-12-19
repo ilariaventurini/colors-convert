@@ -16,7 +16,8 @@ Commands:
 - `yarn publish` to publish the package on NPM
 - `yarn format` to format the code using Prettier
 - `yarn lint` to lint the code using tslint.
-- `yarn prepublish` format, lint, then remove the dist folder, ricreate it and compile Typescript
+- `yarn clean` format and lint code
+- `yarn prepublish` to remove the dist folder, ricreate it and compile Typescript
 
 So, to publish on NPM:
 
