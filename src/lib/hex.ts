@@ -1,4 +1,4 @@
-import { HEX, RGB, RGBA, CMYK } from '../types/types'
+import { HEX, RGB, RGBA, CMYK, HSL } from '../types/types'
 import { isHex, isRgb, isRgba } from '../types/isType'
 import { round } from 'lodash'
 import { between } from './utils'
@@ -77,4 +77,10 @@ export const hex2cmyk = (hex: HEX): CMYK => {
   const cmyk = rgb2cmyk(rgb)
 
   return cmyk
+}
+
+// TODO: implement it
+// Convert an hex object to hsl
+export const hex2hsl = (hex: HEX): HSL => {
+  return { h: 0, s: 0, l: 0 }
 }

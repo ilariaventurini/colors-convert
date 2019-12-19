@@ -1,4 +1,4 @@
-import { RGB, CMYK, HEX } from '../types/types'
+import { RGB, CMYK, HEX, HSL } from '../types/types'
 import { isRgb } from '../types/isType'
 import { applyFnToEachObjValue } from './utils'
 import { round } from 'lodash'
@@ -45,4 +45,10 @@ export const rgb2cmyk = (rgb: RGB): CMYK => {
   const roundedCmyk = applyFnToEachObjValue({ c, m, y, k }, (c: number) => round(c * 100)) as CMYK
 
   return roundedCmyk
+}
+
+// TODO: implement it
+// Convert an rgb object to hsl
+export const rgb2hsl = (rgb: RGB): HSL => {
+  return { h: 0, s: 0, l: 0 }
 }

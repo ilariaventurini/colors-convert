@@ -1,4 +1,4 @@
-import { CMYK, HEX, RGB } from '../types/types'
+import { CMYK, HEX, RGB, HSL } from '../types/types'
 import { applyFnToEachObjValue } from './utils'
 import { round } from 'lodash'
 import { isCmyk } from '../types/isType'
@@ -29,4 +29,10 @@ export const cmyk2hex = (cmyk: CMYK): HEX => {
   const rgb = cmyk2rgb(cmyk)
   const hex = rgb2hex(rgb)
   return hex
+}
+
+// TODO: implement it
+// Convert an cmyk object to hsl
+export const cmyk2hsl = (cmyk: CMYK): HSL => {
+  return { h: 0, s: 0, l: 0 }
 }

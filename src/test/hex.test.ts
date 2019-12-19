@@ -1,4 +1,4 @@
-import { hex2rgbOrRgba, hex2rgba, hex2hexWithAlpha, hex2cmyk } from '../index'
+import { hex2rgbOrRgba, hex2rgba, hex2hexWithAlpha, hex2cmyk, hex2hsl } from '../index'
 
 ////////////////////////////////////////////////////////
 // hex2rgbOrRgba
@@ -47,4 +47,18 @@ test(`hex2cmyk`, () => {
   expect(hex2cmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   expect(hex2cmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   // expect(hex2cmyk('')).toThrow(new Error(' is not a hex color.'))
+})
+
+////////////////////////////////////////////////////////
+// hex2hsl
+////////////////////////////////////////////////////////
+
+// TODO: implement it
+test(`hex2hsl`, () => {
+  // expect(hex2hsl('#ffffff')).toStrictEqual({ h: 0, s: 0, l: 0 })
+  // expect(hex2hsl('#000000')).toStrictEqual({ h: 0, s: 0, l: 0 })
+  // expect(hex2hsl('#4287f5')).toStrictEqual({ h: 73, s: 45, l: 0 })
+  // expect(hex2hsl('#000')).toStrictEqual({ h: 0, s: 0, l: 0 })
+  // expect(hex2hsl('#00000000')).toStrictEqual({ h: 0, s: 0, l: 0 })
+  // expect(hex2hsl('')).toThrow(new Error(' is not a hex color.'))
 })
