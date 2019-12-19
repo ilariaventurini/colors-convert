@@ -1,4 +1,4 @@
-import { isHex, isRgb, isRgba, isCmyk, isColor } from '../index'
+import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../index'
 
 ////////////////////////////////////////////////////////
 // isHex
@@ -73,6 +73,19 @@ test(`isCmyk`, () => {
   expect(isCmyk({ c: -1, m: 0, y: 0, k: 0 })).toBe(false)
   expect(isCmyk({ c: 300, m: 0, y: 0, k: 0 })).toBe(false)
   expect(isCmyk({ c: 'twenty', m: 0, y: 0, k: 0 })).toBe(false)
+})
+
+////////////////////////////////////////////////////////
+// isHsl
+////////////////////////////////////////////////////////
+
+test(`isHsl`, () => {
+  expect(isHsl({ h: 0, s: 0, l: 0 })).toBe(true)
+  expect(isHsl({ h: 360, s: 100, l: 100 })).toBe(true)
+
+  expect(isHsl({ h: 366, s: 100, l: 100 })).toBe(false)
+  expect(isHsl({ h: 0, s: 0, l: 0, c: 0 })).toBe(false)
+  expect(isCmyk({ h: 'twenty', s: 0, l: 0 })).toBe(false)
 })
 
 ////////////////////////////////////////////////////////

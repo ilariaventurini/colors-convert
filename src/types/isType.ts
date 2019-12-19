@@ -1,5 +1,5 @@
 import { between, sameContent } from '../lib/utils'
-import { HEX, RGB, RGBA, CMYK, COLOR } from './types'
+import { HEX, RGB, RGBA, CMYK, COLOR, HSL } from './types'
 
 // Accept:
 //  - long form: #FFFFFF
@@ -49,6 +49,21 @@ export function isCmyk(color: any): color is CMYK {
   const y = isValid(color.y)
   const k = isValid(color.k)
   return c && m && y && k
+}
+
+// Accept HSL colors with:
+//  - h (hue): [0-360]°
+//  - s (saturation): [0-100]%
+//  - l (lightness): [0-100]%
+export function isHsl(color: any): color is HSL {
+  const keys = Object.keys(color)
+  if (keys.length !== 3) return false
+  if (!sameContent(keys, ['h', 's', 'l'])) return false
+  const isValid = (value: any, range: [number, number]) => typeof value === 'number' && between(value, range)
+  const h = isValid(color.h, [0, 360])
+  const s = isValid(color.s, [0, 100])
+  const l = isValid(color.l, [0, 100])
+  return h && s && l
 }
 
 export function isColor(color: any): color is COLOR {
