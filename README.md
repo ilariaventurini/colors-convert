@@ -13,10 +13,10 @@ Commands:
 - `yarn test --verbose` / `yarn test-watch --verbose` to get the verbose mode in which you can see details about each single test
 - `yarn coverage-watch` run coverage test in watch mode
 - `yarn coverage-interactive-watch` run interactive coverage test in watch mode (look at http://127.0.0.1:9000/lcov-report/)
-- `yarn prepublish` to remove the dist folder, ricreate it and compile Typescript
 - `yarn publish` to publish the package on NPM
 - `yarn format` to format the code using Prettier
 - `yarn lint` to lint the code using tslint.
+- `yarn prepublish` format, lint, then remove the dist folder, ricreate it and compile Typescript
 
 So, to publish on NPM:
 
