@@ -1,7 +1,9 @@
 export { isHex, isRgb, isRgba, isCmyk, isColor } from './types/types'
 export {
   color2string,
-  color2cssString,
+  color2cssString
+} from './lib/color'
+export {
   hex2rgbOrRgba,
   hex2rgba,
   rgb2hex,
@@ -10,5 +12,5 @@ export {
   hex2cmyk,
   cmyk2rgb,
   cmyk2hex,
-} from './lib/color-utils'
+} from './lib/conversion'
 export { getRandomColor } from './lib/random'

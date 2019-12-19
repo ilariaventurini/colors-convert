@@ -1,44 +1,6 @@
-import { COLOR, HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk, isColor } from '../types/types'
-import { toUpper, round } from 'lodash'
-import { between, applyFnToEachObjValue } from '../lib/utils'
-
-// Convert a color to a string format
-export const color2string = (color: COLOR): string => {
-  if (!isColor(color)) {
-    throw new Error(`${color} is not a color.`)
-  }
-
-  if (isHex(color)) {
-    return toUpper(color)
-  } else if (isRgb(color)) {
-    return `${color.r}, ${color.g}, ${color.b}`
-  } else if (isRgba(color)) {
-    return `${color.r}, ${color.g}, ${color.b}, ${color.a}`
-  } else if (isCmyk(color)) {
-    return `${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%`
-  } else {
-    throw new Error(`${color} is not a valid type of color.`)
-  }
-}
-
-// Convert a color to a string format usable in CSS
-export const color2cssString = (color: COLOR): string => {
-  if (!isColor(color)) {
-    throw new Error(`${color} is not a color.`)
-  }
-
-  if (isHex(color)) {
-    return toUpper(color)
-  } else if (isRgb(color)) {
-    return `rgb(${color.r}, ${color.g}, ${color.b})`
-  } else if (isRgba(color)) {
-    return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`
-  } else if (isCmyk(color)) {
-    return `cmyk(${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%)`
-  } else {
-    throw new Error(`${color} is not a valid type of color.`)
-  }
-}
+import { HEX, RGB, RGBA, CMYK, isHex, isRgb, isRgba, isCmyk } from '../types/types'
+import { round } from 'lodash'
+import { between, applyFnToEachObjValue } from './utils'
 
 // Convert an hex to a rgb or rgba color (depeds on hex format)
 export const hex2rgbOrRgba = (hex: HEX): RGB | RGBA => {
