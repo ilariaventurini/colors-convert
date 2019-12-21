@@ -16,7 +16,10 @@ test(`hsl2hex`, () => {
 
 // TODO: implement it
 test(`hsl2rgb`, () => {
-  // expect(hsl2rgb({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hsl2rgb({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hsl2rgb({ h: 360, s: 0, l: 100 })).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(hsl2rgb({ h: 360, s: 100, l: 100 })).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(hsl2rgb({ h: 45, s: 90, l: 50 })).toStrictEqual({ r: 242, g: 185, b: 13 })
   // expect(hsl2rgb('')).toThrow(new Error(' is not a hex color.'))
 })
 

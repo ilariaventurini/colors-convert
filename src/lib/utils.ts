@@ -4,6 +4,13 @@ export const between = (value: number, range: [number, number]) => {
   return value >= min && value <= max
 }
 
+export const betweenMaxNotIncluded = (value: number, range: [number, number]) => {
+  const min = Math.min(...range)
+  const max = Math.max(...range)
+  console.log({ value, range, min, max, cond: value >= min && value < max });
+  return value >= min && value < max
+}
+
 export const sameContent = (a: any[], b: any[]) => a.sort().toString() == b.sort().toString()
 
 export const applyFnToEachObjValue = (obj: Object, fn: Function) => {
