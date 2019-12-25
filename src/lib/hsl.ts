@@ -9,7 +9,7 @@ export const hsl2hex = (hsl: HSL): HEX => {
   return '#FFFFFF'
 }
 
-// TODO: need a refactor
+
 // Convert an hsl object to rgb
 export const hsl2rgb = (hsl: HSL): RGB => {
   if (!isHsl(hsl)) {
@@ -18,64 +18,43 @@ export const hsl2rgb = (hsl: HSL): RGB => {
 
   const { h, s, l } = hsl
   // normalize values
-  const h01 = h / 360
   const s01 = s / 100
   const l01 = l / 100
 
   if (s01 === 0) {
-    return { r: l01 * 255, g: l01 * 255, b: l01 * 255 }
+    const l = l01 * 255
+    return { r: l, g: l, b: l }
   }
 
-  let t1
-  let t2
-  let t3
-  let rgb
-  let val
+  const angle = (h / 60) % 6
+  const angleRangeIndex = Math.floor(angle)
+  const f = angle - angleRangeIndex
+  const chroma = s01 * (1 - Math.abs(2 * l01 - 1))
+  const p = l01 + chroma / 2
+  const q = l01 - chroma / 2
+  const t = p - chroma * f
+  const w = q + chroma * f
 
-
-  if (l01 < 0.5) {
-    t2 = l01 * (1 + s01)
-  }
-  else {
-    t2 = l01 + s01 - l01 * s01
-  }
-  t1 = 2 * l01 - t2
-
-  rgb = [0, 0, 0]
-  for (var i = 0; i < 3; i++) {
-    t3 = h01 + 1 / 3 * - (i - 1)
-    if (t3 < 0) {
-      t3++
-    }
-    else if (t3 > 1) {
-      t3--
-    }
-    if (6 * t3 < 1) {
-      val = t1 + (t2 - t1) * 6 * t3
-    }
-    else if (2 * t3 < 1) {
-      val = t2
-    }
-    else if (3 * t3 < 2) {
-      val = t1 + (t2 - t1) * (2 / 3 - t3) * 6
-    }
-    else {
-      val = t1
-    }
-
-    rgb[i] = val * 255
+  let rgb01 = { r: 0, g: 0, b: 0 }
+  if (angleRangeIndex === 0) {
+    rgb01 = { r: p, g: w, b: q }
+  } else if (angleRangeIndex === 1) {
+    rgb01 = { r: t, g: p, b: q }
+  } else if (angleRangeIndex === 2) {
+    rgb01 = { r: q, g: p, b: w }
+  } else if (angleRangeIndex === 3) {
+    rgb01 = { r: q, g: t, b: p }
+  } else if (angleRangeIndex === 4) {
+    rgb01 = { r: w, g: q, b: p }
+  } else if (angleRangeIndex === 5) {
+    rgb01 = { r: p, g: q, b: t }
+  } else {
+    throw new Error(`Error during conversion of hsl2rgb with ${hsl}.`)
   }
 
-  return { r: round(rgb[0]), g: round(rgb[1]), b: round(rgb[2]) }
-}
+  const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
 
-const hue2rgb = (p: number, q: number, t: number) => {
-  if (t < 0) t += 1
-  if (t > 1) t -= 1
-  if (t < 1 / 6) return p + (q - p) * 6 * t
-  if (t < 1 / 2) return q
-  if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
-  return p
+  return rgb
 }
 
 // TODO: implement it

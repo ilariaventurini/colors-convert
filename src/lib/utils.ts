@@ -7,7 +7,6 @@ export const between = (value: number, range: [number, number]) => {
 export const betweenMaxNotIncluded = (value: number, range: [number, number]) => {
   const min = Math.min(...range)
   const max = Math.max(...range)
-  console.log({ value, range, min, max, cond: value >= min && value < max });
   return value >= min && value < max
 }
 
