@@ -81,8 +81,9 @@ test(`isCmyk`, () => {
 
 test(`isHsl`, () => {
   expect(isHsl({ h: 0, s: 0, l: 0 })).toBe(true)
-  expect(isHsl({ h: 360, s: 100, l: 100 })).toBe(true)
+  expect(isHsl({ h: 359, s: 100, l: 100 })).toBe(true)
 
+  expect(isHsl({ h: 360, s: 100, l: 100 })).toBe(false)
   expect(isHsl({ h: 366, s: 100, l: 100 })).toBe(false)
   expect(isHsl({ h: 0, s: 0, l: 0, c: 0 })).toBe(false)
   expect(isCmyk({ h: 'twenty', s: 0, l: 0 })).toBe(false)

@@ -52,15 +52,16 @@ export function isCmyk(color: any): color is CMYK {
 }
 
 // Accept HSL colors with:
-//  - h (hue): [0-360]°
+//  - h (hue): [0-359]°
 //  - s (saturation): [0-100]%
 //  - l (lightness): [0-100]%
 export function isHsl(color: any): color is HSL {
   const keys = Object.keys(color)
   if (keys.length !== 3) return false
   if (!sameContent(keys, ['h', 's', 'l'])) return false
-  const isValid = (value: any, range: [number, number]) => typeof value === 'number' && between(value, range)
-  const h = isValid(color.h, [0, 360])
+  const isValid = (value: any, range: [number, number]) =>
+    typeof value === 'number' && between(value, range)
+  const h = isValid(color.h, [0, 359])
   const s = isValid(color.s, [0, 100])
   const l = isValid(color.l, [0, 100])
   return h && s && l
