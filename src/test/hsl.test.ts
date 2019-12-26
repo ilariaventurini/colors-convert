@@ -42,8 +42,17 @@ test(`hsl2rgb`, () => {
 // hsl2cmyk
 ////////////////////////////////////////////////////////
 
-// TODO: implement it
 test(`hsl2cmyk`, () => {
-  // expect(hsl2cmyk({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hsl2cmyk({ h: 0, s: 0, l: 0 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(hsl2cmyk({ h: 359, s: 0, l: 100 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(hsl2cmyk({ h: 359, s: 100, l: 100 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(hsl2cmyk({ h: 45, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 24, y: 95, k: 5 })
+  expect(hsl2cmyk({ h: 60, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 0, y: 95, k: 5 })
+  expect(hsl2cmyk({ h: 70, s: 90, l: 50 })).toStrictEqual({ c: 16, m: 0, y: 95, k: 5 })
+  expect(hsl2cmyk({ h: 130, s: 90, l: 50 })).toStrictEqual({ c: 95, m: 0, y: 79, k: 5 })
+  expect(hsl2cmyk({ h: 185, s: 90, l: 50 })).toStrictEqual({ c: 95, m: 8, y: 0, k: 5 })
+  expect(hsl2cmyk({ h: 260, s: 90, l: 50 })).toStrictEqual({ c: 63, m: 95, y: 0, k: 5 })
+  expect(hsl2cmyk({ h: 310, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 16, k: 5 })
+  expect(hsl2cmyk({ h: 359, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 93, k: 5 })
   // expect(hsl2cmyk('')).toThrow(new Error(' is not a hex color.'))
 })
