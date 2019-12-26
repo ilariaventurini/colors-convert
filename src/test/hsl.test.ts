@@ -4,9 +4,18 @@ import { hsl2hex, hsl2rgb, hsl2cmyk } from '../index'
 // hsl2hex
 ////////////////////////////////////////////////////////
 
-// TODO: implement it
 test(`hsl2hex`, () => {
-  // expect(hsl2hex({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hsl2hex({ h: 0, s: 0, l: 0 })).toEqual('#000000')
+  expect(hsl2hex({ h: 359, s: 0, l: 100 })).toEqual('#ffffff')
+  expect(hsl2hex({ h: 359, s: 100, l: 100 })).toEqual('#ffffff')
+  expect(hsl2hex({ h: 45, s: 90, l: 50 })).toEqual('#f2b90d')
+  expect(hsl2hex({ h: 60, s: 90, l: 50 })).toEqual('#f2f20d')
+  expect(hsl2hex({ h: 70, s: 90, l: 50 })).toEqual('#ccf20d')
+  expect(hsl2hex({ h: 130, s: 90, l: 50 })).toEqual('#0df233')
+  expect(hsl2hex({ h: 185, s: 90, l: 50 })).toEqual('#0ddff2')
+  expect(hsl2hex({ h: 260, s: 90, l: 50 })).toEqual('#590df2')
+  expect(hsl2hex({ h: 310, s: 90, l: 50 })).toEqual('#f20dcc')
+  expect(hsl2hex({ h: 359, s: 90, l: 50 })).toEqual('#f20d11')
   // expect(hsl2hex('')).toThrow(new Error(' is not a hex color.'))
 })
 

@@ -1,12 +1,18 @@
-import { HSL, RGB, CMYK, HEX, RGBA } from '../types/types'
+import { HSL, RGB, CMYK, HEX } from '../types/types'
 import { isHsl } from '../types/isType'
-import { applyFnToEachObjValue, between, betweenMaxNotIncluded } from './utils'
+import { applyFnToEachObjValue } from './utils'
 import { round } from 'lodash'
+import { rgb2hex } from './rgb'
 
-// TODO: implement it
 // Convert an hsl object to hex
 export const hsl2hex = (hsl: HSL): HEX => {
-  return '#FFFFFF'
+  if (!isHsl(hsl)) {
+    throw new Error(`${hsl} is not a hsl color.`)
+  }
+
+  const rgb = hsl2rgb(hsl)
+  const hex = rgb2hex(rgb)
+  return hex
 }
 
 // Convert an hsl object to rgb
