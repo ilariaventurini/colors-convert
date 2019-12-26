@@ -43,8 +43,7 @@ test(`hsl2rgb`, () => {
 
 test(`hsl2cmyk`, () => {
   expect(hsl2cmyk({ h: 0, s: 0, l: 0 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hsl2cmyk({ h: 359, s: 0, l: 100 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
-  expect(hsl2cmyk({ h: 359, s: 100, l: 100 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(hsl2cmyk({ h: 0, s: 0, l: 100 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
   expect(hsl2cmyk({ h: 45, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 24, y: 95, k: 5 })
   expect(hsl2cmyk({ h: 60, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 0, y: 95, k: 5 })
   expect(hsl2cmyk({ h: 70, s: 90, l: 50 })).toStrictEqual({ c: 16, m: 0, y: 95, k: 5 })
