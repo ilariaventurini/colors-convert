@@ -1,4 +1,4 @@
-import { hsl2hex, hsl2rgb, hsl2rgba, hsl2cmyk } from '../index'
+import { hsl2hex, hsl2rgb, hsl2cmyk } from '../index'
 
 ////////////////////////////////////////////////////////
 // hsl2hex
@@ -27,16 +27,6 @@ test(`hsl2rgb`, () => {
   expect(hsl2rgb({ h: 310, s: 90, l: 50 })).toStrictEqual({ r: 242, g: 13, b: 204 }) // angleRangeIndex = 5
   expect(hsl2rgb({ h: 359, s: 90, l: 50 })).toStrictEqual({ r: 242, g: 13, b: 17 }) // angleRangeIndex = 5
   // expect(hsl2rgb('')).toThrow(new Error(' is not a hex color.'))
-})
-
-////////////////////////////////////////////////////////
-// hsl2rgba
-////////////////////////////////////////////////////////
-
-// TODO: implement it
-test(`hsl2rgba`, () => {
-  // expect(hsl2rgba({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
-  // expect(hsl2rgba('')).toThrow(new Error(' is not a hex color.'))
 })
 
 ////////////////////////////////////////////////////////

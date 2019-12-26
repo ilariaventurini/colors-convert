@@ -9,7 +9,6 @@ export const hsl2hex = (hsl: HSL): HEX => {
   return '#FFFFFF'
 }
 
-
 // Convert an hsl object to rgb
 export const hsl2rgb = (hsl: HSL): RGB => {
   if (!isHsl(hsl)) {
@@ -55,12 +54,6 @@ export const hsl2rgb = (hsl: HSL): RGB => {
   const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
 
   return rgb
-}
-
-// TODO: implement it
-// Convert an hsl object to rgba
-export const hsl2rgba = (hsl: HSL): RGBA => {
-  return { r: 0, g: 0, b: 0, a: 0 }
 }
 
 // TODO: implement it
