@@ -6,8 +6,7 @@ import { hsl2hex, hsl2rgb, hsl2cmyk } from '../index'
 
 test(`hsl2hex`, () => {
   expect(hsl2hex({ h: 0, s: 0, l: 0 })).toEqual('#000000')
-  expect(hsl2hex({ h: 359, s: 0, l: 100 })).toEqual('#ffffff')
-  expect(hsl2hex({ h: 359, s: 100, l: 100 })).toEqual('#ffffff')
+  expect(hsl2hex({ h: 0, s: 0, l: 100 })).toEqual('#ffffff')
   expect(hsl2hex({ h: 45, s: 90, l: 50 })).toEqual('#f2b90d')
   expect(hsl2hex({ h: 60, s: 90, l: 50 })).toEqual('#f2f20d')
   expect(hsl2hex({ h: 70, s: 90, l: 50 })).toEqual('#ccf20d')

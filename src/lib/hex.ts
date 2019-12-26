@@ -2,7 +2,7 @@ import { HEX, RGB, RGBA, CMYK, HSL } from '../types/types'
 import { isHex, isRgb, isRgba } from '../types/isType'
 import { round } from 'lodash'
 import { between } from './utils'
-import { rgb2cmyk } from './rgb'
+import { rgb2cmyk, rgb2hsl } from './rgb'
 
 // Convert an hex to a rgb or rgba color (depeds on hex format)
 export const hex2rgbOrRgba = (hex: HEX): RGB | RGBA => {
@@ -79,8 +79,14 @@ export const hex2cmyk = (hex: HEX): CMYK => {
   return cmyk
 }
 
-// TODO: implement it
 // Convert an hex object to hsl
 export const hex2hsl = (hex: HEX): HSL => {
-  return { h: 0, s: 0, l: 0 }
+  if (!isHex(hex)) {
+    throw new Error(`${hex} is not a hex color.`)
+  }
+
+  const { r, g, b, a } = hex2rgba(hex)
+  const hsl = rgb2hsl({ r, g, b })
+
+  return hsl
 }

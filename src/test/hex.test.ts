@@ -53,12 +53,16 @@ test(`hex2cmyk`, () => {
 // hex2hsl
 ////////////////////////////////////////////////////////
 
-// TODO: implement it
 test(`hex2hsl`, () => {
-  // expect(hex2hsl('#ffffff')).toStrictEqual({ h: 0, s: 0, l: 0 })
-  // expect(hex2hsl('#000000')).toStrictEqual({ h: 0, s: 0, l: 0 })
-  // expect(hex2hsl('#4287f5')).toStrictEqual({ h: 73, s: 45, l: 0 })
-  // expect(hex2hsl('#000')).toStrictEqual({ h: 0, s: 0, l: 0 })
-  // expect(hex2hsl('#00000000')).toStrictEqual({ h: 0, s: 0, l: 0 })
+  expect(hex2hsl('#000000')).toEqual({ h: 0, s: 0, l: 0 })
+  expect(hex2hsl('#ffffff')).toEqual({ h: 0, s: 0, l: 100 })
+  expect(hex2hsl('#f2b90d')).toEqual({ h: 45, s: 90, l: 50 })
+  expect(hex2hsl('#f2f20d')).toEqual({ h: 60, s: 90, l: 50 })
+  expect(hex2hsl('#ccf20d')).toEqual({ h: 70, s: 90, l: 50 })
+  expect(hex2hsl('#0df233')).toEqual({ h: 130, s: 90, l: 50 })
+  expect(hex2hsl('#0ddff2')).toEqual({ h: 185, s: 90, l: 50 })
+  expect(hex2hsl('#590df2')).toEqual({ h: 260, s: 90, l: 50 })
+  expect(hex2hsl('#f20dcc')).toEqual({ h: 310, s: 90, l: 50 })
+  expect(hex2hsl('#f20d11')).toEqual({ h: 359, s: 90, l: 50 })
   // expect(hex2hsl('')).toThrow(new Error(' is not a hex color.'))
 })
