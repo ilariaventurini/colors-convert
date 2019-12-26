@@ -25,10 +25,16 @@ test(`rgb2cmyk`, () => {
 // rgb2hsl
 ////////////////////////////////////////////////////////
 
-// TODO: implement it
 test(`rgb2hsl`, () => {
-  // expect(rgb2hsl({ r: 0, g: 0, b: 0 })).toStrictEqual({ h: 0, s: 0, l: 0 })
-  // expect(rgb2hsl({ r: 255, g: 255, b: 255 })).toStrictEqual({ h: 0, s: 0, l: 0 })
-  // expect(rgb2hsl({ r: 66, g: 135, b: 245 })).toStrictEqual({ h: 73, s: 45, l: 0 })
+  expect(rgb2hsl({ r: 0, g: 0, b: 0 })).toStrictEqual({ h: 0, s: 0, l: 0 })
+  expect(rgb2hsl({ r: 255, g: 255, b: 255 })).toStrictEqual({ h: 0, s: 0, l: 100 })
+  expect(rgb2hsl({ r: 242, g: 185, b: 13 })).toStrictEqual({ h: 45, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 242, g: 242, b: 13 })).toStrictEqual({ h: 60, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 204, g: 242, b: 13 })).toStrictEqual({ h: 70, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 13, g: 242, b: 51 })).toStrictEqual({ h: 130, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 13, g: 223, b: 242 })).toStrictEqual({ h: 185, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 89, g: 13, b: 242 })).toStrictEqual({ h: 260, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 242, g: 13, b: 204 })).toStrictEqual({ h: 310, s: 90, l: 50 })
+  expect(rgb2hsl({ r: 242, g: 13, b: 17 })).toStrictEqual({ h: 359, s: 90, l: 50 })
   // expect(rgb2hsl('')).toThrow(new Error(' is not a rgb color.'))
 })

@@ -47,8 +47,37 @@ export const rgb2cmyk = (rgb: RGB): CMYK => {
   return roundedCmyk
 }
 
-// TODO: implement it
 // Convert an rgb object to hsl
 export const rgb2hsl = (rgb: RGB): HSL => {
-  return { h: 0, s: 0, l: 0 }
+  const { r, g, b } = rgb
+
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  const l = (max + min) / 2
+
+  if (max === min) { // achromatic
+    return { h: 0, s: 0, l: (l / 255) * 100 }
+  }
+
+  const chroma = max - min
+  const s = Math.abs(chroma / (1 - Math.abs(2 * l - 1))) * 100 - 1
+
+  let h
+  switch (max) {
+    case r:
+      h = 60 * ((g - b) / chroma) + (g < b ? 360 : 0)
+      break
+    case g:
+      h = 120 + 60 * (b - r) / chroma
+      break
+    case b:
+      h = 240 + 60 * (r - g) / chroma
+      break
+  }
+
+  const hsl = { h, s, l: (l / 255) * 100 }
+  const hslRounded = applyFnToEachObjValue(hsl, (c: number) => round(c)) as HSL
+
+
+  return hslRounded
 }
