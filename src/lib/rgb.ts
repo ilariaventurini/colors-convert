@@ -55,7 +55,8 @@ export const rgb2hsl = (rgb: RGB): HSL => {
   const min = Math.min(r, g, b)
   const l = (max + min) / 2
 
-  if (max === min) { // achromatic
+  if (max === min) {
+    // achromatic
     return { h: 0, s: 0, l: (l / 255) * 100 }
   }
 
@@ -68,16 +69,15 @@ export const rgb2hsl = (rgb: RGB): HSL => {
       h = 60 * ((g - b) / chroma) + (g < b ? 360 : 0)
       break
     case g:
-      h = 120 + 60 * (b - r) / chroma
+      h = 120 + (60 * (b - r)) / chroma
       break
     case b:
-      h = 240 + 60 * (r - g) / chroma
+      h = 240 + (60 * (r - g)) / chroma
       break
   }
 
   const hsl = { h, s, l: (l / 255) * 100 }
   const hslRounded = applyFnToEachObjValue(hsl, (c: number) => round(c)) as HSL
-
 
   return hslRounded
 }
