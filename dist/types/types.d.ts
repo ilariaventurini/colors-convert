@@ -21,4 +21,4 @@ export declare type HSL = {
     s: number;
     l: number;
 };
-export declare type COLOR = HEX | RGB | RGBA | CMYK | HSL;
+export declare type Color = HEX | RGB | RGBA | CMYK | HSL;

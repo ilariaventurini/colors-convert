@@ -1,9 +1,9 @@
-import { COLOR } from '../types/types'
+import { Color } from '../types/types'
 import { isHex, isRgb, isRgba, isCmyk, isColor } from '../types/isType'
 import { toUpper } from 'lodash'
 
 // Convert a color to a string format
-export const color2string = (color: COLOR): string => {
+export const color2string = (color: Color): string => {
   if (!isColor(color)) {
     throw new Error(`${color} is not a color.`)
   }
@@ -22,7 +22,7 @@ export const color2string = (color: COLOR): string => {
 }
 
 // Convert a color to a string format usable in CSS
-export const color2cssString = (color: COLOR): string => {
+export const color2cssString = (color: Color): string => {
   if (!isColor(color)) {
     throw new Error(`${color} is not a color.`)
   }

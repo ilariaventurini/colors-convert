@@ -1,5 +1,5 @@
 import { between, sameContent } from '../lib/utils'
-import { HEX, RGB, RGBA, CMYK, COLOR, HSL } from './types'
+import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
 
 // Accept:
 //  - long form: #FFFFFF
@@ -67,6 +67,6 @@ export function isHsl(color: any): color is HSL {
   return h && s && l
 }
 
-export function isColor(color: any): color is COLOR {
+export function isColor(color: any): color is Color {
   return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color)
 }
