@@ -5,4 +5,4 @@ export { rgb2hex, rgb2cmyk, rgb2hsl, rgba2rgb, rgb2rgba, color2rgb } from './lib
 export { cmyk2rgb, cmyk2hex, cmyk2hsl } from './lib/cmyk'
 export { hsl2hex, hsl2rgb, hsl2cmyk } from './lib/hsl'
 export { getRandomColor } from './lib/random'
-export { blend } from './lib/blend'
+export { mix } from './lib/mix'

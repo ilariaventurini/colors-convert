@@ -5,19 +5,19 @@ import { applyFnToEachObjValue } from './utils'
 
 // Blend two or more colors based on their weights.
 // Given [c1, c2, c3, ...] and [w1, w2, w3, ...], it returns:
-//   blendedCol = {
+//   mixedCol = {
 //      r: sqrt(r1^2 * w1 + r2^2 * w2 + r3^2 * w3 + ...)
 //      g: sqrt(g1^2 * w1 + g2^2 * w2 + g3^2 * w3 + ...)
 //      b: sqrt(b1^2 * w1 + b2^2 * w2 + b3^2 * w3 + ...)
 //   }
-export const blend = (colors: Color[], weights?: number[]): RGB => {
+export const mix = (colors: Color[], weights?: number[]): RGB => {
   // defaulting weights
   const ws = getWeights(colors, weights)
 
   // convert colors in rgb
   const rgbs = colors.map(color2rgb)
 
-  // create the blended color
+  // create the mixed color
   const weightedRgbs = rgbs.map((rgb, i) => {
     return weightedRgb(rgb, ws[i])
   })
@@ -26,8 +26,8 @@ export const blend = (colors: Color[], weights?: number[]): RGB => {
   const weightedG = Math.sqrt(sumBy(weightedRgbs, 'cPwG'))
   const weightedB = Math.sqrt(sumBy(weightedRgbs, 'cPwB'))
 
-  const blend = { r: weightedR, g: weightedG, b: weightedB }
-  return applyFnToEachObjValue(blend, (c: number) => round(c)) as RGB
+  const mix = { r: weightedR, g: weightedG, b: weightedB }
+  return applyFnToEachObjValue(mix, (c: number) => round(c)) as RGB
 }
 
 const weightedRgb = (rgb: RGB, weight: number) => {
