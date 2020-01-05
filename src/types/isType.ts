@@ -68,5 +68,5 @@ export function isHsl(color: any): color is HSL {
 }
 
 export function isColor(color: any): color is Color {
-  return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color)
+  return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color) || isHsl(color)
 }

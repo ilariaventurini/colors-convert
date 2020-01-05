@@ -1,7 +1,8 @@
-import { RGB, CMYK, HEX, HSL } from '../types/types'
-import { isRgb } from '../types/isType'
+import { RGB, RGBA, CMYK, HEX, HSL, Color } from '../types/types'
+import { isRgb, isRgba, isColor, isHex, isCmyk, isHsl } from '../types/isType'
 import { applyFnToEachObjValue } from './utils'
 import { round } from 'lodash'
+import { hex2rgba, cmyk2rgb, hsl2rgb } from '..'
 
 // Convert an rgb object to hex
 export const rgb2hex = (rgb: RGB): HEX => {
@@ -49,6 +50,10 @@ export const rgb2cmyk = (rgb: RGB): CMYK => {
 
 // Convert an rgb object to hsl
 export const rgb2hsl = (rgb: RGB): HSL => {
+  if (!isRgb(rgb)) {
+    throw new Error(`${rgb} is not a rgb color.`)
+  }
+
   const { r, g, b } = rgb
 
   const max = Math.max(r, g, b)
@@ -80,4 +85,38 @@ export const rgb2hsl = (rgb: RGB): HSL => {
   const hslRounded = applyFnToEachObjValue(hsl, (c: number) => round(c)) as HSL
 
   return hslRounded
+}
+
+// Convert an rgba color to a rgb color removing the alpha value
+export const rgba2rgb = (rgba: RGBA): RGB => {
+  if (!isRgba(rgba)) {
+    throw new Error(`${rgba} is not a rgba color.`)
+  }
+  return { r: rgba.r, g: rgba.g, b: rgba.b }
+}
+
+// Convert an rgb color to a rgba color adding 1 as alpha
+export const rgb2rgba = (rgb: RGB): RGBA => {
+  if (!isRgb(rgb)) {
+    throw new Error(`${rgb} is not a rgb color.`)
+  }
+  return { r: rgb.r, g: rgb.g, b: rgb.b, a: 1 }
+}
+
+// Convert a generic color to rgb
+export const color2rgb = (color: Color): RGB => {
+  if (!isColor(color)) {
+    throw new Error(`${color} is not a valid color.`)
+  } else if (isHex(color)) {
+    return rgba2rgb(hex2rgba(color))
+  } else if (isRgb(color)) {
+    return color
+  } else if (isRgba(color)) {
+    return rgba2rgb(color)
+  } else if (isCmyk(color)) {
+    return cmyk2rgb(color)
+  } else {
+    // hsl
+    return hsl2rgb(color)
+  }
 }

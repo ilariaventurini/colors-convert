@@ -5,3 +5,5 @@ export type CMYK = { c: number; m: number; y: number; k: number }
 export type HSL = { h: number; s: number; l: number } // hue saturation lightness
 
 export type Color = HEX | RGB | RGBA | CMYK | HSL
+
+export type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'cmyk' | 'hsl'
