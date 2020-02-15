@@ -10,7 +10,7 @@ import { applyFnToEachObjValue } from './utils'
 //      g: sqrt(g1^2 * w1 + g2^2 * w2 + g3^2 * w3 + ...)
 //      b: sqrt(b1^2 * w1 + b2^2 * w2 + b3^2 * w3 + ...)
 //   }
-export const mix = (colors: Color[], weights?: number[]): RGB => {
+export function mix(colors: Color[], weights?: number[]): RGB {
   // defaulting weights
   const ws = getWeights(colors, weights)
 

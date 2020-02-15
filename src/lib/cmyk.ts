@@ -5,7 +5,7 @@ import { isCmyk } from '../types/isType'
 import { rgb2hex, rgb2hsl } from './rgb'
 
 // Convert a cmyk color to a rgb
-export const cmyk2rgb = (cmyk: CMYK): RGB => {
+export function cmyk2rgb(cmyk: CMYK): RGB {
   if (!isCmyk(cmyk)) {
     throw new Error(`${cmyk} is not a cmyk color.`)
   }
@@ -21,7 +21,7 @@ export const cmyk2rgb = (cmyk: CMYK): RGB => {
 }
 
 // Convert a cmyk color to a hex
-export const cmyk2hex = (cmyk: CMYK): HEX => {
+export function cmyk2hex(cmyk: CMYK): HEX {
   if (!isCmyk(cmyk)) {
     throw new Error(`${cmyk} is not a cmyk color.`)
   }
@@ -32,7 +32,7 @@ export const cmyk2hex = (cmyk: CMYK): HEX => {
 }
 
 // Convert an cmyk object to hsl
-export const cmyk2hsl = (cmyk: CMYK): HSL => {
+export function cmyk2hsl(cmyk: CMYK): HSL {
   if (!isCmyk(cmyk)) {
     throw new Error(`${cmyk} is not a cmyk color.`)
   }

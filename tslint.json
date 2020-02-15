@@ -1,8 +1,7 @@
 {
   "extends": [
     "tslint:latest",
-    "tslint-config-prettier",
-    "tslint-immutable"
+    "tslint-config-prettier"
   ],
   "rules": {
     "interface-name": [
@@ -38,6 +37,11 @@
       }
     ],
     "no-if-statement": false,
-    "no-object-literal-type-assertion": false
+    "no-object-literal-type-assertion": false,
+    "ordered-imports": false,
+    "no-shadowed-variable": false,
+    "curly": false,
+    "interface-over-type-literal": false,
+    "no-bitwise": false
   }
 }

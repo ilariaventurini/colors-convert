@@ -5,7 +5,7 @@ import { round } from 'lodash'
 import { rgb2hex, rgb2cmyk } from './rgb'
 
 // Convert an hsl object to hex
-export const hsl2hex = (hsl: HSL): HEX => {
+export function hsl2hex(hsl: HSL): HEX {
   if (!isHsl(hsl)) {
     throw new Error(`${hsl} is not a hsl color.`)
   }
@@ -16,7 +16,7 @@ export const hsl2hex = (hsl: HSL): HEX => {
 }
 
 // Convert an hsl object to rgb
-export const hsl2rgb = (hsl: HSL): RGB => {
+export function hsl2rgb(hsl: HSL): RGB {
   if (!isHsl(hsl)) {
     throw new Error(`${hsl} is not a hsl color.`)
   }
@@ -63,7 +63,7 @@ export const hsl2rgb = (hsl: HSL): RGB => {
 }
 
 // Convert an hsl object to cmyk
-export const hsl2cmyk = (hsl: HSL): CMYK => {
+export function hsl2cmyk(hsl: HSL): CMYK {
   if (!isHsl(hsl)) {
     throw new Error(`${hsl} is not a hsl color.`)
   }

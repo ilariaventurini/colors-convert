@@ -5,14 +5,14 @@ import { between } from './utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
 
 // Convert an hex to a rgb or rgba color (depeds on hex format)
-export const hex2rgbOrRgba = (hex: HEX): RGB | RGBA => {
+export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
   }
 
   const RGB_HEX = /^#?(?:([0-9a-f]{3})|([0-9a-f]{6})([0-9a-f]{2})?)$/i
-  // short and long are or undefined or the original_hex without #
-  const [original_hex, short, long, opacity] = hex.match(RGB_HEX) || []
+  // short and long are or undefined or the originalHex without #
+  const [originalHex, short, long, opacity] = hex.match(RGB_HEX) || []
   if (long) {
     const value = Number.parseInt(long, 16)
     const rgb = { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff }
@@ -30,7 +30,7 @@ export const hex2rgbOrRgba = (hex: HEX): RGB | RGBA => {
 }
 
 // Convert an hex to a rgba object
-export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
+export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
   }
@@ -50,7 +50,7 @@ export const hex2rgba = (hex: HEX, alpha = 1): RGBA => {
 }
 
 // Convert an hex to another hex with the given alpha
-export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
+export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
   }
@@ -66,7 +66,7 @@ export const hex2hexWithAlpha = (hex: HEX, alpha: number): HEX => {
 }
 
 // Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
-export const hex2cmyk = (hex: HEX): CMYK => {
+export function hex2cmyk(hex: HEX): CMYK {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
   }
@@ -80,7 +80,7 @@ export const hex2cmyk = (hex: HEX): CMYK => {
 }
 
 // Convert an hex object to hsl
-export const hex2hsl = (hex: HEX): HSL => {
+export function hex2hsl(hex: HEX): HSL {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
   }

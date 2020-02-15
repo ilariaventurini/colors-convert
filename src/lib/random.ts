@@ -4,7 +4,7 @@ import { HEX } from '../types/types'
 // TODO: choose hue, saturation, ...
 // TODO: create a random color similar to another
 // Create a random hex
-export const getRandomColor = (): HEX => {
+export function getRandomColor(): HEX {
   const alphabet = '0123456789ABCDEF'
   let color = '#'
   for (let i = 0; i < 6; i++) {

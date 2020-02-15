@@ -1,11 +1,11 @@
 import { RGB, RGBA, CMYK, HEX, HSL, Color } from '../types/types'
-import { isRgb, isRgba, isColor, isHex, isCmyk, isHsl } from '../types/isType'
+import { isRgb, isRgba, isColor, isHex, isCmyk } from '../types/isType'
 import { applyFnToEachObjValue } from './utils'
 import { round } from 'lodash'
 import { hex2rgba, cmyk2rgb, hsl2rgb } from '..'
 
 // Convert an rgb object to hex
-export const rgb2hex = (rgb: RGB): HEX => {
+export function rgb2hex(rgb: RGB): HEX {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
   }
@@ -22,7 +22,7 @@ export const rgb2hex = (rgb: RGB): HEX => {
 }
 
 // Convert an rgb to a cmyk
-export const rgb2cmyk = (rgb: RGB): CMYK => {
+export function rgb2cmyk(rgb: RGB): CMYK {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
   }
@@ -49,7 +49,7 @@ export const rgb2cmyk = (rgb: RGB): CMYK => {
 }
 
 // Convert an rgb object to hsl
-export const rgb2hsl = (rgb: RGB): HSL => {
+export function rgb2hsl(rgb: RGB): HSL {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
   }
@@ -88,7 +88,7 @@ export const rgb2hsl = (rgb: RGB): HSL => {
 }
 
 // Convert an rgba color to a rgb color removing the alpha value
-export const rgba2rgb = (rgba: RGBA): RGB => {
+export function rgba2rgb(rgba: RGBA): RGB {
   if (!isRgba(rgba)) {
     throw new Error(`${rgba} is not a rgba color.`)
   }
@@ -96,7 +96,7 @@ export const rgba2rgb = (rgba: RGBA): RGB => {
 }
 
 // Convert an rgb color to a rgba color adding 1 as alpha
-export const rgb2rgba = (rgb: RGB): RGBA => {
+export function rgb2rgba(rgb: RGB): RGBA {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
   }
@@ -104,7 +104,7 @@ export const rgb2rgba = (rgb: RGB): RGBA => {
 }
 
 // Convert a generic color to rgb
-export const color2rgb = (color: Color): RGB => {
+export function color2rgb(color: Color): RGB {
   if (!isColor(color)) {
     throw new Error(`${color} is not a valid color.`)
   } else if (isHex(color)) {
