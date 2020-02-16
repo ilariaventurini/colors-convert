@@ -1,4 +1,4 @@
-import { isHex, isRgb, isRgba, isCmyk, isColor } from '../types/isType';
+import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../types/isType';
 import { toUpper } from 'lodash';
 // Convert a color to a string format
 export function color2string(color) {
@@ -16,6 +16,9 @@ export function color2string(color) {
     }
     else if (isCmyk(color)) {
         return color.c + "%, " + color.m + "%, " + color.y + "%, " + color.k + "%";
+    }
+    else if (isHsl(color)) {
+        return color.h + "\u00B0, " + color.s + "%, " + color.l + "%";
     }
     else {
         throw new Error(color + " is not a valid type of color.");
@@ -37,6 +40,9 @@ export function color2cssString(color) {
     }
     else if (isCmyk(color)) {
         return "cmyk(" + color.c + "%, " + color.m + "%, " + color.y + "%, " + color.k + "%)";
+    }
+    else if (isHsl(color)) {
+        return "hsl(" + color.h + "\u00B0, " + color.s + "%, " + color.l + "%)";
     }
     else {
         throw new Error(color + " is not a valid type of color.");
