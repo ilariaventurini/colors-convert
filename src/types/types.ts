@@ -7,3 +7,5 @@ export type HSL = { h: number; s: number; l: number } // hue saturation lightnes
 export type Color = HEX | RGB | RGBA | CMYK | HSL
 
 export type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'cmyk' | 'hsl'
+
+export type ColorName = string

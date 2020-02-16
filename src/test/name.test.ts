@@ -1,0 +1,10 @@
+import { name } from '../index'
+
+////////////////////////////////////////////////////////
+// name
+////////////////////////////////////////////////////////
+
+xtest(`name`, () => {
+  expect(name('#000000')).toStrictEqual('Black')
+  expect(name('#ffffff')).toStrictEqual('White')
+})
