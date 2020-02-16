@@ -1,8 +1,10 @@
+import { round } from 'lodash'
 import { RGB, RGBA, CMYK, HEX, HSL, Color } from '../types/types'
 import { isRgb, isRgba, isColor, isHex, isCmyk } from '../types/isType'
 import { applyFnToEachObjValue } from './utils'
-import { round } from 'lodash'
-import { hex2rgba, cmyk2rgb, hsl2rgb } from '..'
+import { hex2rgba } from './hex'
+import { cmyk2rgb } from './cmyk'
+import { hsl2rgb } from './hsl'
 
 // Convert an rgb object to hex
 export function rgb2hex(rgb: RGB): HEX {
