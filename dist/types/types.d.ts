@@ -22,3 +22,5 @@ export declare type HSL = {
     l: number;
 };
 export declare type Color = HEX | RGB | RGBA | CMYK | HSL;
+export declare type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'cmyk' | 'hsl';
+export declare type ColorName = string;

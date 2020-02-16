@@ -3,7 +3,7 @@ import { round } from 'lodash';
 import { isCmyk } from '../types/isType';
 import { rgb2hex, rgb2hsl } from './rgb';
 // Convert a cmyk color to a rgb
-export var cmyk2rgb = function (cmyk) {
+export function cmyk2rgb(cmyk) {
     if (!isCmyk(cmyk)) {
         throw new Error(cmyk + " is not a cmyk color.");
     }
@@ -15,23 +15,23 @@ export var cmyk2rgb = function (cmyk) {
     };
     var rgb = applyFnToEachObjValue(rgb01, function (col) { return round(col * 255); });
     return rgb;
-};
+}
 // Convert a cmyk color to a hex
-export var cmyk2hex = function (cmyk) {
+export function cmyk2hex(cmyk) {
     if (!isCmyk(cmyk)) {
         throw new Error(cmyk + " is not a cmyk color.");
     }
     var rgb = cmyk2rgb(cmyk);
     var hex = rgb2hex(rgb);
     return hex;
-};
+}
 // Convert an cmyk object to hsl
-export var cmyk2hsl = function (cmyk) {
+export function cmyk2hsl(cmyk) {
     if (!isCmyk(cmyk)) {
         throw new Error(cmyk + " is not a cmyk color.");
     }
     var rgb = cmyk2rgb(cmyk);
     var hsl = rgb2hsl(rgb);
     return hsl;
-};
+}
 //# sourceMappingURL=cmyk.js.map

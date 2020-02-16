@@ -70,6 +70,6 @@ export function isHsl(color) {
     return h && s && l;
 }
 export function isColor(color) {
-    return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color);
+    return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color) || isHsl(color);
 }
 //# sourceMappingURL=isType.js.map

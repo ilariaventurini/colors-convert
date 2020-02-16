@@ -1,4 +1,4 @@
-import { HSL, RGB, CMYK } from '../types/types';
-export declare const hsl2hex: (hsl: HSL) => string;
-export declare const hsl2rgb: (hsl: HSL) => RGB;
-export declare const hsl2cmyk: (hsl: HSL) => CMYK;
+import { HSL, RGB, CMYK, HEX } from '../types/types';
+export declare function hsl2hex(hsl: HSL): HEX;
+export declare function hsl2rgb(hsl: HSL): RGB;
+export declare function hsl2cmyk(hsl: HSL): CMYK;

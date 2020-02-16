@@ -14,7 +14,7 @@ export function sameContent(a: any[], b: any[]): boolean {
   return a.sort().toString() === b.sort().toString()
 }
 
-export function applyFnToEachObjValue(obj: Object, fn: Function): any {
+export function applyFnToEachObjValue(obj: object, fn: any): any {
   Object.entries(obj).forEach(([key, value]) => {
     // @ts-ignore
     obj[key] = fn(value)

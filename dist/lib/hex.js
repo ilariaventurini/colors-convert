@@ -14,13 +14,13 @@ import { round } from 'lodash';
 import { between } from './utils';
 import { rgb2cmyk, rgb2hsl } from './rgb';
 // Convert an hex to a rgb or rgba color (depeds on hex format)
-export var hex2rgbOrRgba = function (hex) {
+export function hex2rgbOrRgba(hex) {
     if (!isHex(hex)) {
         throw new Error(hex + " is not a hex color.");
     }
     var RGB_HEX = /^#?(?:([0-9a-f]{3})|([0-9a-f]{6})([0-9a-f]{2})?)$/i;
-    // short and long are or undefined or the original_hex without #
-    var _a = hex.match(RGB_HEX) || [], original_hex = _a[0], short = _a[1], long = _a[2], opacity = _a[3];
+    // short and long are or undefined or the originalHex without #
+    var _a = hex.match(RGB_HEX) || [], originalHex = _a[0], short = _a[1], long = _a[2], opacity = _a[3];
     if (long) {
         var value = Number.parseInt(long, 16);
         var rgb = { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff };
@@ -37,9 +37,9 @@ export var hex2rgbOrRgba = function (hex) {
         var _b = Array.from(short, function (s) { return Number.parseInt(s, 16); }).map(function (n) { return (n << 4) | n; }), r = _b[0], g = _b[1], b = _b[2];
         return { r: r, g: g, b: b };
     }
-};
+}
 // Convert an hex to a rgba object
-export var hex2rgba = function (hex, alpha) {
+export function hex2rgba(hex, alpha) {
     if (alpha === void 0) { alpha = 1; }
     if (!isHex(hex)) {
         throw new Error(hex + " is not a hex color.");
@@ -57,9 +57,9 @@ export var hex2rgba = function (hex, alpha) {
     else {
         throw new Error(rgbOrRgba + " is neither RGB nor RGBA.");
     }
-};
+}
 // Convert an hex to another hex with the given alpha
-export var hex2hexWithAlpha = function (hex, alpha) {
+export function hex2hexWithAlpha(hex, alpha) {
     if (!isHex(hex)) {
         throw new Error(hex + " is not a hex color.");
     }
@@ -70,9 +70,9 @@ export var hex2hexWithAlpha = function (hex, alpha) {
     var alphaHex = alpha255.toString(16);
     var alphaHexPadded = alphaHex.length === 1 ? "0" + alphaHex : alphaHex;
     return "" + hex + alphaHexPadded;
-};
+}
 // Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
-export var hex2cmyk = function (hex) {
+export function hex2cmyk(hex) {
     if (!isHex(hex)) {
         throw new Error(hex + " is not a hex color.");
     }
@@ -81,14 +81,14 @@ export var hex2cmyk = function (hex) {
     var rgb = hex2rgbOrRgba(hexShortFormat);
     var cmyk = rgb2cmyk(rgb);
     return cmyk;
-};
+}
 // Convert an hex object to hsl
-export var hex2hsl = function (hex) {
+export function hex2hsl(hex) {
     if (!isHex(hex)) {
         throw new Error(hex + " is not a hex color.");
     }
     var _a = hex2rgba(hex), r = _a.r, g = _a.g, b = _a.b, a = _a.a;
     var hsl = rgb2hsl({ r: r, g: g, b: b });
     return hsl;
-};
+}
 //# sourceMappingURL=hex.js.map

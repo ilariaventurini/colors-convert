@@ -1,1 +1,2 @@
-export declare const getRandomColor: () => string;
+import { HEX } from '../types/types';
+export declare function getRandomColor(): HEX;

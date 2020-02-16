@@ -3,16 +3,16 @@ import { applyFnToEachObjValue } from './utils';
 import { round } from 'lodash';
 import { rgb2hex, rgb2cmyk } from './rgb';
 // Convert an hsl object to hex
-export var hsl2hex = function (hsl) {
+export function hsl2hex(hsl) {
     if (!isHsl(hsl)) {
         throw new Error(hsl + " is not a hsl color.");
     }
     var rgb = hsl2rgb(hsl);
     var hex = rgb2hex(rgb);
     return hex;
-};
+}
 // Convert an hsl object to rgb
-export var hsl2rgb = function (hsl) {
+export function hsl2rgb(hsl) {
     if (!isHsl(hsl)) {
         throw new Error(hsl + " is not a hsl color.");
     }
@@ -56,14 +56,14 @@ export var hsl2rgb = function (hsl) {
     }
     var rgb = applyFnToEachObjValue(rgb01, function (c) { return round(c * 255); });
     return rgb;
-};
+}
 // Convert an hsl object to cmyk
-export var hsl2cmyk = function (hsl) {
+export function hsl2cmyk(hsl) {
     if (!isHsl(hsl)) {
         throw new Error(hsl + " is not a hsl color.");
     }
     var rgb = hsl2rgb(hsl);
     var cmyk = rgb2cmyk(rgb);
     return cmyk;
-};
+}
 //# sourceMappingURL=hsl.js.map

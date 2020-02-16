@@ -1,7 +1,7 @@
 import { isHex, isRgb, isRgba, isCmyk, isColor } from '../types/isType';
 import { toUpper } from 'lodash';
 // Convert a color to a string format
-export var color2string = function (color) {
+export function color2string(color) {
     if (!isColor(color)) {
         throw new Error(color + " is not a color.");
     }
@@ -20,9 +20,9 @@ export var color2string = function (color) {
     else {
         throw new Error(color + " is not a valid type of color.");
     }
-};
+}
 // Convert a color to a string format usable in CSS
-export var color2cssString = function (color) {
+export function color2cssString(color) {
     if (!isColor(color)) {
         throw new Error(color + " is not a color.");
     }
@@ -41,5 +41,5 @@ export var color2cssString = function (color) {
     else {
         throw new Error(color + " is not a valid type of color.");
     }
-};
+}
 //# sourceMappingURL=color.js.map

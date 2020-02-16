@@ -1,8 +1,9 @@
-import { isRgb } from '../types/isType';
+import { isRgb, isRgba, isColor, isHex, isCmyk } from '../types/isType';
 import { applyFnToEachObjValue } from './utils';
 import { round } from 'lodash';
+import { hex2rgba, cmyk2rgb, hsl2rgb } from '..';
 // Convert an rgb object to hex
-export var rgb2hex = function (rgb) {
+export function rgb2hex(rgb) {
     if (!isRgb(rgb)) {
         throw new Error(rgb + " is not a rgb color.");
     }
@@ -15,9 +16,9 @@ export var rgb2hex = function (rgb) {
     })
         .join('');
     return "#" + hex;
-};
+}
 // Convert an rgb to a cmyk
-export var rgb2cmyk = function (rgb) {
+export function rgb2cmyk(rgb) {
     if (!isRgb(rgb)) {
         throw new Error(rgb + " is not a rgb color.");
     }
@@ -35,9 +36,12 @@ export var rgb2cmyk = function (rgb) {
     var y = (1 - b01 - k) / (1 - k);
     var roundedCmyk = applyFnToEachObjValue({ c: c, m: m, y: y, k: k }, function (c) { return round(c * 100); });
     return roundedCmyk;
-};
+}
 // Convert an rgb object to hsl
-export var rgb2hsl = function (rgb) {
+export function rgb2hsl(rgb) {
+    if (!isRgb(rgb)) {
+        throw new Error(rgb + " is not a rgb color.");
+    }
     var r = rgb.r, g = rgb.g, b = rgb.b;
     var max = Math.max(r, g, b);
     var min = Math.min(r, g, b);
@@ -63,5 +67,41 @@ export var rgb2hsl = function (rgb) {
     var hsl = { h: h, s: s, l: (l / 255) * 100 };
     var hslRounded = applyFnToEachObjValue(hsl, function (c) { return round(c); });
     return hslRounded;
-};
+}
+// Convert an rgba color to a rgb color removing the alpha value
+export function rgba2rgb(rgba) {
+    if (!isRgba(rgba)) {
+        throw new Error(rgba + " is not a rgba color.");
+    }
+    return { r: rgba.r, g: rgba.g, b: rgba.b };
+}
+// Convert an rgb color to a rgba color adding 1 as alpha
+export function rgb2rgba(rgb) {
+    if (!isRgb(rgb)) {
+        throw new Error(rgb + " is not a rgb color.");
+    }
+    return { r: rgb.r, g: rgb.g, b: rgb.b, a: 1 };
+}
+// Convert a generic color to rgb
+export function color2rgb(color) {
+    if (!isColor(color)) {
+        throw new Error(color + " is not a valid color.");
+    }
+    else if (isHex(color)) {
+        return rgba2rgb(hex2rgba(color));
+    }
+    else if (isRgb(color)) {
+        return color;
+    }
+    else if (isRgba(color)) {
+        return rgba2rgb(color);
+    }
+    else if (isCmyk(color)) {
+        return cmyk2rgb(color);
+    }
+    else {
+        // hsl
+        return hsl2rgb(color);
+    }
+}
 //# sourceMappingURL=rgb.js.map
