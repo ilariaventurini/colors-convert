@@ -3,7 +3,7 @@ import { color2rgb } from './rgb'
 import { sum, sumBy, round } from 'lodash'
 import { applyFnToEachObjValue } from './utils'
 
-// Blend two or more colors based on their weights.
+// Mix two or more colors based on their weights.
 // Given [c1, c2, c3, ...] and [w1, w2, w3, ...], it returns:
 //   mixedCol = {
 //      r: sqrt(r1^2 * w1 + r2^2 * w2 + r3^2 * w3 + ...)
