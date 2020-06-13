@@ -102,7 +102,7 @@ export function hslString2Object(hslString: string): HSL {
   }
 }
 
-// convert a string in format '322°, 79%, 52%' (short format) to an HSL object { h: 322, s: 79, l: 52 }
+// Convert a string in format '322°, 79%, 52%' (short format) to an HSL object { h: 322, s: 79, l: 52 }
 function shortHslFormatToHslObject(hslString: string): HSL {
   // split by comma, remove white spaces, remove last char, convert to number
   const values = hslString.split(',').map(v => Number(v.trim().slice(0, -1)))
