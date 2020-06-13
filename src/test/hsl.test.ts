@@ -1,4 +1,4 @@
-import { hsl2hex, hsl2rgb, hsl2cmyk } from '../index'
+import { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from '../index'
 
 ////////////////////////////////////////////////////////
 // hsl2hex
@@ -50,4 +50,19 @@ test(`hsl2cmyk`, () => {
   expect(hsl2cmyk({ h: 260, s: 90, l: 50 })).toStrictEqual({ c: 63, m: 95, y: 0, k: 5 })
   expect(hsl2cmyk({ h: 310, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 16, k: 5 })
   expect(hsl2cmyk({ h: 359, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 93, k: 5 })
+})
+
+////////////////////////////////////////////////////////
+// hslString2Object
+////////////////////////////////////////////////////////
+
+test(`hslString2Object`, () => {
+  expect(hslString2Object('322°, 79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('322°,79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('322°,  79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('hsl(322°, 79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('hsl(322°,79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('hsl(322°,  79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(() => hslString2Object('600°, 79%, 52%')).toThrow()
+  expect(() => hslString2Object('hsl(600°, 79%, 52%)')).toThrow()
 })
