@@ -122,3 +122,47 @@ export function color2rgb(color: Color): RGB {
     return hsl2rgb(color)
   }
 }
+
+// Covert a string in these two formats to a rgb object:
+//  - 255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}
+//  - rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}
+export function rgbString2Object(rgbString: string): RGB {
+  if (typeof rgbString !== 'string') {
+    throw new Error(`${rgbString} is not a string.`)
+  }
+  const errorMessage = `${rgbString} is not a valid format. The accepted formats are 'r, g, b' and 'rgb(r, g, b)' with r, g, b in [0, 255].`
+
+  // check short and long formats
+  const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+))/gi
+  const regexLongFormat = /^((rgb(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*(\)))/gi
+  const isShortFormat = regexShortFormat.test(rgbString)
+  const isLongFormat = regexLongFormat.test(rgbString)
+
+  if (!isShortFormat && !isLongFormat) {
+    throw new Error(errorMessage)
+  }
+
+  const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortFormat(rgbString)
+  const rgbObject = shortRgbFormatToRgbObject(rgbStringCleanShortFormat)
+
+  if (isRgb(rgbObject)) {
+    return rgbObject
+  } else {
+    throw new Error(errorMessage)
+  }
+}
+
+// Convert a string in format '255, 0, 255' (short format) to a RGB object {r: 255, g: 0, b: 255}
+function shortRgbFormatToRgbObject(rgbString: string): RGB {
+  // split by comma, remove white spaces, convert to number
+  const values = rgbString.split(',').map(v => Number(v.trim()))
+  return { r: values[0], g: values[1], b: values[2] }
+}
+
+function fromLongToShortFormat(rgbStringLongFormat: string): string {
+  const rgbStringShortFormat = rgbStringLongFormat
+    .replace('rgb', '')
+    .replace('(', '')
+    .replace(')', '')
+  return rgbStringShortFormat
+}
