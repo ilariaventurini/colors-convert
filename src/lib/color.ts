@@ -17,7 +17,7 @@ export function color2string(color: Color): string {
   } else if (isCmyk(color)) {
     return `${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%`
   } else if (isHsl(color)) {
-    return `${color.h}°, ${color.s}%, ${color.l}%`
+    return `${color.h}, ${color.s}%, ${color.l}%`
   } else {
     throw new Error(`${color} is not a valid type of color.`)
   }
@@ -38,7 +38,7 @@ export function color2cssString(color: Color): string {
   } else if (isCmyk(color)) {
     return `cmyk(${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%)`
   } else if (isHsl(color)) {
-    return `hsl(${color.h}°, ${color.s}%, ${color.l}%)`
+    return `hsl(${color.h}, ${color.s}%, ${color.l}%)`
   } else {
     throw new Error(`${color} is not a valid type of color.`)
   }
