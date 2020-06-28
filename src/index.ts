@@ -9,6 +9,7 @@ export {
   rgb2rgba,
   color2rgb,
   rgbString2Object,
+  rgbaString2Object,
 } from './lib/rgb'
 export { cmyk2rgb, cmyk2hex, cmyk2hsl } from './lib/cmyk'
 export { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from './lib/hsl'

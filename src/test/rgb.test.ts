@@ -6,6 +6,7 @@ import {
   rgb2rgba,
   color2rgb,
   rgbString2Object,
+  rgbaString2Object,
 } from '../index'
 
 ////////////////////////////////////////////////////////
@@ -85,4 +86,19 @@ test(`rgbString2Object`, () => {
   expect(rgbString2Object('rgb(255,  0, 255)')).toEqual({ r: 255, g: 0, b: 255 })
   expect(() => rgbString2Object('600, 0, 255')).toThrow()
   expect(() => rgbString2Object('rgb(600, 0, 255)')).toThrow()
+})
+
+////////////////////////////////////////////////////////
+// rgbaString2Object
+////////////////////////////////////////////////////////
+
+test(`rgbaString2Object`, () => {
+  expect(rgbaString2Object('255, 0, 255, 0.5')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
+  expect(rgbaString2Object('255,0, 255, 0.5')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
+  expect(rgbaString2Object('255,  0, 255, 0.5')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
+  expect(rgbaString2Object('rgba(255, 0, 255, 0.5)')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
+  expect(rgbaString2Object('rgba(255,0, 255, 0.5)')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
+  expect(rgbaString2Object('rgba(255,  0, 255, 0.5)')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
+  expect(() => rgbaString2Object('600, 0, 255, 0.5')).toThrow()
+  expect(() => rgbaString2Object('rgba(600, 0, 255, 0.5)')).toThrow()
 })

@@ -142,7 +142,7 @@ export function rgbString2Object(rgbString: string): RGB {
     throw new Error(errorMessage)
   }
 
-  const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortFormat(rgbString)
+  const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortRgbFormat(rgbString)
   const rgbObject = shortRgbFormatToRgbObject(rgbStringCleanShortFormat)
 
   if (isRgb(rgbObject)) {
@@ -159,10 +159,57 @@ function shortRgbFormatToRgbObject(rgbString: string): RGB {
   return { r: values[0], g: values[1], b: values[2] }
 }
 
-function fromLongToShortFormat(rgbStringLongFormat: string): string {
+function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
   const rgbStringShortFormat = rgbStringLongFormat
     .replace('rgb', '')
     .replace('(', '')
     .replace(')', '')
   return rgbStringShortFormat
+}
+
+// TODO: chanhe regex to accept also a = .4
+// Covert a string in these two formats to a rgba object:
+//  - 255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}
+//  - rgb(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}
+export function rgbaString2Object(rgbaString: string): RGBA {
+  if (typeof rgbaString !== 'string') {
+    throw new Error(`${rgbaString} is not a string.`)
+  }
+  const errorMessage = `${rgbaString} is not a valid format. The accepted formats are 'r, g, b, a' and 'rgba(r, g, b, a)' with r, g, b in [0, 255] and a in [0, 1].`
+
+  // check short and long formats
+  const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*((0(\.\d+)?|1(\.0+)?)))/gi
+  const regexLongFormat = /^((rgba(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*, (\s)*((0(\.\d+)?|1(\.0+)?))(\s)*(\)))/gi
+  const isShortFormat = regexShortFormat.test(rgbaString)
+  const isLongFormat = regexLongFormat.test(rgbaString)
+
+  if (!isShortFormat && !isLongFormat) {
+    throw new Error(errorMessage)
+  }
+
+  const rgbaStringCleanShortFormat = isShortFormat
+    ? rgbaString
+    : fromLongToShortRgbaFormat(rgbaString)
+  const rgbaObject = shortRgbaFormatToRgbObject(rgbaStringCleanShortFormat)
+
+  if (isRgba(rgbaObject)) {
+    return rgbaObject
+  } else {
+    throw new Error(errorMessage)
+  }
+}
+
+// Convert a string in format '255, 0, 255, 0.5' (short format) to a RGB object {r: 255, g: 0, b: 255, a: 0.5}
+function shortRgbaFormatToRgbObject(rgbaString: string): RGBA {
+  // split by comma, remove white spaces, convert to number
+  const values = rgbaString.split(',').map(v => Number(v.trim()))
+  return { r: values[0], g: values[1], b: values[2], a: values[3] }
+}
+
+function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string {
+  const rgbaStringShortFormat = rgbaStringLongFormat
+    .replace('rgba', '')
+    .replace('(', '')
+    .replace(')', '')
+  return rgbaStringShortFormat
 }
