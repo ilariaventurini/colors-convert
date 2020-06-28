@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400&display=swap');
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+.container-example {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.container-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  font-weight: 200;
+}
