@@ -1,4 +1,6 @@
-# Colors convert 🍭🍬
+# Colors convert 🍭
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/212e852c-3d84-4f36-8a13-05f75d43cb13/deploy-status)](https://app.netlify.com/sites/colors-convert/deploys)
 
 A simple colors library.
 
