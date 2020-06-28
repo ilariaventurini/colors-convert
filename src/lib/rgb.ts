@@ -167,10 +167,10 @@ function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
   return rgbStringShortFormat
 }
 
-// TODO: chanhe regex to accept also a = .4
+// TODO: change regex to accept also a = .4
 // Covert a string in these two formats to a rgba object:
 //  - 255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}
-//  - rgb(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}
+//  - rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}
 export function rgbaString2Object(rgbaString: string): RGBA {
   if (typeof rgbaString !== 'string') {
     throw new Error(`${rgbaString} is not a string.`)

@@ -111,6 +111,26 @@ Returns `true` if `color` is a valid hsl, `false` otherwise.
 
 - **`hsl2cmyk(hsl): cmyk`**: Converts a hsl object to cmyk
 
+- **`rgbString2Object(string): rgb`**: Coverts a string in these two formats to a rgb object:
+
+  - `255, 0, 255` (short format) -> `{r: 255, g: 0, b: 255}`
+  - `rgb(255, 0, 255)` (long format) -> `{r: 255, g: 0, b: 255}`
+
+- **`rgbaString2Object(string): rgba`**: Coverts a string in these two formats to a rgba object:
+
+  - `255, 0, 255, 0.5` (short format) -> `{r: 255, g: 0, b: 255, a: 0.5}`
+  - `rgba(255, 0, 255, 0.5)` (long format) -> `{r: 255, g: 0, b: 255, a: 0.5}`
+
+- **`cmykString2Object(string): cmyk`**: Converts a string in these two formats to a cmyk object:
+
+  - `0, 50, 20, 100` (short format) -> `{c: 0, m: 50, y: 20, k: 100}`
+  - `cmyk(0, 50, 20, 100)` (long format) -> `{c: 0, m: 50, y: 20, k: 100}`
+
+- **`hslString2Object(string): hsl`**: Converts a string in these two formats to an hsl object:
+
+  - `322, 79%, 52%` (short format) -> `{ h: 322, s: 79, l: 52 }`
+  - `hsl(322, 79%, 52%)` (long format) -> `{ h: 322, s: 79, l: 52 }`
+
 ---
 
 ### 🎨 Name that color

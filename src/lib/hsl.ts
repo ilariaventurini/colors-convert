@@ -74,8 +74,8 @@ export function hsl2cmyk(hsl: HSL): CMYK {
 }
 
 // Covert a string in these two formats to an hsl object:
-//  - 322°, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
-//  - hsl(322°, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }
+//  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
+//  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }
 export function hslString2Object(hslString: string): HSL {
   if (typeof hslString !== 'string') {
     throw new Error(`${hslString} is not a string.`)
@@ -83,8 +83,8 @@ export function hslString2Object(hslString: string): HSL {
   const errorMessage = `${hslString} is not a valid format. The accepted formats are 'h°, s%, l%' and 'hsl(h°, s%, l%)' with h in [0, 359] and s, l in [0, 100].`
 
   // check short and long formats
-  const regexShortFormat = /^(([0-9]+°)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%))/gi
-  const regexLongFormat = /^((hsl(\s)*\()(\s)*([0-9]+°)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%)(\s)*(\)))/gi
+  const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%))/gi
+  const regexLongFormat = /^((hsl(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%)(\s)*(\)))/gi
   const isShortFormat = regexShortFormat.test(hslString)
   const isLongFormat = regexLongFormat.test(hslString)
 
@@ -104,8 +104,11 @@ export function hslString2Object(hslString: string): HSL {
 
 // Convert a string in format '322°, 79%, 52%' (short format) to an HSL object { h: 322, s: 79, l: 52 }
 function shortHslFormatToHslObject(hslString: string): HSL {
-  // split by comma, remove white spaces, remove last char, convert to number
-  const values = hslString.split(',').map(v => Number(v.trim().slice(0, -1)))
+  // split by comma, remove white spaces, remove last char (except for h), convert to number
+  const values = hslString.split(',').map((v, i) => {
+    if (i === 0) return Number(v.trim())
+    else return Number(v.trim().slice(0, -1))
+  })
   return { h: values[0], s: values[1], l: values[2] }
 }
 

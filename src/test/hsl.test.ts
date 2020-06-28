@@ -57,12 +57,12 @@ test(`hsl2cmyk`, () => {
 ////////////////////////////////////////////////////////
 
 test(`hslString2Object`, () => {
-  expect(hslString2Object('322°, 79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(hslString2Object('322°,79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(hslString2Object('322°,  79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(hslString2Object('hsl(322°, 79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(hslString2Object('hsl(322°,79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(hslString2Object('hsl(322°,  79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(() => hslString2Object('600°, 79%, 52%')).toThrow()
-  expect(() => hslString2Object('hsl(600°, 79%, 52%)')).toThrow()
+  expect(hslString2Object('322, 79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('322,79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('322,  79%, 52%')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('hsl(322, 79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('hsl(322,79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(hslString2Object('hsl(322,  79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
+  expect(() => hslString2Object('600, 79%, 52%')).toThrow()
+  expect(() => hslString2Object('hsl(600, 79%, 52%)')).toThrow()
 })
