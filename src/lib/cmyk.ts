@@ -41,3 +41,49 @@ export function cmyk2hsl(cmyk: CMYK): HSL {
   const hsl = rgb2hsl(rgb)
   return hsl
 }
+
+// Covert a string in these two formats to a cmyk object:
+//  - 0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}
+//  - cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}
+export function cmykString2Object(cmykString: string): CMYK {
+  if (typeof cmykString !== 'string') {
+    throw new Error(`${cmykString} is not a string.`)
+  }
+  const errorMessage = `${cmykString} is not a valid format. The accepted formats are 'c, m, y, k' and 'cmyk(c, m, y, k)' with c, m, y, k in [0, 100].`
+
+  // check short and long formats
+  const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+))/gi
+  const regexLongFormat = /^((cmyk(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*(\)))/gi
+  const isShortFormat = regexShortFormat.test(cmykString)
+  const isLongFormat = regexLongFormat.test(cmykString)
+
+  if (!isShortFormat && !isLongFormat) {
+    throw new Error(errorMessage)
+  }
+
+  const cmykStringCleanShortFormat = isShortFormat
+    ? cmykString
+    : fromLongToShortCmykFormat(cmykString)
+  const cmykObject = shortCmykFormatToRgbObject(cmykStringCleanShortFormat)
+
+  if (isCmyk(cmykObject)) {
+    return cmykObject
+  } else {
+    throw new Error(errorMessage)
+  }
+}
+
+// Convert a string in format '0, 50, 20, 100' (short format) to a RGB object {c: 0, m: 50, y: 20, k: 100}
+function shortCmykFormatToRgbObject(cmykString: string): CMYK {
+  // split by comma, remove white spaces, convert to number
+  const values = cmykString.split(',').map(v => Number(v.trim()))
+  return { c: values[0], m: values[1], y: values[2], k: values[3] }
+}
+
+function fromLongToShortCmykFormat(cmykStringLongFormat: string): string {
+  const cmykStringShortFormat = cmykStringLongFormat
+    .replace('cmyk', '')
+    .replace('(', '')
+    .replace(')', '')
+  return cmykStringShortFormat
+}

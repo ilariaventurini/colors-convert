@@ -1,4 +1,4 @@
-import { cmyk2rgb, cmyk2hex, cmyk2hsl } from '../index'
+import { cmyk2rgb, cmyk2hex, cmyk2hsl, cmykString2Object } from '../index'
 
 ////////////////////////////////////////////////////////
 // cmyk2rgb
@@ -35,4 +35,19 @@ test(`cmyk2hsl`, () => {
   expect(cmyk2hsl({ c: 63, m: 95, y: 0, k: 5 })).toStrictEqual({ h: 260, s: 90, l: 50 })
   expect(cmyk2hsl({ c: 0, m: 95, y: 16, k: 5 })).toStrictEqual({ h: 310, s: 90, l: 50 })
   expect(cmyk2hsl({ c: 0, m: 95, y: 93, k: 5 })).toStrictEqual({ h: 359, s: 90, l: 50 })
+})
+
+////////////////////////////////////////////////////////
+// cmykString2Object
+////////////////////////////////////////////////////////
+
+test(`cmykString2Object`, () => {
+  expect(cmykString2Object('0, 50, 20, 100')).toEqual({ c: 0, m: 50, y: 20, k: 100 })
+  expect(cmykString2Object('0,50, 20, 100')).toEqual({ c: 0, m: 50, y: 20, k: 100 })
+  expect(cmykString2Object('0,  50, 20, 100')).toEqual({ c: 0, m: 50, y: 20, k: 100 })
+  expect(cmykString2Object('cmyk(0, 50, 20, 100)')).toEqual({ c: 0, m: 50, y: 20, k: 100 })
+  expect(cmykString2Object('cmyk(0,50, 20, 100)')).toEqual({ c: 0, m: 50, y: 20, k: 100 })
+  expect(cmykString2Object('cmyk(0,  50, 20, 100)')).toEqual({ c: 0, m: 50, y: 20, k: 100 })
+  expect(() => cmykString2Object('600, 50, 20, 100')).toThrow()
+  expect(() => cmykString2Object('cmyk(600, 50, 20, 100)')).toThrow()
 })
