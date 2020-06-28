@@ -11,3 +11,4 @@
 - [ ] refactor rgbString2Object and rgbaString2Object
 - [ ] put regex in a new file?
 - [ ] update doc
+- [ ] make a demo page
