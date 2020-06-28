@@ -4,5 +4,14 @@ node_modules/
 # testing
 coverage/
 
+# misc
+.cache/
+
 # npm and yarn log
 *.log
+
+# build
+demo-build/
+
+# dist
+dist/
