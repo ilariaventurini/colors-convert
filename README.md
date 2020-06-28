@@ -122,20 +122,22 @@ Returns `true` if `color` is a valid hsl, `false` otherwise.
 ### 🎨 Utils
 
 - **`color2string(color): string`**: Converts a color to a string format. For example:
+
   - hex: `#E6259F`
   - rgb: `230, 37, 159`
   - rgba: `230, 37, 159, 1`
   - cmyk: `0%, 84%, 31%, 10%`
-  - hsl: `322°, 79%, 52%`
+  - hsl: `322, 79%, 52%`
 
 - **`color2cssString(color): string`**: Converts a color to a string format usable in CSS. For example:
+
   - hex: `#E6259F`
   - rgb: `rgb(230, 37, 159)`
   - rgba: `rgba(230, 37, 159, 1)`
   - cmyk: `cmyk(0%, 84%, 31%, 10%)`
-  - hsl: `hsl(322°, 79%, 52%)`
+  - hsl: `hsl(322, 79%, 52%)`
 
-- **`mix(colors: Color[], weights?: number[]): rgb`**: Mix two or more colors based on their weights. 
+- **`mix(colors: Color[], weights?: number[]): rgb`**: Mix two or more colors based on their weights.
 
 <!---
 
@@ -162,7 +164,6 @@ So, to publish on NPM:
 - then push with push all tags flag.
 
 -->
-
 
 <!--
 color names from https://github.com/meodai/color-names
