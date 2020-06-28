@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] from color string to color object (same as hslString2Object)
+- [x] from color string to color object (same as hslString2Object)
   - [x] hsl
   - [x] hex - not necessary for hex
   - [x] rgb
@@ -11,4 +11,4 @@
 - [ ] refactor rgbString2Object and rgbaString2Object
 - [ ] put regex in a new file?
 - [ ] update doc
-- [ ] make a demo page
+- [x] make a demo page
