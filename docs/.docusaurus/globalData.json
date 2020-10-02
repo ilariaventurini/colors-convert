@@ -1,0 +1,42 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "api/api1",
+          "docs": [
+            {
+              "id": "api/api1",
+              "path": "/docs/"
+            },
+            {
+              "id": "doc1",
+              "path": "/docs/"
+            },
+            {
+              "id": "doc2",
+              "path": "/docs/doc2"
+            },
+            {
+              "id": "doc3",
+              "path": "/docs/doc3"
+            },
+            {
+              "id": "documentation/documentation1",
+              "path": "/docs/"
+            },
+            {
+              "id": "mdx",
+              "path": "/docs/mdx"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
