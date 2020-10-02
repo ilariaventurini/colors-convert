@@ -1,13 +1,14 @@
 module.exports = {
   title: 'Colors convert',
   tagline: 'A simple color library',
-  url: 'https://github.com/ilariaventurini/colors-convert',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onDuplicateRoutes: 'throw',
-  favicon: 'img/favicon.ico',
-  organizationName: 'ilariaventurini', // Usually your GitHub org/user name.
-  projectName: 'colors-convert', // Usually your repo name.
+  url: 'https://github.com/ilariaventurini/', // URL for your website. This can also be considered the top-level hostname
+  baseUrl: '/', // Base URL for your site. This can also be considered the path after the host
+  onBrokenLinks: 'throw', // The behavior of Docusaurus, when it detects any broken link
+  onDuplicateRoutes: 'throw', // The behavior of Docusaurus when it detects any duplicate routes
+  favicon: 'img/favicon.ico', // URL for site favicon
+  organizationName: 'ilariaventurini', // Usually your GitHub org/user name
+  projectName: 'colors-convert', // Usually your repo name
+  // An object containing data needed by the theme you use
   themeConfig: {
     navbar: {
       title: 'Colors convert',
