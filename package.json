@@ -17,7 +17,8 @@
   "keywords": [
     "color",
     "converter",
-    "transform"
+    "transform", 
+    "hex", "rgb", "rgba", "cmyk", "hsl"
   ],
   "files": [
     "dist/**/*"
