@@ -24,15 +24,15 @@
     "dist/**/*"
   ],
   "scripts": {
-    "compile": "tsc",
-    "compile-watch": "tsc --watch",
+    "compile": "rm -rf dist/ && tsc --outDir dist",
+    "compile-watch": "rm -rf dist/ && tsc -w --outDir dist",
     "test": "jest --config jestconfig.json",
     "test-watch": "jest --watch --config jestconfig.json",
     "coverage-watch": "yarn test --watchAll --coverage",
     "coverage-interactive-watch": "npx live-server --port=9000 coverage",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "prepublish": "rm -rf dist/ && tsc",
+    "prepublish": "yarn compile",
     "clean": "yarn format && yarn lint",
     "start:demo": "parcel demo/index.html",
     "build": "parcel build demo/index.html --out-dir demo-build"
