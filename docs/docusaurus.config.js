@@ -4,6 +4,7 @@ module.exports = {
   url: 'https://github.com/ilariaventurini/colors-convert',
   baseUrl: '/',
   onBrokenLinks: 'throw',
+  onDuplicateRoutes: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'ilariaventurini', // Usually your GitHub org/user name.
   projectName: 'colors-convert', // Usually your repo name.
