@@ -4,6 +4,7 @@ export default {
   "url": "https://github.com/ilariaventurini/colors-convert",
   "baseUrl": "/",
   "onBrokenLinks": "throw",
+  "onDuplicateRoutes": "throw",
   "favicon": "img/favicon.ico",
   "organizationName": "ilariaventurini",
   "projectName": "colors-convert",
