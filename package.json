@@ -1,6 +1,6 @@
 {
   "name": "colors-convert",
-  "description": "",
+  "description": "A simple color library",
   "version": "1.2.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,43 +17,43 @@
   "keywords": [
     "color",
     "converter",
-    "transform"
+    "transform", 
+    "hex", "rgb", "rgba", "cmyk", "hsl"
   ],
   "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "compile": "tsc",
-    "compile-watch": "tsc --watch",
+    "compile": "rm -rf dist/ && tsc --outDir dist",
+    "compile-watch": "rm -rf dist/ && tsc -w --outDir dist",
     "test": "jest --config jestconfig.json",
     "test-watch": "jest --watch --config jestconfig.json",
     "coverage-watch": "yarn test --watchAll --coverage",
     "coverage-interactive-watch": "npx live-server --port=9000 coverage",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "prepublish": "rm -rf dist/ && tsc",
+    "prepublish": "yarn compile",
     "clean": "yarn format && yarn lint",
     "start:demo": "parcel demo/index.html",
     "build": "parcel build demo/index.html --out-dir demo-build"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "@types/jest": "^24.0.21",
-    "@types/lodash": "^4.14.149",
-    "codecov": "^3.6.5",
-    "jest": "^24.9.0",
+    "@types/lodash": "^4.14.161",
     "parcel-bundler": "^1.12.4",
+    "typescript": "^3.6.4",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
     "prettier": "^1.18.2",
     "tachyons": "^4.11.1",
     "tachyons-extra": "^1.1.3",
-    "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.4"
+    "codecov": "^3.6.5",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0"
   },
   "dependencies": {
-    "@babel/types": "^7.7.4",
-    "@types/source-map": "^0.5.7",
-    "d3-selection": "^1.4.1",
     "lodash": "^4.17.15"
   }
 }

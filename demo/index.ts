@@ -1,3 +1,1 @@
-import { select } from 'd3-selection'
-
-const root = select('#app')
+console.log('demo')

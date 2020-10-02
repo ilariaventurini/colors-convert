@@ -1,0 +1,38 @@
+{
+  "version": "current",
+  "label": "Next",
+  "isLast": true,
+  "docsSidebars": {
+    "documentation": [
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Example",
+        "items": [
+          {
+            "type": "link",
+            "label": "Style Guide",
+            "href": "/docs/"
+          }
+        ]
+      }
+    ],
+    "api": [
+      {
+        "collapsed": true,
+        "type": "category",
+        "label": "Color formats",
+        "items": [
+          {
+            "type": "link",
+            "label": "Style Guide",
+            "href": "/docs/"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/": "documentation"
+  }
+}
