@@ -1,6 +1,8 @@
-# Colors convert 🍭
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/212e852c-3d84-4f36-8a13-05f75d43cb13/deploy-status)](https://app.netlify.com/sites/colors-convert/deploys)
+<div align="center" style="text-align: center">
+  <img src="./public/peacock.svg" height="400">
+  
+  <h1>Colors convert</h1>
+</div>
 
 A simple colors library.
 
