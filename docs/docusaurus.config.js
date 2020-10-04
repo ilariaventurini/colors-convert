@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Colors convert',
-  tagline: 'A simple color library',
+  tagline: 'A simple colors library',
   url: 'https://github.com/ilariaventurini/', // URL for your website. This can also be considered the top-level hostname
   baseUrl: '/', // Base URL for your site. This can also be considered the path after the host
   onBrokenLinks: 'throw', // The behavior of Docusaurus, when it detects any broken link
@@ -8,6 +8,7 @@ module.exports = {
   favicon: 'img/favicon.ico', // URL for site favicon
   organizationName: 'ilariaventurini', // Usually your GitHub org/user name
   projectName: 'colors-convert', // Usually your repo name
+  titleDelimiter: '|', // A string that will be used as title delimiter in the generated <title> tag
   // An object containing data needed by the theme you use
   themeConfig: {
     colorMode: {
@@ -29,9 +30,10 @@ module.exports = {
     },
     navbar: {
       title: 'Colors convert',
+      hideOnScroll: false,
       logo: {
         alt: 'Color convert logo',
-        src: 'img/logo.svg',
+        src: 'img/peacock.svg',
       },
       items: [
         {
@@ -50,36 +52,6 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Style Guide',
-              to: 'docs/',
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
         {
           title: 'More',
           items: [

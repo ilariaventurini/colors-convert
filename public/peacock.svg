@@ -1,0 +1,106 @@
+<svg x="0" y="0" width="700" height="500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="500" fill="transparent"></rect>
+  <g class="peacock" transform="translate(0, 0)">
+    <g class="wing">
+      <path d="M 350 352.5 
+        L 694.6827135542728 
+          413.27686218342564
+        A 350 352.5 
+          0 1 0 
+          5.317286445727177 
+          413.2768621834256 
+        Z" fill="#9A89B4"></path>
+      <g>
+        <g class="0">
+          <circle cx="655" cy="352.5" r="35" fill="#00B2FF"></circle>
+          <circle cx="640" cy="352.5" r="20" fill="#FF6B9D"></circle>
+          <circle cx="595" cy="352.5" r="15" fill="#FF9970"></circle>
+          <circle cx="565" cy="352.5" r="6" fill="#51FBDE"></circle>
+          <circle cx="548" cy="352.5" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="180">
+          <circle cx="45" cy="352.50000000000006" r="35" fill="#00B2FF"></circle>
+          <circle cx="60" cy="352.50000000000006" r="20" fill="#FF6B9D"></circle>
+          <circle cx="105" cy="352.50000000000006" r="15" fill="#FF9970"></circle>
+          <circle cx="135" cy="352.5" r="6" fill="#51FBDE"></circle>
+          <circle cx="152" cy="352.5" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="205.71428571428572">
+          <circle cx="75.20449528976218" cy="220.16545956914482" r="35" fill="#00B2FF"></circle>
+          <circle cx="88.71902830829845" cy="226.67371565590818" r="20" fill="#FF6B9D"></circle>
+          <circle cx="129.2626273639073" cy="246.19848391619828" r="15" fill="#FF9970"></circle>
+          <circle cx="156.29169340097988" cy="259.21499608972505" r="6" fill="#51FBDE"></circle>
+          <circle cx="171.60816415532102" cy="266.5910196547235" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="231.42857142857142">
+          <circle cx="159.83561043308623" cy="114.04139784725095" r="35" fill="#00B2FF"></circle>
+          <circle cx="169.18795746096723" cy="125.76887008427138" r="20" fill="#FF6B9D"></circle>
+          <circle cx="197.24499854461024" cy="160.95128679533272" r="15" fill="#FF9970"></circle>
+          <circle cx="215.94969260037226" cy="184.40623126937362" r="6" fill="#51FBDE"></circle>
+          <circle cx="226.54901923197073" cy="197.69736647133013" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="257.14285714285717">
+          <circle cx="282.13111514332405" cy="55.1469867845438" r="35" fill="#00B2FF"></circle>
+          <circle cx="285.46892915266875" cy="69.77090546727118" r="20" fill="#FF6B9D"></circle>
+          <circle cx="295.4823711807029" cy="113.64266151545323" r="15" fill="#FF9970"></circle>
+          <circle cx="302.15799919939235" cy="142.89049888090793" r="6" fill="#51FBDE"></circle>
+          <circle cx="305.9408550766497" cy="159.46427338799893" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="282.85714285714283">
+          <circle cx="417.86888485667583" cy="55.1469867845438" r="35" fill="#00B2FF"></circle>
+          <circle cx="414.53107084733114" cy="69.77090546727118" r="20" fill="#FF6B9D"></circle>
+          <circle cx="404.517628819297" cy="113.64266151545323" r="15" fill="#FF9970"></circle>
+          <circle cx="397.84200080060754" cy="142.89049888090793" r="6" fill="#51FBDE"></circle>
+          <circle cx="394.05914492335023" cy="159.46427338799893" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="308.57142857142856">
+          <circle cx="540.1643895669137" cy="114.04139784725086" r="35" fill="#00B2FF"></circle>
+          <circle cx="530.8120425390327" cy="125.76887008427133" r="20" fill="#FF6B9D"></circle>
+          <circle cx="502.7550014553897" cy="160.95128679533266" r="15" fill="#FF9970"></circle>
+          <circle cx="484.0503073996277" cy="184.40623126937356" r="6" fill="#51FBDE"></circle>
+          <circle cx="473.45098076802924" cy="197.69736647133007" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="334.2857142857143">
+          <circle cx="624.7955047102378" cy="220.1654595691447" r="35" fill="#00B2FF"></circle>
+          <circle cx="611.2809716917016" cy="226.6737156559081" r="20" fill="#FF6B9D"></circle>
+          <circle cx="570.7373726360927" cy="246.1984839161982" r="15" fill="#FF9970"></circle>
+          <circle cx="543.70830659902" cy="259.214996089725" r="6" fill="#51FBDE"></circle>
+          <circle cx="528.391835844679" cy="266.5910196547235" r="3" fill="#51FBDE"></circle>
+        </g>
+        <g class="360">
+          <circle cx="655" cy="352.49999999999994" r="35" fill="#00B2FF"></circle>
+          <circle cx="640" cy="352.49999999999994" r="20" fill="#FF6B9D"></circle>
+          <circle cx="595" cy="352.49999999999994" r="15" fill="#FF9970"></circle>
+          <circle cx="565" cy="352.49999999999994" r="6" fill="#51FBDE"></circle>
+          <circle cx="548" cy="352.49999999999994" r="3" fill="#51FBDE"></circle>
+        </g>
+      </g>
+    </g>
+    <rect class="horn" x="348.5" y="136.8846153846154" width="3" height="13" fill="#464646" rx="3"></rect>
+    <circle cx="350" cy="352.5" r="107.6923076923077" fill="#9B6DFF"></circle>
+    <rect x="323.0769230769231" y="174.80769230769232" width="53.84615384615385" height="75" fill="#9B6DFF"></rect>
+    <circle cx="350" cy="174.80769230769232" r="26.923076923076923" fill="#9B6DFF"></circle>
+    <circle cx="350" cy="396.34615384615387" r="53.84615384615385" fill="#b08cff"></circle>
+    <g class="-left-leg" transform="translate(-20, 0)">
+      <rect x="346.5" y="467.1923076923077" width="7" height="25" fill="#FF9970"></rect>
+      <rect x="338.5" y="492.1923076923077" width="15" height="7" fill="#FF9970"></rect>
+      <circle cx="350" cy="460.1923076923077" r="10" fill="#9B6DFF"></circle>
+    </g>
+    <g class="-right-leg" transform="translate(+20, 0)">
+      <rect x="346.5" y="467.1923076923077" width="7" height="25" fill="#FF9970"></rect>
+      <rect x="346.5" y="492.1923076923077" width="15" height="7" fill="#FF9970"></rect>
+      <circle cx="350" cy="460.1923076923077" r="10" fill="#9B6DFF"></circle>
+    </g>
+    <g transform="translate(0, 181.80769230769232)">
+      <circle cx="343" cy="0" r="4" fill="#2d2d2d"></circle>
+      <circle cx="357" cy="0" r="4" fill="#2d2d2d"></circle>
+      <path transform="translate(0, 7)" d="
+            M 350 0 
+            L 357 6 
+            L 350 20 
+            L 343 6
+            Z
+          " fill="#FF9970"></path>
+    </g>
+  </g>
+</svg>
