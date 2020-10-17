@@ -9,7 +9,8 @@
     "declaration": true,
     "allowJs": false,
     "sourceMap": true,
-    "typeRoots": ["typings", "node_modules/@types"]
+    "typeRoots": ["typings", "node_modules/@types"],
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "typings", "**/tests/*"]
