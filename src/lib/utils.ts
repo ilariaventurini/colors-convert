@@ -15,9 +15,10 @@ export function sameContent(a: any[], b: any[]): boolean {
 }
 
 export function applyFnToEachObjValue(obj: object, fn: any): any {
-  Object.entries(obj).forEach(([key, value]) => {
-    // @ts-ignore
-    obj[key] = fn(value)
+  const newObj = Object.assign({}, obj)
+  Object.entries(newObj).forEach(([key, value]) => {
+    //@ts-ignore
+    newObj[key] = fn(value)
   })
-  return obj
+  return newObj
 }
