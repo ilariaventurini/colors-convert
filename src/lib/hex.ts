@@ -5,6 +5,11 @@ import { between } from './utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
 
 // Convert an hex to a rgb or rgba color (depeds on hex format)
+/**
+ * Convert a hex to a rgb or rgba color (depends on hex format).
+ * @param hex color to convert to RGB or RGBA
+ * @returns RGB or RGBA object
+ */
 export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
@@ -29,7 +34,12 @@ export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
   }
 }
 
-// Convert an hex to a rgba object
+/**
+ * Convert a hex to a rgba object, by default alpha is 1.
+ * @param hex color to convert to RGBA
+ * @param alpha opacity value in range [0, 1]
+ * @returns RBGA color
+ */
 export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
@@ -49,7 +59,12 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   }
 }
 
-// Convert an hex to another hex with the given alpha
+/**
+ * Convert a hex to another hex with the given alpha.
+ * @param hex original hex
+ * @param alpha opacity value in range [0, 1]
+ * @returns HEX color with opacity
+ */
 export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
@@ -65,7 +80,11 @@ export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
   return `${hex}${alphaHexPadded}`
 }
 
-// Convert an hex to a cmyk. If hex is in the long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity
+/**
+ * Convert a hex to a cmyk. If hex is in long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity.
+ * @param hex color to convert to CMYK
+ * @returns CMYK color
+ */
 export function hex2cmyk(hex: HEX): CMYK {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
@@ -79,7 +98,11 @@ export function hex2cmyk(hex: HEX): CMYK {
   return cmyk
 }
 
-// Convert an hex object to hsl
+/**
+ * Convert a hex object to hsl.
+ * @param hex color to convert to HSL
+ * @returns HSL color
+ */
 export function hex2hsl(hex: HEX): HSL {
   if (!isHex(hex)) {
     throw new Error(`${hex} is not a hex color.`)
