@@ -69,6 +69,7 @@ test(`isCmyk`, () => {
   expect(isCmyk({})).toBe(false)
   expect(isCmyk({ c: 0 })).toBe(false)
   expect(isCmyk({ y: 0 })).toBe(false)
+  expect(isCmyk({ c: 0, m: 0, y: 0, b: 0 })).toBe(false)
   expect(isCmyk({ c: 0, m: 0, y: 0, k: 0, o: 3 })).toBe(false)
   expect(isCmyk({ c: -1, m: 0, y: 0, k: 0 })).toBe(false)
   expect(isCmyk({ c: 300, m: 0, y: 0, k: 0 })).toBe(false)
@@ -83,6 +84,7 @@ test(`isHsl`, () => {
   expect(isHsl({ h: 0, s: 0, l: 0 })).toBe(true)
   expect(isHsl({ h: 359, s: 100, l: 100 })).toBe(true)
 
+  expect(isHsl({ h: 360, s: 100, b: 100 })).toBe(false)
   expect(isHsl({ h: 360, s: 100, l: 100 })).toBe(false)
   expect(isHsl({ h: 366, s: 100, l: 100 })).toBe(false)
   expect(isHsl({ h: 0, s: 0, l: 0, c: 0 })).toBe(false)
