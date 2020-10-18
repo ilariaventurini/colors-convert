@@ -1,16 +1,26 @@
 import { between, sameContent } from '../lib/utils'
 import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
 
-// Accept:
-//  - long form: #FFFFFF
-//  - short form: #FFF
-//  - long form with opacity: #FFFFFFFF (white with opacity FF=1)
+/**
+ * Accept:
+ *  - long form: #FFFFFF
+ *  - short form: #FFF
+ *  - long form with opacity: #FFFFFFFF (white with opacity FF=1).
+ * @param {any} color color to check if it is in the right HEX format
+ * @returns {boolean} true if color is in the right HEX format, false otherwise
+ */
 export function isHex(color: any): color is HEX {
   const reg = /^#([0-9A-F]{3}){1,2}([0-9A-F]{2})?$/i
   return reg.test(color)
 }
 
-// Accept an object like this {r, g, b} with r,b,g numeric values in range [0, 255]
+/**
+ * Accept an object like this {r, g, b} with r,b,g numeric values in range [0, 255].
+ * @param {any} color color to check if it is in the right RGB format
+ * @returns {boolean} true if color is in the right RGB format, false otherwise
+ */
+// TODO: add support for values in range [0, 1]
+// TODO: add support for values in range [0%, 100%]
 export function isRgb(color: any): color is RGB {
   const keys = Object.keys(color)
   if (keys.length !== 3) return false
@@ -22,9 +32,14 @@ export function isRgb(color: any): color is RGB {
   return r && g && b
 }
 
-// TODO: add support for values in [0, 100]%
+/**
+ * Accept an object like this {r, g, b, a} with r,g,b numeric values in range [0, 255] and a in range [0,1].
+ * @param {any} color color to check if it is in the right RGBA format
+ * @returns {boolean} true if color is in the right RGBA format, false otherwise
+ */
+// TODO: add support for values r,g,b in range [0, 1]
+// TODO: add support for values r,g,b,a in range [0%, 100%]
 // TODO: accept also rgba without a, consider it 1 as default
-// Accept an object like this {r, g, b, a} with r,g,b numeric values in range [0, 255] and a in range [0,1]
 export function isRgba(color: any): color is RGBA {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false
@@ -37,8 +52,12 @@ export function isRgba(color: any): color is RGBA {
   return r && g && b && a
 }
 
+/**
+ * Accept an object like this {c, m, y, k} with c,m,y,k numeric values in range [0, 100].
+ * @param {any} color color to check if it is in the right CMYK format
+ * @returns {boolean} true if color is in the right CMYK format, false otherwise
+ */
 // TODO: add support for values in [0, 1]
-// Accept an object like this {c, m, y, k} with c,m,y,k numeric values in range [0, 100]
 export function isCmyk(color: any): color is CMYK {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false
@@ -51,10 +70,14 @@ export function isCmyk(color: any): color is CMYK {
   return c && m && y && k
 }
 
-// Accept HSL colors with:
-//  - h (hue): [0-359]°
-//  - s (saturation): [0-100]%
-//  - l (lightness): [0-100]%
+/**
+ * Accept HSL colors with:
+ *  - h (hue): [0-359]°
+ *  - s (saturation): [0-100]%
+ *  - l (lightness): [0-100]%.
+ * @param {any} color color to check if it is in the right HSL format
+ * @returns {boolean} true if color is in the right HSL format, false otherwise
+ */
 export function isHsl(color: any): color is HSL {
   const keys = Object.keys(color)
   if (keys.length !== 3) return false
@@ -67,6 +90,11 @@ export function isHsl(color: any): color is HSL {
   return h && s && l
 }
 
+/**
+ * Return true if color is hex, rgb, rgba, cmyk or hls, false otherwise
+ * @param {any} color color to check if it is in the right Color format
+ * @returns {boolean} true if color is in the right Color format, false otherwise
+ */
 export function isColor(color: any): color is Color {
   return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color) || isHsl(color)
 }
