@@ -16,19 +16,13 @@ export function color2string(color: Color): string {
     return `${color.r}, ${color.g}, ${color.b}, ${color.a}`
   } else if (isCmyk(color)) {
     return `${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%`
-  } else if (isHsl(color)) {
+  } else { // is hsl
     return `${color.h}, ${color.s}%, ${color.l}%`
-  } else {
-    throw new Error(`${color} is not a valid type of color.`)
-  }
+  } 
 }
 
 // Convert a color to a string format usable in CSS
 export function color2cssString(color: Color): string {
-  if (!isColor(color)) {
-    throw new Error(`${color} is not a color.`)
-  }
-
   if (isHex(color)) {
     return toUpper(color)
   } else if (isRgb(color)) {
@@ -37,9 +31,7 @@ export function color2cssString(color: Color): string {
     return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`
   } else if (isCmyk(color)) {
     return `cmyk(${color.c}%, ${color.m}%, ${color.y}%, ${color.k}%)`
-  } else if (isHsl(color)) {
+  } else { // is hsl
     return `hsl(${color.h}, ${color.s}%, ${color.l}%)`
-  } else {
-    throw new Error(`${color} is not a valid type of color.`)
-  }
+  } 
 }
