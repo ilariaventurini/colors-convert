@@ -6,8 +6,8 @@ import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
  *  - long form: #FFFFFF
  *  - short form: #FFF
  *  - long form with opacity: #FFFFFFFF (white with opacity FF=1).
- * @param {any} color color to check if it is in the right HEX format
- * @returns {boolean} true if color is in the right HEX format, false otherwise
+ * @param color color to check if it is in the right HEX format
+ * @returns true if color is in the right HEX format, false otherwise
  */
 export function isHex(color: any): color is HEX {
   const reg = /^#([0-9A-F]{3}){1,2}([0-9A-F]{2})?$/i
@@ -16,8 +16,8 @@ export function isHex(color: any): color is HEX {
 
 /**
  * Accept an object like this {r, g, b} with r,b,g numeric values in range [0, 255].
- * @param {any} color color to check if it is in the right RGB format
- * @returns {boolean} true if color is in the right RGB format, false otherwise
+ * @param color color to check if it is in the right RGB format
+ * @returns true if color is in the right RGB format, false otherwise
  */
 // TODO: add support for values in range [0, 1]
 // TODO: add support for values in range [0%, 100%]
@@ -34,8 +34,8 @@ export function isRgb(color: any): color is RGB {
 
 /**
  * Accept an object like this {r, g, b, a} with r,g,b numeric values in range [0, 255] and a in range [0,1].
- * @param {any} color color to check if it is in the right RGBA format
- * @returns {boolean} true if color is in the right RGBA format, false otherwise
+ * @param color color to check if it is in the right RGBA format
+ * @returns true if color is in the right RGBA format, false otherwise
  */
 // TODO: add support for values r,g,b in range [0, 1]
 // TODO: add support for values r,g,b,a in range [0%, 100%]
@@ -52,8 +52,8 @@ export function isRgba(color: any): color is RGBA {
 
 /**
  * Accept an object like this {c, m, y, k} with c,m,y,k numeric values in range [0, 100].
- * @param {any} color color to check if it is in the right CMYK format
- * @returns {boolean} true if color is in the right CMYK format, false otherwise
+ * @param color color to check if it is in the right CMYK format
+ * @returns true if color is in the right CMYK format, false otherwise
  */
 // TODO: add support for values in [0, 1]
 export function isCmyk(color: any): color is CMYK {
@@ -73,8 +73,8 @@ export function isCmyk(color: any): color is CMYK {
  *  - h (hue): [0-359]°
  *  - s (saturation): [0-100]%
  *  - l (lightness): [0-100]%.
- * @param {any} color color to check if it is in the right HSL format
- * @returns {boolean} true if color is in the right HSL format, false otherwise
+ * @param color color to check if it is in the right HSL format
+ * @returns true if color is in the right HSL format, false otherwise
  */
 export function isHsl(color: any): color is HSL {
   const keys = Object.keys(color)
@@ -90,8 +90,8 @@ export function isHsl(color: any): color is HSL {
 
 /**
  * Return true if color is hex, rgb, rgba, cmyk or hls, false otherwise
- * @param {any} color color to check if it is in the right Color format
- * @returns {boolean} true if color is in the right Color format, false otherwise
+ * @param color color to check if it is in the right Color format
+ * @returns true if color is in the right Color format, false otherwise
  */
 export function isColor(color: any): color is Color {
   return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color) || isHsl(color)
