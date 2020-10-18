@@ -4,7 +4,11 @@ import { round } from 'lodash'
 import { isCmyk } from '../types/isType'
 import { rgb2hex, rgb2hsl } from './rgb'
 
-// Convert a cmyk color to a rgb
+/**
+ * Convert a cmyk color to a rgb.
+ * @param cmyk color to convert to RGB
+ * @returns RGB object
+ */
 export function cmyk2rgb(cmyk: CMYK): RGB {
   if (!isCmyk(cmyk)) {
     throw new Error(`${cmyk} is not a cmyk color.`)
@@ -20,7 +24,11 @@ export function cmyk2rgb(cmyk: CMYK): RGB {
   return rgb
 }
 
-// Convert a cmyk color to a hex
+/**
+ * Convert a cmyk color to a hex.
+ * @param cmyk color to convert to HEX
+ * @returns hex color
+ */
 export function cmyk2hex(cmyk: CMYK): HEX {
   if (!isCmyk(cmyk)) {
     throw new Error(`${cmyk} is not a cmyk color.`)
@@ -31,7 +39,11 @@ export function cmyk2hex(cmyk: CMYK): HEX {
   return hex
 }
 
-// Convert an cmyk object to hsl
+/**
+ * Convert a cmyk color to a hsl.
+ * @param cmyk color to convert to HSL
+ * @returns HSL object
+ */
 export function cmyk2hsl(cmyk: CMYK): HSL {
   if (!isCmyk(cmyk)) {
     throw new Error(`${cmyk} is not a cmyk color.`)
@@ -42,9 +54,13 @@ export function cmyk2hsl(cmyk: CMYK): HSL {
   return hsl
 }
 
-// Covert a string in these two formats to a cmyk object:
-//  - 0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}
-//  - cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}
+/**
+ * Covert a string in these two formats to a cmyk object:
+ *  - 0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}
+ *  - cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}.
+ * @param cmykString string to convert to CMYK
+ * @returns CMYK object
+ */
 export function cmykString2Object(cmykString: string): CMYK {
   if (typeof cmykString !== 'string') {
     throw new Error(`${cmykString} is not a string.`)
@@ -73,13 +89,22 @@ export function cmykString2Object(cmykString: string): CMYK {
   }
 }
 
-// Convert a string in format '0, 50, 20, 100' (short format) to a RGB object {c: 0, m: 50, y: 20, k: 100}
+/**
+ * Convert a string in format '0, 50, 20, 100' (short format) to a RGB object {c: 0, m: 50, y: 20, k: 100}.
+ * @param cmykString string to convert to CMYK
+ * @returns CMYK object
+ */
 function shortCmykFormatToRgbObject(cmykString: string): CMYK {
   // split by comma, remove white spaces, convert to number
   const values = cmykString.split(',').map(v => Number(v.trim()))
   return { c: values[0], m: values[1], y: values[2], k: values[3] }
 }
 
+/**
+ * Convert a string in format 'cmyk(0, 50, 20, 100)' (long format) to '0, 50, 20, 100' (short format).
+ * @param cmykStringLongFormat string to convert to short format
+ * @returns cmyk short format
+ */
 function fromLongToShortCmykFormat(cmykStringLongFormat: string): string {
   const cmykStringShortFormat = cmykStringLongFormat
     .replace('cmyk', '')
