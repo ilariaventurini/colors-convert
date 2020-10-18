@@ -62,9 +62,6 @@ export function cmyk2hsl(cmyk: CMYK): HSL {
  * @returns CMYK object
  */
 export function cmykString2Object(cmykString: string): CMYK {
-  if (typeof cmykString !== 'string') {
-    throw new Error(`${cmykString} is not a string.`)
-  }
   const errorMessage = `${cmykString} is not a valid format. The accepted formats are 'c, m, y, k' and 'cmyk(c, m, y, k)' with c, m, y, k in [0, 100].`
 
   // check short and long formats
