@@ -16,6 +16,8 @@ import {
 test(`rgb2hex`, () => {
   expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
   expect(rgb2hex({ r: 255, g: 255, b: 255 })).toBe('#ffffff')
+
+  expect(() => rgb2hex({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -26,6 +28,8 @@ test(`rgb2cmyk`, () => {
   expect(rgb2cmyk({ r: 0, g: 0, b: 0 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   expect(rgb2cmyk({ r: 255, g: 255, b: 255 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
   expect(rgb2cmyk({ r: 66, g: 135, b: 245 })).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
+
+  expect(() => rgb2cmyk({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -43,6 +47,8 @@ test(`rgb2hsl`, () => {
   expect(rgb2hsl({ r: 89, g: 13, b: 242 })).toStrictEqual({ h: 260, s: 90, l: 50 })
   expect(rgb2hsl({ r: 242, g: 13, b: 204 })).toStrictEqual({ h: 310, s: 90, l: 50 })
   expect(rgb2hsl({ r: 242, g: 13, b: 17 })).toStrictEqual({ h: 359, s: 90, l: 50 })
+
+  expect(() => rgb2hsl({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -51,6 +57,8 @@ test(`rgb2hsl`, () => {
 
 test(`rgba2rgb`, () => {
   expect(rgba2rgb({ r: 0, g: 0, b: 0, a: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+
+  expect(() => rgba2rgb({ r: 600, g: 0, b: 0, a: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -59,6 +67,8 @@ test(`rgba2rgb`, () => {
 
 test(`rgb2rgba`, () => {
   expect(rgb2rgba({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
+
+  expect(() => rgb2rgba({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -84,8 +94,8 @@ test(`rgbString2Object`, () => {
   expect(rgbString2Object('rgb(255, 0, 255)')).toEqual({ r: 255, g: 0, b: 255 })
   expect(rgbString2Object('rgb(255,0, 255)')).toEqual({ r: 255, g: 0, b: 255 })
   expect(rgbString2Object('rgb(255,  0, 255)')).toEqual({ r: 255, g: 0, b: 255 })
-  expect(() => rgbString2Object('600, 0, 255')).toThrow()
-  expect(() => rgbString2Object('rgb(600, 0, 255)')).toThrow()
+
+  expect(() => rgbString2Object('1')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -99,6 +109,6 @@ test(`rgbaString2Object`, () => {
   expect(rgbaString2Object('rgba(255, 0, 255, 0.5)')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
   expect(rgbaString2Object('rgba(255,0, 255, 0.5)')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
   expect(rgbaString2Object('rgba(255,  0, 255, 0.5)')).toEqual({ r: 255, g: 0, b: 255, a: 0.5 })
-  expect(() => rgbaString2Object('600, 0, 255, 0.5')).toThrow()
-  expect(() => rgbaString2Object('rgba(600, 0, 255, 0.5)')).toThrow()
+
+  expect(() => rgbaString2Object('1')).toThrowError()
 })

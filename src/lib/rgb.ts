@@ -131,9 +131,7 @@ export function rgb2rgba(rgb: RGB): RGBA {
  * @returns RGB color
  */
 export function color2rgb(color: Color): RGB {
-  if (!isColor(color)) {
-    throw new Error(`${color} is not a valid color.`)
-  } else if (isHex(color)) {
+  if (isHex(color)) {
     return rgba2rgb(hex2rgba(color))
   } else if (isRgb(color)) {
     return color
@@ -155,9 +153,6 @@ export function color2rgb(color: Color): RGB {
  * @returns RGB color
  */
 export function rgbString2Object(rgbString: string): RGB {
-  if (typeof rgbString !== 'string') {
-    throw new Error(`${rgbString} is not a string.`)
-  }
   const errorMessage = `${rgbString} is not a valid format. The accepted formats are 'r, g, b' and 'rgb(r, g, b)' with r, g, b in [0, 255].`
 
   // check short and long formats
@@ -171,13 +166,7 @@ export function rgbString2Object(rgbString: string): RGB {
   }
 
   const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortRgbFormat(rgbString)
-  const rgbObject = shortRgbFormatToRgbObject(rgbStringCleanShortFormat)
-
-  if (isRgb(rgbObject)) {
-    return rgbObject
-  } else {
-    throw new Error(errorMessage)
-  }
+  return shortRgbFormatToRgbObject(rgbStringCleanShortFormat)
 }
 
 /**
@@ -213,11 +202,6 @@ function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
  */
 // TODO: change regex to accept also a = .4
 export function rgbaString2Object(rgbaString: string): RGBA {
-  if (typeof rgbaString !== 'string') {
-    throw new Error(`${rgbaString} is not a string.`)
-  }
-  const errorMessage = `${rgbaString} is not a valid format. The accepted formats are 'r, g, b, a' and 'rgba(r, g, b, a)' with r, g, b in [0, 255] and a in [0, 1].`
-
   // check short and long formats
   const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*((0(\.\d+)?|1(\.0+)?)))/gi
   const regexLongFormat = /^((rgba(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*, (\s)*((0(\.\d+)?|1(\.0+)?))(\s)*(\)))/gi
@@ -225,19 +209,13 @@ export function rgbaString2Object(rgbaString: string): RGBA {
   const isLongFormat = regexLongFormat.test(rgbaString)
 
   if (!isShortFormat && !isLongFormat) {
-    throw new Error(errorMessage)
+    throw new Error(`${rgbaString} is not a valid format. The accepted formats are 'r, g, b, a' and 'rgba(r, g, b, a)' with r, g, b in [0, 255] and a in [0, 1].`)
   }
 
   const rgbaStringCleanShortFormat = isShortFormat
     ? rgbaString
     : fromLongToShortRgbaFormat(rgbaString)
-  const rgbaObject = shortRgbaFormatToRgbObject(rgbaStringCleanShortFormat)
-
-  if (isRgba(rgbaObject)) {
-    return rgbaObject
-  } else {
-    throw new Error(errorMessage)
-  }
+  return shortRgbaFormatToRgbObject(rgbaStringCleanShortFormat)
 }
 
 /**
