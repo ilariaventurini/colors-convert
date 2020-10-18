@@ -6,7 +6,11 @@ import { hex2rgba } from './hex'
 import { cmyk2rgb } from './cmyk'
 import { hsl2rgb } from './hsl'
 
-// Convert an rgb object to hex
+/**
+ * Convert an rgb object to hex.
+ * @param rgb color to convert to HEX
+ * @returns HEX color
+ */
 export function rgb2hex(rgb: RGB): HEX {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
@@ -23,7 +27,11 @@ export function rgb2hex(rgb: RGB): HEX {
   return `#${hex}`
 }
 
-// Convert an rgb to a cmyk
+/**
+ * Convert an rgb to a cmyk.
+ * @param rgb color to convert to CMYK
+ * @returns CMYK color
+ */
 export function rgb2cmyk(rgb: RGB): CMYK {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
@@ -50,7 +58,11 @@ export function rgb2cmyk(rgb: RGB): CMYK {
   return roundedCmyk
 }
 
-// Convert an rgb object to hsl
+/**
+ * Convert an rgb object to hsl.
+ * @param rgb color to convert to HSL
+ * @returns HSL color
+ */
 export function rgb2hsl(rgb: RGB): HSL {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
@@ -89,7 +101,11 @@ export function rgb2hsl(rgb: RGB): HSL {
   return hslRounded
 }
 
-// Convert an rgba color to a rgb color removing the alpha value
+/**
+ * Convert an rgba color to a rgb color removing the alpha value.
+ * @param rgba color to convert to RGB
+ * @returns RGB color
+ */
 export function rgba2rgb(rgba: RGBA): RGB {
   if (!isRgba(rgba)) {
     throw new Error(`${rgba} is not a rgba color.`)
@@ -97,7 +113,11 @@ export function rgba2rgb(rgba: RGBA): RGB {
   return { r: rgba.r, g: rgba.g, b: rgba.b }
 }
 
-// Convert an rgb color to a rgba color adding 1 as alpha
+/**
+ * Convert an rgb color to a rgba color adding 1 as alpha.
+ * @param rgb color to convert to RGBA
+ * @returns RGBA color
+ */
 export function rgb2rgba(rgb: RGB): RGBA {
   if (!isRgb(rgb)) {
     throw new Error(`${rgb} is not a rgb color.`)
@@ -105,7 +125,11 @@ export function rgb2rgba(rgb: RGB): RGBA {
   return { r: rgb.r, g: rgb.g, b: rgb.b, a: 1 }
 }
 
-// Convert a generic color to rgb
+/**
+ * Convert a generic color to rgb.
+ * @param color color to convert to RGB
+ * @returns RGB color
+ */
 export function color2rgb(color: Color): RGB {
   if (!isColor(color)) {
     throw new Error(`${color} is not a valid color.`)
@@ -123,9 +147,13 @@ export function color2rgb(color: Color): RGB {
   }
 }
 
-// Covert a string in these two formats to a rgb object:
-//  - 255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}
-//  - rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}
+/**
+ * Covert a string in these two formats to a rgb object:
+ *  - 255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}
+ *  - rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}.
+ * @param rgbString rgb string color to convert to RGB
+ * @returns RGB color
+ */
 export function rgbString2Object(rgbString: string): RGB {
   if (typeof rgbString !== 'string') {
     throw new Error(`${rgbString} is not a string.`)
@@ -152,13 +180,22 @@ export function rgbString2Object(rgbString: string): RGB {
   }
 }
 
-// Convert a string in format '255, 0, 255' (short format) to a RGB object {r: 255, g: 0, b: 255}
+/**
+ * Convert a string in format '255, 0, 255' (short format) to a RGB object {r: 255, g: 0, b: 255}.
+ * @param rgbString rgb string color to convert to RGB
+ * @returns RGB color
+ */
 function shortRgbFormatToRgbObject(rgbString: string): RGB {
   // split by comma, remove white spaces, convert to number
   const values = rgbString.split(',').map(v => Number(v.trim()))
   return { r: values[0], g: values[1], b: values[2] }
 }
 
+/**
+ * Convert 'rgb(N, N, N)' to 'N, N, N' 
+ * @param rgbStringLongFormat long format
+ * @returns short format
+ */
 function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
   const rgbStringShortFormat = rgbStringLongFormat
     .replace('rgb', '')
@@ -167,10 +204,14 @@ function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
   return rgbStringShortFormat
 }
 
+/**
+ * Covert a string in these two formats to a rgba object:
+ *  - 255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}
+ *  - rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}.
+ * @param rgbaString rgba string
+ * @returns RGBA object
+ */
 // TODO: change regex to accept also a = .4
-// Covert a string in these two formats to a rgba object:
-//  - 255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}
-//  - rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}
 export function rgbaString2Object(rgbaString: string): RGBA {
   if (typeof rgbaString !== 'string') {
     throw new Error(`${rgbaString} is not a string.`)
@@ -199,13 +240,22 @@ export function rgbaString2Object(rgbaString: string): RGBA {
   }
 }
 
-// Convert a string in format '255, 0, 255, 0.5' (short format) to a RGB object {r: 255, g: 0, b: 255, a: 0.5}
+/**
+ * Convert a string in format '255, 0, 255, 0.5' (short format) to a RGB object {r: 255, g: 0, b: 255, a: 0.5}.
+ * @param rgbaString rgba string
+ * @returns RGBA object
+ */
 function shortRgbaFormatToRgbObject(rgbaString: string): RGBA {
   // split by comma, remove white spaces, convert to number
   const values = rgbaString.split(',').map(v => Number(v.trim()))
   return { r: values[0], g: values[1], b: values[2], a: values[3] }
 }
 
+/**
+ * Convert 'rgba(N, N, N, N)' to 'N, N, N, N' 
+ * @param rgbaStringLongFormat long format
+ * @returns short format
+ */
 function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string {
   const rgbaStringShortFormat = rgbaStringLongFormat
     .replace('rgba', '')
@@ -213,3 +263,6 @@ function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string {
     .replace(')', '')
   return rgbaStringShortFormat
 }
+
+// TODO: sometimes use 2, sometimes to
+// TODO: check funstions, check doc
