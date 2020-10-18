@@ -4,7 +4,11 @@ import { applyFnToEachObjValue } from './utils'
 import { round } from 'lodash'
 import { rgb2hex, rgb2cmyk } from './rgb'
 
-// Convert an hsl object to hex
+/**
+ * Convert an hsl object to hex.
+ * @param hsl color to convert to HEX
+ * @returns HEX color 
+ */
 export function hsl2hex(hsl: HSL): HEX {
   if (!isHsl(hsl)) {
     throw new Error(`${hsl} is not a hsl color.`)
@@ -15,7 +19,11 @@ export function hsl2hex(hsl: HSL): HEX {
   return hex
 }
 
-// Convert an hsl object to rgb
+/**
+ * Convert an hsl object to rgb.
+ * @param hsl color to convert to RGB
+ * @returns RGB object
+ */
 export function hsl2rgb(hsl: HSL): RGB {
   if (!isHsl(hsl)) {
     throw new Error(`${hsl} is not a hsl color.`)
@@ -51,18 +59,19 @@ export function hsl2rgb(hsl: HSL): RGB {
     rgb01 = { r: q, g: t, b: p }
   } else if (angleRangeIndex === 4) {
     rgb01 = { r: w, g: q, b: p }
-  } else if (angleRangeIndex === 5) {
+  } else { // angleRangeIndex === 5
     rgb01 = { r: p, g: q, b: t }
-  } else {
-    throw new Error(`Error during conversion of hsl2rgb with ${hsl}.`)
-  }
+  } 
 
   const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
-
   return rgb
 }
 
-// Convert an hsl object to cmyk
+/**
+ * Convert an hsl object to cmyk.
+ * @param hsl color to convert to CMYK
+ * @returns CMYK object
+ */
 export function hsl2cmyk(hsl: HSL): CMYK {
   if (!isHsl(hsl)) {
     throw new Error(`${hsl} is not a hsl color.`)
@@ -73,13 +82,14 @@ export function hsl2cmyk(hsl: HSL): CMYK {
   return cmyk
 }
 
-// Covert a string in these two formats to an hsl object:
-//  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
-//  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }
+/**
+ * Covert a string in these two formats to an hsl object:
+ *  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
+ *  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.
+ * @param hsl string to convert to HSL object
+ * @returns HSL object
+ */
 export function hslString2Object(hslString: string): HSL {
-  if (typeof hslString !== 'string') {
-    throw new Error(`${hslString} is not a string.`)
-  }
   const errorMessage = `${hslString} is not a valid format. The accepted formats are 'h°, s%, l%' and 'hsl(h°, s%, l%)' with h in [0, 359] and s, l in [0, 100].`
 
   // check short and long formats
@@ -102,7 +112,11 @@ export function hslString2Object(hslString: string): HSL {
   }
 }
 
-// Convert a string in format '322°, 79%, 52%' (short format) to an HSL object { h: 322, s: 79, l: 52 }
+/**
+ * Convert a string in format '322°, 79%, 52%' (short format) to an HSL object { h: 322, s: 79, l: 52 }.
+ * @param hslString string to convert to HSL object
+ * @returns HSL object
+ */
 function shortHslFormatToHslObject(hslString: string): HSL {
   // split by comma, remove white spaces, remove last char (except for h), convert to number
   const values = hslString.split(',').map((v, i) => {
@@ -112,6 +126,11 @@ function shortHslFormatToHslObject(hslString: string): HSL {
   return { h: values[0], s: values[1], l: values[2] }
 }
 
+/**
+ * Convert a string in format 'hsl(0, 50, 20)' (long format) to '0, 50, 20' (short format).
+ * @param hslStringLongFormat string to convert to short format
+ * @returns hsl short format
+ */
 function fromLongToShortFormat(hslStringLongFormat: string): string {
   const hslStringShortFormat = hslStringLongFormat
     .replace('hsl', '')

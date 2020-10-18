@@ -15,6 +15,8 @@ test(`hsl2hex`, () => {
   expect(hsl2hex({ h: 260, s: 90, l: 50 })).toEqual('#590df2')
   expect(hsl2hex({ h: 310, s: 90, l: 50 })).toEqual('#f20dcc')
   expect(hsl2hex({ h: 359, s: 90, l: 50 })).toEqual('#f20d11')
+
+  expect(() => hsl2hex({ h: -1, s: 90, l: 50 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -33,6 +35,8 @@ test(`hsl2rgb`, () => {
   expect(hsl2rgb({ h: 260, s: 90, l: 50 })).toStrictEqual({ r: 89, g: 13, b: 242 }) // angleRangeIndex = 4
   expect(hsl2rgb({ h: 310, s: 90, l: 50 })).toStrictEqual({ r: 242, g: 13, b: 204 }) // angleRangeIndex = 5
   expect(hsl2rgb({ h: 359, s: 90, l: 50 })).toStrictEqual({ r: 242, g: 13, b: 17 }) // angleRangeIndex = 5
+
+  expect(() => hsl2rgb({ h: -1, s: 90, l: 50 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -50,6 +54,8 @@ test(`hsl2cmyk`, () => {
   expect(hsl2cmyk({ h: 260, s: 90, l: 50 })).toStrictEqual({ c: 63, m: 95, y: 0, k: 5 })
   expect(hsl2cmyk({ h: 310, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 16, k: 5 })
   expect(hsl2cmyk({ h: 359, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 93, k: 5 })
+
+  expect(() => hsl2cmyk({ h: -1, s: 90, l: 50 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -63,6 +69,8 @@ test(`hslString2Object`, () => {
   expect(hslString2Object('hsl(322, 79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
   expect(hslString2Object('hsl(322,79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
   expect(hslString2Object('hsl(322,  79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
-  expect(() => hslString2Object('600, 79%, 52%')).toThrow()
-  expect(() => hslString2Object('hsl(600, 79%, 52%)')).toThrow()
+
+  expect(() => hslString2Object('1')).toThrowError()
+  expect(() => hslString2Object('600, 79%, 52%')).toThrowError()
+  expect(() => hslString2Object('hsl(600, 79%, 52%)')).toThrowError()
 })
