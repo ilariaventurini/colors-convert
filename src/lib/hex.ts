@@ -18,7 +18,7 @@ export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
 
   const RGB_HEX = /^#?(?:([0-9a-f]{3})|([0-9a-f]{6})([0-9a-f]{2})?)$/i // TODO: what the fuck is this? put in constants?
   // short and long are or undefined or the originalHex without # // TODO: what?
-  const [originalHex, short, long, opacity] = hex.match(RGB_HEX) || []
+  const [originalHex, short, long, opacity] = hex.match(RGB_HEX) as RegExpMatchArray
   if (long) {
     const value = Number.parseInt(long, 16)
     const rgb = { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff }
@@ -53,10 +53,8 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   const rgbOrRgba = hex2rgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) {
     return { ...rgbOrRgba, a: alpha }
-  } else if (isRgba(rgbOrRgba)) {
+  } {
     return rgbOrRgba
-  } else {
-    throw new Error(`${rgbOrRgba} is neither RGB nor RGBA.`)
   }
 }
 
