@@ -34,7 +34,7 @@ function distance(color1: Color, color2: Color): number {
  * The minimum distance is zero (the difference between the same color),
  * The maximum distance is ≈ 441.67 between black and white.
  * @param color1 first rgb color
- * @param color2 second rgb color 
+ * @param color2 second rgb color
  * @returns numeric value in [0, ≈ 441.67] that represents the Euclidean difference between two rgb colors
  */
 function euclideanRgbDistance(color1: RGB, color2: RGB): number {
