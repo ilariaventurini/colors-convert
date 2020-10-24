@@ -1,4 +1,4 @@
-import { between, sameContent, applyFnToEachObjValue } from '../lib/utils'
+import { between, betweenMaxNotIncluded, sameContent, applyFnToEachObjValue } from '../lib/utils'
 
 ////////////////////////////////////////////////////////
 // between
@@ -9,6 +9,17 @@ test(`between`, () => {
   expect(between(5, [5, 10])).toBe(true)
   expect(between(5, [5, 5])).toBe(true)
   expect(between(0, [5, 10])).toBe(false)
+})
+
+////////////////////////////////////////////////////////
+// betweenMaxNotIncluded
+////////////////////////////////////////////////////////
+
+test(`betweenMaxNotIncluded`, () => {
+  expect(betweenMaxNotIncluded(5, [0, 10])).toBe(true)
+  expect(betweenMaxNotIncluded(5, [5, 10])).toBe(true)
+  expect(betweenMaxNotIncluded(5, [4, 5])).toBe(false)
+  expect(betweenMaxNotIncluded(0, [5, 10])).toBe(false)
 })
 
 ////////////////////////////////////////////////////////
