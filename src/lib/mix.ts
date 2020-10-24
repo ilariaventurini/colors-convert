@@ -74,13 +74,13 @@ function getWeights(colors: Color[], weights?: number[]): number[] {
  */
 function checkWeights(colors: Color[], weights: number[]) {
   const tot = sum(weights)
-  if (tot !== 1) {
-    throw new Error(`The sum of the weights should be 1, instead is ${tot}.`)
-  }
   if (weights.length !== colors.length) {
     throw new Error(
       `Colors and weights should be in the same number. Colors are ${colors.length} and weights are ${weights.length}.`
-    )
+      )
+  }
+  if (tot !== 1) {
+    throw new Error(`The sum of the weights should be 1, instead is ${tot}.`)
   }
   return true
 }
