@@ -8,14 +8,11 @@ import { minBy } from 'lodash'
  * @param color colr to be named
  * @returns color name
  */
-export function name(color: Color): ColorName {
+export function name(color: Color): string {
   const colorRgb = color2rgb(color)
-  const distances = colorNames.map(({ name, hex, rgb }) => {
-    const d = distance(rgb, colorRgb)
-    return { name, distance: d, hex, rgb }
-  })
-  const nearestColor = minBy(distances, 'distance')
-  if (!nearestColor) throw new Error(`Something went wrong finding a name to ${color}.`)
+  const distances = colorNames.map(({ name, rgb }) => ({ name, distance: distance(rgb, colorRgb) }))
+  
+  const nearestColor = minBy(distances, 'distance') as { name: string; distance: number }
   return nearestColor.name
 }
 

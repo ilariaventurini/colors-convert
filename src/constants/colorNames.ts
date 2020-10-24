@@ -1,4 +1,6 @@
-export const colorNames = [
+import { ColorName } from '../types/types'
+
+export const colorNames: ColorName[] = [
   { name: '18th Century Green', hex: '#a59344', rgb: { r: 165, g: 147, b: 68 } },
   { name: '1975 Earth Red', hex: '#7b463b', rgb: { r: 123, g: 70, b: 59 } },
   { name: '20000 Leagues Under the Sea', hex: '#191970', rgb: { r: 25, g: 25, b: 112 } },

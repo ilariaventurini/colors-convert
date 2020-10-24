@@ -4,7 +4,7 @@ import { name } from '../index'
 // name
 ////////////////////////////////////////////////////////
 
-xtest(`name`, () => {
+test(`name`, () => {
   expect(name('#000000')).toStrictEqual('Black')
   expect(name('#ffffff')).toStrictEqual('White')
 })
