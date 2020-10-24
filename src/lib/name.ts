@@ -11,7 +11,6 @@ import { minBy } from 'lodash'
 export function name(color: Color): string {
   const colorRgb = color2rgb(color)
   const distances = colorNames.map(({ name, rgb }) => ({ name, distance: distance(rgb, colorRgb) }))
-  
   const nearestColor = minBy(distances, 'distance') as { name: string; distance: number }
   return nearestColor.name
 }
@@ -20,7 +19,7 @@ export function name(color: Color): string {
  * Return the Euclidean distance between two colors.
  * @param color1 first color
  * @param color2 second color
- * @returns
+ * @returns Euclidean distance between two colors
  */
 function distance(color1: Color, color2: Color): number {
   const c1Rgb = color2rgb(color1)
