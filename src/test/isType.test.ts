@@ -9,7 +9,6 @@ test(`isHex`, () => {
   expect(isHex('#a00000')).toBe(true)
   expect(isHex('#A00000')).toBe(true)
   expect(isHex('#000')).toBe(true)
-  expect(isHex('#00000')).toBe(true)
   expect(isHex('#00000000')).toBe(true)
 
   expect(isHex('')).toBe(false)
@@ -17,6 +16,7 @@ test(`isHex`, () => {
   expect(isHex('#0')).toBe(false)
   expect(isHex('#00')).toBe(false)
   expect(isHex('000')).toBe(false)
+  expect(isHex('#00000')).toBe(false)
   expect(isHex('#0000000')).toBe(false)
   expect(isHex('#000000000')).toBe(false)
   expect(isHex('#00000Z')).toBe(false)
