@@ -1,4 +1,15 @@
-import { hex2rgbOrRgba, hex2rgba, hex2hexWithAlpha, hex2cmyk, hex2hsl } from '../index'
+import { hex2rgb, hex2rgbOrRgba, hex2rgba, hex2hexWithAlpha, hex2cmyk, hex2hsl } from '../index'
+
+////////////////////////////////////////////////////////
+// hex2rgb
+////////////////////////////////////////////////////////
+
+test(`hex2rgb`, () => {
+  expect(hex2rgb('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hex2rgb('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
+
+  expect(() => hex2rgb('#')).toThrowError()
+})
 
 ////////////////////////////////////////////////////////
 // hex2rgbOrRgba

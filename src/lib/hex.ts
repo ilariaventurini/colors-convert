@@ -1,10 +1,22 @@
 import { HEX, RGB, RGBA, CMYK, HSL } from '../types/types'
-import { isHex, isRgb, isRgba } from '../types/isType'
+import { isHex, isRgb } from '../types/isType'
 import { round } from 'lodash'
 import { between } from './utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
 
-// TODO: add a hex2rgb function which converts hex to rgb. if hex has opacity, it is lost
+/**
+ * Convert a hex to a rgb color, if hex color has opacity, it will be lost.
+ * @param hex color to convert to RGB
+ * @returns RGB object
+ */
+export function hex2rgb(hex: HEX): RGB {
+  if (!isHex(hex)) {
+    throw new Error(`${hex} is not a hex color.`)
+  }
+
+  const { r, g, b } = hex2rgba(hex)
+  return { r, g, b }
+}
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
@@ -30,7 +42,7 @@ export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
     }
   } else {
     // expand short form (e.g. "03F") to long form (e.g. "0033FF")
-    const [r, g, b] = Array.from(short, s => Number.parseInt(s, 16)).map(n => (n << 4) | n)
+    const [r, g, b] = Array.from(short, (s) => Number.parseInt(s, 16)).map((n) => (n << 4) | n)
     return { r, g, b }
   }
 }
@@ -53,7 +65,8 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   const rgbOrRgba = hex2rgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) {
     return { ...rgbOrRgba, a: alpha }
-  } {
+  }
+  {
     return rgbOrRgba
   }
 }
