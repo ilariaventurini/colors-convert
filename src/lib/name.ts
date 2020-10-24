@@ -1,4 +1,4 @@
-import { Color, ColorName, RGB } from '../types/types'
+import { Color, RGB } from '../types/types'
 import { color2rgb } from './rgb'
 import { colorNames } from '../constants/colorNames'
 import { minBy } from 'lodash'
