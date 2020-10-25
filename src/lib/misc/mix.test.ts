@@ -1,4 +1,4 @@
-import { mix } from '../index'
+import { mix } from '../../index'
 
 ////////////////////////////////////////////////////////
 // mix

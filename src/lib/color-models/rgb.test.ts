@@ -7,7 +7,7 @@ import {
   color2rgb,
   rgbString2Object,
   rgbaString2Object,
-} from '../index'
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // rgb2hex

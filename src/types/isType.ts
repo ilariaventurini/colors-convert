@@ -1,4 +1,4 @@
-import { between, sameContent } from '../lib/utils'
+import { between, sameContent } from '../lib/misc/utils'
 import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
 import { HEX_REGEX } from '../constants/regex'
 

@@ -1,4 +1,4 @@
-import { HEX } from '../types/types'
+import { HEX } from '../../types/types'
 
 // TODO: not only hex
 // TODO: choose hue, saturation, ...

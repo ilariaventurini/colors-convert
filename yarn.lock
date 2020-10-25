@@ -6768,16 +6768,6 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tachyons-extra@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/tachyons-extra/-/tachyons-extra-1.1.3.tgz#eb4888ed73ace91f22fd9ad9981f1cbb9e81a2e0"
-  integrity sha512-mtrXbjxmnsEzZcbna+89Vo3+hh4unm+5QHyvt/ITwogSEJafB6w1AsWyScrc2cAH+aJt5wo1YS2JyZ+s/5qnyw==
-
-tachyons@^4.11.1:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/tachyons/-/tachyons-4.12.0.tgz#6fdfa8360927a46a1efd996a4dcc94f04bd31df0"
-  integrity sha512-2nA2IrYFy3raCM9fxJ2KODRGHVSZNTW3BR0YnlGsLUf1DA3pk3YfWZ/DdfbnZK6zLZS+jUenlUGJsKcA5fUiZg==
-
 teeny-request@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/teeny-request/-/teeny-request-6.0.1.tgz#9b1f512cef152945827ba7e34f62523a4ce2c5b0"

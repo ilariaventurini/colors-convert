@@ -1,4 +1,4 @@
-import { insertAt } from '../utils/string-utils'
+import { insertAt } from './string-utils'
 
 ////////////////////////////////////////////////////////
 // insertAt

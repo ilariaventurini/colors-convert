@@ -1,4 +1,4 @@
-import { cmyk2rgb, cmyk2hex, cmyk2hsl, cmykString2Object } from '../index'
+import { cmyk2rgb, cmyk2hex, cmyk2hsl, cmykString2Object } from '../../index'
 
 ////////////////////////////////////////////////////////
 // cmyk2rgb

@@ -1,13 +1,13 @@
-import { HSL, RGB, CMYK, HEX } from '../types/types'
-import { isHsl } from '../types/isType'
-import { applyFnToEachObjValue } from './utils'
+import { HSL, RGB, CMYK, HEX } from '../../types/types'
+import { isHsl } from '../../types/isType'
+import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
 import { rgb2hex, rgb2cmyk } from './rgb'
 
 /**
  * Convert an hsl object to hex.
  * @param hsl color to convert to HEX
- * @returns HEX color 
+ * @returns HEX color
  */
 export function hsl2hex(hsl: HSL): HEX {
   if (!isHsl(hsl)) {
@@ -59,9 +59,10 @@ export function hsl2rgb(hsl: HSL): RGB {
     rgb01 = { r: q, g: t, b: p }
   } else if (angleRangeIndex === 4) {
     rgb01 = { r: w, g: q, b: p }
-  } else { // angleRangeIndex === 5
+  } else {
+    // angleRangeIndex === 5
     rgb01 = { r: p, g: q, b: t }
-  } 
+  }
 
   const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
   return rgb

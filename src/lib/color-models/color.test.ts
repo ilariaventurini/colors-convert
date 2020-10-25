@@ -1,4 +1,4 @@
-import { color2string, color2cssString } from '../index'
+import { color2string, color2cssString } from '../../index'
 
 ////////////////////////////////////////////////////////
 // color2string

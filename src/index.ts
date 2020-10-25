@@ -1,5 +1,5 @@
 export { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from './types/isType'
-export { color2string, color2cssString } from './lib/color'
+export { color2string, color2cssString } from './lib/color-models/color'
 export {
   hex2rgbOrRgba,
   hex2rgb,
@@ -8,7 +8,7 @@ export {
   hex2cmyk,
   hex2hsl,
   shortToLongHex,
-} from './lib/hex'
+} from './lib/color-models/hex'
 export {
   rgb2hex,
   rgb2cmyk,
@@ -18,9 +18,9 @@ export {
   color2rgb,
   rgbString2Object,
   rgbaString2Object,
-} from './lib/rgb'
-export { cmyk2rgb, cmyk2hex, cmyk2hsl, cmykString2Object } from './lib/cmyk'
-export { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from './lib/hsl'
-export { getRandomColor } from './lib/random'
-export { mix } from './lib/mix'
-export { name } from './lib/name'
+} from './lib/color-models/rgb'
+export { cmyk2rgb, cmyk2hex, cmyk2hsl, cmykString2Object } from './lib/color-models/cmyk'
+export { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from './lib/color-models/hsl'
+export { getRandomColor } from './lib/misc/random'
+export { mix } from './lib/misc/mix'
+export { name } from './lib/color-names/name'

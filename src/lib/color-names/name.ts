@@ -1,6 +1,6 @@
-import { Color, RGB } from '../types/types'
-import { color2rgb } from './rgb'
-import { colorNames } from '../constants/colorNames'
+import { Color, RGB } from '../../types/types'
+import { color2rgb } from '../color-models/rgb'
+import { colorNames } from '../../constants/colorNames'
 import { minBy } from 'lodash'
 
 /**

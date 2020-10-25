@@ -1,10 +1,10 @@
 import { round, padStart } from 'lodash'
-import { HEX, RGB, RGBA, CMYK, HSL } from '../types/types'
-import { isHex, isRgb } from '../types/isType'
-import { between } from './utils'
+import { HEX, RGB, RGBA, CMYK, HSL } from '../../types/types'
+import { isHex, isRgb } from '../../types/isType'
+import { between } from '../misc/utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
-import { HEX_REGEX, HEX_SHORT_REGEX } from '../constants/regex'
-import { ALPHA_PRECISION } from '../constants/rgba'
+import { HEX_REGEX, HEX_SHORT_REGEX } from '../../constants/regex'
+import { ALPHA_PRECISION } from '../../constants/rgba'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).

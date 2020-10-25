@@ -1,4 +1,4 @@
-import { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from '../index'
+import { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from '../../index'
 
 ////////////////////////////////////////////////////////
 // hsl2hex

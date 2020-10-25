@@ -1,5 +1,5 @@
 import { ALPHA_PRECISION } from '../constants/rgba'
-import { between } from '../lib/utils'
+import { between } from '../lib/misc/utils'
 
 /**
  * Convert a number (also float) in base 10 to a "number" in base 16, so a hexadecimal string.

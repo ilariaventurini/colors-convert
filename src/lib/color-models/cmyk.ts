@@ -1,7 +1,7 @@
-import { CMYK, HEX, RGB, HSL } from '../types/types'
-import { applyFnToEachObjValue } from './utils'
+import { CMYK, HEX, RGB, HSL } from '../../types/types'
+import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
-import { isCmyk } from '../types/isType'
+import { isCmyk } from '../../types/isType'
 import { rgb2hex, rgb2hsl } from './rgb'
 
 /**
@@ -93,7 +93,7 @@ export function cmykString2Object(cmykString: string): CMYK {
  */
 function shortCmykFormatToRgbObject(cmykString: string): CMYK {
   // split by comma, remove white spaces, convert to number
-  const values = cmykString.split(',').map(v => Number(v.trim()))
+  const values = cmykString.split(',').map((v) => Number(v.trim()))
   return { c: values[0], m: values[1], y: values[2], k: values[3] }
 }
 

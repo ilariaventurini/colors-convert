@@ -6,7 +6,7 @@ import {
   hex2cmyk,
   hex2hsl,
   shortToLongHex,
-} from '../index'
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // hex2rgbOrRgba

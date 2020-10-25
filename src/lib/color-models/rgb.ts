@@ -1,7 +1,7 @@
 import { round } from 'lodash'
-import { RGB, RGBA, CMYK, HEX, HSL, Color } from '../types/types'
-import { isRgb, isRgba, isColor, isHex, isCmyk } from '../types/isType'
-import { applyFnToEachObjValue } from './utils'
+import { RGB, RGBA, CMYK, HEX, HSL, Color } from '../../types/types'
+import { isRgb, isRgba, isColor, isHex, isCmyk } from '../../types/isType'
+import { applyFnToEachObjValue } from '../misc/utils'
 import { hex2rgba } from './hex'
 import { cmyk2rgb } from './cmyk'
 import { hsl2rgb } from './hsl'
@@ -18,7 +18,7 @@ export function rgb2hex(rgb: RGB): HEX {
 
   const { r, g, b } = rgb
   const hex = [r, g, b]
-    .map(value => {
+    .map((value) => {
       const hex = value.toString(16)
       const paddedHex = hex.length === 1 ? `0${hex}` : hex
       return paddedHex
@@ -176,12 +176,12 @@ export function rgbString2Object(rgbString: string): RGB {
  */
 function shortRgbFormatToRgbObject(rgbString: string): RGB {
   // split by comma, remove white spaces, convert to number
-  const values = rgbString.split(',').map(v => Number(v.trim()))
+  const values = rgbString.split(',').map((v) => Number(v.trim()))
   return { r: values[0], g: values[1], b: values[2] }
 }
 
 /**
- * Convert 'rgb(N, N, N)' to 'N, N, N' 
+ * Convert 'rgb(N, N, N)' to 'N, N, N'
  * @param rgbStringLongFormat long format
  * @returns short format
  */
@@ -209,7 +209,9 @@ export function rgbaString2Object(rgbaString: string): RGBA {
   const isLongFormat = regexLongFormat.test(rgbaString)
 
   if (!isShortFormat && !isLongFormat) {
-    throw new Error(`${rgbaString} is not a valid format. The accepted formats are 'r, g, b, a' and 'rgba(r, g, b, a)' with r, g, b in [0, 255] and a in [0, 1].`)
+    throw new Error(
+      `${rgbaString} is not a valid format. The accepted formats are 'r, g, b, a' and 'rgba(r, g, b, a)' with r, g, b in [0, 255] and a in [0, 1].`
+    )
   }
 
   const rgbaStringCleanShortFormat = isShortFormat
@@ -225,12 +227,12 @@ export function rgbaString2Object(rgbaString: string): RGBA {
  */
 function shortRgbaFormatToRgbObject(rgbaString: string): RGBA {
   // split by comma, remove white spaces, convert to number
-  const values = rgbaString.split(',').map(v => Number(v.trim()))
+  const values = rgbaString.split(',').map((v) => Number(v.trim()))
   return { r: values[0], g: values[1], b: values[2], a: values[3] }
 }
 
 /**
- * Convert 'rgba(N, N, N, N)' to 'N, N, N, N' 
+ * Convert 'rgba(N, N, N, N)' to 'N, N, N, N'
  * @param rgbaStringLongFormat long format
  * @returns short format
  */

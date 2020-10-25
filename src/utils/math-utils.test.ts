@@ -5,7 +5,7 @@ import {
   isInteger,
   isFloat,
   decimalsLenght,
-} from '../utils/math-utils'
+} from './math-utils'
 
 ////////////////////////////////////////////////////////
 // base10ToBase16

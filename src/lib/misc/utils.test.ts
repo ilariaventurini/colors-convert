@@ -1,4 +1,4 @@
-import { between, betweenMaxNotIncluded, sameContent, applyFnToEachObjValue } from '../lib/utils'
+import { between, betweenMaxNotIncluded, sameContent, applyFnToEachObjValue } from './utils'
 
 ////////////////////////////////////////////////////////
 // between

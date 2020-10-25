@@ -1,5 +1,5 @@
 import // opacity01ToHex, hexOpacityTo01
-'../utils/math-utils'
+'./math-utils'
 
 ////////////////////////////////////////////////////////
 // opacity01ToHex

@@ -1,5 +1,5 @@
-import { Color, RGB } from '../types/types'
-import { color2rgb } from './rgb'
+import { Color, RGB } from '../../types/types'
+import { color2rgb } from '../color-models/rgb'
 import { sum, sumBy, round } from 'lodash'
 import { applyFnToEachObjValue } from './utils'
 
@@ -77,7 +77,7 @@ function checkWeights(colors: Color[], weights: number[]) {
   if (weights.length !== colors.length) {
     throw new Error(
       `Colors and weights should be in the same number. Colors are ${colors.length} and weights are ${weights.length}.`
-      )
+    )
   }
   if (tot !== 1) {
     throw new Error(`The sum of the weights should be 1, instead is ${tot}.`)

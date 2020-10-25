@@ -1,5 +1,5 @@
 import { ALPHA_PRECISION } from '../constants/rgba'
-import { between } from '../lib/utils'
+import { between } from '../lib/misc/utils'
 
 // // TODO: move to hex-utils
 // /**

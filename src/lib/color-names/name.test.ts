@@ -1,4 +1,4 @@
-import { name } from '../index'
+import { name } from '../../index'
 
 ////////////////////////////////////////////////////////
 // name

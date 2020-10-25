@@ -1,4 +1,4 @@
-import { getRandomColor, isHex } from '../index'
+import { getRandomColor, isHex } from '../../index'
 
 ////////////////////////////////////////////////////////
 // getRandomColor
