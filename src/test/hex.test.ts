@@ -1,4 +1,28 @@
-import { hex2rgb, hex2rgbOrRgba, hex2rgba, hex2hexWithAlpha, hex2cmyk, hex2hsl } from '../index'
+import {
+  hex2rgbOrRgba,
+  hex2rgb,
+  hex2rgba,
+  hex2hexWithAlpha,
+  hex2cmyk,
+  hex2hsl,
+  shortToLongHex,
+} from '../index'
+
+////////////////////////////////////////////////////////
+// hex2rgbOrRgba
+////////////////////////////////////////////////////////
+
+test(`hex2rgbOrRgba`, () => {
+  expect(hex2rgbOrRgba('#000')).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hex2rgbOrRgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hex2rgbOrRgba('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 })
+  expect(hex2rgbOrRgba('#FFFFFFCC')).toStrictEqual({ r: 255, g: 255, b: 255, a: 0.8 })
+  expect(hex2rgbOrRgba('#FFFFFFD9')).toStrictEqual({ r: 255, g: 255, b: 255, a: 0.851 })
+  expect(hex2rgbOrRgba('#FFFFFFDA')).toStrictEqual({ r: 255, g: 255, b: 255, a: 0.8549 })
+  expect(hex2rgbOrRgba('#FFFFFFDB')).toStrictEqual({ r: 255, g: 255, b: 255, a: 0.8588 })
+
+  expect(() => hex2rgbOrRgba('#')).toThrowError()
+})
 
 ////////////////////////////////////////////////////////
 // hex2rgb
@@ -9,17 +33,6 @@ test(`hex2rgb`, () => {
   expect(hex2rgb('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
 
   expect(() => hex2rgb('#')).toThrowError()
-})
-
-////////////////////////////////////////////////////////
-// hex2rgbOrRgba
-////////////////////////////////////////////////////////
-
-test(`hex2rgbOrRgba`, () => {
-  expect(hex2rgbOrRgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
-  expect(hex2rgbOrRgba('#00000000')).toStrictEqual({ r: 0, g: 0, b: 0, a: 0 })
-
-  expect(() => hex2rgbOrRgba('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -44,7 +57,7 @@ test(`hex2rgba`, () => {
 test(`hex2hexWithAlpha`, () => {
   expect(hex2hexWithAlpha('#000000', 0)).toBe('#00000000')
   expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000ff')
-  expect(hex2hexWithAlpha('#000', 1)).toBe('#000ff')
+  expect(hex2hexWithAlpha('#000', 1)).toBe('#000000ff')
 
   expect(() => hex2hexWithAlpha('#', 1)).toThrowError()
   expect(() => hex2hexWithAlpha('#000000', 10)).toThrowError()
@@ -81,4 +94,16 @@ test(`hex2hsl`, () => {
   expect(hex2hsl('#f20d11')).toEqual({ h: 359, s: 90, l: 50 })
 
   expect(() => hex2hsl('#')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// shortToLongHex
+////////////////////////////////////////////////////////
+
+test(`shortToLongHex`, () => {
+  expect(shortToLongHex('#000')).toBe('#000000')
+  expect(shortToLongHex('#09C')).toBe('#0099CC')
+  expect(shortToLongHex('#000000')).toBe('#000000') // warn, it's ok
+
+  expect(() => shortToLongHex('#')).toThrowError()
 })

@@ -1,17 +1,17 @@
 import { between, sameContent } from '../lib/utils'
 import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
+import { HEX_REGEX } from '../constants/regex'
 
 /**
  * Accept:
  *  - long form: #FFFFFF
  *  - short form: #FFF
- *  - long form with opacity: #FFFFFFFF (white with opacity FF=1).
+ *  - long form with opacity: #FFFFFFFF.
  * @param color color to check if it is in the right HEX format
  * @returns true if color is in the right HEX format, false otherwise
  */
 export function isHex(color: any): color is HEX {
-  const reg = /^#([0-9A-F]{3}){1,2}([0-9A-F]{2})?$/i
-  return reg.test(color)
+  return HEX_REGEX.test(color)
 }
 
 /**

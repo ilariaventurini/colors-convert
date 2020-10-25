@@ -1,6 +1,14 @@
 export { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from './types/isType'
 export { color2string, color2cssString } from './lib/color'
-export { hex2rgb, hex2rgbOrRgba, hex2rgba, hex2hexWithAlpha, hex2cmyk, hex2hsl } from './lib/hex'
+export {
+  hex2rgbOrRgba,
+  hex2rgb,
+  hex2rgba,
+  hex2hexWithAlpha,
+  hex2cmyk,
+  hex2hsl,
+  shortToLongHex,
+} from './lib/hex'
 export {
   rgb2hex,
   rgb2cmyk,

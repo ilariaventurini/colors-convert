@@ -1,23 +1,10 @@
+import { round, padStart } from 'lodash'
 import { HEX, RGB, RGBA, CMYK, HSL } from '../types/types'
 import { isHex, isRgb } from '../types/isType'
-import { round } from 'lodash'
 import { between } from './utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
-
-/**
- * Convert a hex to a rgb color, if hex color has opacity, it will be lost.
- * @param hex color to convert to RGB
- * @returns RGB object
- */
-export function hex2rgb(hex: HEX): RGB {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
-  }
-
-  const { r, g, b } = hex2rgba(hex)
-  return { r, g, b }
-}
-import { HEX_REGEX } from '../constants/regex'
+import { HEX_REGEX, HEX_SHORT_REGEX } from '../constants/regex'
+import { ALPHA_PRECISION } from '../constants/rgba'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
@@ -25,25 +12,42 @@ import { HEX_REGEX } from '../constants/regex'
  * @returns RGB or RGBA object
  */
 export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
-  }
+  if (!isHex(hex)) throw new Error(`${hex} is not a valid hex color.`)
 
-  const [originalHex, short, long, opacity] = hex.match(HEX_REGEX) as RegExpMatchArray
-  if (long) {
-    const value = Number.parseInt(long, 16)
-    const rgb = { r: value >> 16, g: (value >> 8) & 0xff, b: value & 0xff }
-    if (opacity) {
-      const alpha = round(parseInt(opacity, 16) / 255, 2)
-      return { ...rgb, a: alpha }
-    } else {
-      return rgb
-    }
-  } else {
-    // expand short form (e.g. "03F") to long form (e.g. "0033FF")
-    const [r, g, b] = Array.from(short, (s) => Number.parseInt(s, 16)).map((n) => (n << 4) | n)
-    return { r, g, b }
+  // Matches a string or an object that supports being matched against
+  // and returns an array containing the results of that search
+  const [originalHex, shortWithoutHashtag, longWithoutHashtag, opacity] = hex.match(
+    HEX_REGEX
+  ) as RegExpMatchArray
+  // save in color the hex long format color, if hex is long format save it,
+  // if is in short format convert it to long format and remove the hashtag
+  const color = longWithoutHashtag || shortToLongHex(`#${shortWithoutHashtag}`).substr(1)
+
+  // convert a string to a integer using base 16 (so from hexadecimal string to number base 10)
+  const hexadecimalBase10 = Number.parseInt(color, 16)
+  const rgb = {
+    r: (hexadecimalBase10 >> 16) & 255,
+    g: (hexadecimalBase10 >> 8) & 255,
+    b: hexadecimalBase10 & 255,
   }
+  if (!opacity) return rgb
+
+  const opacityBase10 = parseInt(opacity, 16)
+  const opacityNormalized = opacityBase10 / 255 // opacityNormalized is in [0, 1]
+  const opacityRounded = round(opacityNormalized, ALPHA_PRECISION)
+  return { ...rgb, a: opacityRounded }
+}
+
+/**
+ * Convert a hex to a rgb color, if hex color has opacity, it will be lost.
+ * @param hex color to convert to RGB
+ * @returns RGB object
+ */
+export function hex2rgb(hex: HEX): RGB {
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+
+  const { r, g, b } = hex2rgba(hex)
+  return { r, g, b }
 }
 
 /**
@@ -53,21 +57,12 @@ export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
  * @returns RBGA color
  */
 export function hex2rgba(hex: HEX, alpha = 1): RGBA {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
-  }
-
-  if (!between(alpha, [0, 1])) {
-    throw new Error(`${alpha} is not in the range [0, 1].`)
-  }
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
 
   const rgbOrRgba = hex2rgbOrRgba(hex)
-  if (isRgb(rgbOrRgba)) {
-    return { ...rgbOrRgba, a: alpha }
-  }
-  {
-    return rgbOrRgba
-  }
+  if (isRgb(rgbOrRgba)) return { ...rgbOrRgba, a: alpha }
+  return rgbOrRgba
 }
 
 /**
@@ -77,18 +72,14 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * @returns HEX color with opacity
  */
 export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
-  }
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
 
-  if (!between(alpha, [0, 1])) {
-    throw new Error(`${alpha} is not in the range [0, 1].`)
-  }
-
+  const longHex = shortToLongHex(hex)
   const alpha255 = Math.round(alpha * 255)
   const alphaHex = alpha255.toString(16)
-  const alphaHexPadded = alphaHex.length === 1 ? `0${alphaHex}` : alphaHex
-  return `${hex}${alphaHexPadded}`
+  const alphaHexPadded = padStart(alphaHex, 2, '0')
+  return `${longHex}${alphaHexPadded}`
 }
 
 /**
@@ -97,30 +88,38 @@ export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
  * @returns CMYK color
  */
 export function hex2cmyk(hex: HEX): CMYK {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
-  }
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
 
   // remove opacity chars
-  const hexShortFormat = hex.substring(0, 7)
-  const rgb = hex2rgbOrRgba(hexShortFormat)
-  const cmyk = rgb2cmyk(rgb)
-
-  return cmyk
+  const hexWithoutOpacity = hex.substring(0, 7)
+  const rgb = hex2rgbOrRgba(hexWithoutOpacity)
+  return rgb2cmyk(rgb)
 }
 
 /**
- * Convert a hex object to hsl.
+ * Convert a hex color string to a hsl object.
  * @param hex color to convert to HSL
- * @returns HSL color
+ * @returns HSL color object
  */
 export function hex2hsl(hex: HEX): HSL {
-  if (!isHex(hex)) {
-    throw new Error(`${hex} is not a hex color.`)
-  }
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
 
   const { r, g, b, a } = hex2rgba(hex)
-  const hsl = rgb2hsl({ r, g, b })
+  return rgb2hsl({ r, g, b })
+}
 
-  return hsl
+/**
+ * Expand the three (hexadecimal)-digit form to the six-digit form doubling each digit.
+ * For example #09C becomes #0099CC.
+ * If hex is in the long format, it simply takes the first three characters and converts
+ * this value to a hex in the long format.
+ * @param hex in shorthand hexadecimal form
+ * @returns hex in long hexadecimal form
+ */
+export function shortToLongHex(hex: HEX): HEX {
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!HEX_SHORT_REGEX.test(hex)) console.warn(`shortToLongHex: ${hex} is not in the short format.`)
+
+  const [hashtag, first, second, third] = Array.from(hex)
+  return `${hashtag}${first}${first}${second}${second}${third}${third}`
 }
