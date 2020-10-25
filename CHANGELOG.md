@@ -4,9 +4,11 @@ All notable changes to **colors-convert** library are be documented here.
 
 ## Unreleased
 
-- [add] add CHANGELOG file
+- [fix] #00000 is not a valid hex color
+- [add] add hex2rgb, shortToLongHex functions
 - [add] update jsdoc
 - [add] test coverage 100%
+- [add] add CHANGELOG file
 - [add] add LICENSE file
 - **[add] trying to add docusaurus**
 - [change] ColorName type: is no more a string, but an object with name, hex and rgb
