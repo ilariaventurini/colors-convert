@@ -1,7 +1,7 @@
 import { round, padStart } from 'lodash'
 import { HEX, RGB, RGBA, CMYK, HSL } from '../../types/types'
 import { isHex, isRgb } from '../../types/isType'
-import { between } from '../misc/utils'
+import { between } from '../../utils/math-utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
 import { HEX_REGEX, HEX_SHORT_REGEX } from '../../constants/regex'
 import { ALPHA_PRECISION } from '../../constants/rgba'

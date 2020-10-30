@@ -1,30 +1,4 @@
 /**
- * Return true if range[0] <= value <= range[1] or range[1] <= value <= range[0],
- * false otherwise.
- * @param value number to check is inside the range
- * @param range numeric range. Could be [min, max] or [max, min]
- * @returns true if range[0] <= value <= range[1] or range[1] <= value <= range[0], false otherwise
- */
-export function between(value: number, range: [number, number]): boolean {
-  const min = Math.min(...range)
-  const max = Math.max(...range)
-  return value >= min && value <= max
-}
-
-/**
- * Return true if value is >= the min range value and value < max,
- * false otherwise.
- * @param value number to check is inside the range
- * @param range numeric range. Could be [min, max] or [max, min]
- * @returns true if value is >= the min range value and value < max, false otherwise
- */
-export function betweenMaxNotIncluded(value: number, range: [number, number]): boolean {
-  const min = Math.min(...range)
-  const max = Math.max(...range)
-  return value >= min && value < max
-}
-
-/**
  * Return true if two arrays have the same content, false otherwise.
  * @param a array
  * @param b array
