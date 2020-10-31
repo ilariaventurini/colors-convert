@@ -1,4 +1,4 @@
-import { between } from './math-utils'
+import { between, betweenMaxNotIncluded } from './math-utils'
 import { hexadecimalToDecimal } from './math-utils'
 import { round } from 'lodash'
 import { HEX_ALPHA_REGEX } from '../constants/regex'
@@ -42,4 +42,16 @@ export function hexToAlpha(hex: string, precision = 2): number {
  */
 export function hexAlphaTo0255(hexAlpha: string): number {
   return Math.round(hexToAlpha(hexAlpha) * 255)
+}
+
+/**
+ * Convert a number in [0, 255] to a hexadecimal string of lenght 2.
+ * @param value number in [0, 255]
+ * @returns hexadecimal string of lenght 2
+ */
+export function number0255ToHex(value: number): string {
+  if (!between(value, [0, 255])) throw new Error(`${value} must be in [0, 255].`)
+
+  const hex = Math.round(value).toString(16)
+  return hex.padStart(2, '0').toUpperCase()
 }

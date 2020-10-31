@@ -1,4 +1,4 @@
-import { alphaToHex, hexToAlpha, hexAlphaTo0255 } from './hex-utils'
+import { alphaToHex, hexToAlpha, hexAlphaTo0255, number0255ToHex } from './hex-utils'
 
 ////////////////////////////////////////////////////////
 // alphaToHex
@@ -60,4 +60,21 @@ test(`hexAlphaTo0255`, () => {
   expect(() => hexAlphaTo0255('F')).toThrowError()
   expect(() => hexAlphaTo0255('GA')).toThrowError()
   expect(() => hexAlphaTo0255('ABC')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// number0255ToHex
+////////////////////////////////////////////////////////
+
+test(`number0255ToHex`, () => {
+  expect(number0255ToHex(0)).toBe('00')
+  expect(number0255ToHex(0.2)).toBe('00')
+  expect(number0255ToHex(26)).toBe('1A')
+  expect(number0255ToHex(33)).toBe('21')
+  expect(number0255ToHex(128)).toBe('80')
+  expect(number0255ToHex(204)).toBe('CC')
+  expect(number0255ToHex(217)).toBe('D9')
+  expect(number0255ToHex(255)).toBe('FF')
+
+  expect(() => number0255ToHex(-1)).toThrowError()
 })
