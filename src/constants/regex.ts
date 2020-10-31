@@ -7,7 +7,7 @@
 export const HEX_REGEX = /^#(?:([0-9a-f]{3})|([0-9a-f]{6})([0-9a-f]{2})?)$/i
 
 /**
- * Match strings that start with #, then 3 chars [0-9a-f].
+ * Match strings that start with #, then 3 chars [0-9a-fA-F].
  *
  * ✓ #fff, #FFF
  * ✗ #ffffff, #FFFFFF, #FFFFFF00, FF, KKKKKK
@@ -15,7 +15,7 @@ export const HEX_REGEX = /^#(?:([0-9a-f]{3})|([0-9a-f]{6})([0-9a-f]{2})?)$/i
 export const HEX_SHORT_REGEX = /^#(?:([0-9a-f]{3}))$/i
 
 /**
- * Match strings that start with #, then 6 chars [0-9a-f].
+ * Match strings that start with #, then 6 chars [0-9a-fA-F].
  *
  * ✓ #ffffff, #FFFFFF
  * ✗ #FFFFFF00, FF, KKKKKK
@@ -24,7 +24,7 @@ export const HEX_SHORT_REGEX = /^#(?:([0-9a-f]{3}))$/i
 export const HEX_LONG_REGEX = /^#(?:([0-9a-f]{6}))$/i
 
 /**
- * Match strings of length 2 and containing chars in [0-9a-f].
+ * Match strings of length 2 and containing chars in [0-9a-fA-F].
  *
  * ✓ ff, FF, F0
  * ✗ FFF, #FF
@@ -32,7 +32,7 @@ export const HEX_LONG_REGEX = /^#(?:([0-9a-f]{6}))$/i
 export const HEX_ALPHA_REGEX = /[0-9a-f]{2}$/i
 
 /**
- * Match strings containing chars in [0-9a-f], floating hxadecimal values are accepted.
+ * Match strings containing chars in [0-9a-fA-F], floating hxadecimal values are accepted.
  *
  * ✓ 0, ff, FFAAAAAAAAAA, F0, 0.1, AAAA.F1
  * ✗ #FFF, k, .A, AF4.Z
