@@ -1,9 +1,8 @@
 import {
   between,
   betweenMaxNotIncluded,
-  // base10ToBase16,
-  // base16ToBase10,
-  // opacity01ToHex, hexOpacityTo01
+  decimalToHexadecimal,
+  hexadecimalToDecimal,
   isInteger,
   isFloat,
   decimalsLenght,
@@ -32,73 +31,59 @@ test(`betweenMaxNotIncluded`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// base10ToBase16
+// decimalToHexadecimal
 ////////////////////////////////////////////////////////
 
-// test(`base10ToBase16`, () => {
-//   // expect(base10ToBase16(0)).toBe('0')
-//   expect(base10ToBase16(0.5)).toBe('0.8')
-//   expect(base10ToBase16(1)).toBe('1')
-//   expect(base10ToBase16(10)).toBe('a')
-//   expect(base10ToBase16(70.205)).toBe('46.347ae147ae14')
-//   expect(base10ToBase16(100)).toBe('64')
-// })
+test(`decimalToHexadecimal`, () => {
+  expect(decimalToHexadecimal(0)).toBe('0')
+  expect(decimalToHexadecimal(1)).toBe('1')
+  expect(decimalToHexadecimal(3)).toBe('3')
+  expect(decimalToHexadecimal(9)).toBe('9')
+  expect(decimalToHexadecimal(10)).toBe('A')
+  expect(decimalToHexadecimal(15)).toBe('F')
+  expect(decimalToHexadecimal(128)).toBe('80')
+  expect(decimalToHexadecimal(204)).toBe('CC')
+  expect(decimalToHexadecimal(217)).toBe('D9')
+  expect(decimalToHexadecimal(218)).toBe('DA')
+  expect(decimalToHexadecimal(255)).toBe('FF')
+  expect(decimalToHexadecimal(2748)).toBe('ABC')
+  expect(decimalToHexadecimal(0.00390625)).toBe('0.01')
+  expect(decimalToHexadecimal(0.0625)).toBe('0.1')
+  expect(decimalToHexadecimal(10.0625)).toBe('A.1')
+  expect(decimalToHexadecimal(2748.94140625)).toBe('ABC.F1')
+  expect(decimalToHexadecimal(-1)).toBe('1') // warn, it's ok
+})
 
 ////////////////////////////////////////////////////////
-// base16ToBase10
+// hexadecimalToDecimal
 ////////////////////////////////////////////////////////
 
-// test(`base16ToBase10`, () => {
-//   expect(base16ToBase10('0')).toBe(0)
-//   expect(base16ToBase10('0.8')).toBe(0.5)
-//   expect(base16ToBase10('1')).toBe(1)
-//   expect(base16ToBase10('a')).toBe(10)
-//   expect(base16ToBase10('46.347ae147ae14')).toBe(70.205)
-//   expect(base16ToBase10('64')).toBe(100)
-// })
+test(`hexadecimalToDecimal`, () => {
+  expect(hexadecimalToDecimal('0')).toBe(0)
+  expect(hexadecimalToDecimal('00')).toBe(0)
+  expect(hexadecimalToDecimal('1')).toBe(1)
+  expect(hexadecimalToDecimal('3')).toBe(3)
+  expect(hexadecimalToDecimal('03')).toBe(3)
+  expect(hexadecimalToDecimal('9')).toBe(9)
+  expect(hexadecimalToDecimal('A')).toBe(10)
+  expect(hexadecimalToDecimal('F')).toBe(15)
+  expect(hexadecimalToDecimal('80')).toBe(128)
+  expect(hexadecimalToDecimal('CC')).toBe(204)
+  expect(hexadecimalToDecimal('D9')).toBe(217)
+  expect(hexadecimalToDecimal('DA')).toBe(218)
+  expect(hexadecimalToDecimal('FF')).toBe(255)
+  expect(hexadecimalToDecimal('ABC')).toBe(2748)
+  expect(hexadecimalToDecimal('0.01')).toBe(0.00390625)
+  expect(hexadecimalToDecimal('0.1')).toBe(0.0625)
+  expect(hexadecimalToDecimal('A.1')).toBe(10.0625)
+  expect(hexadecimalToDecimal('ABC.F1')).toBe(2748.94140625)
 
-// ////////////////////////////////////////////////////////
-// // opacity01ToHex
-// ////////////////////////////////////////////////////////
-
-// test(`opacity01ToHex`, () => {
-//   expect(opacity01ToHex(0)).toBe('00')
-//   expect(opacity01ToHex(0.1)).toBe('1a')
-//   expect(opacity01ToHex(0.13)).toBe('21')
-//   expect(opacity01ToHex(0.5)).toBe('80')
-//   expect(opacity01ToHex(0.8)).toBe('cc')
-//   expect(opacity01ToHex(0.85)).toBe('d9')
-//   expect(opacity01ToHex(0.855)).toBe('da')
-//   expect(opacity01ToHex(0.8555)).toBe('da')
-//   expect(opacity01ToHex(1)).toBe('ff')
-// })
-
-// ////////////////////////////////////////////////////////
-// // hexOpacityTo01
-// ////////////////////////////////////////////////////////
-
-// test(`hexOpacityTo01`, () => {
-//   expect(hexOpacityTo01('00')).toBe(0)
-//   expect(hexOpacityTo01('1a')).toBe(0.1)
-//   expect(hexOpacityTo01('21')).toBe(0.13)
-//   expect(hexOpacityTo01('80')).toBe(0.5)
-//   expect(hexOpacityTo01('cc')).toBe(0.8)
-//   expect(hexOpacityTo01('d9')).toBe(0.85)
-//   expect(hexOpacityTo01('da')).toBe(0.855)
-//   expect(hexOpacityTo01('da')).toBe(0.8555)
-//   expect(hexOpacityTo01('ff')).toBe(1)
-// })
-// // [
-// //   { d: '00', r: 0 },
-// //   { d: '1a', r: 26 },
-// //   { d: '21', r: 33 },
-// //   { d: '80', r: 128 },
-// //   { d: 'cc', r: 204 },
-// //   { d: 'd9', r: 217 },
-// //   { d: 'da', r: 218 },
-// //   { d: 'da', r: 218 },
-// //   { d: 'ff', r: 255 }
-// // ]
+  expect(() => hexadecimalToDecimal('')).toThrowError()
+  expect(() => hexadecimalToDecimal('#')).toThrowError()
+  expect(() => hexadecimalToDecimal('Z')).toThrowError()
+  expect(() => hexadecimalToDecimal('.0')).toThrowError()
+  expect(() => hexadecimalToDecimal('AA.s')).toThrowError()
+})
 
 ////////////////////////////////////////////////////////
 // isInteger

@@ -20,4 +20,21 @@ export const HEX_SHORT_REGEX = /^#(?:([0-9a-f]{3}))$/i
  * ✓ #ffffff, #FFFFFF
  * ✗ #FFFFFF00, FF, KKKKKK
  */
+// unused
 export const HEX_LONG_REGEX = /^#(?:([0-9a-f]{6}))$/i
+
+/**
+ * Match strings of length 2 and containing chars in [0-9a-f].
+ *
+ * ✓ ff, FF, F0
+ * ✗ FFF, #FF
+ */
+export const HEX_ALPHA_REGEX = /[0-9a-f]{2}$/i
+
+/**
+ * Match strings containing chars in [0-9a-f], floating hxadecimal values are accepted.
+ *
+ * ✓ 0, ff, FFAAAAAAAAAA, F0, 0.1, AAAA.F1
+ * ✗ #FFF, k, .A, AF4.Z
+ */
+export const HEXADECIMAL_REGEX = /^(([0-9a-f])+([.]([0-9a-f])+)?)$/i

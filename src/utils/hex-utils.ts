@@ -1,31 +1,36 @@
-import { ALPHA_PRECISION } from '../constants/rgba'
 import { between } from './math-utils'
+import { hexadecimalToDecimal } from './math-utils'
+import { round } from 'lodash'
+import { HEX_ALPHA_REGEX } from '../constants/regex'
 
-// // TODO: move to hex-utils
-// /**
-//  * Convert an opacity value number in range [0, 1] to a hexadecimal string of lenght 2.
-//  * @param base10 number to convert in base 16 in range [0, 1]
-//  * @returns hexadecimal value
-//  */
-// export function opacity01ToHex(base10: number): string {
-//   if (!between(base10, [0, 1])) throw new Error(`${base10} is not in the range [0, 1].`)
+/**
+ * Convert an opacity value number in range [0, 1] to a hexadecimal string of lenght 2.
+ * @param percent number to convert in base 16 in range [0, 1]
+ * @returns hexadecimal value
+ */
+export function percentToHex(percent: number): string {
+  if (!between(percent, [0, 1])) throw new Error(`${percent} is not in the range [0, 1].`)
 
-//   // since each digit can have 16 possible values, the total possible combinations for a 2-digit number is 16x16=256 possible values.
-//   // convert base10 to a number in range [0, 255]
-//   const base10To255 = Math.round(base10 * 255)
-//   const hexAlpha = base10ToBase16(base10To255)
-//   // since hexAlpha can have lenght 1, fill that value with 0s (0 -> 00)
-//   return hexAlpha.length === 1 ? `0${hexAlpha}` : hexAlpha
-// }
+  // A 2-digit hex value can express at most 16^2 = 256 = [0, 255] values
+  // convert the percent value ([0, 1]) to the nearest integer value in [0, 255]
+  const integerIn0255 = Math.round(percent * 255)
+  // get hexadecimal representation
+  const hexValue = integerIn0255.toString(16)
+  // padding it with 0s at the start and make it in upper case
+  return hexValue.padStart(2, '0').toUpperCase()
+}
 
-// // TODO: move to hex-utils
-// /**
-//  * Convert an opacity hexadecimal string (of lenght 2) to a value number in range [0, 1].
-//  * @param hexOpacity hexadecimal value of lenght 2
-//  * @returns value number in range [0, 1]
-//  */
-// export function hexOpacityTo01(hexOpacity: string): number {
-//   if (hexOpacity.length !== 2) throw new Error(`${hexOpacity} lenght is not 2.`)
+/**
+ * Convert a 2-digit opacity hexadecimal string to a number in range [0, 1].
+ * @param hex hexadecimal value of lenght 2
+ * @param precision the precision to round to
+ * @returns value number in range [0, 1]
+ */
+export function hexToPercent(hex: string, precision = 2): number {
+  if (!HEX_ALPHA_REGEX.test(hex)) throw new Error(`${hex} is not a valid hex color.`)
+  if (hex.length !== 2) throw new Error(`${hex} lenght is not 2.`)
 
-//   return base16ToBase10(hexOpacity) / 255
-// }
+  const integer = hexadecimalToDecimal(hex)
+  const integerIn0255 = integer / 255
+  return round(integerIn0255, precision)
+}

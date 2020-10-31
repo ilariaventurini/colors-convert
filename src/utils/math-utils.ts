@@ -1,3 +1,4 @@
+import { HEXADECIMAL_REGEX } from '../constants/regex'
 import { ALPHA_PRECISION } from '../constants/rgba'
 import { insertAt } from './string-utils'
 
@@ -28,48 +29,33 @@ export function betweenMaxNotIncluded(value: number, range: [number, number]): b
 }
 
 /**
- * Convert a number (also float) in base 10 to a "number" in base 16, so a hexadecimal string.
- * @param base10 number to convert in base 16
+ * Convert a positive number (also float) in base 10 to a "number" in base 16, so a hexadecimal string.
+ * @param decimal number to convert in base 16
  * @returns hexadecimal value
  */
-// export function base10ToBase16(base10: number, precision = ALPHA_PRECISION): string {
-//   // 1. Decide how many digits of precision you need after the decimal point
-//   const pp = decimalsLenght(base10)
+export function decimalToHexadecimal(decimal: number): string {
+  if (decimal < 0) console.warn(`${decimal} should be a positive number.`)
 
-//   // 2. Multiply your original number by that power of 16
-//   const multiplied = base10 * Math.pow(16, precision)
-//   console.log('multiplied: ', multiplied)
-
-//   // 3. Convert it to hex
-//   const hexadecimal = multiplied.toString(16)
-//   console.log('hexadecimal: ', hexadecimal)
-
-//   // 4. Put the decimal point in manually according to what you decided in step 1
-//   if (isInteger(base10)) return hexadecimal
-//   return insertAt(hexadecimal, '.', hexadecimal.length - pp)
-
-//   //////////////////////////////////
-//   // return base10.toString(16)
-// }
+  const positiveDecimal = Math.abs(decimal)
+  return positiveDecimal.toString(16).toUpperCase()
+}
 
 /**
  * Convert a hexadecimal value to a number (also float) in base 10.
- * @param base16 hexadecimal value to convert in base 10
+ * @param hexadecimal hexadecimal value to convert in base 10
  * @returns number in base 10
  */
-// export function base16ToBase10(base16: string): number {
-//   // 1. Take out the decimal point, remembering where it was
-//   // 2. Convert the hex to decimal in integer form
-//   // 3. Divide the result by the the appropriate power of 16 (16^n, where n is the number of digits after the decimal point you took out in step 1)
+export function hexadecimalToDecimal(hexadecimal: string): number {
+  if (!HEXADECIMAL_REGEX.test(hexadecimal))
+    throw new Error(`${hexadecimal} is not a valid hexadecimal string.`)
 
-//   return 0
-//   //////////////////////////////////
-//   // const [integerPart, decimalPart] = base16.split('.')
-//   // if (!decimalPart) return parseInt(integerPart, 16)
-//   // // parse the digits separately, splitting the string up in two and
-//   // // treating both parts as ints during the conversion and then add them back together
-//   // return parseInt(integerPart, 16) + parseInt(decimalPart, 16) / Math.pow(16, decimalPart.length)
-// }
+  // parse the digits separately, dividing the hexadecimal string in two (integer and decimal parts)
+  // and treating both parts as integers when converting and then adding them back together
+  const [integerPart, decimalPart] = hexadecimal.split('.')
+  if (!decimalPart) return parseInt(integerPart, 16)
+
+  return parseInt(integerPart, 16) + parseInt(decimalPart, 16) / Math.pow(16, decimalPart.length)
+}
 
 /**
  * Return true if value is an integer, false otherwise.

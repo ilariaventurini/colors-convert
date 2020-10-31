@@ -1,15 +1,16 @@
-import { round, padStart } from 'lodash'
+import { round } from 'lodash'
 import { HEX, RGB, RGBA, CMYK, HSL } from '../../types/types'
 import { isHex, isRgb } from '../../types/isType'
 import { between } from '../../utils/math-utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
 import { HEX_REGEX, HEX_SHORT_REGEX } from '../../constants/regex'
 import { ALPHA_PRECISION } from '../../constants/rgba'
+import { percentToHex } from '../../utils/hex-utils'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
- * @param hex color to convert to RGB or RGBA
- * @returns RGB or RGBA object
+ * @param hex color to convert to rgb or rgba
+ * @returns rgb or rgba object
  */
 export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
   if (!isHex(hex)) throw new Error(`${hex} is not a valid hex color.`)
@@ -52,9 +53,9 @@ export function hex2rgb(hex: HEX): RGB {
 
 /**
  * Convert a hex to a rgba object, by default alpha is 1.
- * @param hex color to convert to RGBA
+ * @param hex color to convert to rgba
  * @param alpha opacity value in range [0, 1]
- * @returns RBGA color
+ * @returns rbga color
  */
 export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
@@ -69,23 +70,22 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * Convert a hex to another hex with the given alpha.
  * @param hex original hex
  * @param alpha opacity value in range [0, 1]
- * @returns HEX color with opacity
+ * @returns hex color with opacity
  */
 export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} must be in [0, 1].`)
 
   const longHex = shortToLongHex(hex)
-  const alpha255 = Math.round(alpha * 255)
-  const alphaHex = alpha255.toString(16)
-  const alphaHexPadded = padStart(alphaHex, 2, '0')
-  return `${longHex}${alphaHexPadded}`
+  const alphaHex = percentToHex(alpha)
+  return `${longHex}${alphaHex}`
 }
 
 /**
- * Convert a hex to a cmyk. If hex is in long format (e.g. #000000FF) it removes the last two chars because cmyk doens't support opacity.
- * @param hex color to convert to CMYK
- * @returns CMYK color
+ * Convert a hex to a cmyk. If hex is in long format (e.g. #000000FF)
+ * it removes the last two chars because cmyk doens't support opacity.
+ * @param hex color to convert to cmyk
+ * @returns cmyk color
  */
 export function hex2cmyk(hex: HEX): CMYK {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
@@ -98,18 +98,18 @@ export function hex2cmyk(hex: HEX): CMYK {
 
 /**
  * Convert a hex color string to a hsl object.
- * @param hex color to convert to HSL
- * @returns HSL color object
+ * @param hex color to convert to hsl
+ * @returns hsl color object
  */
 export function hex2hsl(hex: HEX): HSL {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
 
-  const { r, g, b, a } = hex2rgba(hex)
-  return rgb2hsl({ r, g, b })
+  const rgb = hex2rgb(hex)
+  return rgb2hsl(rgb)
 }
 
 /**
- * Expand the three (hexadecimal)-digit form to the six-digit form doubling each digit.
+ * Expand the 3-digit hexadecimal form to the 6-digit form doubling each digit.
  * For example #09C becomes #0099CC.
  * If hex is in the long format, it simply takes the first three characters and converts
  * this value to a hex in the long format.
@@ -120,6 +120,6 @@ export function shortToLongHex(hex: HEX): HEX {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
   if (!HEX_SHORT_REGEX.test(hex)) console.warn(`shortToLongHex: ${hex} is not in the short format.`)
 
-  const [hashtag, first, second, third] = Array.from(hex)
-  return `${hashtag}${first}${first}${second}${second}${third}${third}`
+  const [hashtag, r, g, b] = Array.from(hex)
+  return `${hashtag}${r}${r}${g}${g}${b}${b}`
 }

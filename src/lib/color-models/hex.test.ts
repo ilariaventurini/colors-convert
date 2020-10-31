@@ -56,8 +56,8 @@ test(`hex2rgba`, () => {
 
 test(`hex2hexWithAlpha`, () => {
   expect(hex2hexWithAlpha('#000000', 0)).toBe('#00000000')
-  expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000ff')
-  expect(hex2hexWithAlpha('#000', 1)).toBe('#000000ff')
+  expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000FF')
+  expect(hex2hexWithAlpha('#000', 1)).toBe('#000000FF')
 
   expect(() => hex2hexWithAlpha('#', 1)).toThrowError()
   expect(() => hex2hexWithAlpha('#000000', 10)).toThrowError()
@@ -68,9 +68,9 @@ test(`hex2hexWithAlpha`, () => {
 ////////////////////////////////////////////////////////
 
 test(`hex2cmyk`, () => {
-  expect(hex2cmyk('#ffffff')).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(hex2cmyk('#FFFFFF')).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
   expect(hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hex2cmyk('#4287f5')).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
+  expect(hex2cmyk('#4287F5')).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
   expect(hex2cmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
   expect(hex2cmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
 
@@ -83,15 +83,15 @@ test(`hex2cmyk`, () => {
 
 test(`hex2hsl`, () => {
   expect(hex2hsl('#000000')).toEqual({ h: 0, s: 0, l: 0 })
-  expect(hex2hsl('#ffffff')).toEqual({ h: 0, s: 0, l: 100 })
-  expect(hex2hsl('#f2b90d')).toEqual({ h: 45, s: 90, l: 50 })
-  expect(hex2hsl('#f2f20d')).toEqual({ h: 60, s: 90, l: 50 })
-  expect(hex2hsl('#ccf20d')).toEqual({ h: 70, s: 90, l: 50 })
-  expect(hex2hsl('#0df233')).toEqual({ h: 130, s: 90, l: 50 })
-  expect(hex2hsl('#0ddff2')).toEqual({ h: 185, s: 90, l: 50 })
-  expect(hex2hsl('#590df2')).toEqual({ h: 260, s: 90, l: 50 })
-  expect(hex2hsl('#f20dcc')).toEqual({ h: 310, s: 90, l: 50 })
-  expect(hex2hsl('#f20d11')).toEqual({ h: 359, s: 90, l: 50 })
+  expect(hex2hsl('#FFFFFF')).toEqual({ h: 0, s: 0, l: 100 })
+  expect(hex2hsl('#F2B90D')).toEqual({ h: 45, s: 90, l: 50 })
+  expect(hex2hsl('#F2F20D')).toEqual({ h: 60, s: 90, l: 50 })
+  expect(hex2hsl('#CCF20D')).toEqual({ h: 70, s: 90, l: 50 })
+  expect(hex2hsl('#0DF233')).toEqual({ h: 130, s: 90, l: 50 })
+  expect(hex2hsl('#0DDFF2')).toEqual({ h: 185, s: 90, l: 50 })
+  expect(hex2hsl('#590DF2')).toEqual({ h: 260, s: 90, l: 50 })
+  expect(hex2hsl('#F20DCC')).toEqual({ h: 310, s: 90, l: 50 })
+  expect(hex2hsl('#F20D11')).toEqual({ h: 359, s: 90, l: 50 })
 
   expect(() => hex2hsl('#')).toThrowError()
 })
