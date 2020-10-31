@@ -1,18 +1,18 @@
 import { between } from '../utils/math-utils'
 import { sameContent } from '../lib/misc/utils'
 import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
-import { HEX_REGEX } from '../constants/regex'
+import { HEX_COLOR_REGEX } from '../constants/regex'
 
 /**
  * Accept:
- *  - long form: #FFFFFF
- *  - short form: #FFF
- *  - long form with opacity: #FFFFFFFF.
+ *  - #RRGGBB[AA] (6/8-digit, long form)
+ *  - #RGB[A] (3/4-digit, short form)
+ * where R, G, B, A are in [0-9a-fA-F].
  * @param color color to check if it is in the right HEX format
  * @returns true if color is in the right HEX format, false otherwise
  */
 export function isHex(color: any): color is HEX {
-  return HEX_REGEX.test(color)
+  return HEX_COLOR_REGEX.test(color)
 }
 
 /**

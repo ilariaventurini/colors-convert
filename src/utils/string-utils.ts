@@ -11,3 +11,13 @@ export function insertAt(str: string, toAdd: string, position: number) {
 
   return `${str.slice(0, position)}${toAdd}${str.slice(position)}`
 }
+
+/**
+ * Split a string into chunks of the given size.
+ * @param str is the string to split
+ * @param  size is the size you of the cuts
+ * @return an rray with the strings
+ */
+export function chunkString(str: string, size: number) {
+  return str.match(new RegExp('.{1,' + size + '}', 'g'))
+}

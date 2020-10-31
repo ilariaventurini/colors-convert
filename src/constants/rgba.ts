@@ -1,5 +1,5 @@
 /**
- * Opacity valueis a value in [0, 1] with precision to 4 decimals.
+ * Opacity value is a value in [0, 1] with precision to 4 decimals.
  * Examples:
  *   - { r: 255, g: 255, b: 255, a: 0.8 }
  *   - { r: 255, g: 255, b: 255, a: 0.851 }

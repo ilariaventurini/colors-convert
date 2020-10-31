@@ -9,3 +9,5 @@
 - [ ] rename 2 with To (deprecate old versions)
 - [ ] make a demo page
 - [ ] finish hex refactor
+
+HEX: #rgba -> #rrggbbaa

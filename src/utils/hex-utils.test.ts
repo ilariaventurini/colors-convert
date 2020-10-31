@@ -1,43 +1,63 @@
-import { percentToHex, hexToPercent } from './hex-utils'
+import { alphaToHex, hexToAlpha, hexAlphaTo0255 } from './hex-utils'
 
 ////////////////////////////////////////////////////////
-// percentToHex
+// alphaToHex
 ////////////////////////////////////////////////////////
 
-test(`percentToHex`, () => {
-  expect(percentToHex(0)).toBe('00')
-  expect(percentToHex(0.1)).toBe('1A')
-  expect(percentToHex(0.13)).toBe('21')
-  expect(percentToHex(0.5)).toBe('80')
-  expect(percentToHex(0.8)).toBe('CC')
-  expect(percentToHex(0.85)).toBe('D9')
-  expect(percentToHex(0.855)).toBe('DA')
-  expect(percentToHex(0.8555)).toBe('DA')
-  expect(percentToHex(1)).toBe('FF')
+test(`alphaToHex`, () => {
+  expect(alphaToHex(0)).toBe('00')
+  expect(alphaToHex(0.1)).toBe('1A')
+  expect(alphaToHex(0.13)).toBe('21')
+  expect(alphaToHex(0.5)).toBe('80')
+  expect(alphaToHex(0.8)).toBe('CC')
+  expect(alphaToHex(0.85)).toBe('D9')
+  expect(alphaToHex(0.855)).toBe('DA')
+  expect(alphaToHex(0.8555)).toBe('DA')
+  expect(alphaToHex(1)).toBe('FF')
 
-  expect(() => percentToHex(-1)).toThrowError()
-  expect(() => percentToHex(100)).toThrowError()
+  expect(() => alphaToHex(-1)).toThrowError()
+  expect(() => alphaToHex(100)).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
-// hexToPercent
+// hexToAlpha
 ////////////////////////////////////////////////////////
 
-test(`hexToPercent`, () => {
-  expect(hexToPercent('00')).toBe(0)
-  expect(hexToPercent('1A')).toBe(0.1)
-  expect(hexToPercent('21')).toBe(0.13)
-  expect(hexToPercent('80')).toBe(0.5)
-  expect(hexToPercent('CC')).toBe(0.8)
-  expect(hexToPercent('D9')).toBe(0.85)
-  expect(hexToPercent('DA')).toBe(0.85)
-  expect(hexToPercent('DA', 3)).toBe(0.855)
-  expect(hexToPercent('DA', 4)).toBe(0.8549)
-  expect(hexToPercent('FF')).toBe(1)
-  expect(hexToPercent('FF', -6)).toBe(0)
+test(`hexToAlpha`, () => {
+  expect(hexToAlpha('00')).toBe(0)
+  expect(hexToAlpha('1A')).toBe(0.1)
+  expect(hexToAlpha('21')).toBe(0.13)
+  expect(hexToAlpha('80')).toBe(0.5)
+  expect(hexToAlpha('CC')).toBe(0.8)
+  expect(hexToAlpha('D9')).toBe(0.85)
+  expect(hexToAlpha('DA')).toBe(0.85)
+  expect(hexToAlpha('DA', 3)).toBe(0.855)
+  expect(hexToAlpha('DA', 4)).toBe(0.8549)
+  expect(hexToAlpha('FF')).toBe(1)
+  expect(hexToAlpha('FF', -6)).toBe(0)
 
-  expect(() => hexToPercent('')).toThrowError()
-  expect(() => hexToPercent('F')).toThrowError()
-  expect(() => hexToPercent('GA')).toThrowError()
-  expect(() => hexToPercent('ABC')).toThrowError()
+  expect(() => hexToAlpha('')).toThrowError()
+  expect(() => hexToAlpha('F')).toThrowError()
+  expect(() => hexToAlpha('GA')).toThrowError()
+  expect(() => hexToAlpha('ABC')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// hexAlphaTo0255
+////////////////////////////////////////////////////////
+
+test(`hexAlphaTo0255`, () => {
+  expect(hexAlphaTo0255('00')).toBe(0)
+  expect(hexAlphaTo0255('1A')).toBe(26)
+  expect(hexAlphaTo0255('21')).toBe(33)
+  expect(hexAlphaTo0255('80')).toBe(128)
+  expect(hexAlphaTo0255('CC')).toBe(204)
+  expect(hexAlphaTo0255('D9')).toBe(217)
+  expect(hexAlphaTo0255('DA')).toBe(217)
+  expect(hexAlphaTo0255('FF')).toBe(255)
+
+  expect(() => hexAlphaTo0255('')).toThrowError()
+  expect(() => hexAlphaTo0255('F')).toThrowError()
+  expect(() => hexAlphaTo0255('GA')).toThrowError()
+  expect(() => hexAlphaTo0255('ABC')).toThrowError()
 })

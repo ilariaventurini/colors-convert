@@ -8,8 +8,9 @@ test(`isHex`, () => {
   expect(isHex('#000000')).toBe(true)
   expect(isHex('#a00000')).toBe(true)
   expect(isHex('#A00000')).toBe(true)
+  expect(isHex('#A00000AA')).toBe(true)
   expect(isHex('#000')).toBe(true)
-  expect(isHex('#00000000')).toBe(true)
+  expect(isHex('#000F')).toBe(true)
 
   expect(isHex('')).toBe(false)
   expect(isHex('#')).toBe(false)
