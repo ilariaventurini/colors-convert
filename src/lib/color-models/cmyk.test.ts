@@ -17,9 +17,9 @@ test(`cmyk2rgb`, () => {
 ////////////////////////////////////////////////////////
 
 test(`cmyk2hex`, () => {
-  expect(cmyk2hex({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual('#ffffff')
+  expect(cmyk2hex({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual('#FFFFFF')
   expect(cmyk2hex({ c: 0, m: 0, y: 0, k: 100 })).toStrictEqual('#000000')
-  expect(cmyk2hex({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual('#4287f5')
+  expect(cmyk2hex({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual('#4287F5')
 
   expect(() => cmyk2hex({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
 })

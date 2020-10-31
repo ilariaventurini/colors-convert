@@ -1,7 +1,11 @@
-import { between, betweenMaxNotIncluded } from './math-utils'
+import { between } from './math-utils'
 import { hexadecimalToDecimal } from './math-utils'
 import { round } from 'lodash'
 import { HEX_ALPHA_REGEX } from '../constants/regex'
+
+//////////////////////////////////////////////////////
+// This file contains functions not exported.
+//////////////////////////////////////////////////////
 
 /**
  * Convert a value number in range [0, 1] to a hexadecimal string of lenght 2.

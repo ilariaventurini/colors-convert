@@ -6,9 +6,9 @@ import { hslaToHex, hslaToRgb, hslaToRgba, hslaToHsl, hslaToCmyk } from '../../i
 
 test(`hslaToHex`, () => {
   expect(hslaToHex({ h: 0, s: 0, l: 0, a: 0 })).toBe('#00000000')
-  expect(hslaToHex({ h: 0, s: 0, l: 100, a: 0 })).toBe('#ffffff00')
-  expect(hslaToHex({ h: 45, s: 90, l: 50, a: 1 })).toBe('#f2b90dFF')
-  expect(hslaToHex({ h: 60, s: 90, l: 50, a: 0 })).toBe('#f2f20d00')
+  expect(hslaToHex({ h: 0, s: 0, l: 100, a: 0 })).toBe('#FFFFFF00')
+  expect(hslaToHex({ h: 45, s: 90, l: 50, a: 1 })).toBe('#F2B90DFF')
+  expect(hslaToHex({ h: 60, s: 90, l: 50, a: 0 })).toBe('#F2F20D00')
 
   expect(() => hslaToHex({ h: -1, s: 90, l: 50, a: 0 })).toThrowError()
 })
