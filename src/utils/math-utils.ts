@@ -1,6 +1,4 @@
-import { HEXADECIMAL_REGEX } from '../constants/regex'
-import { ALPHA_PRECISION } from '../constants/rgba'
-import { insertAt } from './string-utils'
+import { HEX_REGEX } from '../constants/regex'
 
 /**
  * Return true if range[0] <= value <= range[1] or range[1] <= value <= range[0],
@@ -46,7 +44,7 @@ export function decimalToHexadecimal(decimal: number): string {
  * @returns number in base 10
  */
 export function hexadecimalToDecimal(hexadecimal: string): number {
-  if (!HEXADECIMAL_REGEX.test(hexadecimal))
+  if (!HEX_REGEX.generic.test(hexadecimal))
     throw new Error(`${hexadecimal} is not a valid hexadecimal string.`)
 
   // parse the digits separately, dividing the hexadecimal string in two (integer and decimal parts)

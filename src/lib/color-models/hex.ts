@@ -4,7 +4,7 @@ import { isHex, isRgb } from '../../types/isType'
 import { between } from '../../utils/math-utils'
 import { chunkString } from '../../utils/string-utils'
 import { rgb2cmyk, rgb2hsl } from './rgb'
-import { HEX_LONG_WITH_ALPHA_REGEX, HEX_SHORT_REGEX } from '../../constants/regex'
+import { HEX_REGEX } from '../../constants/regex'
 import { ALPHA_PRECISION } from '../../constants/rgba'
 import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
 
@@ -67,7 +67,7 @@ export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
   if (!between(alpha, [0, 1])) throw new Error(`${alpha} must be in [0, 1].`)
 
   const longHex = shortToLongHex(hex)
-  if (HEX_LONG_WITH_ALPHA_REGEX.test(longHex)) return longHex
+  if (HEX_REGEX.longWithAlpha.test(longHex)) return longHex
 
   const alphaHex = alphaToHex(alpha)
   return `${longHex}${alphaHex}`
@@ -106,7 +106,7 @@ export function hex2hsl(hex: HEX): HSL {
  */
 export function shortToLongHex(hex: HEX): HEX {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
-  if (!HEX_SHORT_REGEX.test(hex)) {
+  if (!HEX_REGEX.short.test(hex)) {
     console.warn(`shortToLongHex: ${hex} is not in the short format.`)
     return hex
   }

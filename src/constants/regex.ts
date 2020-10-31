@@ -6,7 +6,7 @@ import { orRegex } from '../utils/regex-utils'
  * ✓ 0, ff, FFAAAAAAAAAA, F0, 0.1, AAAA.F1
  * ✗ #FFF, k, .A, AF4.Z
  */
-export const HEXADECIMAL_REGEX = /^(([0-9a-f])+([.]([0-9a-f])+)?)$/i
+const HEXADECIMAL = /^(([0-9a-f])+([.]([0-9a-f])+)?)$/i
 
 /**
  * Match strings that respect CSS hexadecimal short notation without opacity:
@@ -15,7 +15,7 @@ export const HEXADECIMAL_REGEX = /^(([0-9a-f])+([.]([0-9a-f])+)?)$/i
  * ✓ #fff, #FFF
  * ✗ #ffffff, #FFFFFF, #FFFFFF00, FF, KKKKKK
  */
-export const HEX_SHORT_WITHOUT_ALPHA_REGEX = /^#(?:([0-9a-f]{3}))$/i
+const HEX_SHORT_WITHOUT_ALPHA = /^#(?:([0-9a-f]{3}))$/i
 
 /**
  * Match strings that respect CSS hexadecimal short notation with opacity:
@@ -24,7 +24,7 @@ export const HEX_SHORT_WITHOUT_ALPHA_REGEX = /^#(?:([0-9a-f]{3}))$/i
  * ✓ #fffa, #FFFf
  * ✗ #fff, #FFFFFF, #FFFFFF00, FF, KKKKKK
  */
-export const HEX_SHORT_WITH_ALPHA_REGEX = /^#(?:([0-9a-f]{3})([0-9a-f]{1}))$/i
+const HEX_SHORT_WITH_ALPHA = /^#(?:([0-9a-f]{3})([0-9a-f]{1}))$/i
 
 /**
  * Match strings that respect CSS hexadecimal short notation: #RGB[A] (3/4-digit, short form)
@@ -33,7 +33,7 @@ export const HEX_SHORT_WITH_ALPHA_REGEX = /^#(?:([0-9a-f]{3})([0-9a-f]{1}))$/i
  * ✓ #fff, #FFF, #fffa, #FFFf
  * ✗ #FFFFFF, #FFFFFF00, FF, KKKKKK
  */
-export const HEX_SHORT_REGEX = orRegex([HEX_SHORT_WITHOUT_ALPHA_REGEX, HEX_SHORT_WITH_ALPHA_REGEX])
+const HEX_SHORT = orRegex([HEX_SHORT_WITHOUT_ALPHA, HEX_SHORT_WITH_ALPHA])
 
 /**
  * Match strings that respect CSS hexadecimal long notation without opacity:
@@ -42,8 +42,7 @@ export const HEX_SHORT_REGEX = orRegex([HEX_SHORT_WITHOUT_ALPHA_REGEX, HEX_SHORT
  * ✓ #ffffff, #FFFFFF
  * ✗ #FFFFFF00, FF, KKKKKK
  */
-// unused
-export const HEX_LONG_WITHOUT_ALPHA_REGEX = /^#(?:([0-9a-f]{6}))$/i
+const HEX_LONG_WITHOUT_ALPHA = /^#(?:([0-9a-f]{6}))$/i
 
 /**
  * Match strings that respect CSS hexadecimal long notation with opacity:
@@ -52,7 +51,7 @@ export const HEX_LONG_WITHOUT_ALPHA_REGEX = /^#(?:([0-9a-f]{6}))$/i
  * ✓ #ffffffaa, #FFFFFF00
  * ✗ #FFFFFF0, #fff, #ffffff, FF, KKKKKK
  */
-export const HEX_LONG_WITH_ALPHA_REGEX = /^#(?:([0-9a-f]{6})([0-9a-f]{2}))$/i
+const HEX_LONG_WITH_ALPHA = /^#(?:([0-9a-f]{6})([0-9a-f]{2}))$/i
 
 /**
  * Match strings that respect CSS hexadecimal long notation #RRGGBB[AA] (6/8-digit, long form)
@@ -61,7 +60,7 @@ export const HEX_LONG_WITH_ALPHA_REGEX = /^#(?:([0-9a-f]{6})([0-9a-f]{2}))$/i
  * ✓ #ffffff, #FFFFFF, #ffffffaa, #FFFFFF00
  * ✗ #FFFFFF0, #fff, FF, KKKKKK
  */
-export const HEX_LONG_REGEX = orRegex([HEX_LONG_WITHOUT_ALPHA_REGEX, HEX_LONG_WITH_ALPHA_REGEX])
+const HEX_LONG = orRegex([HEX_LONG_WITHOUT_ALPHA, HEX_LONG_WITH_ALPHA])
 
 /**
  * Match strings that respect CSS hexadecimal notation:
@@ -73,7 +72,7 @@ export const HEX_LONG_REGEX = orRegex([HEX_LONG_WITHOUT_ALPHA_REGEX, HEX_LONG_WI
  * ✓ #ffffff, #FFFFFF, #FFF, #FFF0 #FFFFFF00
  * ✗ FF, #KKKKKK, #FFFFF
  */
-export const HEX_COLOR_REGEX = orRegex([HEX_SHORT_REGEX, HEX_LONG_REGEX])
+const HEX_COLOR = orRegex([HEX_SHORT, HEX_LONG])
 
 /**
  * Match strings of length 2 and containing chars in [0-9a-fA-F].
@@ -81,4 +80,16 @@ export const HEX_COLOR_REGEX = orRegex([HEX_SHORT_REGEX, HEX_LONG_REGEX])
  * ✓ ff, FF, F0
  * ✗ FFF, #FF
  */
-export const HEX_ALPHA_REGEX = /[0-9a-f]{2}$/i
+const HEX_ALPHA = /[0-9a-f]{2}$/i
+
+export const HEX_REGEX = {
+  generic: HEXADECIMAL,
+  shortWithoutAlpha: HEX_SHORT_WITHOUT_ALPHA,
+  shortWithAlpha: HEX_SHORT_WITH_ALPHA,
+  short: HEX_SHORT,
+  longWithoutAlpha: HEX_LONG_WITHOUT_ALPHA,
+  longWithAlpha: HEX_LONG_WITH_ALPHA,
+  long: HEX_LONG,
+  color: HEX_COLOR,
+  alpha: HEX_ALPHA,
+}

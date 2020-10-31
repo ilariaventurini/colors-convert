@@ -1,7 +1,7 @@
 import { between } from '../utils/math-utils'
 import { sameContent } from '../lib/misc/utils'
 import { HEX, RGB, RGBA, CMYK, Color, HSL, HSLA } from './types'
-import { HEX_COLOR_REGEX } from '../constants/regex'
+import { HEX_REGEX } from '../constants/regex'
 
 /**
  * Accept:
@@ -12,7 +12,7 @@ import { HEX_COLOR_REGEX } from '../constants/regex'
  * @returns true if color is in the right HEX format, false otherwise
  */
 export function isHex(color: any): color is HEX {
-  return HEX_COLOR_REGEX.test(color)
+  return HEX_REGEX.color.test(color)
 }
 
 /**

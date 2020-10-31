@@ -1,7 +1,7 @@
 import { between } from './math-utils'
 import { hexadecimalToDecimal } from './math-utils'
 import { round } from 'lodash'
-import { HEX_ALPHA_REGEX } from '../constants/regex'
+import { HEX_REGEX } from '../constants/regex'
 
 //////////////////////////////////////////////////////
 // This file contains functions not exported.
@@ -31,7 +31,7 @@ export function alphaToHex(alpha: number): string {
  * @returns value number in range [0, 1]
  */
 export function hexToAlpha(hex: string, precision = 2): number {
-  if (!HEX_ALPHA_REGEX.test(hex)) throw new Error(`${hex} is not a valid hex color.`)
+  if (!HEX_REGEX.alpha.test(hex)) throw new Error(`${hex} is not a valid hex color.`)
   if (hex.length !== 2) throw new Error(`${hex} lenght is not 2.`)
 
   const integer = hexadecimalToDecimal(hex)
