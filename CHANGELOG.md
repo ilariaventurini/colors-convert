@@ -6,6 +6,8 @@ All notable changes to **colors-convert** library are be documented here.
 
 - [fix] #00000 is not a valid hex color
 - [add] add hex2rgb, shortToLongHex functions
+- [add] add HSLA color format
+- [add] Hex format supports now also #RGBA
 - [add] update jsdoc
 - [add] test coverage 100%
 - [add] add CHANGELOG file

@@ -1,6 +1,6 @@
 import { between } from '../utils/math-utils'
 import { sameContent } from '../lib/misc/utils'
-import { HEX, RGB, RGBA, CMYK, Color, HSL } from './types'
+import { HEX, RGB, RGBA, CMYK, Color, HSL, HSLA } from './types'
 import { HEX_COLOR_REGEX } from '../constants/regex'
 
 /**
@@ -90,10 +90,31 @@ export function isHsl(color: any): color is HSL {
 }
 
 /**
- * Return true if color is hex, rgb, rgba, cmyk or hls, false otherwise
+ * Accept HSLA colors with:
+ *  - h (hue): [0-359]°
+ *  - s (saturation): [0-100]%
+ *  - l (lightness): [0-100]%.
+ *  - a (alpha): [0-1].
+ * @param color color to check if it is in the right HSLA format
+ * @returns true if color is in the right HSLA format, false otherwise
+ */
+export function isHsla(color: any): color is HSLA {
+  const keys = Object.keys(color)
+  if (keys.length !== 4) return false
+  if (!sameContent(keys, ['h', 's', 'l', 'a'])) return false
+  const { h, s, l } = color
+  const isValidHsl = isHsl({ h, s, l })
+  const a = typeof color.a === 'number' && between(color.a, [0, 1])
+  return isValidHsl && a
+}
+
+/**
+ * Return true if color is hex, rgb, rgba, cmyk, hls or hsla, false otherwise
  * @param color color to check if it is in the right Color format
  * @returns true if color is in the right Color format, false otherwise
  */
 export function isColor(color: any): color is Color {
-  return isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color) || isHsl(color)
+  return (
+    isHex(color) || isRgb(color) || isRgba(color) || isCmyk(color) || isHsl(color) || isHsla(color)
+  )
 }

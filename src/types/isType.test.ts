@@ -1,4 +1,4 @@
-import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../index'
+import { isHex, isRgb, isRgba, isCmyk, isHsl, isHsla, isColor } from '../index'
 
 ////////////////////////////////////////////////////////
 // isHex
@@ -89,7 +89,22 @@ test(`isHsl`, () => {
   expect(isHsl({ h: 360, s: 100, l: 100 })).toBe(false)
   expect(isHsl({ h: 366, s: 100, l: 100 })).toBe(false)
   expect(isHsl({ h: 0, s: 0, l: 0, c: 0 })).toBe(false)
-  expect(isCmyk({ h: 'twenty', s: 0, l: 0 })).toBe(false)
+  expect(isHsl({ h: 'twenty', s: 0, l: 0 })).toBe(false)
+})
+
+////////////////////////////////////////////////////////
+// isHsla
+////////////////////////////////////////////////////////
+
+test(`isHsla`, () => {
+  expect(isHsla({ h: 0, s: 0, l: 0, a: 0 })).toBe(true)
+  expect(isHsla({ h: 359, s: 100, l: 100, a: 0.5 })).toBe(true)
+
+  expect(isHsla({ h: 360, s: 100, b: 100 })).toBe(false)
+  expect(isHsla({ h: 360, s: 100, l: 100 })).toBe(false)
+  expect(isHsla({ h: 366, s: 100, l: 100 })).toBe(false)
+  expect(isHsla({ h: 0, s: 0, l: 0, c: 0 })).toBe(false)
+  expect(isHsla({ h: 'twenty', s: 0, l: 0, a: 0 })).toBe(false)
 })
 
 ////////////////////////////////////////////////////////

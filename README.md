@@ -23,7 +23,7 @@ or
 
 ## API
 
-Different color formats are supported: hex, rgb, rgba, cmyk and hsl.
+Different color formats are supported: hex, rgb, rgba, cmyk, hsl and hsla.
 
 ---
 
@@ -33,9 +33,10 @@ Different color formats are supported: hex, rgb, rgba, cmyk and hsl.
 
 A valid hex color can be:
 
-- long form: `#FFFFFF`
-- short form: `#FFF`
-- long form with opacity: `#FFFFFFFF` (white with opacity `FF=1`).
+- long format: `#RRGGBB`
+- long format with opacity: `#RRGGBBAA`
+- short format: `#RGB`
+- short format with opacity: `#RGBA`
 
 #### `isHex(color): boolean`
 
