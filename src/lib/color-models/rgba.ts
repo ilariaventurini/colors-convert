@@ -1,12 +1,10 @@
 import { RGBA_REGEX } from '../../constants/regex'
 import { isRgba } from '../../types/isType'
-import { HEX, RGB, RGBA } from '../../types/types'
+import { CMYK, HEX, RGB, RGBA } from '../../types/types'
 import { alphaToHex } from '../../utils/hex-utils'
 import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
-import { rgb2hex } from './rgb'
+import { rgb2cmyk, rgb2hex } from './rgb'
 
-// TODO: rgba2hex
-// TODO: rgba2cmyk
 // TODO: rgba2hsl
 
 /**
@@ -32,6 +30,19 @@ export function rgba2rgb(rgba: RGBA): RGB {
   if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
 
   return { r: rgba.r, g: rgba.g, b: rgba.b }
+}
+
+/**
+ * Convert a rgba color object to a cmyk color object.
+ * It ignores opacity because cmyk doens't support it.
+ * @param rgba color to convert to rgba
+ * @returns cmyk color object
+ */
+export function rgbaToCmyk(rgba: RGBA): CMYK {
+  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+
+  const { r, g, b } = rgba
+  return rgb2cmyk({ r, g, b })
 }
 
 /**
