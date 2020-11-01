@@ -1,4 +1,11 @@
-import { cmyk2hex, cmyk2rgb, cmykToRgba, cmyk2hsl, cmykString2Object } from '../../index'
+import {
+  cmyk2hex,
+  cmyk2rgb,
+  cmykToRgba,
+  cmyk2hsl,
+  cmykToHsla,
+  cmykString2Object,
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // cmyk2hex
@@ -59,6 +66,19 @@ test(`cmyk2hsl`, () => {
   expect(cmyk2hsl({ c: 0, m: 95, y: 93, k: 5 })).toStrictEqual({ h: 359, s: 90, l: 50 })
 
   expect(() => cmyk2hsl({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// cmykToHsla
+////////////////////////////////////////////////////////
+
+test(`cmykToHsla`, () => {
+  expect(cmykToHsla({ c: 0, m: 0, y: 0, k: 100 })).toEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(cmykToHsla({ c: 0, m: 0, y: 0, k: 0 }, 1)).toEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(cmykToHsla({ c: 0, m: 24, y: 95, k: 5 }, 0.5)).toEqual({ h: 45, s: 90, l: 50, a: 0.5 })
+
+  expect(() => cmykToHsla({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
+  expect(() => cmykToHsla({ c: 0, m: 0, y: 0, k: 0 }, 30)).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

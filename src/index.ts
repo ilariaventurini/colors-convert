@@ -30,6 +30,7 @@ export {
   cmyk2rgb,
   cmykToRgba,
   cmyk2hsl,
+  cmykToHsla,
   cmykString2Object,
 } from './lib/color-models/cmyk'
 export { hsl2hex, hsl2rgb, hslToRgba, hsl2cmyk, hslString2Object } from './lib/color-models/hsl'

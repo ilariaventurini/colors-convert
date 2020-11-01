@@ -1,4 +1,4 @@
-import { CMYK, HEX, RGB, HSL, RGBA } from '../../types/types'
+import { CMYK, HEX, RGB, HSL, RGBA, HSLA } from '../../types/types'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
 import { isCmyk } from '../../types/isType'
@@ -7,28 +7,23 @@ import { between } from '../../utils/math-utils'
 
 /**
  * Convert a cmyk color to a hex.
- * @param cmyk color to convert to HEX
+ * @param cmyk color to convert to hex
  * @returns hex color
  */
 export function cmyk2hex(cmyk: CMYK): HEX {
-  if (!isCmyk(cmyk)) {
-    throw new Error(`${cmyk} is not a cmyk color.`)
-  }
+  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
 
   const rgb = cmyk2rgb(cmyk)
-  const hex = rgb2hex(rgb)
-  return hex
+  return rgb2hex(rgb)
 }
 
 /**
  * Convert a cmyk color to a rgb.
- * @param cmyk color to convert to RGB
- * @returns RGB object
+ * @param cmyk color to convert to rgb
+ * @returns rgb object
  */
 export function cmyk2rgb(cmyk: CMYK): RGB {
-  if (!isCmyk(cmyk)) {
-    throw new Error(`${cmyk} is not a cmyk color.`)
-  }
+  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
 
   const { c, m, y, k } = applyFnToEachObjValue(cmyk, (col: number) => col / 100) as CMYK
   const rgb01 = {
@@ -36,8 +31,7 @@ export function cmyk2rgb(cmyk: CMYK): RGB {
     g: 1 - Math.min(1, m * (1 - k) + k),
     b: 1 - Math.min(1, y * (1 - k) + k),
   }
-  const rgb = applyFnToEachObjValue(rgb01, (col: number) => round(col * 255)) as RGB
-  return rgb
+  return applyFnToEachObjValue(rgb01, (col: number) => round(col * 255)) as RGB
 }
 
 /**
@@ -56,17 +50,29 @@ export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
 
 /**
  * Convert a cmyk color to a hsl.
- * @param cmyk color to convert to HSL
- * @returns HSL object
+ * @param cmyk color to convert to hsl
+ * @returns hsl object
  */
 export function cmyk2hsl(cmyk: CMYK): HSL {
-  if (!isCmyk(cmyk)) {
-    throw new Error(`${cmyk} is not a cmyk color.`)
-  }
+  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
+
+  const rgb = cmyk2rgb(cmyk)
+  return rgb2hsl(rgb)
+}
+
+/**
+ * Convert a cmyk color to a hsla.
+ * @param cmyk color to convert to hsla
+ * @param alpha opacity value in range [0, 1]
+ * @returns hsla object
+ */
+export function cmykToHsla(cmyk: CMYK, alpha = 1): HSLA {
+  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
 
   const rgb = cmyk2rgb(cmyk)
   const hsl = rgb2hsl(rgb)
-  return hsl
+  return { ...hsl, a: alpha }
 }
 
 /**
