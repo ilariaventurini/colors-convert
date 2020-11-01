@@ -1,4 +1,4 @@
-import { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from '../../index'
+import { hsl2hex, hsl2rgb, hslToRgba, hsl2cmyk, hslString2Object } from '../../index'
 
 ////////////////////////////////////////////////////////
 // hsl2hex
@@ -37,6 +37,20 @@ test(`hsl2rgb`, () => {
   expect(hsl2rgb({ h: 359, s: 90, l: 50 })).toStrictEqual({ r: 242, g: 13, b: 17 }) // angleRangeIndex = 5
 
   expect(() => hsl2rgb({ h: -1, s: 90, l: 50 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// hslToRgba
+////////////////////////////////////////////////////////
+
+test(`hslToRgba`, () => {
+  expect(hslToRgba({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 }) // s01 = 0
+  expect(hslToRgba({ h: 359, s: 0, l: 100 }, 0)).toStrictEqual({ r: 255, g: 255, b: 255, a: 0 }) // s01 = 0
+  expect(hslToRgba({ h: 359, s: 100, l: 100 })).toStrictEqual({ r: 255, g: 255, b: 255, a: 1 }) // angleRangeIndex = 0
+  expect(hslToRgba({ h: 45, s: 90, l: 50 }, 0.5)).toStrictEqual({ r: 242, g: 185, b: 13, a: 0.5 }) // angleRangeIndex = 0
+
+  expect(() => hslToRgba({ h: 1, s: 90, l: 50 }, 30)).toThrowError()
+  expect(() => hslToRgba({ h: -1, s: 90, l: 50 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

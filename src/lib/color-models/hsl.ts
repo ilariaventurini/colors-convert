@@ -1,8 +1,9 @@
-import { HSL, RGB, CMYK, HEX } from '../../types/types'
+import { HSL, RGB, CMYK, HEX, RGBA } from '../../types/types'
 import { isHsl } from '../../types/isType'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
 import { rgb2hex, rgb2cmyk } from './rgb'
+import { between } from '../../utils/math-utils'
 
 /**
  * Convert an hsl object to hex.
@@ -66,6 +67,20 @@ export function hsl2rgb(hsl: HSL): RGB {
 
   const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
   return rgb
+}
+
+/**
+ * Convert an hsl object to rgba.
+ * @param hsl color to convert to rgba
+ * @param alpha opacity value in [0, 1]
+ * @returns rgba object
+ */
+export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
+  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+
+  const rgb = hsl2rgb(hsl)
+  return { ...rgb, a: alpha }
 }
 
 /**
