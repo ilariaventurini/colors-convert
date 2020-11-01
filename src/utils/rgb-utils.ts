@@ -38,5 +38,7 @@ export function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
     .split(',')
     .map((n) => n.trim())
 
-  return rgb.join(', ')
+  const short = rgb.join(', ')
+  shortRgbFormatToRgbObject(short)
+  return short
 }

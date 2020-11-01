@@ -23,6 +23,7 @@ test(`fromLongToShortRgbFormat`, () => {
   expect(fromLongToShortRgbFormat('rgb(255,0, 255)')).toBe('255, 0, 255')
   expect(fromLongToShortRgbFormat('rgb(255,  0, 255)')).toBe('255, 0, 255')
 
+  expect(() => fromLongToShortRgbFormat('rgb(300,  0, 255)')).toThrowError()
   expect(() => fromLongToShortRgbFormat('255,  0, 255')).toThrowError()
   expect(() => fromLongToShortRgbFormat('1')).toThrowError()
 })

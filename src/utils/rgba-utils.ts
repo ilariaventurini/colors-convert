@@ -2,6 +2,10 @@ import { RGBA_REGEX } from '../constants/regex'
 import { isRgba } from '../types/isType'
 import { RGBA } from '../types/types'
 
+//////////////////////////////////////////////////////
+// This file contains functions not exported.
+//////////////////////////////////////////////////////
+
 /**
  * Convert a string in format '255, 0, 255, 0.5' (short format) to a RGBA object {r: 255, g: 0, b: 255, a: 0.5}.
  * @param rgbaString rgba string
@@ -34,5 +38,7 @@ export function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string 
     .split(',')
     .map((n) => n.trim())
 
-  return rgba.join(', ')
+  const short = rgba.join(', ')
+  shortRgbaFormatToRgbaObject(short)
+  return short
 }

@@ -23,6 +23,7 @@ test(`fromLongToShortRgbaFormat`, () => {
   expect(fromLongToShortRgbaFormat('rgba(255,0, 255, 0.5)')).toBe('255, 0, 255, 0.5')
   expect(fromLongToShortRgbaFormat('rgba(255,  0, 255, 1)')).toBe('255, 0, 255, 1')
 
+  expect(() => fromLongToShortRgbaFormat('rgba(300,  0, 255, 1)')).toThrowError()
   expect(() => fromLongToShortRgbaFormat('255,  0, 255, 1')).toThrowError()
   expect(() => fromLongToShortRgbaFormat('1')).toThrowError()
 })
