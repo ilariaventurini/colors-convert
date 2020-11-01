@@ -9,6 +9,7 @@ import { number0255ToHex } from '../../utils/hex-utils'
 import { rgba2rgb } from './rgba'
 import { hslaToRgb } from './hsla'
 import { fromLongToShortRgbFormat, shortRgbFormatToRgbObject } from '../../utils/rgb-utils'
+import { RGB_REGEX } from '../../constants/regex'
 
 /**
  * Convert an rgb object to hex.
@@ -115,27 +116,23 @@ export function color2rgb(color: Color): RGB {
 }
 
 /**
- * Covert a string in these two formats to a rgb object:
+ * Convert a string in these two formats to a rgb object:
  *  - 255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}
  *  - rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}.
  * @param rgbString rgb string color to convert to rgb
  * @returns rgb color object
  */
-// TODO: check
-// TODO: do also for other color models
 export function rgbString2Object(rgbString: string): RGB {
-  const errorMessage = `${rgbString} is not a valid format. The accepted formats are 'r, g, b' and 'rgb(r, g, b)' with r, g, b in [0, 255].`
-
   // check short and long formats
-  const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+))/gi
-  const regexLongFormat = /^((rgb(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*(\)))/gi
-  const isShortFormat = regexShortFormat.test(rgbString)
-  const isLongFormat = regexLongFormat.test(rgbString)
+  const isShortFormat = RGB_REGEX.short.test(rgbString)
+  const isLongFormat = RGB_REGEX.long.test(rgbString)
 
-  if (!isShortFormat && !isLongFormat) {
-    throw new Error(errorMessage)
-  }
+  if (!isShortFormat && !isLongFormat)
+    throw new Error(
+      `${rgbString} is not a valid format. The accepted formats are 'r, g, b' and 'rgb(r, g, b)' with r, g, b in [0, 255].`
+    )
 
+  // convert rgbString to short format: 'R, G, B'
   const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortRgbFormat(rgbString)
   return shortRgbFormatToRgbObject(rgbStringCleanShortFormat)
 }

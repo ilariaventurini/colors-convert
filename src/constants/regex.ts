@@ -1,5 +1,11 @@
 import { orRegex } from '../utils/regex-utils'
 
+// TODO: test
+
+/////////////////////////////////////////////////////////////////////
+// Hex
+/////////////////////////////////////////////////////////////////////
+
 /**
  * Match strings containing chars in [0-9a-fA-F], floating hxadecimal values are accepted.
  *
@@ -92,4 +98,54 @@ export const HEX_REGEX = {
   long: HEX_LONG,
   color: HEX_COLOR,
   alpha: HEX_ALPHA,
+}
+
+/////////////////////////////////////////////////////////////////////
+// Rgb
+/////////////////////////////////////////////////////////////////////
+
+/**
+ * Match strings in the format 'R, G, B' where R, G, B are in [0-9].
+ *
+ * ✓ '0, 0, 0', '0,0, 0', '0,    0, 0', '255, 0, 4', '244, 0, 300'
+ * ✗ '-1, 0, 0'
+ */
+const RGB_SHORT = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+))$/i
+
+/**
+ * Match strings in the format 'rgb(R, G, B)' where R, G, B are in [0-9].
+ *
+ * ✓ 'rgb(0, 0, 0)', 'rgb(0,0, 0)', 'rgb(0,    0, 0)', 'rgb(255, 0, 4)', 'rgb(244, 0, 300)'
+ * ✗ '(-1, 0, 0)'
+ */
+const RGB_LONG = /^((rgb(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*(\)))$/i
+
+export const RGB_REGEX = {
+  short: RGB_SHORT,
+  long: RGB_LONG,
+}
+
+/////////////////////////////////////////////////////////////////////
+// Rgba
+/////////////////////////////////////////////////////////////////////
+
+/**
+ * Match strings in the format 'R, G, B, A' where R, G, B, A are in [0-9].
+ *
+ * ✓ '0, 0, 0, 0.5', '0,0, 0, 1', '0,    0, 0, 0', '255, 0, 4, 1', '244, 0, 300, 0'
+ * ✗ '-1, 0, 0, 0'
+ */
+const RGBA_SHORT = /^(([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*(0(\.\d+)?|1(\.0+)?))$/i
+
+/**
+ * Match strings in the format 'rgb(R, G, B, A)' where R, G, B, A are in [0-9].
+ *
+ * ✓ 'rgb(0, 0, 0, 0.5)', 'rgb(0,0, 0, 1)', 'rgb(0,    0, 0, 0)', 'rgb(255, 0, 4, 0)', 'rgb(244, 0, 300, 0)'
+ * ✗ '(-1, 0, 0, 0)'
+ */
+const RGBA_LONG = /^((rgba(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+)(\s)*,(\s)*([0-9]+),(\s)*(0(\.\d+)?|1(\.0+)?)(\s)*(\)))$$/i
+
+export const RGBA_REGEX = {
+  short: RGBA_SHORT,
+  long: RGBA_LONG,
 }

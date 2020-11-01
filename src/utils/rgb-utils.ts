@@ -1,4 +1,6 @@
-import { RGB, RGBA } from '../types/types'
+import { RGB_REGEX } from '../constants/regex'
+import { isRgb } from '../types/isType'
+import { RGB } from '../types/types'
 
 //////////////////////////////////////////////////////
 // This file contains functions not exported.
@@ -9,12 +11,15 @@ import { RGB, RGBA } from '../types/types'
  * @param rgbString rgb string color to convert to rgb object
  * @returns rgb color object
  */
-// TODO: check
-// TODO: do also for other color models
 export function shortRgbFormatToRgbObject(rgbString: string): RGB {
+  if (!RGB_REGEX.short.test(rgbString))
+    throw new Error(`${rgbString} is not in the format 'r, g, b'.`)
+
   // split by comma, remove white spaces, convert to number
   const values = rgbString.split(',').map((v) => Number(v.trim()))
-  return { r: values[0], g: values[1], b: values[2] }
+  const rgb = { r: values[0], g: values[1], b: values[2] }
+  if (!isRgb(rgb)) throw new Error(`${rgb} is not a valid rgb color.`)
+  return rgb
 }
 
 /**
@@ -22,40 +27,16 @@ export function shortRgbFormatToRgbObject(rgbString: string): RGB {
  * @param rgbStringLongFormat long format
  * @returns short format
  */
-// TODO: check
-// TODO: do also for other color models
 export function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
-  const rgbStringShortFormat = rgbStringLongFormat
+  if (!RGB_REGEX.long.test(rgbStringLongFormat))
+    throw new Error(`${rgbStringLongFormat} is not in the format 'rgb(r, g, b)'.`)
+
+  const rgb = rgbStringLongFormat
     .replace('rgb', '')
     .replace('(', '')
     .replace(')', '')
-  return rgbStringShortFormat
-}
+    .split(',')
+    .map((n) => n.trim())
 
-/**
- * Convert a string in format '255, 0, 255, 0.5' (short format) to a RGB object {r: 255, g: 0, b: 255, a: 0.5}.
- * @param rgbaString rgba string
- * @returns rgba color object
- */
-// TODO: check
-// TODO: do also for other color models
-export function shortRgbaFormatToRgbObject(rgbaString: string): RGBA {
-  // split by comma, remove white spaces, convert to number
-  const values = rgbaString.split(',').map((v) => Number(v.trim()))
-  return { r: values[0], g: values[1], b: values[2], a: values[3] }
-}
-
-/**
- * Convert 'rgba(N, N, N, N)' to 'N, N, N, N'
- * @param rgbaStringLongFormat long format
- * @returns short format
- */
-// TODO: check
-// TODO: do also for other color models
-export function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string {
-  const rgbaStringShortFormat = rgbaStringLongFormat
-    .replace('rgba', '')
-    .replace('(', '')
-    .replace(')', '')
-  return rgbaStringShortFormat
+  return rgb.join(', ')
 }

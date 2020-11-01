@@ -1,19 +1,17 @@
-import {
-  shortRgbFormatToRgbObject,
-  fromLongToShortRgbFormat,
-  shortRgbaFormatToRgbObject,
-  fromLongToShortRgbaFormat,
-} from './rgb-utils'
+import { shortRgbFormatToRgbObject, fromLongToShortRgbFormat } from './rgb-utils'
 
 ////////////////////////////////////////////////////////
 // shortRgbFormatToRgbObject
 ////////////////////////////////////////////////////////
 
 test(`shortRgbFormatToRgbObject`, () => {
-  expect(true).toBe(true)
-  // expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
+  expect(shortRgbFormatToRgbObject('255, 0, 255')).toEqual({ r: 255, g: 0, b: 255 })
+  expect(shortRgbFormatToRgbObject('255,0, 255')).toEqual({ r: 255, g: 0, b: 255 })
+  expect(shortRgbFormatToRgbObject('255,  0, 255')).toEqual({ r: 255, g: 0, b: 255 })
 
-  // expect(() => rgb2hex({ r: 600, g: 0, b: 0 })).toThrowError()
+  expect(() => shortRgbFormatToRgbObject('300,  0, 255')).toThrowError()
+  expect(() => shortRgbFormatToRgbObject('rgb(255,  0, 255)')).toThrowError()
+  expect(() => shortRgbFormatToRgbObject('1')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
@@ -21,30 +19,10 @@ test(`shortRgbFormatToRgbObject`, () => {
 ////////////////////////////////////////////////////////
 
 test(`fromLongToShortRgbFormat`, () => {
-  expect(true).toBe(true)
-  // expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
+  expect(fromLongToShortRgbFormat('rgb(255, 0, 255)')).toBe('255, 0, 255')
+  expect(fromLongToShortRgbFormat('rgb(255,0, 255)')).toBe('255, 0, 255')
+  expect(fromLongToShortRgbFormat('rgb(255,  0, 255)')).toBe('255, 0, 255')
 
-  // expect(() => rgb2hex({ r: 600, g: 0, b: 0 })).toThrowError()
-})
-
-////////////////////////////////////////////////////////
-// shortRgbaFormatToRgbObject
-////////////////////////////////////////////////////////
-
-test(`shortRgbaFormatToRgbObject`, () => {
-  expect(true).toBe(true)
-  // expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
-
-  // expect(() => rgb2hex({ r: 600, g: 0, b: 0 })).toThrowError()
-})
-
-////////////////////////////////////////////////////////
-// fromLongToShortRgbaFormat
-////////////////////////////////////////////////////////
-
-test(`fromLongToShortRgbaFormat`, () => {
-  expect(true).toBe(true)
-  // expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
-
-  // expect(() => rgb2hex({ r: 600, g: 0, b: 0 })).toThrowError()
+  expect(() => fromLongToShortRgbFormat('255,  0, 255')).toThrowError()
+  expect(() => fromLongToShortRgbFormat('1')).toThrowError()
 })

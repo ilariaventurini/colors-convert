@@ -2,7 +2,11 @@ import { Color } from '../../types/types'
 import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../../types/isType'
 import { toUpper } from 'lodash'
 
-// Convert a color to a string format
+/**
+ * Convert a color to a string format.
+ * @param color color to convert to string
+ * @returns string representing the color
+ */
 export function color2string(color: Color): string {
   if (!isColor(color)) throw new Error(`${color} is not a color.`)
 
@@ -15,7 +19,11 @@ export function color2string(color: Color): string {
   else return `${color.h}, ${color.s}%, ${color.l}%, ${color.a}` // is hsla
 }
 
-// Convert a color to a string format usable in CSS
+/**
+ * Convert a color to a string format usable in CSS.
+ * @param color color to convert to string
+ * @returns string representing the color
+ */
 export function color2cssString(color: Color): string {
   if (!isColor(color)) throw new Error(`${color} is not a color.`)
 

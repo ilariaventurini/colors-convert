@@ -1,6 +1,10 @@
 import { isRgba } from '../../types/isType'
 import { RGB, RGBA } from '../../types/types'
-import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbObject } from '../../utils/rgb-utils'
+import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
+
+// TODO: rgba2hex
+// TODO: rgba2cmyk
+// TODO: rgba2hsl
 
 /**
  * Convert a rgba color object to a rgb color removing the alpha value.
@@ -38,7 +42,7 @@ export function rgbaString2Object(rgbaString: string): RGBA {
   const rgbaStringCleanShortFormat = isShortFormat
     ? rgbaString
     : fromLongToShortRgbaFormat(rgbaString)
-  return shortRgbaFormatToRgbObject(rgbaStringCleanShortFormat)
+  return shortRgbaFormatToRgbaObject(rgbaStringCleanShortFormat)
 }
 
 // TODO: colorToRgba

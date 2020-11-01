@@ -79,5 +79,7 @@ test(`rgbString2Object`, () => {
   expect(rgbString2Object('rgb(255,0, 255)')).toEqual({ r: 255, g: 0, b: 255 })
   expect(rgbString2Object('rgb(255,  0, 255)')).toEqual({ r: 255, g: 0, b: 255 })
 
+  expect(() => rgbString2Object('300,  0, 255')).toThrowError()
+  expect(() => rgbString2Object('rgb(300,  0, 255)')).toThrowError()
   expect(() => rgbString2Object('1')).toThrowError()
 })
