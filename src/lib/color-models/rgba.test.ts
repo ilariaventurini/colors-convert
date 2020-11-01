@@ -1,4 +1,11 @@
-import { rgbaToHex, rgba2rgb, rgbaToCmyk, rgbaToHsl, rgbaString2Object } from '../../index'
+import {
+  rgbaToHex,
+  rgba2rgb,
+  rgbaToCmyk,
+  rgbaToHsl,
+  colorToRgba,
+  rgbaString2Object,
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // rgbaToHex
@@ -51,6 +58,23 @@ test(`rgbaToHsl`, () => {
   expect(rgbaToHsl({ r: 242, g: 13, b: 17, a: 0 })).toStrictEqual({ h: 359, s: 90, l: 50 })
 
   expect(() => rgbaToHsl({ r: 600, g: 0, b: 0, a: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// colorToRgba
+////////////////////////////////////////////////////////
+
+test(`colorToRgba`, () => {
+  expect(colorToRgba('#FFFFFF')).toEqual({ r: 255, g: 255, b: 255, a: 1 })
+  expect(colorToRgba('#FFFFFF00')).toEqual({ r: 255, g: 255, b: 255, a: 0 })
+  expect(colorToRgba('#FFF')).toEqual({ r: 255, g: 255, b: 255, a: 1 })
+  expect(colorToRgba({ r: 0, g: 0, b: 0 })).toEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(colorToRgba({ r: 0, g: 0, b: 0, a: 1 })).toEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(colorToRgba({ c: 0, m: 0, y: 0, k: 0 })).toEqual({ r: 255, g: 255, b: 255, a: 1 })
+  expect(colorToRgba({ h: 0, s: 0, l: 0 })).toEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(colorToRgba({ h: 0, s: 0, l: 0, a: 1 })).toEqual({ r: 0, g: 0, b: 0, a: 1 })
+
+  expect(() => colorToRgba('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

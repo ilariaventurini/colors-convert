@@ -3,9 +3,10 @@ import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType
 import { CMYK, Color, HEX, HSL, RGB, RGBA } from '../../types/types'
 import { alphaToHex } from '../../utils/hex-utils'
 import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
-import { cmyk2rgb } from './cmyk'
-import { hex2rgbOrRgba } from './hex'
-import { hslaToRgb, hslaToRgba } from './hsla'
+import { cmykToRgba } from './cmyk'
+import { hex2rgba, hex2rgbOrRgba } from './hex'
+import { hslToRgba } from './hsl'
+import { hslaToRgba } from './hsla'
 import { rgb2cmyk, rgb2hex, rgb2hsl, rgb2rgba } from './rgb'
 
 /**
@@ -58,21 +59,21 @@ export function rgbaToHsl(rgba: RGBA): HSL {
   return rgb2hsl({ r, g, b })
 }
 
-// /**
-//  * Convert a generic color to rgba.
-//  * @param color color to convert to rgba
-//  * @returns rgba color object
-//  */
-// export function color2rgba(color: Color): RGB {
-//   if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+/**
+ * Convert a generic color to rgba.
+ * @param color color to convert to rgba
+ * @returns rgba color object
+ */
+export function colorToRgba(color: Color): RGB {
+  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
 
-//   if (isHex(color)) return hex2rgbOrRgba(color)
-//   else if (isRgb(color)) return rgb2rgba(color)
-//   else if (isRgba(color)) return color
-//   else if (isCmyk(color)) return cmyk2rgb(color)
-//   else if (isHsl(color)) return hslToRgba(color)
-//   else return hslaToRgba(color) // hsla
-// }
+  if (isHex(color)) return hex2rgba(color)
+  else if (isRgb(color)) return rgb2rgba(color)
+  else if (isRgba(color)) return color
+  else if (isCmyk(color)) return cmykToRgba(color)
+  else if (isHsl(color)) return hslToRgba(color)
+  else return hslaToRgba(color) // hsla
+}
 
 /**
  * Covert a string in these two formats to a rgba object:

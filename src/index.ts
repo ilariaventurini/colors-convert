@@ -22,6 +22,7 @@ export {
   rgba2rgb,
   rgbaToCmyk,
   rgbaToHsl,
+  colorToRgba,
   rgbaString2Object,
 } from './lib/color-models/rgba'
 export {
