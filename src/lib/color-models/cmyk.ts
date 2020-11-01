@@ -1,8 +1,24 @@
-import { CMYK, HEX, RGB, HSL } from '../../types/types'
+import { CMYK, HEX, RGB, HSL, RGBA } from '../../types/types'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
 import { isCmyk } from '../../types/isType'
 import { rgb2hex, rgb2hsl } from './rgb'
+import { between } from '../../utils/math-utils'
+
+/**
+ * Convert a cmyk color to a hex.
+ * @param cmyk color to convert to HEX
+ * @returns hex color
+ */
+export function cmyk2hex(cmyk: CMYK): HEX {
+  if (!isCmyk(cmyk)) {
+    throw new Error(`${cmyk} is not a cmyk color.`)
+  }
+
+  const rgb = cmyk2rgb(cmyk)
+  const hex = rgb2hex(rgb)
+  return hex
+}
 
 /**
  * Convert a cmyk color to a rgb.
@@ -25,18 +41,17 @@ export function cmyk2rgb(cmyk: CMYK): RGB {
 }
 
 /**
- * Convert a cmyk color to a hex.
- * @param cmyk color to convert to HEX
- * @returns hex color
+ * Convert a cmyk color to a rgba.
+ * @param cmyk color to convert to rgba
+ * @param alpha opacity value in range [0, 1]
+ * @returns rgba object
  */
-export function cmyk2hex(cmyk: CMYK): HEX {
-  if (!isCmyk(cmyk)) {
-    throw new Error(`${cmyk} is not a cmyk color.`)
-  }
+export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
+  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
 
   const rgb = cmyk2rgb(cmyk)
-  const hex = rgb2hex(rgb)
-  return hex
+  return { ...rgb, a: alpha }
 }
 
 /**
