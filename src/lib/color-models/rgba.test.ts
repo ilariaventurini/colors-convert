@@ -1,4 +1,4 @@
-import { rgbaToHex, rgba2rgb, rgbaToCmyk, rgbaString2Object } from '../../index'
+import { rgbaToHex, rgba2rgb, rgbaToCmyk, rgbaToHsl, rgbaString2Object } from '../../index'
 
 ////////////////////////////////////////////////////////
 // rgbaToHex
@@ -32,6 +32,25 @@ test(`rgbaToCmyk`, () => {
   expect(rgbaToCmyk({ r: 66, g: 135, b: 245, a: 0.5 })).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
 
   expect(() => rgbaToCmyk({ r: 600, g: 0, b: 0, a: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// rgbaToHsl
+////////////////////////////////////////////////////////
+
+test(`rgbaToHsl`, () => {
+  expect(rgbaToHsl({ r: 0, g: 0, b: 0, a: 0 })).toStrictEqual({ h: 0, s: 0, l: 0 })
+  expect(rgbaToHsl({ r: 255, g: 255, b: 255, a: 1 })).toStrictEqual({ h: 0, s: 0, l: 100 })
+  expect(rgbaToHsl({ r: 242, g: 185, b: 13, a: 0.5 })).toStrictEqual({ h: 45, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 242, g: 242, b: 13, a: 0 })).toStrictEqual({ h: 60, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 204, g: 242, b: 13, a: 0 })).toStrictEqual({ h: 70, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 13, g: 242, b: 51, a: 0 })).toStrictEqual({ h: 130, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 13, g: 223, b: 242, a: 0 })).toStrictEqual({ h: 185, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 89, g: 13, b: 242, a: 0 })).toStrictEqual({ h: 260, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 242, g: 13, b: 204, a: 0 })).toStrictEqual({ h: 310, s: 90, l: 50 })
+  expect(rgbaToHsl({ r: 242, g: 13, b: 17, a: 0 })).toStrictEqual({ h: 359, s: 90, l: 50 })
+
+  expect(() => rgbaToHsl({ r: 600, g: 0, b: 0, a: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

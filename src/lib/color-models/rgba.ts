@@ -1,15 +1,13 @@
 import { RGBA_REGEX } from '../../constants/regex'
 import { isRgba } from '../../types/isType'
-import { CMYK, HEX, RGB, RGBA } from '../../types/types'
+import { CMYK, HEX, HSL, RGB, RGBA } from '../../types/types'
 import { alphaToHex } from '../../utils/hex-utils'
 import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
-import { rgb2cmyk, rgb2hex } from './rgb'
-
-// TODO: rgba2hsl
+import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'
 
 /**
  * Convert a rgba color object to a hex color.
- * @param rgba color to convert to rgba
+ * @param rgba color to convert to hex
  * @returns hex color
  */
 export function rgbaToHex(rgba: RGBA): HEX {
@@ -35,7 +33,7 @@ export function rgba2rgb(rgba: RGBA): RGB {
 /**
  * Convert a rgba color object to a cmyk color object.
  * It ignores opacity because cmyk doens't support it.
- * @param rgba color to convert to rgba
+ * @param rgba color to convert to cmyk
  * @returns cmyk color object
  */
 export function rgbaToCmyk(rgba: RGBA): CMYK {
@@ -43,6 +41,18 @@ export function rgbaToCmyk(rgba: RGBA): CMYK {
 
   const { r, g, b } = rgba
   return rgb2cmyk({ r, g, b })
+}
+
+/**
+ * Convert a rgba color object to a hsl color object removing the alpha value.
+ * @param rgba color to convert to hsl
+ * @returns hsl color object
+ */
+export function rgbaToHsl(rgba: RGBA): HSL {
+  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+
+  const { r, g, b } = rgba
+  return rgb2hsl({ r, g, b })
 }
 
 /**
