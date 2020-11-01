@@ -34,9 +34,5 @@ export function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string 
     .split(',')
     .map((n) => n.trim())
 
-  const rgbaStringShort = rgba.join(', ')
-  const rgbaObj = shortRgbaFormatToRgbaObject(rgbaStringShort)
-  if (!isRgba(rgbaObj)) throw new Error(`${rgbaStringLongFormat} is not a valid rgba color.`)
-
-  return rgbaStringShort
+  return rgba.join(', ')
 }

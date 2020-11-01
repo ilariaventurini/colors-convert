@@ -17,7 +17,7 @@ export {
   color2rgb,
   rgbString2Object,
 } from './lib/color-models/rgb'
-export { rgba2rgb, rgbaString2Object } from './lib/color-models/rgba'
+export { rgbaToHex, rgba2rgb, rgbaString2Object } from './lib/color-models/rgba'
 export { cmyk2rgb, cmyk2hex, cmyk2hsl, cmykString2Object } from './lib/color-models/cmyk'
 export { hsl2hex, hsl2rgb, hsl2cmyk, hslString2Object } from './lib/color-models/hsl'
 export { hslaToHex, hslaToRgb, hslaToRgba, hslaToHsl, hslaToCmyk } from './lib/color-models/hsla'
