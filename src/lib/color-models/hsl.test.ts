@@ -1,4 +1,4 @@
-import { hsl2hex, hsl2rgb, hslToRgba, hsl2cmyk, hslString2Object } from '../../index'
+import { hsl2hex, hsl2rgb, hslToRgba, hsl2cmyk, hslToHsla, hslString2Object } from '../../index'
 
 ////////////////////////////////////////////////////////
 // hsl2hex
@@ -70,6 +70,20 @@ test(`hsl2cmyk`, () => {
   expect(hsl2cmyk({ h: 359, s: 90, l: 50 })).toStrictEqual({ c: 0, m: 95, y: 93, k: 5 })
 
   expect(() => hsl2cmyk({ h: -1, s: 90, l: 50 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// hslToHsla
+////////////////////////////////////////////////////////
+
+test(`hslToHsla`, () => {
+  expect(hslToHsla({ h: 0, s: 0, l: 0 })).toStrictEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(hslToHsla({ h: 0, s: 0, l: 0 }, 0)).toStrictEqual({ h: 0, s: 0, l: 0, a: 0 })
+  expect(hslToHsla({ h: 0, s: 0, l: 0 }, 0.5)).toStrictEqual({ h: 0, s: 0, l: 0, a: 0.5 })
+  expect(hslToHsla({ h: 45, s: 90, l: 50 })).toStrictEqual({ h: 45, s: 90, l: 50, a: 1 })
+
+  expect(() => hslToHsla({ h: -1, s: 90, l: 50 })).toThrowError()
+  expect(() => hslToHsla({ h: 0, s: 0, l: 0 }, 30)).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

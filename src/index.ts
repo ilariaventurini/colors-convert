@@ -34,7 +34,14 @@ export {
   colorToCmyk,
   cmykString2Object,
 } from './lib/color-models/cmyk'
-export { hsl2hex, hsl2rgb, hslToRgba, hsl2cmyk, hslString2Object } from './lib/color-models/hsl'
+export {
+  hsl2hex,
+  hsl2rgb,
+  hslToRgba,
+  hsl2cmyk,
+  hslToHsla,
+  hslString2Object,
+} from './lib/color-models/hsl'
 export { hslaToHex, hslaToRgb, hslaToRgba, hslaToHsl, hslaToCmyk } from './lib/color-models/hsla'
 export { getRandomColor } from './lib/misc/random'
 export { mix } from './lib/misc/mix'

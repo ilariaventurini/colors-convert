@@ -1,4 +1,4 @@
-import { HSL, RGB, CMYK, HEX, RGBA } from '../../types/types'
+import { HSL, RGB, CMYK, HEX, RGBA, HSLA } from '../../types/types'
 import { isHsl } from '../../types/isType'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
@@ -7,28 +7,23 @@ import { between } from '../../utils/math-utils'
 
 /**
  * Convert an hsl object to hex.
- * @param hsl color to convert to HEX
- * @returns HEX color
+ * @param hsl color to convert to hex
+ * @returns hex color
  */
 export function hsl2hex(hsl: HSL): HEX {
-  if (!isHsl(hsl)) {
-    throw new Error(`${hsl} is not a hsl color.`)
-  }
+  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
 
   const rgb = hsl2rgb(hsl)
-  const hex = rgb2hex(rgb)
-  return hex
+  return rgb2hex(rgb)
 }
 
 /**
- * Convert an hsl object to rgb.
- * @param hsl color to convert to RGB
- * @returns RGB object
+ * Convert an hsl object to rgb color object.
+ * @param hsl color to convert to rgb color object
+ * @returns rgb color object
  */
 export function hsl2rgb(hsl: HSL): RGB {
-  if (!isHsl(hsl)) {
-    throw new Error(`${hsl} is not a hsl color.`)
-  }
+  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
 
   const { h, s, l } = hsl
   // normalize values
@@ -85,8 +80,8 @@ export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
 
 /**
  * Convert an hsl object to cmyk.
- * @param hsl color to convert to CMYK
- * @returns CMYK object
+ * @param hsl color to convert to cmyk
+ * @returns cmyk object
  */
 export function hsl2cmyk(hsl: HSL): CMYK {
   if (!isHsl(hsl)) {
@@ -99,11 +94,24 @@ export function hsl2cmyk(hsl: HSL): CMYK {
 }
 
 /**
+ * Convert an hsl object to hsla.
+ * @param hsl color to convert to hsla
+ * @param alpha opacity value in range [0, 1]
+ * @returns hsla object
+ */
+export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
+  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+
+  return { ...hsl, a: alpha }
+}
+
+/**
  * Covert a string in these two formats to an hsl object:
  *  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
  *  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.
- * @param hsl string to convert to HSL object
- * @returns HSL object
+ * @param hsl string to convert to hsl object
+ * @returns hsl object
  */
 export function hslString2Object(hslString: string): HSL {
   const errorMessage = `${hslString} is not a valid format. The accepted formats are 'h°, s%, l%' and 'hsl(h°, s%, l%)' with h in [0, 359] and s, l in [0, 100].`
