@@ -1,11 +1,15 @@
-import { CMYK, HEX, RGB, HSL, RGBA, HSLA } from '../../types/types'
+import { CMYK, HEX, RGB, HSL, RGBA, HSLA, Color } from '../../types/types'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
-import { isCmyk } from '../../types/isType'
-import { rgb2hex, rgb2hsl } from './rgb'
+import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType'
+import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'
 import { between } from '../../utils/math-utils'
 import { CMYK_REGEX } from '../../constants/regex'
 import { fromLongToShortCmykFormat, shortCmykFormatToCmykObject } from '../../utils/cmyk-utils'
+import { hex2cmyk } from './hex'
+import { rgbaToCmyk } from './rgba'
+import { hsl2cmyk } from './hsl'
+import { hslaToCmyk } from './hsla'
 
 /**
  * Convert a cmyk color to a hex.
@@ -77,7 +81,21 @@ export function cmykToHsla(cmyk: CMYK, alpha = 1): HSLA {
   return { ...hsl, a: alpha }
 }
 
-// TODO: colorToCmyk
+/**
+ * Convert a generic color to cmyk.
+ * @param color color to convert to cmyk
+ * @returns cmyk color object
+ */
+export function colorToCmyk(color: Color): CMYK {
+  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+
+  if (isHex(color)) return hex2cmyk(color)
+  else if (isRgb(color)) return rgb2cmyk(color)
+  else if (isRgba(color)) return rgbaToCmyk(color)
+  else if (isCmyk(color)) return color
+  else if (isHsl(color)) return hsl2cmyk(color)
+  else return hslaToCmyk(color) // hsla
+}
 
 /**
  * Covert a string in these two formats to a cmyk object:

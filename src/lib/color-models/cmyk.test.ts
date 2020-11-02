@@ -4,6 +4,7 @@ import {
   cmykToRgba,
   cmyk2hsl,
   cmykToHsla,
+  colorToCmyk,
   cmykString2Object,
 } from '../../index'
 
@@ -79,6 +80,23 @@ test(`cmykToHsla`, () => {
 
   expect(() => cmykToHsla({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
   expect(() => cmykToHsla({ c: 0, m: 0, y: 0, k: 0 }, 30)).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// colorToCmyk
+////////////////////////////////////////////////////////
+
+test(`colorToCmyk`, () => {
+  expect(colorToCmyk('#FFFFFF')).toEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(colorToCmyk('#FFFFFF00')).toEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(colorToCmyk('#FFF')).toEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(colorToCmyk({ r: 0, g: 0, b: 0 })).toEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(colorToCmyk({ r: 0, g: 0, b: 0, a: 1 })).toEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(colorToCmyk({ c: 0, m: 100, y: 0, k: 0 })).toEqual({ c: 0, m: 100, y: 0, k: 0 })
+  expect(colorToCmyk({ h: 0, s: 0, l: 0 })).toEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(colorToCmyk({ h: 0, s: 0, l: 0, a: 1 })).toEqual({ c: 0, m: 0, y: 0, k: 100 })
+
+  expect(() => colorToCmyk('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
