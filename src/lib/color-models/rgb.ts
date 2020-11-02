@@ -93,6 +93,7 @@ export function rgb2hsl(rgb: RGB): HSL {
  * @param rgb color to convert to rgba
  * @returns rgba color object
  */
+// FIXME: use alpha = 1 as parameter!
 export function rgb2rgba(rgb: RGB): RGBA {
   if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
 
