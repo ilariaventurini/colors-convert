@@ -6,7 +6,7 @@ import { rgb2hex, rgb2cmyk } from './rgb'
 import { between } from '../../utils/math-utils'
 
 /**
- * Convert an hsl object to hex.
+ * Convert a hsl object to hex.
  * @param hsl color to convert to hex
  * @returns hex color
  */
@@ -18,7 +18,7 @@ export function hsl2hex(hsl: HSL): HEX {
 }
 
 /**
- * Convert an hsl object to rgb color object.
+ * Convert a hsl object to rgb color object.
  * @param hsl color to convert to rgb color object
  * @returns rgb color object
  */
@@ -65,7 +65,7 @@ export function hsl2rgb(hsl: HSL): RGB {
 }
 
 /**
- * Convert an hsl object to rgba.
+ * Convert a hsl object to rgba.
  * @param hsl color to convert to rgba
  * @param alpha opacity value in [0, 1]
  * @returns rgba object
@@ -79,7 +79,7 @@ export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
 }
 
 /**
- * Convert an hsl object to cmyk.
+ * Convert a hsl object to cmyk.
  * @param hsl color to convert to cmyk
  * @returns cmyk object
  */
@@ -94,7 +94,7 @@ export function hsl2cmyk(hsl: HSL): CMYK {
 }
 
 /**
- * Convert an hsl object to hsla.
+ * Convert a hsl object to hsla.
  * @param hsl color to convert to hsla
  * @param alpha opacity value in range [0, 1]
  * @returns hsla object
@@ -107,7 +107,7 @@ export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
 }
 
 /**
- * Covert a string in these two formats to an hsl object:
+ * Covert a string in these two formats to a hsl object:
  *  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
  *  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.
  * @param hsl string to convert to hsl object
@@ -137,7 +137,7 @@ export function hslString2Object(hslString: string): HSL {
 }
 
 /**
- * Convert a string in format '322°, 79%, 52%' (short format) to an HSL object { h: 322, s: 79, l: 52 }.
+ * Convert a string in format '322°, 79%, 52%' (short format) to a HSL object { h: 322, s: 79, l: 52 }.
  * @param hslString string to convert to HSL object
  * @returns HSL object
  */
