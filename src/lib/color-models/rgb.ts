@@ -1,5 +1,5 @@
 import { round } from 'lodash'
-import { RGB, RGBA, CMYK, HEX, HSL, Color } from '../../types/types'
+import { RGB, RGBA, CMYK, HEX, HSL, Color, HSLA } from '../../types/types'
 import { isRgb, isRgba, isHex, isCmyk, isHsl, isColor } from '../../types/isType'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { hex2rgba } from './hex'
@@ -10,6 +10,7 @@ import { rgba2rgb } from './rgba'
 import { hslaToRgb } from './hsla'
 import { fromLongToShortRgbFormat, shortRgbFormatToRgbObject } from '../../utils/rgb-utils'
 import { RGB_REGEX } from '../../constants/regex'
+import { between } from '../../utils/math-utils'
 
 /**
  * Convert an rgb object to hex.
@@ -98,6 +99,20 @@ export function rgb2rgba(rgb: RGB): RGBA {
   if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
 
   return { r: rgb.r, g: rgb.g, b: rgb.b, a: 1 }
+}
+
+/**
+ * Convert a rgb color object to a hsla object.
+ * @param rgb color object to convert to hsla
+ * @param alpha opacity value in range [0, 1]
+ * @returns hsla color object
+ */
+export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
+  if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+
+  const hsl = rgb2hsl(rgb)
+  return { ...hsl, a: alpha }
 }
 
 /**

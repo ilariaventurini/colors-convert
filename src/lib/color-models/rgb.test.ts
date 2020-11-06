@@ -1,4 +1,12 @@
-import { rgb2hex, rgb2cmyk, rgb2hsl, rgb2rgba, color2rgb, rgbString2Object } from '../../index'
+import {
+  rgb2hex,
+  rgb2rgba,
+  rgb2cmyk,
+  rgb2hsl,
+  rgbToHsla,
+  color2rgb,
+  rgbString2Object,
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // rgb2hex
@@ -40,6 +48,20 @@ test(`rgb2hsl`, () => {
   expect(rgb2hsl({ r: 242, g: 13, b: 17 })).toStrictEqual({ h: 359, s: 90, l: 50 })
 
   expect(() => rgb2hsl({ r: 600, g: 0, b: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// rgbToHsla
+////////////////////////////////////////////////////////
+
+test(`rgbToHsla`, () => {
+  expect(rgbToHsla({ r: 0, g: 0, b: 0 })).toStrictEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(rgbToHsla({ r: 0, g: 0, b: 0 }, 0)).toStrictEqual({ h: 0, s: 0, l: 0, a: 0 })
+  expect(rgbToHsla({ r: 255, g: 255, b: 255 })).toStrictEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(rgbToHsla({ r: 255, g: 255, b: 255 }, 0.8)).toStrictEqual({ h: 0, s: 0, l: 100, a: 0.8 })
+
+  expect(() => rgbToHsla({ r: 600, g: 0, b: 0 })).toThrowError()
+  expect(() => rgbToHsla({ r: 10, g: 0, b: 0 }, 10)).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

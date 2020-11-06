@@ -14,6 +14,7 @@ export {
   rgb2hex,
   rgb2cmyk,
   rgb2hsl,
+  rgbToHsla,
   rgb2rgba,
   color2rgb,
   rgbString2Object,
