@@ -5,7 +5,7 @@ All notable changes to **colors-convert** library are be documented here.
 ## Unreleased
 
 - [fix] #00000 is not a valid hex color
-- [add] add color2rgba, rgbaToHex, cmykToRgba, cmykToHsla, hslToRgba, colorToCmyk, hslToHsla functions
+- [add] add color2rgba, rgbaToHex, cmykToRgba, cmykToHsla, hslToRgba, colorToCmyk, colorToHsl, hslToHsla functions
 - [add] add hex2rgb, shortToLongHex functions
 - [add] add HSLA color format
 - [add] Hex format supports now also #RGBA

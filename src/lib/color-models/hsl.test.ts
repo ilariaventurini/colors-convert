@@ -1,4 +1,12 @@
-import { hsl2hex, hsl2rgb, hslToRgba, hsl2cmyk, hslToHsla, hslString2Object } from '../../index'
+import {
+  hsl2hex,
+  hsl2rgb,
+  hslToRgba,
+  hsl2cmyk,
+  hslToHsla,
+  colorToHsl,
+  hslString2Object,
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // hsl2hex
@@ -87,6 +95,23 @@ test(`hslToHsla`, () => {
 })
 
 ////////////////////////////////////////////////////////
+// colorToHsl
+////////////////////////////////////////////////////////
+
+test(`colorToHsl`, () => {
+  expect(colorToHsl('#FFFFFF')).toEqual({ h: 0, s: 0, l: 100 })
+  expect(colorToHsl('#FFFFFF00')).toEqual({ h: 0, s: 0, l: 100 })
+  expect(colorToHsl('#FFF')).toEqual({ h: 0, s: 0, l: 100 })
+  expect(colorToHsl({ r: 0, g: 0, b: 0 })).toEqual({ h: 0, s: 0, l: 0 })
+  expect(colorToHsl({ r: 0, g: 0, b: 0, a: 1 })).toEqual({ h: 0, s: 0, l: 0 })
+  expect(colorToHsl({ c: 0, m: 100, y: 0, k: 0 })).toEqual({ h: 300, s: 100, l: 50 })
+  expect(colorToHsl({ h: 0, s: 0, l: 100 })).toEqual({ h: 0, s: 0, l: 100 })
+  expect(colorToHsl({ h: 0, s: 0, l: 0, a: 1 })).toEqual({ h: 0, s: 0, l: 0 })
+
+  expect(() => colorToHsl('#')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
 // hslString2Object
 ////////////////////////////////////////////////////////
 
@@ -99,6 +124,7 @@ test(`hslString2Object`, () => {
   expect(hslString2Object('hsl(322,  79%, 52%)')).toEqual({ h: 322, s: 79, l: 52 })
 
   expect(() => hslString2Object('1')).toThrowError()
+  expect(() => hslString2Object('hsl(322,  79, 52%)')).toThrowError()
   expect(() => hslString2Object('600, 79%, 52%')).toThrowError()
   expect(() => hslString2Object('hsl(600, 79%, 52%)')).toThrowError()
 })

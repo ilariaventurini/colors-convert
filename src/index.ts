@@ -40,6 +40,7 @@ export {
   hslToRgba,
   hsl2cmyk,
   hslToHsla,
+  colorToHsl,
   hslString2Object,
 } from './lib/color-models/hsl'
 export { hslaToHex, hslaToRgb, hslaToRgba, hslaToHsl, hslaToCmyk } from './lib/color-models/hsla'

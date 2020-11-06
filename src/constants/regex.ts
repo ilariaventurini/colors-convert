@@ -174,3 +174,28 @@ export const CMYK_REGEX = {
   short: CMYK_SHORT,
   long: CMYK_LONG,
 }
+
+/////////////////////////////////////////////////////////////////////
+// Hsl
+/////////////////////////////////////////////////////////////////////
+
+/**
+ * Match strings in the format 'A, N%, N%' where A, N are numbers.
+ *
+ * ✓ '322, 79%, 52%', '322 , 79%, 52%', '322, 79%,52 %', '1000, 79%, 52%'
+ * ✗ '-1, 0, 0', '322, 79, 52%'
+ */
+const HSL_SHORT = /^(([0-9]+)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%))$/i
+
+/**
+ * Match strings in the format 'hsl(A, N%, N%)' where A, N are numbers.
+ *
+ * ✓ 'hsl(322, 79%, 52%)', 'hsl(322 , 79%, 52%)', 'hsl(322, 79%,52 %)', 'hsl(1000, 79%, 52%)'
+ * ✗ '-1, 0, 0', 'hsl(322, 79, 52%)'
+ */
+const HSL_LONG = /^((hsl(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%)(\s)*(\)))$/i
+
+export const HSL_REGEX = {
+  short: HSL_SHORT,
+  long: HSL_LONG,
+}

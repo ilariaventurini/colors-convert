@@ -1,9 +1,15 @@
-import { HSL, RGB, CMYK, HEX, RGBA, HSLA } from '../../types/types'
-import { isHsl } from '../../types/isType'
+import { HSL, RGB, CMYK, HEX, RGBA, HSLA, Color } from '../../types/types'
+import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType'
 import { applyFnToEachObjValue } from '../misc/utils'
 import { round } from 'lodash'
-import { rgb2hex, rgb2cmyk } from './rgb'
+import { rgb2hex, rgb2cmyk, rgb2hsl } from './rgb'
 import { between } from '../../utils/math-utils'
+import { fromLongToShortFormat, shortHslFormatToHslObject } from '../../utils/hsl-utils'
+import { HSL_REGEX } from '../../constants/regex'
+import { hex2hsl } from './hex'
+import { rgbaToHsl } from './rgba'
+import { cmyk2hsl } from './cmyk'
+import { hslaToHsl } from './hsla'
 
 /**
  * Convert a hsl object to hex.
@@ -107,6 +113,22 @@ export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
 }
 
 /**
+ * Convert a generic color to hsl.
+ * @param color color to convert to hsl
+ * @returns hsl color object
+ */
+export function colorToHsl(color: Color): HSL {
+  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+
+  if (isHex(color)) return hex2hsl(color)
+  else if (isRgb(color)) return rgb2hsl(color)
+  else if (isRgba(color)) return rgbaToHsl(color)
+  else if (isCmyk(color)) return cmyk2hsl(color)
+  else if (isHsl(color)) return color
+  else return hslaToHsl(color) // hsla
+}
+
+/**
  * Covert a string in these two formats to a hsl object:
  *  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
  *  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.
@@ -114,51 +136,14 @@ export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
  * @returns hsl object
  */
 export function hslString2Object(hslString: string): HSL {
-  const errorMessage = `${hslString} is not a valid format. The accepted formats are 'h°, s%, l%' and 'hsl(h°, s%, l%)' with h in [0, 359] and s, l in [0, 100].`
+  const isShortFormat = HSL_REGEX.short.test(hslString)
+  const isLongFormat = HSL_REGEX.long.test(hslString)
 
-  // check short and long formats
-  const regexShortFormat = /^(([0-9]+)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%))/gi
-  const regexLongFormat = /^((hsl(\s)*\()(\s)*([0-9]+)(\s)*,(\s)*([0-9]+%)(\s)*,(\s)*([0-9]+%)(\s)*(\)))/gi
-  const isShortFormat = regexShortFormat.test(hslString)
-  const isLongFormat = regexLongFormat.test(hslString)
-
-  if (!isShortFormat && !isLongFormat) {
-    throw new Error(errorMessage)
-  }
+  if (!isShortFormat && !isLongFormat)
+    throw new Error(
+      `${hslString} is not a valid format. The accepted formats are 'h, s%, l%' and 'hsl(h, s%, l%)' with h in [0, 359] and s, l in [0, 100].`
+    )
 
   const hslStringCleanShortFormat = isShortFormat ? hslString : fromLongToShortFormat(hslString)
-  const hslObject = shortHslFormatToHslObject(hslStringCleanShortFormat)
-
-  if (isHsl(hslObject)) {
-    return hslObject
-  } else {
-    throw new Error(errorMessage)
-  }
-}
-
-/**
- * Convert a string in format '322°, 79%, 52%' (short format) to a HSL object { h: 322, s: 79, l: 52 }.
- * @param hslString string to convert to HSL object
- * @returns HSL object
- */
-function shortHslFormatToHslObject(hslString: string): HSL {
-  // split by comma, remove white spaces, remove last char (except for h), convert to number
-  const values = hslString.split(',').map((v, i) => {
-    if (i === 0) return Number(v.trim())
-    else return Number(v.trim().slice(0, -1))
-  })
-  return { h: values[0], s: values[1], l: values[2] }
-}
-
-/**
- * Convert a string in format 'hsl(0, 50, 20)' (long format) to '0, 50, 20' (short format).
- * @param hslStringLongFormat string to convert to short format
- * @returns hsl short format
- */
-function fromLongToShortFormat(hslStringLongFormat: string): string {
-  const hslStringShortFormat = hslStringLongFormat
-    .replace('hsl', '')
-    .replace('(', '')
-    .replace(')', '')
-  return hslStringShortFormat
+  return shortHslFormatToHslObject(hslStringCleanShortFormat)
 }
