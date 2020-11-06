@@ -1,7 +1,8 @@
 import { RGBA_REGEX } from '../../constants/regex'
 import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType'
-import { CMYK, Color, HEX, HSL, RGB, RGBA } from '../../types/types'
+import { CMYK, Color, HEX, HSL, HSLA, RGB, RGBA } from '../../types/types'
 import { alphaToHex } from '../../utils/hex-utils'
+import { between } from '../../utils/math-utils'
 import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
 import { cmykToRgba } from './cmyk'
 import { hex2rgba } from './hex'
@@ -57,6 +58,17 @@ export function rgbaToHsl(rgba: RGBA): HSL {
 
   const { r, g, b } = rgba
   return rgb2hsl({ r, g, b })
+}
+
+/**
+ * Convert a rgba color object to a hsla color object.
+ * @param rgba color to convert to hsla
+ * @returns hsla color object
+ */
+export function rgbaToHsla(rgba: RGBA): HSLA {
+  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+
+  return { ...rgbaToHsl(rgba), a: rgba.a }
 }
 
 /**

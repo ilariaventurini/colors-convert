@@ -3,6 +3,7 @@ import {
   rgba2rgb,
   rgbaToCmyk,
   rgbaToHsl,
+  rgbaToHsla,
   colorToRgba,
   rgbaString2Object,
 } from '../../index'
@@ -58,6 +59,25 @@ test(`rgbaToHsl`, () => {
   expect(rgbaToHsl({ r: 242, g: 13, b: 17, a: 0 })).toStrictEqual({ h: 359, s: 90, l: 50 })
 
   expect(() => rgbaToHsl({ r: 600, g: 0, b: 0, a: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// rgbaToHsla
+////////////////////////////////////////////////////////
+
+test(`rgbaToHsla`, () => {
+  expect(rgbaToHsla({ r: 0, g: 0, b: 0, a: 0 })).toStrictEqual({ h: 0, s: 0, l: 0, a: 0 })
+  expect(rgbaToHsla({ r: 0, g: 0, b: 0, a: 0.7 })).toStrictEqual({ h: 0, s: 0, l: 0, a: 0.7 })
+  expect(rgbaToHsla({ r: 255, g: 255, b: 255, a: 1 })).toStrictEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(rgbaToHsla({ r: 255, g: 255, b: 255, a: 0.9 })).toStrictEqual({
+    h: 0,
+    s: 0,
+    l: 100,
+    a: 0.9,
+  })
+
+  expect(() => rgbaToHsla({ r: 600, g: 0, b: 0, a: 0 })).toThrowError()
+  expect(() => rgbaToHsla({ r: 0, g: 0, b: 0, a: 10 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
