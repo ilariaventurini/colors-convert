@@ -7,6 +7,7 @@ export {
   hex2hexWithAlpha,
   hex2cmyk,
   hex2hsl,
+  hexToHsla,
   shortToLongHex,
 } from './lib/color-models/hex'
 export {

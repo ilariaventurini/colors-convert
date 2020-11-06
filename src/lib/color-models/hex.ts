@@ -1,5 +1,5 @@
 import { round } from 'lodash'
-import { HEX, RGB, RGBA, CMYK, HSL } from '../../types/types'
+import { HEX, RGB, RGBA, CMYK, HSL, HSLA } from '../../types/types'
 import { isHex, isRgb } from '../../types/isType'
 import { between } from '../../utils/math-utils'
 import { chunkString } from '../../utils/string-utils'
@@ -7,6 +7,7 @@ import { rgb2cmyk, rgb2hsl } from './rgb'
 import { HEX_REGEX } from '../../constants/regex'
 import { ALPHA_PRECISION } from '../../constants/rgba'
 import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
+import { rgbaToHsl } from './rgba'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
@@ -95,6 +96,20 @@ export function hex2hsl(hex: HEX): HSL {
 
   const rgb = hex2rgb(hex)
   return rgb2hsl(rgb)
+}
+
+/**
+ * Convert a hex color string to a hsla object.
+ * @param hex color to convert to hsla
+ * @param alpha opacity value in range [0, 1]
+ * @returns hsla color object
+ */
+export function hexToHsla(hex: HEX, alpha = 1): HSLA {
+  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+
+  const rgb = hex2rgb(hex)
+  return { ...rgb2hsl(rgb), a: alpha }
 }
 
 /**

@@ -5,6 +5,7 @@ import {
   hex2hexWithAlpha,
   hex2cmyk,
   hex2hsl,
+  hexToHsla,
   shortToLongHex,
 } from '../../index'
 
@@ -108,6 +109,23 @@ test(`hex2hsl`, () => {
   expect(hex2hsl('#000F')).toEqual({ h: 0, s: 0, l: 0 })
 
   expect(() => hex2hsl('#')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// hexToHsla
+////////////////////////////////////////////////////////
+
+test(`hexToHsla`, () => {
+  expect(hexToHsla('#000000')).toEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(hexToHsla('#000000', 0)).toEqual({ h: 0, s: 0, l: 0, a: 0 })
+  expect(hexToHsla('#000000FF')).toEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(hexToHsla('#000000FF', 0.8)).toEqual({ h: 0, s: 0, l: 0, a: 0.8 })
+  expect(hexToHsla('#FFFFFF')).toEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(hexToHsla('#000')).toEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(hexToHsla('#000F')).toEqual({ h: 0, s: 0, l: 0, a: 1 })
+
+  expect(() => hexToHsla('#000F', 3)).toThrowError()
+  expect(() => hexToHsla('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
