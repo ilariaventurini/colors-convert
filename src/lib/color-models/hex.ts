@@ -7,7 +7,7 @@ import { rgb2cmyk, rgb2hsl } from './rgb'
 import { HEX_REGEX } from '../../constants/regex'
 import { ALPHA_PRECISION } from '../../constants/rgba'
 import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
-import { rgbaToHsl } from './rgba'
+import { rgbaToHsla } from './rgba'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
@@ -100,6 +100,8 @@ export function hex2hsl(hex: HEX): HSL {
 
 /**
  * Convert a hex color string to a hsla object.
+ * Hex can have opacity or not, if not you can use the alpha parameter.
+ * If hex has opacity and alpha != undefined, then the returned alpha value is the hex related one.
  * @param hex color to convert to hsla
  * @param alpha opacity value in range [0, 1]
  * @returns hsla color object
@@ -108,8 +110,9 @@ export function hexToHsla(hex: HEX, alpha = 1): HSLA {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
   if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
 
-  const rgb = hex2rgb(hex)
-  return { ...rgb2hsl(rgb), a: alpha }
+  const rgbOrRgba = hex2rgbOrRgba(hex)
+  if (isRgb(rgbOrRgba)) return { ...rgb2hsl(rgbOrRgba), a: alpha }
+  else return rgbaToHsla(rgbOrRgba)
 }
 
 /**
