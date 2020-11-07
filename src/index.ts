@@ -9,6 +9,7 @@ export {
   hex2hsl,
   hexToHsla,
   shortToLongHex,
+  colorToHex,
 } from './lib/color-models/hex'
 export {
   rgb2hex,

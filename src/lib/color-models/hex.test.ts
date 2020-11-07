@@ -7,6 +7,7 @@ import {
   hex2hsl,
   hexToHsla,
   shortToLongHex,
+  colorToHex,
 } from '../../index'
 
 ////////////////////////////////////////////////////////
@@ -159,4 +160,21 @@ test(`shortToLongHex`, () => {
   expect(shortToLongHex('#FF00FFAA')).toBe('#FF00FFAA') // warn, it's ok
 
   expect(() => shortToLongHex('#')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// colorToHex
+////////////////////////////////////////////////////////
+
+test(`colorToHex`, () => {
+  expect(colorToHex('#FFFFFF')).toEqual('#FFFFFF')
+  expect(colorToHex('#FFFFFF00')).toEqual('#FFFFFF00')
+  expect(colorToHex('#FFF')).toEqual('#FFF')
+  expect(colorToHex({ r: 0, g: 0, b: 0 })).toEqual('#000000')
+  expect(colorToHex({ r: 0, g: 0, b: 0, a: 0.6 })).toEqual('#00000099')
+  expect(colorToHex({ c: 0, m: 100, y: 0, k: 0 })).toEqual('#FF00FF')
+  expect(colorToHex({ h: 0, s: 0, l: 100 })).toEqual('#FFFFFF')
+  expect(colorToHex({ h: 0, s: 0, l: 0, a: 0.2 })).toEqual('#00000033')
+
+  expect(() => colorToHex('#')).toThrowError()
 })

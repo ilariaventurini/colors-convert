@@ -1,13 +1,16 @@
 import { round } from 'lodash'
-import { HEX, RGB, RGBA, CMYK, HSL, HSLA } from '../../types/types'
-import { isHex, isRgb } from '../../types/isType'
+import { HEX, RGB, RGBA, CMYK, HSL, HSLA, Color } from '../../types/types'
+import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType'
 import { between } from '../../utils/math-utils'
 import { chunkString } from '../../utils/string-utils'
-import { rgb2cmyk, rgb2hsl } from './rgb'
+import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'
 import { HEX_REGEX } from '../../constants/regex'
 import { ALPHA_PRECISION } from '../../constants/rgba'
 import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
-import { rgbaToHsla } from './rgba'
+import { rgbaToHex, rgbaToHsla } from './rgba'
+import { cmyk2hex } from './cmyk'
+import { hsl2hex } from './hsl'
+import { hslaToHex } from './hsla'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
@@ -131,4 +134,20 @@ export function shortToLongHex(hex: HEX): HEX {
 
   const [hashtag, r, g, b, a] = Array.from(hex)
   return a ? `${hashtag}${r}${r}${g}${g}${b}${b}${a}${a}` : `${hashtag}${r}${r}${g}${g}${b}${b}`
+}
+
+/**
+ * Convert a generic color to hex string.
+ * @param color color to convert to hex
+ * @returns hex string
+ */
+export function colorToHex(color: Color): HEX {
+  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+
+  if (isHex(color)) return color
+  else if (isRgb(color)) return rgb2hex(color)
+  else if (isRgba(color)) return rgbaToHex(color)
+  else if (isCmyk(color)) return cmyk2hex(color)
+  else if (isHsl(color)) return hsl2hex(color)
+  else return hslaToHex(color) // hsla
 }
