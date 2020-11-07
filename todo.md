@@ -1,13 +1,15 @@
 # TODO
 
-- [ ] check color model type: is it right that hsl values are h in [0, 359] and s,l in [0, 100]?
-- [ ] refactor rgbString2Object and rgbaString2Object
-- [x] put regex in a new file?
 - [ ] update doc
-- [ ] nella jsdoc replace HEX, RGB with hex, rgb, ecc
 - [ ] remove parentesis if not necessary
 - [ ] rename 2 with To (deprecate old versions)
 - [ ] make a demo page
-- [ ] finish hex refactor
-
-HEX: #rgba -> #rrggbbaa
+- [ ] test: case insensitive
+- [ ] test regex
+- [ ] controllare bene quali sono le funzioni aggiunte rispetto alla versione attuale punnlicata e aggiornare il changelog, quelle nuove devono essere nella forma ..To.., non ..2..
+- [ ] aggiungere le hexToHlsa, rgbToHsla, rgbaToHsla, cmykToHsla
+- [ ] controllare che tutto si converti in tutto
+- [ ] check che import siano da index se disponibili o comunque decidi, che sia uniforme
+- [ ] check che colorToHex, colotToRgb, ... ci siano e che trasformino in tutto
+- [ ] migliora messaggi di errore e doc
+- [ ] use jsodc (@deprecated, @example, @throws, @todo, @type, @type)
