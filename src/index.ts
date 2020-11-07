@@ -46,7 +46,15 @@ export {
   colorToHsl,
   hslString2Object,
 } from './lib/color-models/hsl'
-export { hslaToHex, hslaToRgb, hslaToRgba, hslaToHsl, hslaToCmyk } from './lib/color-models/hsla'
+export {
+  hslaToHex,
+  hslaToRgb,
+  hslaToRgba,
+  hslaToHsl,
+  hslaToCmyk,
+  colorToHsla,
+  hslaStringToObject,
+} from './lib/color-models/hsla'
 export { getRandomColor } from './lib/misc/random'
 export { mix } from './lib/misc/mix'
 export { name } from './lib/color-names/name'

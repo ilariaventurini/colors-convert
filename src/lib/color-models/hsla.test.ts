@@ -1,4 +1,12 @@
-import { hslaToHex, hslaToRgb, hslaToRgba, hslaToHsl, hslaToCmyk } from '../../index'
+import {
+  hslaToHex,
+  hslaToRgb,
+  hslaToRgba,
+  hslaToHsl,
+  hslaToCmyk,
+  colorToHsla,
+  hslaStringToObject,
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // hslaToHex
@@ -72,4 +80,39 @@ test(`hslaToCmyk`, () => {
   expect(hslaToCmyk({ h: 359, s: 90, l: 50, a: 0 })).toStrictEqual({ c: 0, m: 95, y: 93, k: 5 })
 
   expect(() => hslaToCmyk({ h: -1, s: 90, l: 50, a: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// colorToHsla
+////////////////////////////////////////////////////////
+
+test(`colorToHsla`, () => {
+  expect(colorToHsla('#FFFFFF')).toEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(colorToHsla('#FFFFFF00')).toEqual({ h: 0, s: 0, l: 100, a: 0 })
+  expect(colorToHsla('#FFF')).toEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(colorToHsla({ r: 0, g: 0, b: 0 })).toEqual({ h: 0, s: 0, l: 0, a: 1 })
+  expect(colorToHsla({ r: 0, g: 0, b: 0, a: 0.7 })).toEqual({ h: 0, s: 0, l: 0, a: 0.7 })
+  expect(colorToHsla({ c: 0, m: 100, y: 0, k: 0 })).toEqual({ h: 300, s: 100, l: 50, a: 1 })
+  expect(colorToHsla({ h: 0, s: 0, l: 100 })).toEqual({ h: 0, s: 0, l: 100, a: 1 })
+  expect(colorToHsla({ h: 0, s: 0, l: 0, a: 0.2 })).toEqual({ h: 0, s: 0, l: 0, a: 0.2 })
+
+  expect(() => colorToHsla('#')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// hslaStringToObject
+////////////////////////////////////////////////////////
+
+test(`hslaStringToObject`, () => {
+  expect(hslaStringToObject('322, 79%, 52%, 0.5')).toEqual({ h: 322, s: 79, l: 52, a: 0.5 })
+  expect(hslaStringToObject('322,79%, 52%, 0.4')).toEqual({ h: 322, s: 79, l: 52, a: 0.4 })
+  expect(hslaStringToObject('322,  79%, 52%, 0.4')).toEqual({ h: 322, s: 79, l: 52, a: 0.4 })
+  expect(hslaStringToObject('hsla(322, 79%, 52%, 0.4)')).toEqual({ h: 322, s: 79, l: 52, a: 0.4 })
+  expect(hslaStringToObject('hsla(322,79%, 52%, 1)')).toEqual({ h: 322, s: 79, l: 52, a: 1 })
+  expect(hslaStringToObject('hsla(322,  79%, 52%, 0)')).toEqual({ h: 322, s: 79, l: 52, a: 0 })
+
+  expect(() => hslaStringToObject('1')).toThrowError()
+  expect(() => hslaStringToObject('hsla(322,  79, 52%, 1)')).toThrowError()
+  expect(() => hslaStringToObject('600, 79%, 52%, 0')).toThrowError()
+  expect(() => hslaStringToObject('hsla(600, 79%, 52%, 0)')).toThrowError()
 })
