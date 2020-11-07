@@ -51,6 +51,18 @@ test(`rgb2hsl`, () => {
 })
 
 ////////////////////////////////////////////////////////
+// rgb2rgba
+////////////////////////////////////////////////////////
+
+test(`rgb2rgba`, () => {
+  expect(rgb2rgba({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(rgb2rgba({ r: 0, g: 0, b: 0 }, 0.3)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0.3 })
+
+  expect(() => rgb2rgba({ r: 100, g: 0, b: 0 }, 10)).toThrowError()
+  expect(() => rgb2rgba({ r: 600, g: 0, b: 0 })).toThrowError()
+})
+
+////////////////////////////////////////////////////////
 // rgbToHsla
 ////////////////////////////////////////////////////////
 
@@ -62,16 +74,6 @@ test(`rgbToHsla`, () => {
 
   expect(() => rgbToHsla({ r: 600, g: 0, b: 0 })).toThrowError()
   expect(() => rgbToHsla({ r: 10, g: 0, b: 0 }, 10)).toThrowError()
-})
-
-////////////////////////////////////////////////////////
-// rgb2rgba
-////////////////////////////////////////////////////////
-
-test(`rgb2rgba`, () => {
-  expect(rgb2rgba({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
-
-  expect(() => rgb2rgba({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

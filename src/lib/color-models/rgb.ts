@@ -90,15 +90,16 @@ export function rgb2hsl(rgb: RGB): HSL {
 }
 
 /**
- * Convert an rgb color to a rgba color adding 1 as alpha.
+ * Convert an rgb color to a rgba color.
  * @param rgb color to convert to rgba
+ * @param alpha opacity value in range [0, 1]
  * @returns rgba color object
  */
-// FIXME: use alpha = 1 as parameter!
-export function rgb2rgba(rgb: RGB): RGBA {
+export function rgb2rgba(rgb: RGB, alpha = 1): RGBA {
   if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
+  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
 
-  return { r: rgb.r, g: rgb.g, b: rgb.b, a: 1 }
+  return { r: rgb.r, g: rgb.g, b: rgb.b, a: alpha }
 }
 
 /**
