@@ -1,4 +1,3 @@
-import { round } from 'lodash'
 import { HEX, RGB, RGBA, CMYK, HSL, HSLA, Color } from '../../types/types'
 import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType'
 import { between } from '../../utils/math-utils'
