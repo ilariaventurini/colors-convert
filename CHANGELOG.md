@@ -14,6 +14,7 @@ All notable changes to **colors-convert** library are be documented here.
 - [add] add CHANGELOG file
 - [add] add LICENSE file
 - **[add] trying to add docusaurus**
+- [change] rgb2rgba has optional alpha parameter
 - [change] ColorName type: is no more a string, but an object with name, hex and rgb
 - [change] add library description and keywords in package.json
 - [change] update README
