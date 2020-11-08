@@ -1,6 +1,6 @@
 import { HSLA_REGEX } from '../constants/regex'
-import { isHsla } from '../types/isType'
-import { HSLA } from '../types/types'
+import { isHsla } from '../lib/types/isType'
+import { HSLA } from '../lib/types/types'
 
 //////////////////////////////////////////////////////
 // This file contains functions not exported.

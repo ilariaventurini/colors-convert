@@ -1,5 +1,5 @@
-import { HSL, RGB, CMYK, HEX, HSLA, RGBA, Color } from '../../types/types'
-import { isCmyk, isColor, isHex, isHsl, isHsla, isRgb, isRgba } from '../../types/isType'
+import { HSL, RGB, CMYK, HEX, HSLA, RGBA, Color } from '../types/types'
+import { isCmyk, isColor, isHex, isHsl, isHsla, isRgb, isRgba } from '../types/isType'
 import { hsl2cmyk, hsl2hex, hsl2rgb, hslToHsla } from './hsl'
 import { alphaToHex } from '../../utils/hex-utils'
 import { hexToHsla } from './hex'

@@ -1,6 +1,6 @@
 import { HSL_REGEX } from '../constants/regex'
-import { isHsl } from '../types/isType'
-import { HSL } from '../types/types'
+import { isHsl } from '../lib/types/isType'
+import { HSL } from '../lib/types/types'
 
 //////////////////////////////////////////////////////
 // This file contains functions not exported.

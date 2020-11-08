@@ -1,6 +1,6 @@
 import { RGB_REGEX } from '../constants/regex'
-import { isRgb } from '../types/isType'
-import { RGB } from '../types/types'
+import { isRgb } from '../lib/types/isType'
+import { RGB } from '../lib/types/types'
 
 //////////////////////////////////////////////////////
 // This file contains functions not exported.

@@ -1,6 +1,6 @@
 import { CMYK_REGEX } from '../constants/regex'
-import { isCmyk } from '../types/isType'
-import { CMYK } from '../types/types'
+import { isCmyk } from '../lib/types/isType'
+import { CMYK } from '../lib/types/types'
 
 //////////////////////////////////////////////////////
 // This file contains functions not exported.

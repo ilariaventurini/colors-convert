@@ -1,6 +1,6 @@
 import { RGBA_REGEX } from '../../constants/regex'
-import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../../types/isType'
-import { CMYK, Color, HEX, HSL, HSLA, RGB, RGBA } from '../../types/types'
+import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../types/isType'
+import { CMYK, Color, HEX, HSL, HSLA, RGB, RGBA } from '../types/types'
 import { alphaToHex } from '../../utils/hex-utils'
 import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
 import { cmykToRgba } from './cmyk'

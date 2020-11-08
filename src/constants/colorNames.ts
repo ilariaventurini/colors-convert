@@ -1,4 +1,4 @@
-import { ColorName } from '../types/types'
+import { ColorName } from '../lib/types/types'
 
 export const colorNames: ColorName[] = [
   { name: '18th Century Green', hex: '#a59344', rgb: { r: 165, g: 147, b: 68 } },

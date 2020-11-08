@@ -1,5 +1,5 @@
-import { Color } from '../../types/types'
-import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../../types/isType'
+import { Color } from '../types/types'
+import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../types/isType'
 import { toUpper } from 'lodash'
 
 /**

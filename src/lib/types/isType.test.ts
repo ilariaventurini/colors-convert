@@ -1,4 +1,4 @@
-import { isHex, isRgb, isRgba, isCmyk, isHsl, isHsla, isColor } from '../index'
+import { isHex, isRgb, isRgba, isCmyk, isHsl, isHsla, isColor } from '../../index'
 
 ////////////////////////////////////////////////////////
 // isHex
