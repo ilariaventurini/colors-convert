@@ -1,11 +1,20 @@
 export type HEX = string
 
+/**
+ * Rgb interface.
+ */
 export interface RGB {
+  /** red */
   r: number
+  /** green */
   g: number
+  /** blue */
   b: number
 } // red green blue
 
+/**
+ * Rgba interface.
+ */
 export interface RGBA {
   r: number
   g: number
