@@ -34,10 +34,10 @@ export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
 
 /**
  * Convert a hex to a rgb color, if hex color has opacity, it will be lost.
- * @param hex color to convert to RGB
- * @returns RGB object
+ * @param hex color to convert to rgb
+ * @returns rgb object
  */
-export function hexToRgb(hex: HEX): RGB {
+export function hex2rgb(hex: HEX): RGB {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
 
   const { r, g, b } = hex2rgba(hex)
@@ -84,7 +84,7 @@ export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
 export function hex2cmyk(hex: HEX): CMYK {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
 
-  const rgb = hexToRgb(hex)
+  const rgb = hex2rgb(hex)
   return rgb2cmyk(rgb)
 }
 
@@ -96,7 +96,7 @@ export function hex2cmyk(hex: HEX): CMYK {
 export function hex2hsl(hex: HEX): HSL {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
 
-  const rgb = hexToRgb(hex)
+  const rgb = hex2rgb(hex)
   return rgb2hsl(rgb)
 }
 
