@@ -2,7 +2,7 @@ export { isHex, isRgb, isRgba, isCmyk, isHsl, isHsla, isColor } from './types/is
 export { color2string, color2cssString } from './lib/color-models/color'
 export {
   hex2rgbOrRgba,
-  hex2rgb,
+  hexToRgb,
   hex2rgba,
   hex2hexWithAlpha,
   hex2cmyk,
