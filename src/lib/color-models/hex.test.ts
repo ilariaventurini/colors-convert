@@ -157,8 +157,8 @@ test(`shortToLongHex`, () => {
   expect(shortToLongHex('#0F0')).toBe('#00FF00')
   expect(shortToLongHex('#09C')).toBe('#0099CC')
   expect(shortToLongHex('#09CA')).toBe('#0099CCAA')
-  expect(shortToLongHex('#FF00FF')).toBe('#FF00FF') // warn, it's ok
-  expect(shortToLongHex('#FF00FFAA')).toBe('#FF00FFAA') // warn, it's ok
+  expect(shortToLongHex('#FF00FF')).toBe('#FF00FF')
+  expect(shortToLongHex('#FF00FFAA')).toBe('#FF00FFAA')
 
   expect(() => shortToLongHex('#')).toThrowError()
 })

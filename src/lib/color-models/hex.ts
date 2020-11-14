@@ -127,7 +127,6 @@ export function hexToHsla(hex: HEX, alpha = 1): HSLA {
 export function shortToLongHex(hex: HEX): HEX {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
   if (!HEX_REGEX.short.test(hex)) {
-    console.warn(`shortToLongHex: ${hex} is not in the short format.`)
     return hex
   }
 
