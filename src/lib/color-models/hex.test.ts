@@ -81,6 +81,7 @@ test(`hex2rgba`, () => {
 
 test(`hex2hexWithAlpha`, () => {
   expect(hex2hexWithAlpha('#000000', 0)).toBe('#00000000')
+  expect(hex2hexWithAlpha('#000000')).toBe('#000000FF')
   expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000FF')
   expect(hex2hexWithAlpha('#000', 1)).toBe('#000000FF')
   expect(hex2hexWithAlpha('#000', 0.6)).toBe('#00000099')

@@ -65,9 +65,9 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * @param alpha opacity value in range [0, 1]
  * @returns hex color with opacity
  */
-export function hex2hexWithAlpha(hex: HEX, alpha: number): HEX {
   if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
   if (!between(alpha, [0, 1])) throw new Error(`${alpha} must be in [0, 1].`)
+export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
 
   const longHex = shortToLongHex(hex)
   if (HEX_REGEX.longWithAlpha.test(longHex)) return longHex
