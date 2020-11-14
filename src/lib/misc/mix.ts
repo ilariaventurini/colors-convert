@@ -1,7 +1,7 @@
 import { Color, RGB } from '../types/types'
 import { color2rgb } from '../color-models/rgb'
 import { sum, sumBy, round } from 'lodash'
-import { applyFnToEachObjValue } from './utils'
+import { applyFnToEachObjValue } from '../../utils/utils'
 
 /**
  * Mix two or more colors based on their weights.

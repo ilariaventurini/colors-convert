@@ -1,5 +1,5 @@
 import { CMYK, HEX, RGB, HSL, RGBA, HSLA, Color } from '../types/types'
-import { applyFnToEachObjValue } from '../misc/utils'
+import { applyFnToEachObjValue } from '../../utils/utils'
 import { round } from 'lodash'
 import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../types/isType'
 import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'

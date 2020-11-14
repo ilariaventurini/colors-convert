@@ -1,5 +1,5 @@
 import { between } from '../../utils/math-utils'
-import { sameContent } from '../misc/utils'
+import { sameContent } from '../../utils/utils'
 import { HEX, RGB, RGBA, CMYK, HSL, HSLA, Color } from './types'
 import { HEX_REGEX } from '../../constants/regex'
 
