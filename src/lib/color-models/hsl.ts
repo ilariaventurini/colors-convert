@@ -10,6 +10,12 @@ import { hex2hsl } from './hex'
 import { rgbaToHsl } from './rgba'
 import { cmyk2hsl } from './cmyk'
 import { hslaToHsl } from './hsla'
+import {
+  notValidAlphaValueMessage,
+  notValidColorMessage,
+  notValidHslMessage,
+  notValidHslStringMessage,
+} from '../../utils/logs-utils'
 
 /**
  * Convert a hsl object to hex.
@@ -17,7 +23,7 @@ import { hslaToHsl } from './hsla'
  * @returns hex color
  */
 export function hsl2hex(hsl: HSL): HEX {
-  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2hex', hsl))
 
   const rgb = hsl2rgb(hsl)
   return rgb2hex(rgb)
@@ -29,7 +35,7 @@ export function hsl2hex(hsl: HSL): HEX {
  * @returns rgb color object
  */
 export function hsl2rgb(hsl: HSL): RGB {
-  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2rgb', hsl))
 
   const { h, s, l } = hsl
   // normalize values
@@ -77,8 +83,8 @@ export function hsl2rgb(hsl: HSL): RGB {
  * @returns rgba object
  */
 export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
-  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToRgba', hsl))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hslToRgba', alpha))
 
   const rgb = hsl2rgb(hsl)
   return { ...rgb, a: alpha }
@@ -90,9 +96,7 @@ export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
  * @returns cmyk object
  */
 export function hsl2cmyk(hsl: HSL): CMYK {
-  if (!isHsl(hsl)) {
-    throw new Error(`${hsl} is not a hsl color.`)
-  }
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2cmyk', hsl))
 
   const rgb = hsl2rgb(hsl)
   const cmyk = rgb2cmyk(rgb)
@@ -106,8 +110,8 @@ export function hsl2cmyk(hsl: HSL): CMYK {
  * @returns hsla object
  */
 export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
-  if (!isHsl(hsl)) throw new Error(`${hsl} is not a hsl color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToHsla', hsl))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hslToHsla', alpha))
 
   return { ...hsl, a: alpha }
 }
@@ -118,7 +122,7 @@ export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
  * @returns hsl color object
  */
 export function colorToHsl(color: Color): HSL {
-  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('colorToHsl', color))
 
   if (isHex(color)) return hex2hsl(color)
   else if (isRgb(color)) return rgb2hsl(color)
@@ -140,9 +144,7 @@ export function hslString2Object(hslString: string): HSL {
   const isLongFormat = HSL_REGEX.long.test(hslString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(
-      `${hslString} is not a valid format. The accepted formats are 'h, s%, l%' and 'hsl(h, s%, l%)' with h in [0, 359] and s, l in [0, 100].`
-    )
+    throw new Error(notValidHslStringMessage('hslString2Object', hslString))
 
   const hslStringCleanShortFormat = isShortFormat ? hslString : fromLongToShortFormat(hslString)
   return shortHslFormatToHslObject(hslStringCleanShortFormat)

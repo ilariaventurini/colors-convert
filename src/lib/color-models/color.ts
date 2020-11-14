@@ -1,6 +1,7 @@
 import { Color } from '../types/types'
 import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../types/isType'
 import { toUpper } from 'lodash'
+import { notValidColorMessage } from '../../utils/logs-utils'
 
 /**
  * Convert a color to a string format.
@@ -8,7 +9,7 @@ import { toUpper } from 'lodash'
  * @returns string representing the color
  */
 export function color2string(color: Color): string {
-  if (!isColor(color)) throw new Error(`${color} is not a color.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('color2string', color))
 
   if (isHex(color)) return toUpper(color)
   else if (isRgb(color)) return `${color.r}, ${color.g}, ${color.b}`
@@ -25,7 +26,7 @@ export function color2string(color: Color): string {
  * @returns string representing the color
  */
 export function color2cssString(color: Color): string {
-  if (!isColor(color)) throw new Error(`${color} is not a color.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('color2cssString', color))
 
   if (isHex(color)) return toUpper(color)
   else if (isRgb(color)) return `rgb(${color.r}, ${color.g}, ${color.b})`

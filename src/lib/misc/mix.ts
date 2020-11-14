@@ -59,11 +59,8 @@ function weightedRgb(rgb: RGB, weight: number) {
 function getWeights(colors: Color[], weights?: number[]): number[] {
   const defaultWeight = 1 / colors.length
   const defaultWeights = Array(colors.length).fill(defaultWeight)
-  if (weights && checkWeights(colors, weights)) {
-    return weights
-  } else {
-    return defaultWeights
-  }
+  if (weights && checkWeights(colors, weights)) return weights
+  else return defaultWeights
 }
 
 /**
@@ -74,13 +71,10 @@ function getWeights(colors: Color[], weights?: number[]): number[] {
  */
 function checkWeights(colors: Color[], weights: number[]) {
   const tot = sum(weights)
-  if (weights.length !== colors.length) {
+  if (weights.length !== colors.length)
     throw new Error(
       `Colors and weights should be in the same number. Colors are ${colors.length} and weights are ${weights.length}.`
     )
-  }
-  if (tot !== 1) {
-    throw new Error(`The sum of the weights should be 1, instead is ${tot}.`)
-  }
+  if (tot !== 1) throw new Error(`The sum of the weights should be 1, instead is ${tot}.`)
   return true
 }

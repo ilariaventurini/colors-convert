@@ -8,6 +8,11 @@ import { rgbaToHsla } from './rgba'
 import { cmykToHsla } from './cmyk'
 import { HSLA_REGEX } from '../../constants/regex'
 import { fromLongToShortFormat, shortHslaFormatToHslaObject } from '../../utils/hsla-utils'
+import {
+  notValidColorMessage,
+  notValidHslaMessage,
+  notValidHslaStringMessage,
+} from '../../utils/logs-utils'
 
 /**
  * Convert a hsla object to hex long format #RRGGBBAA.
@@ -15,7 +20,7 @@ import { fromLongToShortFormat, shortHslaFormatToHslaObject } from '../../utils/
  * @returns hex color string
  */
 export function hslaToHex(hsla: HSLA): HEX {
-  if (!isHsla(hsla)) throw new Error(`${hsla} is not a hsla color.`)
+  if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToHex', hsla))
 
   const { h, s, l, a } = hsla
   const hex = hsl2hex({ h, s, l })
@@ -28,7 +33,7 @@ export function hslaToHex(hsla: HSLA): HEX {
  * @returns rgb color object
  */
 export function hslaToRgb(hsla: HSLA): RGB {
-  if (!isHsla(hsla)) throw new Error(`${hsla} is not a hsla color.`)
+  if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToRgb', hsla))
 
   const { h, s, l } = hsla
   return hsl2rgb({ h, s, l })
@@ -40,7 +45,7 @@ export function hslaToRgb(hsla: HSLA): RGB {
  * @returns rgba color object
  */
 export function hslaToRgba(hsla: HSLA): RGBA {
-  if (!isHsla(hsla)) throw new Error(`${hsla} is not a hsla color.`)
+  if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToRgba', hsla))
 
   const { h, s, l, a } = hsla
   const rgb = hsl2rgb({ h, s, l })
@@ -53,7 +58,7 @@ export function hslaToRgba(hsla: HSLA): RGBA {
  * @returns hsl color object
  */
 export function hslaToHsl(hsla: HSLA): HSL {
-  if (!isHsla(hsla)) throw new Error(`${hsla} is not a hsla color.`)
+  if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToHsl', hsla))
 
   const { h, s, l, a } = hsla
   return { h, s, l }
@@ -66,7 +71,7 @@ export function hslaToHsl(hsla: HSLA): HSL {
  * @returns cmyk color object
  */
 export function hslaToCmyk(hsla: HSLA): CMYK {
-  if (!isHsla(hsla)) throw new Error(`${hsla} is not a hsla color.`)
+  if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToCmyk', hsla))
 
   const { h, s, l } = hsla
   return hsl2cmyk({ h, s, l })
@@ -78,7 +83,7 @@ export function hslaToCmyk(hsla: HSLA): CMYK {
  * @returns hsla color object
  */
 export function colorToHsla(color: Color): HSLA {
-  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('colorToHsla', color))
 
   if (isHex(color)) return hexToHsla(color)
   else if (isRgb(color)) return rgbToHsla(color)
@@ -99,10 +104,7 @@ export function hslaStringToObject(hslaString: string): HSLA {
   const isShortFormat = HSLA_REGEX.short.test(hslaString)
   const isLongFormat = HSLA_REGEX.long.test(hslaString)
 
-  if (!isShortFormat && !isLongFormat)
-    throw new Error(
-      `${hslaString} is not a valid format. The accepted formats are 'h, s%, l%, a' and 'hsla(h, s%, l%, a)' with h in [0, 359], s, l in [0, 100] and a in [0, 1].`
-    )
+  if (!isShortFormat && !isLongFormat) throw new Error(notValidHslaStringMessage('', hslaString))
 
   const hslaStringCleanShortFormat = isShortFormat ? hslaString : fromLongToShortFormat(hslaString)
   return shortHslaFormatToHslaObject(hslaStringCleanShortFormat)

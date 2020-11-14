@@ -10,6 +10,12 @@ import { hex2cmyk } from './hex'
 import { rgbaToCmyk } from './rgba'
 import { hsl2cmyk } from './hsl'
 import { hslaToCmyk } from './hsla'
+import {
+  notValidAlphaValueMessage,
+  notValidCmykMessage,
+  notValidCmykStringMessage,
+  notValidColorMessage,
+} from '../../utils/logs-utils'
 
 /**
  * Convert a cmyk color to a hex.
@@ -17,7 +23,7 @@ import { hslaToCmyk } from './hsla'
  * @returns hex color
  */
 export function cmyk2hex(cmyk: CMYK): HEX {
-  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2hex', cmyk))
 
   const rgb = cmyk2rgb(cmyk)
   return rgb2hex(rgb)
@@ -29,7 +35,7 @@ export function cmyk2hex(cmyk: CMYK): HEX {
  * @returns rgb object
  */
 export function cmyk2rgb(cmyk: CMYK): RGB {
-  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2rgb', cmyk))
 
   const { c, m, y, k } = applyFnToEachObjValue(cmyk, (col: number) => col / 100) as CMYK
   const rgb01 = {
@@ -47,8 +53,8 @@ export function cmyk2rgb(cmyk: CMYK): RGB {
  * @returns rgba object
  */
 export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
-  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToRgba', cmyk))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('cmykToRgba', alpha))
 
   const rgb = cmyk2rgb(cmyk)
   return { ...rgb, a: alpha }
@@ -60,7 +66,7 @@ export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
  * @returns hsl object
  */
 export function cmyk2hsl(cmyk: CMYK): HSL {
-  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2hsl', cmyk))
 
   const rgb = cmyk2rgb(cmyk)
   return rgb2hsl(rgb)
@@ -73,8 +79,8 @@ export function cmyk2hsl(cmyk: CMYK): HSL {
  * @returns hsla object
  */
 export function cmykToHsla(cmyk: CMYK, alpha = 1): HSLA {
-  if (!isCmyk(cmyk)) throw new Error(`${cmyk} is not a cmyk color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToHsla', cmyk))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('cmykToHsla', alpha))
 
   const rgb = cmyk2rgb(cmyk)
   const hsl = rgb2hsl(rgb)
@@ -87,7 +93,7 @@ export function cmykToHsla(cmyk: CMYK, alpha = 1): HSLA {
  * @returns cmyk color object
  */
 export function colorToCmyk(color: Color): CMYK {
-  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('colorToCmyk', color))
 
   if (isHex(color)) return hex2cmyk(color)
   else if (isRgb(color)) return rgb2cmyk(color)
@@ -109,9 +115,7 @@ export function cmykString2Object(cmykString: string): CMYK {
   const isLongFormat = CMYK_REGEX.long.test(cmykString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(
-      `${cmykString} is not a valid format. The accepted formats are 'c, m, y, k' and 'cmyk(c, m, y, k)' with c, m, y, k in [0, 100].`
-    )
+    throw new Error(notValidCmykStringMessage('cmykString2Object', cmykString))
 
   const cmykStringCleanShortFormat = isShortFormat
     ? cmykString

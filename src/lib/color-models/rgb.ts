@@ -11,6 +11,12 @@ import { hslaToRgb } from './hsla'
 import { fromLongToShortRgbFormat, shortRgbFormatToRgbObject } from '../../utils/rgb-utils'
 import { RGB_REGEX } from '../../constants/regex'
 import { between } from '../../utils/math-utils'
+import {
+  notValidAlphaValueMessage,
+  notValidColorMessage,
+  notValidRgbMessage,
+  notValidRgbStringMessage,
+} from '../../utils/logs-utils'
 
 /**
  * Convert an rgb object to hex.
@@ -18,7 +24,7 @@ import { between } from '../../utils/math-utils'
  * @returns hex color
  */
 export function rgb2hex(rgb: RGB): HEX {
-  if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2hex', rgb))
 
   const hex = Object.values(rgb)
     .map((n) => number0255ToHex(n))
@@ -32,7 +38,7 @@ export function rgb2hex(rgb: RGB): HEX {
  * @returns cmyk color
  */
 export function rgb2cmyk(rgb: RGB): CMYK {
-  if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2cmyk', rgb))
 
   const { r, g, b } = rgb
   // normalize r,g,b values (from 0-255 to 0-1)
@@ -57,7 +63,7 @@ export function rgb2cmyk(rgb: RGB): CMYK {
  * @returns hsl color object
  */
 export function rgb2hsl(rgb: RGB): HSL {
-  if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2hsl', rgb))
 
   const { r, g, b } = rgb
   const max = Math.max(r, g, b)
@@ -96,8 +102,8 @@ export function rgb2hsl(rgb: RGB): HSL {
  * @returns rgba color object
  */
 export function rgb2rgba(rgb: RGB, alpha = 1): RGBA {
-  if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2rgba', rgb))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgb2rgba', alpha))
 
   return { r: rgb.r, g: rgb.g, b: rgb.b, a: alpha }
 }
@@ -109,8 +115,8 @@ export function rgb2rgba(rgb: RGB, alpha = 1): RGBA {
  * @returns hsla color object
  */
 export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
-  if (!isRgb(rgb)) throw new Error(`${rgb} is not a rgb color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToHsla', rgb))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgb2rgba', alpha))
 
   const hsl = rgb2hsl(rgb)
   return { ...hsl, a: alpha }
@@ -122,7 +128,7 @@ export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
  * @returns rgb color object
  */
 export function color2rgb(color: Color): RGB {
-  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('color2rgb', color))
 
   if (isHex(color)) return rgba2rgb(hex2rgba(color))
   else if (isRgb(color)) return color
@@ -145,9 +151,7 @@ export function rgbString2Object(rgbString: string): RGB {
   const isLongFormat = RGB_REGEX.long.test(rgbString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(
-      `${rgbString} is not a valid format. The accepted formats are 'r, g, b' and 'rgb(r, g, b)' with r, g, b in [0, 255].`
-    )
+    throw new Error(notValidRgbStringMessage('rgbString2Object', rgbString))
 
   // convert rgbString to short format: 'R, G, B'
   const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortRgbFormat(rgbString)

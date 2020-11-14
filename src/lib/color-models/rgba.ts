@@ -8,6 +8,7 @@ import { hex2rgba } from './hex'
 import { hslToRgba } from './hsl'
 import { hslaToRgba } from './hsla'
 import { rgb2cmyk, rgb2hex, rgb2hsl, rgb2rgba } from './rgb'
+import { notValidRgbaMessage, notValidRgbaStringMessage } from '../../utils/logs-utils'
 
 /**
  * Convert a rgba color object to a hex color.
@@ -15,7 +16,7 @@ import { rgb2cmyk, rgb2hex, rgb2hsl, rgb2rgba } from './rgb'
  * @returns hex color
  */
 export function rgbaToHex(rgba: RGBA): HEX {
-  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToHex', rgba))
 
   const { r, g, b, a } = rgba
   const rgbHex = rgb2hex({ r, g, b })
@@ -29,7 +30,7 @@ export function rgbaToHex(rgba: RGBA): HEX {
  * @returns rgb color object
  */
 export function rgba2rgb(rgba: RGBA): RGB {
-  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgba2rgb', rgba))
 
   return { r: rgba.r, g: rgba.g, b: rgba.b }
 }
@@ -41,7 +42,7 @@ export function rgba2rgb(rgba: RGBA): RGB {
  * @returns cmyk color object
  */
 export function rgbaToCmyk(rgba: RGBA): CMYK {
-  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToCmyk', rgba))
 
   const { r, g, b } = rgba
   return rgb2cmyk({ r, g, b })
@@ -53,7 +54,7 @@ export function rgbaToCmyk(rgba: RGBA): CMYK {
  * @returns hsl color object
  */
 export function rgbaToHsl(rgba: RGBA): HSL {
-  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToHsl', rgba))
 
   const { r, g, b } = rgba
   return rgb2hsl({ r, g, b })
@@ -65,7 +66,7 @@ export function rgbaToHsl(rgba: RGBA): HSL {
  * @returns hsla color object
  */
 export function rgbaToHsla(rgba: RGBA): HSLA {
-  if (!isRgba(rgba)) throw new Error(`${rgba} is not a rgba color.`)
+  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToHsla', rgba))
 
   return { ...rgbaToHsl(rgba), a: rgba.a }
 }
@@ -75,8 +76,8 @@ export function rgbaToHsla(rgba: RGBA): HSLA {
  * @param color color to convert to rgba
  * @returns rgba color object
  */
-export function colorToRgba(color: Color): RGB {
-  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+export function colorToRgba(color: Color): RGBA {
+  if (!isColor(color)) throw new Error(notValidRgbaMessage('colorToRgba', color))
 
   if (isHex(color)) return hex2rgba(color)
   else if (isRgb(color)) return rgb2rgba(color)
@@ -99,9 +100,7 @@ export function rgbaString2Object(rgbaString: string): RGBA {
   const isLongFormat = RGBA_REGEX.long.test(rgbaString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(
-      `${rgbaString} is not a valid format. The accepted formats are 'r, g, b, a' and 'rgba(r, g, b, a)' with r, g, b in [0, 255] and a in [0, 1].`
-    )
+    throw new Error(notValidRgbaStringMessage('rgbaString2Object', rgbaString))
 
   // convert rgbString to short format: 'R, G, B'
   const rgbaStringCleanShortFormat = isShortFormat

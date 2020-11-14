@@ -1,6 +1,6 @@
 import { between } from '../../utils/math-utils'
 import { sameContent } from '../misc/utils'
-import { HEX, RGB, RGBA, CMYK, Color, HSL, HSLA } from './types'
+import { HEX, RGB, RGBA, CMYK, HSL, HSLA, Color } from './types'
 import { HEX_REGEX } from '../../constants/regex'
 
 /**
@@ -8,20 +8,20 @@ import { HEX_REGEX } from '../../constants/regex'
  *  - #RRGGBB[AA] (6/8-digit, long form)
  *  - #RGB[A] (3/4-digit, short form)
  * where R, G, B, A are in [0-9a-fA-F].
- * @param color color to check if it is in the right HEX format
- * @returns true if color is in the right HEX format, false otherwise
+ * @param color color to check if it is in the right hex format
+ * @returns true if color is in the right hex format, false otherwise
  */
 export function isHex(color: any): color is HEX {
   return HEX_REGEX.color.test(color)
 }
 
 /**
- * Accept an object like this {r, g, b} with r,b,g numeric values in range [0, 255].
- * @param color color to check if it is in the right RGB format
- * @returns true if color is in the right RGB format, false otherwise
+ * Accept an object like this {r, g, b} with r, b, g numeric values in [0, 255].
+ * @param color color to check if it is in the right rgb format
+ * @returns true if color is in the right rgb format, false otherwise
  */
-// TODO: add support for values in range [0, 1]
-// TODO: add support for values in range [0%, 100%]
+// TODO: support values in [0, 1]
+// TODO: support values in [0%, 100%]
 export function isRgb(color: any): color is RGB {
   const keys = Object.keys(color)
   if (keys.length !== 3) return false
@@ -34,13 +34,12 @@ export function isRgb(color: any): color is RGB {
 }
 
 /**
- * Accept an object like this {r, g, b, a} with r,g,b numeric values in range [0, 255] and a in range [0,1].
- * @param color color to check if it is in the right RGBA format
- * @returns true if color is in the right RGBA format, false otherwise
+ * Accept an object like this {r, g, b, a} with r, g, b numeric values in [0, 255] and a in [0, 1].
+ * @param color color to check if it is in the right rgba format
+ * @returns true if color is in the right rgba format, false otherwise
  */
-// TODO: add support for values r,g,b in range [0, 1]
-// TODO: add support for values r,g,b,a in range [0%, 100%]
-// TODO: accept also rgba without a, consider it 1 as default
+// TODO: support values r,g,b in [0, 1]
+// TODO: support values r,g,b,a in [0%, 100%]
 export function isRgba(color: any): color is RGBA {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false
@@ -52,11 +51,11 @@ export function isRgba(color: any): color is RGBA {
 }
 
 /**
- * Accept an object like this {c, m, y, k} with c,m,y,k numeric values in range [0, 100].
- * @param color color to check if it is in the right CMYK format
- * @returns true if color is in the right CMYK format, false otherwise
+ * Accept an object like this {c, m, y, k} with c, m, y, k numeric values in [0, 100].
+ * @param color color to check if it is in the right cmyk format
+ * @returns true if color is in the right cmyk format, false otherwise
  */
-// TODO: add support for values in [0, 1]
+// TODO: support values in [0, 1]
 export function isCmyk(color: any): color is CMYK {
   const keys = Object.keys(color)
   if (keys.length !== 4) return false
@@ -70,12 +69,12 @@ export function isCmyk(color: any): color is CMYK {
 }
 
 /**
- * Accept HSL colors with:
+ * Accept hsl colors with:
  *  - h (hue): [0-359]°
  *  - s (saturation): [0-100]%
  *  - l (lightness): [0-100]%.
- * @param color color to check if it is in the right HSL format
- * @returns true if color is in the right HSL format, false otherwise
+ * @param color color to check if it is in the right hsl format
+ * @returns true if color is in the right hsl format, false otherwise
  */
 export function isHsl(color: any): color is HSL {
   const keys = Object.keys(color)
@@ -90,13 +89,13 @@ export function isHsl(color: any): color is HSL {
 }
 
 /**
- * Accept HSLA colors with:
+ * Accept hsla colors with:
  *  - h (hue): [0-359]°
  *  - s (saturation): [0-100]%
  *  - l (lightness): [0-100]%.
  *  - a (alpha): [0-1].
- * @param color color to check if it is in the right HSLA format
- * @returns true if color is in the right HSLA format, false otherwise
+ * @param color color to check if it is in the right hsla format
+ * @returns true if color is in the right hsla format, false otherwise
  */
 export function isHsla(color: any): color is HSLA {
   const keys = Object.keys(color)

@@ -10,6 +10,11 @@ import { rgbaToHex, rgbaToHsla } from './rgba'
 import { cmyk2hex } from './cmyk'
 import { hsl2hex } from './hsl'
 import { hslaToHex } from './hsla'
+import {
+  notValidAlphaValueMessage,
+  notValidColorMessage,
+  notValidHexMessage,
+} from '../../utils/logs-utils'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
@@ -17,7 +22,7 @@ import { hslaToHex } from './hsla'
  * @returns rgb or rgba object
  */
 export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
-  if (!isHex(hex)) throw new Error(`${hex} is not a valid hex color.`)
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2rgbOrRgba', hex))
 
   const hexLongWtihoutHashtag = shortToLongHex(hex).substring(1)
   const [r, g, b, a] = chunkString(hexLongWtihoutHashtag, 2)
@@ -38,7 +43,7 @@ export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
  * @returns rgb object
  */
 export function hexToRgb(hex: HEX): RGB {
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToRgb', hex))
 
   const { r, g, b } = hex2rgba(hex)
   return { r, g, b }
@@ -51,8 +56,8 @@ export function hexToRgb(hex: HEX): RGB {
  * @returns rbga color
  */
 export function hex2rgba(hex: HEX, alpha = 1): RGBA {
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2rgba', hex))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2rgba', alpha))
 
   const rgbOrRgba = hex2rgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) return { ...rgbOrRgba, a: alpha }
@@ -65,9 +70,9 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * @param alpha opacity value in range [0, 1]
  * @returns hex color with opacity
  */
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} must be in [0, 1].`)
 export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2hexWithAlpha', hex))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2hexWithAlpha', alpha))
 
   const longHex = shortToLongHex(hex)
   if (HEX_REGEX.longWithAlpha.test(longHex)) return longHex
@@ -79,10 +84,10 @@ export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
 /**
  * Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.
  * @param hex color to convert to cmyk
- * @returns cmyk color
+ * @returns cmyk color object
  */
 export function hex2cmyk(hex: HEX): CMYK {
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2cmyk', hex))
 
   const rgb = hexToRgb(hex)
   return rgb2cmyk(rgb)
@@ -94,7 +99,7 @@ export function hex2cmyk(hex: HEX): CMYK {
  * @returns hsl color object
  */
 export function hex2hsl(hex: HEX): HSL {
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2hsl', hex))
 
   const rgb = hexToRgb(hex)
   return rgb2hsl(rgb)
@@ -109,8 +114,8 @@ export function hex2hsl(hex: HEX): HSL {
  * @returns hsla color object
  */
 export function hexToHsla(hex: HEX, alpha = 1): HSLA {
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
-  if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHsla', hex))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hexToHsla', alpha))
 
   const rgbOrRgba = hex2rgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) return { ...rgb2hsl(rgbOrRgba), a: alpha }
@@ -121,14 +126,12 @@ export function hexToHsla(hex: HEX, alpha = 1): HSLA {
  * Expand the 3-digit hexadecimal form to the 6-digit form doubling each digit.
  * For example #09C becomes #0099CC and #09CA becomes #0099CCAA.
  * If hex is in the long format, return it.
- * @param hex in shorthand hexadecimal form
- * @returns hex in long hexadecimal form
+ * @param hex in the short form
+ * @returns hex in the long form
  */
 export function shortToLongHex(hex: HEX): HEX {
-  if (!isHex(hex)) throw new Error(`${hex} is not a hex color.`)
-  if (!HEX_REGEX.short.test(hex)) {
-    return hex
-  }
+  if (!isHex(hex)) throw new Error(notValidHexMessage('shortToLongHex', hex))
+  if (!HEX_REGEX.short.test(hex)) return hex
 
   const [hashtag, r, g, b, a] = Array.from(hex)
   return a ? `${hashtag}${r}${r}${g}${g}${b}${b}${a}${a}` : `${hashtag}${r}${r}${g}${g}${b}${b}`
@@ -140,7 +143,7 @@ export function shortToLongHex(hex: HEX): HEX {
  * @returns hex string
  */
 export function colorToHex(color: Color): HEX {
-  if (!isColor(color)) throw new Error(`${color} is not a valid color format.`)
+  if (!isColor(color)) throw new Error(notValidColorMessage('colorToHex', color))
 
   if (isHex(color)) return color
   else if (isRgb(color)) return rgb2hex(color)
