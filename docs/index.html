@@ -1,0 +1,6979 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <title>colors-convert 1.2.4 | Documentation</title>
+  <meta name='description' content='A simple color library'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>colors-convert</h3>
+          <div class='mb1'><code>1.2.4</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#hex'
+                  class="h5 bold black caps toggle-sibling">
+                  hex
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#ishex'
+                        class='regular pre-open'>
+                        .isHex
+                      </a></li>
+                    
+                      <li><a
+                        href='#hex2rgborrgba'
+                        class='regular pre-open'>
+                        .hex2rgbOrRgba
+                      </a></li>
+                    
+                      <li><a
+                        href='#hextorgb'
+                        class='regular pre-open'>
+                        .hexToRgb
+                      </a></li>
+                    
+                      <li><a
+                        href='#hex2rgba'
+                        class='regular pre-open'>
+                        .hex2rgba
+                      </a></li>
+                    
+                      <li><a
+                        href='#hex2hexwithalpha'
+                        class='regular pre-open'>
+                        .hex2hexWithAlpha
+                      </a></li>
+                    
+                      <li><a
+                        href='#hex2cmyk'
+                        class='regular pre-open'>
+                        .hex2cmyk
+                      </a></li>
+                    
+                      <li><a
+                        href='#hex2hsl'
+                        class='regular pre-open'>
+                        .hex2hsl
+                      </a></li>
+                    
+                      <li><a
+                        href='#hextohsla'
+                        class='regular pre-open'>
+                        .hexToHsla
+                      </a></li>
+                    
+                      <li><a
+                        href='#shorttolonghex'
+                        class='regular pre-open'>
+                        .shortToLongHex
+                      </a></li>
+                    
+                      <li><a
+                        href='#colortohex'
+                        class='regular pre-open'>
+                        .colorToHex
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgb'
+                  class="h5 bold black caps toggle-sibling">
+                  rgb
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#isrgb'
+                        class='regular pre-open'>
+                        .isRgb
+                      </a></li>
+                    
+                      <li><a
+                        href='#rgb2hex'
+                        class='regular pre-open'>
+                        .rgb2hex
+                      </a></li>
+                    
+                      <li><a
+                        href='#rgb2cmyk'
+                        class='regular pre-open'>
+                        .rgb2cmyk
+                      </a></li>
+                    
+                      <li><a
+                        href='#rgb2hsl'
+                        class='regular pre-open'>
+                        .rgb2hsl
+                      </a></li>
+                    
+                      <li><a
+                        href='#rgbtohsla'
+                        class='regular pre-open'>
+                        .rgbToHsla
+                      </a></li>
+                    
+                      <li><a
+                        href='#rgb2rgba'
+                        class='regular pre-open'>
+                        .rgb2rgba
+                      </a></li>
+                    
+                      <li><a
+                        href='#color2rgb'
+                        class='regular pre-open'>
+                        .color2rgb
+                      </a></li>
+                    
+                      <li><a
+                        href='#rgbstring2object'
+                        class='regular pre-open'>
+                        .rgbString2Object
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyk2hex'
+                  class="">
+                  cmyk2hex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyk2rgb'
+                  class="">
+                  cmyk2rgb
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyktorgba'
+                  class="">
+                  cmykToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyk2hsl'
+                  class="">
+                  cmyk2hsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyktohsla'
+                  class="">
+                  cmykToHsla
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colortocmyk'
+                  class="">
+                  colorToCmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmykstring2object'
+                  class="">
+                  cmykString2Object
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#color2string'
+                  class="">
+                  color2string
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#color2cssstring'
+                  class="">
+                  color2cssString
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsl2hex'
+                  class="">
+                  hsl2hex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsl2rgb'
+                  class="">
+                  hsl2rgb
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsltorgba'
+                  class="">
+                  hslToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsl2cmyk'
+                  class="">
+                  hsl2cmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsltohsla'
+                  class="">
+                  hslToHsla
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colortohsl'
+                  class="">
+                  colorToHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslstring2object'
+                  class="">
+                  hslString2Object
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslatohex'
+                  class="">
+                  hslaToHex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslatorgb'
+                  class="">
+                  hslaToRgb
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslatorgba'
+                  class="">
+                  hslaToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslatohsl'
+                  class="">
+                  hslaToHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslatocmyk'
+                  class="">
+                  hslaToCmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colortohsla'
+                  class="">
+                  colorToHsla
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslastringtoobject'
+                  class="">
+                  hslaStringToObject
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbatohex'
+                  class="">
+                  rgbaToHex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgba2rgb'
+                  class="">
+                  rgba2rgb
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbatocmyk'
+                  class="">
+                  rgbaToCmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbatohsl'
+                  class="">
+                  rgbaToHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbatohsla'
+                  class="">
+                  rgbaToHsla
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colortorgba'
+                  class="">
+                  colorToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbastring2object'
+                  class="">
+                  rgbaString2Object
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#name'
+                  class="">
+                  name
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#distance'
+                  class="">
+                  distance
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#euclideanrgbdistance'
+                  class="">
+                  euclideanRgbDistance
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#mix'
+                  class="">
+                  mix
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#weightedrgb'
+                  class="">
+                  weightedRgb
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getweights'
+                  class="">
+                  getWeights
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#checkweights'
+                  class="">
+                  checkWeights
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isrgba'
+                  class="">
+                  isRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iscmyk'
+                  class="">
+                  isCmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ishsl'
+                  class="">
+                  isHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ishsla'
+                  class="">
+                  isHsla
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iscolor'
+                  class="">
+                  isColor
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hex'
+                  class="">
+                  HEX
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgb'
+                  class=" toggle-sibling">
+                  RGB
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#rgbr'
+                        class='regular pre-open'>
+                        #r
+                      </a></li>
+                      
+                      <li><a
+                        href='#rgbg'
+                        class='regular pre-open'>
+                        #g
+                      </a></li>
+                      
+                      <li><a
+                        href='#rgbb'
+                        class='regular pre-open'>
+                        #b
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgba'
+                  class=" toggle-sibling">
+                  RGBA
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#rgbar'
+                        class='regular pre-open'>
+                        #r
+                      </a></li>
+                      
+                      <li><a
+                        href='#rgbag'
+                        class='regular pre-open'>
+                        #g
+                      </a></li>
+                      
+                      <li><a
+                        href='#rgbab'
+                        class='regular pre-open'>
+                        #b
+                      </a></li>
+                      
+                      <li><a
+                        href='#rgbaa'
+                        class='regular pre-open'>
+                        #a
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyk'
+                  class=" toggle-sibling">
+                  CMYK
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#cmykc'
+                        class='regular pre-open'>
+                        #c
+                      </a></li>
+                      
+                      <li><a
+                        href='#cmykm'
+                        class='regular pre-open'>
+                        #m
+                      </a></li>
+                      
+                      <li><a
+                        href='#cmyky'
+                        class='regular pre-open'>
+                        #y
+                      </a></li>
+                      
+                      <li><a
+                        href='#cmykk'
+                        class='regular pre-open'>
+                        #k
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsl'
+                  class=" toggle-sibling">
+                  HSL
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#hslh'
+                        class='regular pre-open'>
+                        #h
+                      </a></li>
+                      
+                      <li><a
+                        href='#hsls'
+                        class='regular pre-open'>
+                        #s
+                      </a></li>
+                      
+                      <li><a
+                        href='#hsll'
+                        class='regular pre-open'>
+                        #l
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsla'
+                  class=" toggle-sibling">
+                  HSLA
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#hslah'
+                        class='regular pre-open'>
+                        #h
+                      </a></li>
+                      
+                      <li><a
+                        href='#hslas'
+                        class='regular pre-open'>
+                        #s
+                      </a></li>
+                      
+                      <li><a
+                        href='#hslal'
+                        class='regular pre-open'>
+                        #l
+                      </a></li>
+                      
+                      <li><a
+                        href='#hslaa'
+                        class='regular pre-open'>
+                        #a
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#color'
+                  class="">
+                  Color
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colorformat'
+                  class="">
+                  ColorFormat
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colorname'
+                  class="">
+                  ColorName
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hex'>
+      hex
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+    <div class='pre p1 fill-light mt0'>hex</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='ishex'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isHex(color)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Accept:</p>
+<ul>
+<li>#RRGGBB[AA] (6/8-digit, long form)</li>
+<li>#RGB[A] (3/4-digit, short form)
+where R, G, B, A are in [0-9a-fA-F].</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isHex(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right hex format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right hex format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hex2rgborrgba'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hex2rgbOrRgba(hex)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex to a rgb or rgba color (depends on hex format).</p>
+
+    <div class='pre p1 fill-light mt0'>hex2rgbOrRgba(hex: <a href="#hex">HEX</a>): (<a href="#rgb">RGB</a> | <a href="#rgba">RGBA</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to rgb or rgba
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>(<a href="#rgb">RGB</a> | <a href="#rgba">RGBA</a>)</code>:
+        rgb or rgba object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hextorgb'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hexToRgb(hex)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex to a rgb color, if hex color has opacity, it will be lost.</p>
+
+    <div class='pre p1 fill-light mt0'>hexToRgb(hex: <a href="#hex">HEX</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hex2rgba'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hex2rgba(hex, alpha)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex to a rgba object, by default alpha is 1.</p>
+
+    <div class='pre p1 fill-light mt0'>hex2rgba(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rbga color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hex2hexwithalpha'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hex2hexWithAlpha(hex, alpha)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex to another hex with the given alpha.</p>
+
+    <div class='pre p1 fill-light mt0'>hex2hexWithAlpha(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    original hex
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color with opacity
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hex2cmyk'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hex2cmyk(hex)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.</p>
+
+    <div class='pre p1 fill-light mt0'>hex2cmyk(hex: <a href="#hex">HEX</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hex2hsl'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hex2hsl(hex)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex color string to a hsl object. It ignores opacity.</p>
+
+    <div class='pre p1 fill-light mt0'>hex2hsl(hex: <a href="#hex">HEX</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hextohsla'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hexToHsla(hex, alpha)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a hex color string to a hsla object.
+Hex can have opacity or not, if not you can use the alpha parameter.
+If hex has opacity and alpha != undefined, then the returned alpha value is the hex related one.</p>
+
+    <div class='pre p1 fill-light mt0'>hexToHsla(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to hsla
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='shorttolonghex'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>shortToLongHex(hex)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Expand the 3-digit hexadecimal form to the 6-digit form doubling each digit.
+For example #09C becomes #0099CC and #09CA becomes #0099CCAA.
+If hex is in the long format, return it.</p>
+
+    <div class='pre p1 fill-light mt0'>shortToLongHex(hex: <a href="#hex">HEX</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    in the short form
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex in the long form
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='colortohex'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>colorToHex(color)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a generic color to hex string.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToHex(color: <a href="#color">Color</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex string
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgb'>
+      rgb
+    </h3>
+    
+    
+  </div>
+  
+
+  
+
+    <div class='pre p1 fill-light mt0'>rgb</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='isrgb'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isRgb(color)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Accept an object like this {r, g, b} with r, b, g numeric values in [0, 255].</p>
+
+    <div class='pre p1 fill-light mt0'>isRgb(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right rgb format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right rgb format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgb2hex'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>rgb2hex(rgb)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert an rgb object to hex.</p>
+
+    <div class='pre p1 fill-light mt0'>rgb2hex(rgb: <a href="#rgb">RGB</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color object to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgb2cmyk'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>rgb2cmyk(rgb)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a rgb object to a cmyk object.</p>
+
+    <div class='pre p1 fill-light mt0'>rgb2cmyk(rgb: <a href="#rgb">RGB</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color object to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgb2hsl'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>rgb2hsl(rgb)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a rgb object to hsl object.</p>
+
+    <div class='pre p1 fill-light mt0'>rgb2hsl(rgb: <a href="#rgb">RGB</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color to convert to HSL
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbtohsla'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>rgbToHsla(rgb, alpha)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a rgb color object to a hsla object.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbToHsla(rgb: <a href="#rgb">RGB</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color object to convert to hsla
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgb2rgba'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>rgb2rgba(rgb, alpha)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert an rgb color to a rgba color.</p>
+
+    <div class='pre p1 fill-light mt0'>rgb2rgba(rgb: <a href="#rgb">RGB</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='color2rgb'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>color2rgb(color)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a generic color to rgb.</p>
+
+    <div class='pre p1 fill-light mt0'>color2rgb(color: <a href="#color">Color</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbstring2object'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>rgbString2Object(rgbString)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Convert a string in these two formats to a rgb object:</p>
+<ul>
+<li>255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}</li>
+<li>rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>rgbString2Object(rgbString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgbString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    rgb string color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyk2hex'>
+      cmyk2hex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a hex.</p>
+
+    <div class='pre p1 fill-light mt0'>cmyk2hex(cmyk: <a href="#cmyk">CMYK</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyk2rgb'>
+      cmyk2rgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a rgb.</p>
+
+    <div class='pre p1 fill-light mt0'>cmyk2rgb(cmyk: <a href="#cmyk">CMYK</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyktorgba'>
+      cmykToRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a rgba.</p>
+
+    <div class='pre p1 fill-light mt0'>cmykToRgba(cmyk: <a href="#cmyk">CMYK</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyk2hsl'>
+      cmyk2hsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a hsl.</p>
+
+    <div class='pre p1 fill-light mt0'>cmyk2hsl(cmyk: <a href="#cmyk">CMYK</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyktohsla'>
+      cmykToHsla
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a hsla.</p>
+
+    <div class='pre p1 fill-light mt0'>cmykToHsla(cmyk: <a href="#cmyk">CMYK</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to hsla
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortocmyk'>
+      colorToCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a generic color to cmyk.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToCmyk(color: <a href="#color">Color</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmykstring2object'>
+      cmykString2Object
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a cmyk object:</p>
+<ul>
+<li>0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}</li>
+<li>cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>cmykString2Object(cmykString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmykString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    string to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='color2string'>
+      color2string
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a color to a string format.</p>
+
+    <div class='pre p1 fill-light mt0'>color2string(color: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        string representing the color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='color2cssstring'>
+      color2cssString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a color to a string format usable in CSS.</p>
+
+    <div class='pre p1 fill-light mt0'>color2cssString(color: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        string representing the color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsl2hex'>
+      hsl2hex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to hex.</p>
+
+    <div class='pre p1 fill-light mt0'>hsl2hex(hsl: <a href="#hsl">HSL</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsl2rgb'>
+      hsl2rgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to rgb color object.</p>
+
+    <div class='pre p1 fill-light mt0'>hsl2rgb(hsl: <a href="#hsl">HSL</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to rgb color object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsltorgba'>
+      hslToRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to rgba.</p>
+
+    <div class='pre p1 fill-light mt0'>hslToRgba(hsl: <a href="#hsl">HSL</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsl2cmyk'>
+      hsl2cmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to cmyk.</p>
+
+    <div class='pre p1 fill-light mt0'>hsl2cmyk(hsl: <a href="#hsl">HSL</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsltohsla'>
+      hslToHsla
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to hsla.</p>
+
+    <div class='pre p1 fill-light mt0'>hslToHsla(hsl: <a href="#hsl">HSL</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to hsla
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortohsl'>
+      colorToHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a generic color to hsl.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToHsl(color: <a href="#color">Color</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslstring2object'>
+      hslString2Object
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a hsl object:</p>
+<ul>
+<li>322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }</li>
+<li>hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>hslString2Object(hslString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, hsl: any): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hslString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(any)</code>
+	    string to convert to hsl object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslatohex'>
+      hslaToHex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsla object to hex long format #RRGGBBAA.</p>
+
+    <div class='pre p1 fill-light mt0'>hslaToHex(hsla: <a href="#hsla">HSLA</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsla</span> <code class='quiet'>(<a href="#hsla">HSLA</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color string
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslatorgb'>
+      hslaToRgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsla object to and rgb color object.</p>
+
+    <div class='pre p1 fill-light mt0'>hslaToRgb(hsla: <a href="#hsla">HSLA</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsla</span> <code class='quiet'>(<a href="#hsla">HSLA</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslatorgba'>
+      hslaToRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsla object to and rgba color object.</p>
+
+    <div class='pre p1 fill-light mt0'>hslaToRgba(hsla: <a href="#hsla">HSLA</a>): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsla</span> <code class='quiet'>(<a href="#hsla">HSLA</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslatohsl'>
+      hslaToHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsla object to and hsl color object.</p>
+
+    <div class='pre p1 fill-light mt0'>hslaToHsl(hsla: <a href="#hsla">HSLA</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsla</span> <code class='quiet'>(<a href="#hsla">HSLA</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslatocmyk'>
+      hslaToCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsla object to and cmyk color object.
+It ignores opacity because cmyk doens't support it.</p>
+
+    <div class='pre p1 fill-light mt0'>hslaToCmyk(hsla: <a href="#hsla">HSLA</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsla</span> <code class='quiet'>(<a href="#hsla">HSLA</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortohsla'>
+      colorToHsla
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a generic color to hsla.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToHsla(color: <a href="#color">Color</a>): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to hsla
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hslastringtoobject'>
+      hslaStringToObject
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a hsla object:</p>
+<ul>
+<li>322, 79%, 52%, 0.5 (short format) -> { h: 322, s: 79, l: 52, a: 0.5 }</li>
+<li>hsls(322, 79%, 52%, 0.5) (long format) -> { h: 322, s: 79, l: 52, a: 0.5 }.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>hslaStringToObject(hslaString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, hsls: any): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hslaString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsls</span> <code class='quiet'>(any)</code>
+	    string to convert to hsla object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbatohex'>
+      rgbaToHex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgba color object to a hex color.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbaToHex(rgba: <a href="#rgba">RGBA</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgba</span> <code class='quiet'>(<a href="#rgba">RGBA</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgba2rgb'>
+      rgba2rgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgba color object to a rgb color removing the alpha value.</p>
+
+    <div class='pre p1 fill-light mt0'>rgba2rgb(rgba: <a href="#rgba">RGBA</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgba</span> <code class='quiet'>(<a href="#rgba">RGBA</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbatocmyk'>
+      rgbaToCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgba color object to a cmyk color object.
+It ignores opacity because cmyk doens't support it.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbaToCmyk(rgba: <a href="#rgba">RGBA</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgba</span> <code class='quiet'>(<a href="#rgba">RGBA</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbatohsl'>
+      rgbaToHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgba color object to a hsl color object removing the alpha value.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbaToHsl(rgba: <a href="#rgba">RGBA</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgba</span> <code class='quiet'>(<a href="#rgba">RGBA</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbatohsla'>
+      rgbaToHsla
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgba color object to a hsla color object.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbaToHsla(rgba: <a href="#rgba">RGBA</a>): <a href="#hsla">HSLA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgba</span> <code class='quiet'>(<a href="#rgba">RGBA</a>)</code>
+	    color to convert to hsla
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsla">HSLA</a></code>:
+        hsla color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortorgba'>
+      colorToRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a generic color to rgba.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToRgba(color: <a href="#color">Color</a>): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbastring2object'>
+      rgbaString2Object
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a rgba object:</p>
+<ul>
+<li>255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}</li>
+<li>rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>rgbaString2Object(rgbaString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgbaString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    rgba string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='name'>
+      name
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Return the name of the color passed in input.</p>
+
+    <div class='pre p1 fill-light mt0'>name(color: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    colr to be named
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        color name
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='distance'>
+      distance
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Return the Euclidean distance between two colors.</p>
+
+    <div class='pre p1 fill-light mt0'>distance(color1: <a href="#color">Color</a>, color2: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color1</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    first color
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color2</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    second color
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        Euclidean distance between two colors
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='euclideanrgbdistance'>
+      euclideanRgbDistance
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Compute the Euclidean distance between two rgb colors, defined as the following:
+distance = sqrt((r₁ - r₂)² + (g₁ - g₂)² + (b₁ - b₂)²)
+The minimum distance is zero (the difference between the same color),
+The maximum distance is ≈ 441.67 between black and white.</p>
+
+    <div class='pre p1 fill-light mt0'>euclideanRgbDistance(color1: <a href="#rgb">RGB</a>, color2: <a href="#rgb">RGB</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color1</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    first rgb color
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color2</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    second rgb color
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        numeric value in 
+[0, ≈ 441.67]
+ that represents the Euclidean difference between two rgb colors
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='mix'>
+      mix
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Mix two or more colors based on their weights.
+Given [c1, c2, c3, ...] and [w1, w2, w3, ...], it returns:
+mixedCol = {
+r: sqrt(r1^2 <em> w1 + r2^2 </em> w2 + r3^2 <em> w3 + ...)
+g: sqrt(g1^2 </em> w1 + g2^2 <em> w2 + g3^2 </em> w3 + ...)
+b: sqrt(b1^2 <em> w1 + b2^2 </em> w2 + b3^2 * w3 + ...)
+}</p>
+
+    <div class='pre p1 fill-light mt0'>mix(colors: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#color">Color</a>>, weights: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>>?): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>colors</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#color">Color</a>>)</code>
+	    array of Colors
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>weights</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>>?)</code>
+	    array of weights
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        RGB object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='weightedrgb'>
+      weightedRgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Weigh each color component (r, g, b) of the color.</p>
+
+    <div class='pre p1 fill-light mt0'>weightedRgb(rgb: <a href="#rgb">RGB</a>, weight: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color to be weighted
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>weight</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    weight value
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        weighted rgb color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getweights'>
+      getWeights
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>If weights array is not undefined, checks that its ok (sum must be 1 and colors and weights must the of the same lenght) and returns it.
+If weight is undefined, fill it with the default values (1 / colors.lenght) and returns it.</p>
+
+    <div class='pre p1 fill-light mt0'>getWeights(colors: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#color">Color</a>>, weights: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>>?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>colors</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#color">Color</a>>)</code>
+	    array of colors
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>weights</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>>?)</code>
+	    array of weights
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>></code>:
+        array of weights.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='checkweights'>
+      checkWeights
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check that the sum of weights is 1 and that colors and weights have the same lenght.</p>
+
+    <div class='pre p1 fill-light mt0'>checkWeights(colors: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#color">Color</a>>, weights: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>colors</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#color">Color</a>>)</code>
+	    array of colors
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>weights</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>>)</code>
+	    array of weights
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if the sum of weights is 1 and if colors and weights have the same lenght, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isrgba'>
+      isRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Accept an object like this {r, g, b, a} with r, g, b numeric values in [0, 255] and a in [0, 1].</p>
+
+    <div class='pre p1 fill-light mt0'>isRgba(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right rgba format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right rgba format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iscmyk'>
+      isCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Accept an object like this {c, m, y, k} with c, m, y, k numeric values in [0, 100].</p>
+
+    <div class='pre p1 fill-light mt0'>isCmyk(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right cmyk format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right cmyk format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ishsl'>
+      isHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Accept hsl colors with:</p>
+<ul>
+<li>h (hue): [0-359]°</li>
+<li>s (saturation): [0-100]%</li>
+<li>l (lightness): [0-100]%.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isHsl(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right hsl format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right hsl format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ishsla'>
+      isHsla
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Accept hsla colors with:</p>
+<ul>
+<li>h (hue): [0-359]°</li>
+<li>s (saturation): [0-100]%</li>
+<li>l (lightness): [0-100]%.</li>
+<li>a (alpha): [0-1].</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isHsla(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right hsla format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right hsla format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iscolor'>
+      isColor
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Return true if color is hex, rgb, rgba, cmyk, hls or hsla, false otherwise</p>
+
+    <div class='pre p1 fill-light mt0'>isColor(color: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(any)</code>
+	    color to check if it is in the right Color format
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if color is in the right Color format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hex'>
+      HEX
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Hex type, basically a string.</p>
+
+    <div class='pre p1 fill-light mt0'>HEX</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgb'>
+      RGB
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Rgb interface.</p>
+
+    <div class='pre p1 fill-light mt0'>RGB</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='rgbr'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>r</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>red</p>
+
+    <div class='pre p1 fill-light mt0'>r</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbg'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>g</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>green</p>
+
+    <div class='pre p1 fill-light mt0'>g</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbb'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>b</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>blue</p>
+
+    <div class='pre p1 fill-light mt0'>b</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgba'>
+      RGBA
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Rgba interface.</p>
+
+    <div class='pre p1 fill-light mt0'>RGBA</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='rgbar'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>r</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>red</p>
+
+    <div class='pre p1 fill-light mt0'>r</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbag'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>g</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>green</p>
+
+    <div class='pre p1 fill-light mt0'>g</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbab'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>b</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>blue</p>
+
+    <div class='pre p1 fill-light mt0'>b</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='rgbaa'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>a</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>alpha</p>
+
+    <div class='pre p1 fill-light mt0'>a</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyk'>
+      CMYK
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Cmyk interface.</p>
+
+    <div class='pre p1 fill-light mt0'>CMYK</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='cmykc'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>c</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>cyan</p>
+
+    <div class='pre p1 fill-light mt0'>c</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='cmykm'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>m</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>magenta</p>
+
+    <div class='pre p1 fill-light mt0'>m</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='cmyky'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>y</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>yellow</p>
+
+    <div class='pre p1 fill-light mt0'>y</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='cmykk'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>k</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>key (black)</p>
+
+    <div class='pre p1 fill-light mt0'>k</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsl'>
+      HSL
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Hsl interface.</p>
+
+    <div class='pre p1 fill-light mt0'>HSL</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='hslh'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>h</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>hue</p>
+
+    <div class='pre p1 fill-light mt0'>h</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hsls'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>s</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>saturation</p>
+
+    <div class='pre p1 fill-light mt0'>s</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hsll'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>l</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>lightness</p>
+
+    <div class='pre p1 fill-light mt0'>l</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsla'>
+      HSLA
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Hsla interface.</p>
+
+    <div class='pre p1 fill-light mt0'>HSLA</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='hslah'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>h</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>hue</p>
+
+    <div class='pre p1 fill-light mt0'>h</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hslas'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>s</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>saturation</p>
+
+    <div class='pre p1 fill-light mt0'>s</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hslal'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>l</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>lightness</p>
+
+    <div class='pre p1 fill-light mt0'>l</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='hslaa'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>a</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>alpha</p>
+
+    <div class='pre p1 fill-light mt0'>a</div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='color'>
+      Color
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Color type. A color should be HEX, RGB, RGBA, CMYK, HSL or HSLA.</p>
+
+    <div class='pre p1 fill-light mt0'>Color</div>
+  
+    <p>
+      Type:
+      (<a href="#hex">HEX</a> | <a href="#rgb">RGB</a> | <a href="#rgba">RGBA</a> | <a href="#cmyk">CMYK</a> | <a href="#hsl">HSL</a> | <a href="#hsla">HSLA</a>)
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colorformat'>
+      ColorFormat
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>ColorFormat type. A color format should be 'hex', 'rgb', 'rgba', 'cmyk', 'hsl' or 'hsla'.</p>
+
+    <div class='pre p1 fill-light mt0'>ColorFormat</div>
+  
+    <p>
+      Type:
+      (<code>"hex"</code> | <code>"rgb"</code> | <code>"rgba"</code> | <code>"cmyk"</code> | <code>"hsl"</code> | <code>"hsla"</code>)
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colorname'>
+      ColorName
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>ColorName interface.</p>
+
+    <div class='pre p1 fill-light mt0'>ColorName</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

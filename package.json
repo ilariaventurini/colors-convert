@@ -24,7 +24,9 @@
     "color-model"
   ],
   "main": "dist/index.js",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "types": "dist/index.d.ts",
   "scripts": {
     "compile": "rm -rf dist/ && tsc --outDir dist",
@@ -38,22 +40,25 @@
     "test": "jest --config jestconfig.json",
     "test-watch": "jest --watch --config jestconfig.json",
     "coverage-watch": "yarn test --watchAll --coverage",
-    "coverage-interactive-watch": "npx live-server --port=9000 coverage"
+    "coverage-interactive-watch": "npx live-server --port=9000 coverage",
+    "docs:html": "documentation build --config documentation.yml src/lib/**/*.ts --parse-extension ts --format html --output docs",
+    "docs:md": "documentation build --config documentation.yml src/lib/**/*.ts --parse-extension ts --format md --output docs/docs.md"
   },
   "devDependencies": {
     "@types/jest": "^24.0.21",
     "@types/lodash": "^4.14.161",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
-    "typescript": "^3.6.4",
     "codecov": "^3.6.5",
+    "documentation": "^13.1.0",
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
-    "prettier": "^2.1.2",
     "jest": "^24.9.0",
-    "ts-jest": "^24.1.0",
     "parcel": "^1.12.4",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.1.2",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "lodash": "^4.17.15"

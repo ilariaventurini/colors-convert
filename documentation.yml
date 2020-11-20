@@ -1,0 +1,23 @@
+toc:
+  - name: hex
+    children:
+      - isHex
+      - hex2rgbOrRgba
+      - hexToRgb
+      - hex2rgba
+      - hex2hexWithAlpha
+      - hex2cmyk
+      - hex2hsl
+      - hexToHsla
+      - shortToLongHex
+      - colorToHex
+  - name: rgb
+    children:
+      - isRgb
+      - rgb2hex
+      - rgb2cmyk
+      - rgb2hsl
+      - rgbToHsla
+      - rgb2rgba
+      - color2rgb
+      - rgbString2Object
