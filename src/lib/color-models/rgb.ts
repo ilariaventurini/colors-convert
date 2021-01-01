@@ -2,7 +2,7 @@ import { round } from 'lodash'
 import { RGB, RGBA, CMYK, HEX, HSL, Color, HSLA } from '../types/types'
 import { isRgb, isRgba, isHex, isCmyk, isHsl, isColor } from '../types/isType'
 import { applyFnToEachObjValue } from '../../utils/utils'
-import { hex2rgba } from './hex'
+import { hexToRgba } from './hex'
 import { cmyk2rgb } from './cmyk'
 import { hsl2rgb } from './hsl'
 import { number0255ToHex } from '../../utils/hex-utils'
@@ -130,7 +130,7 @@ export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
 export function color2rgb(color: Color): RGB {
   if (!isColor(color)) throw new Error(notValidColorMessage('color2rgb', color))
 
-  if (isHex(color)) return rgba2rgb(hex2rgba(color))
+  if (isHex(color)) return rgba2rgb(hexToRgba(color))
   else if (isRgb(color)) return color
   else if (isRgba(color)) return rgba2rgb(color)
   else if (isCmyk(color)) return cmyk2rgb(color)

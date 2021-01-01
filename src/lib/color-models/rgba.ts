@@ -4,7 +4,7 @@ import { CMYK, Color, HEX, HSL, HSLA, RGB, RGBA } from '../types/types'
 import { alphaToHex } from '../../utils/hex-utils'
 import { fromLongToShortRgbaFormat, shortRgbaFormatToRgbaObject } from '../../utils/rgba-utils'
 import { cmykToRgba } from './cmyk'
-import { hex2rgba } from './hex'
+import { hexToRgba } from './hex'
 import { hslToRgba } from './hsl'
 import { hslaToRgba } from './hsla'
 import { rgb2cmyk, rgb2hex, rgb2hsl, rgb2rgba } from './rgb'
@@ -79,7 +79,7 @@ export function rgbaToHsla(rgba: RGBA): HSLA {
 export function colorToRgba(color: Color): RGBA {
   if (!isColor(color)) throw new Error(notValidRgbaMessage('colorToRgba', color))
 
-  if (isHex(color)) return hex2rgba(color)
+  if (isHex(color)) return hexToRgba(color)
   else if (isRgb(color)) return rgb2rgba(color)
   else if (isRgba(color)) return color
   else if (isCmyk(color)) return cmykToRgba(color)

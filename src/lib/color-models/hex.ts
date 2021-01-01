@@ -35,12 +35,11 @@ export function hexToRgbOrRgba(hex: HEX) {
   if (a) return { ...rgb, a: hexToAlpha(a, ALPHA_PRECISION) }
   return rgb
 }
-
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
  * @param hex color to convert to rgb or rgba
  * @returns rgb or rgba object
- * @deprecated since version 2.0, use `hexToRgbOrRgba` instead
+ * @deprecated since version 1.3.0, use `hexToRgbOrRgba` instead
  */
 export function hex2rgbOrRgba(hex: HEX) {
   return obsolete(
@@ -71,13 +70,30 @@ export function hexToRgb(hex: HEX): RGB {
  * @param alpha opacity value in range [0, 1]
  * @returns rbga color
  */
-export function hex2rgba(hex: HEX, alpha = 1): RGBA {
+export function hexToRgba(hex: HEX, alpha = 1): RGBA {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hex2rgba', hex))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2rgba', alpha))
 
   const rgbOrRgba = hexToRgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) return { ...rgbOrRgba, a: alpha }
   return rgbOrRgba
+}
+/**
+ * Convert a hex to a rgba object, by default alpha is 1.
+ * @param hex color to convert to rgba
+ * @param alpha opacity value in range [0, 1]
+ * @returns rbga color
+ * @deprecated since version 1.3.0, use `hexToRgbOrRgba` instead
+ */
+export function hex2rgba(hex: HEX, alpha = 1): RGBA {
+  return obsolete(
+    hexToRgba,
+    'hex2rgba',
+    'hexToRgba',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
