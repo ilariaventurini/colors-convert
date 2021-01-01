@@ -1,5 +1,5 @@
 import {
-  hex2rgbOrRgba,
+  hexToRgbOrRgba,
   hexToRgb,
   hex2rgba,
   hex2hexWithAlpha,
@@ -11,26 +11,26 @@ import {
 } from '../../index'
 
 ////////////////////////////////////////////////////////
-// hex2rgbOrRgba
+// hexToRgbOrRgba
 ////////////////////////////////////////////////////////
 
-test(`hex2rgbOrRgba`, () => {
-  expect(hex2rgbOrRgba('#FFFFFF')).toStrictEqual({ r: 255, g: 255, b: 255 })
-  expect(hex2rgbOrRgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
-  expect(hex2rgbOrRgba('#BADA55')).toStrictEqual({ r: 186, g: 217, b: 84 })
-  expect(hex2rgbOrRgba('#FF00FF')).toStrictEqual({ r: 255, g: 0, b: 255 })
-  expect(hex2rgbOrRgba('#F0F')).toStrictEqual({ r: 255, g: 0, b: 255 })
-  expect(hex2rgbOrRgba('#FF00FF00')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0 })
-  expect(hex2rgbOrRgba('#FF00FFFF')).toStrictEqual({ r: 255, g: 0, b: 255, a: 1 })
-  expect(hex2rgbOrRgba('#FF00FF99')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0.6 })
-  expect(hex2rgbOrRgba('#F0F0')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0 })
-  expect(hex2rgbOrRgba('#F0FF')).toStrictEqual({ r: 255, g: 0, b: 255, a: 1 })
-  expect(hex2rgbOrRgba('#F0F9')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0.6 })
+test(`hexToRgbOrRgba`, () => {
+  expect(hexToRgbOrRgba('#FFFFFF')).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(hexToRgbOrRgba('#000000')).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(hexToRgbOrRgba('#BADA55')).toStrictEqual({ r: 186, g: 217, b: 84 })
+  expect(hexToRgbOrRgba('#FF00FF')).toStrictEqual({ r: 255, g: 0, b: 255 })
+  expect(hexToRgbOrRgba('#F0F')).toStrictEqual({ r: 255, g: 0, b: 255 })
+  expect(hexToRgbOrRgba('#FF00FF00')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0 })
+  expect(hexToRgbOrRgba('#FF00FFFF')).toStrictEqual({ r: 255, g: 0, b: 255, a: 1 })
+  expect(hexToRgbOrRgba('#FF00FF99')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0.6 })
+  expect(hexToRgbOrRgba('#F0F0')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0 })
+  expect(hexToRgbOrRgba('#F0FF')).toStrictEqual({ r: 255, g: 0, b: 255, a: 1 })
+  expect(hexToRgbOrRgba('#F0F9')).toStrictEqual({ r: 255, g: 0, b: 255, a: 0.6 })
 
-  expect(() => hex2rgbOrRgba('')).toThrowError()
-  expect(() => hex2rgbOrRgba('FFF')).toThrowError()
-  expect(() => hex2rgbOrRgba('#FFK')).toThrowError()
-  expect(() => hex2rgbOrRgba('#')).toThrowError()
+  expect(() => hexToRgbOrRgba('')).toThrowError()
+  expect(() => hexToRgbOrRgba('FFF')).toThrowError()
+  expect(() => hexToRgbOrRgba('#FFK')).toThrowError()
+  expect(() => hexToRgbOrRgba('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
