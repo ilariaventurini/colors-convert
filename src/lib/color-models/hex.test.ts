@@ -2,7 +2,7 @@ import {
   hexToRgbOrRgba,
   hexToRgb,
   hexToRgba,
-  hex2hexWithAlpha,
+  hexToHexWithAlpha,
   hex2cmyk,
   hex2hsl,
   hexToHsla,
@@ -76,21 +76,21 @@ test(`hexToRgba`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// hex2hexWithAlpha
+// hexToHexWithAlpha
 ////////////////////////////////////////////////////////
 
-test(`hex2hexWithAlpha`, () => {
-  expect(hex2hexWithAlpha('#000000', 0)).toBe('#00000000')
-  expect(hex2hexWithAlpha('#000000')).toBe('#000000FF')
-  expect(hex2hexWithAlpha('#000000', 1)).toBe('#000000FF')
-  expect(hex2hexWithAlpha('#000', 1)).toBe('#000000FF')
-  expect(hex2hexWithAlpha('#000', 0.6)).toBe('#00000099')
-  expect(hex2hexWithAlpha('#000F', 1)).toBe('#000000FF')
-  expect(hex2hexWithAlpha('#000000FF', 1)).toBe('#000000FF')
-  expect(hex2hexWithAlpha('#000000', 0.6)).toBe('#00000099')
+test(`hexToHexWithAlpha`, () => {
+  expect(hexToHexWithAlpha('#000000', 0)).toBe('#00000000')
+  expect(hexToHexWithAlpha('#000000')).toBe('#000000FF')
+  expect(hexToHexWithAlpha('#000000', 1)).toBe('#000000FF')
+  expect(hexToHexWithAlpha('#000', 1)).toBe('#000000FF')
+  expect(hexToHexWithAlpha('#000', 0.6)).toBe('#00000099')
+  expect(hexToHexWithAlpha('#000F', 1)).toBe('#000000FF')
+  expect(hexToHexWithAlpha('#000000FF', 1)).toBe('#000000FF')
+  expect(hexToHexWithAlpha('#000000', 0.6)).toBe('#00000099')
 
-  expect(() => hex2hexWithAlpha('#', 1)).toThrowError()
-  expect(() => hex2hexWithAlpha('#000000', 10)).toThrowError()
+  expect(() => hexToHexWithAlpha('#', 1)).toThrowError()
+  expect(() => hexToHexWithAlpha('#000000', 10)).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

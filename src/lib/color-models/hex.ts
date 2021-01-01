@@ -83,7 +83,7 @@ export function hexToRgba(hex: HEX, alpha = 1): RGBA {
  * @param hex color to convert to rgba
  * @param alpha opacity value in range [0, 1]
  * @returns rbga color
- * @deprecated since version 1.3.0, use `hexToRgbOrRgba` instead
+ * @deprecated since version 1.3.0, use `hex2rgba` instead
  */
 export function hex2rgba(hex: HEX, alpha = 1): RGBA {
   return obsolete(
@@ -102,15 +102,33 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * @param alpha opacity value in range [0, 1]
  * @returns hex color with opacity
  */
-export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2hexWithAlpha', hex))
-  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2hexWithAlpha', alpha))
+export function hexToHexWithAlpha(hex: HEX, alpha = 1): HEX {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHexWithAlpha', hex))
+  if (!between(alpha, [0, 1]))
+    throw new Error(notValidAlphaValueMessage('hexToHexWithAlpha', alpha))
 
   const longHex = shortToLongHex(hex)
   if (HEX_REGEX.longWithAlpha.test(longHex)) return longHex
 
   const alphaHex = alphaToHex(alpha)
   return `${longHex}${alphaHex}`
+}
+/**
+ * Convert a hex to another hex with the given alpha.
+ * @param hex original hex
+ * @param alpha opacity value in range [0, 1]
+ * @returns hex color with opacity
+ * @deprecated since version 1.3.0, use `hexToHexWithAlpha` instead
+ */
+export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
+  return obsolete(
+    hexToHexWithAlpha,
+    'hex2hexWithAlpha',
+    'hexToHexWithAlpha',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
