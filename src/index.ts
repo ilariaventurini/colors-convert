@@ -29,6 +29,7 @@ export {
   color2rgb,
   colorToRgb,
   rgbString2Object,
+  rgbStringToObject,
 } from './lib/color-models/rgb'
 export {
   rgbaToHex,

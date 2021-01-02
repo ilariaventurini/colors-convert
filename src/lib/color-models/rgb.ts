@@ -214,15 +214,33 @@ export function color2rgb(color: Color): RGB {
  * @param rgbString rgb string color to convert to rgb
  * @returns rgb color object
  */
-export function rgbString2Object(rgbString: string): RGB {
+export function rgbStringToObject(rgbString: string): RGB {
   // check short and long formats
   const isShortFormat = RGB_REGEX.short.test(rgbString)
   const isLongFormat = RGB_REGEX.long.test(rgbString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(notValidRgbStringMessage('rgbString2Object', rgbString))
+    throw new Error(notValidRgbStringMessage('rgbStringToObject', rgbString))
 
   // convert rgbString to short format: 'R, G, B'
   const rgbStringCleanShortFormat = isShortFormat ? rgbString : fromLongToShortRgbFormat(rgbString)
   return shortRgbFormatToRgbObject(rgbStringCleanShortFormat)
+}
+/**
+ * Convert a string in these two formats to a rgb object:
+ *  - 255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}
+ *  - rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}.
+ * @param rgbString rgb string color to convert to rgb
+ * @returns rgb color object
+ * @deprecated since version 1.3.0, use `rgbStringToObject` instead
+ */
+export function rgbString2Object(rgbString: string): RGB {
+  return obsolete(
+    rgbStringToObject,
+    'rgbString2Object',
+    'rgbStringToObject',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
