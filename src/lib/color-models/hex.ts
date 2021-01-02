@@ -2,39 +2,54 @@ import { HEX, RGB, RGBA, CMYK, HSL, HSLA, Color } from '../types/types'
 import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../types/isType'
 import { between } from '../../utils/math-utils'
 import { chunkString } from '../../utils/string-utils'
-import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'
-import { HEX_REGEX } from '../../constants/regex'
-import { ALPHA_PRECISION } from '../../constants/rgba'
-import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
-import { rgbaToHex, rgbaToHsla } from './rgba'
-import { cmyk2hex } from './cmyk'
-import { hsl2hex } from './hsl'
-import { hslaToHex } from './hsla'
 import {
   notValidAlphaValueMessage,
   notValidColorMessage,
   notValidHexMessage,
 } from '../../utils/logs-utils'
+import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
+import { obsolete } from '../../utils/obsolete'
+import { HEX_REGEX } from '../../constants/regex'
+import { rgbToCmyk, rgbToHex, rgbToHsl } from './rgb'
+import { rgbaToHex, rgbaToHsla } from './rgba'
+import { ALPHA_PRECISION } from '../../constants/rgba'
+import { cmykToHex } from './cmyk'
+import { hslToHex } from './hsl'
+import { hslaToHex } from './hsla'
+import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
 
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
  * @param hex color to convert to rgb or rgba
  * @returns rgb or rgba object
  */
-export function hex2rgbOrRgba(hex: HEX): RGB | RGBA {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2rgbOrRgba', hex))
-
+export function hexToRgbOrRgba(hex: HEX) {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToRgbOrRgba', hex))
   const hexLongWtihoutHashtag = shortToLongHex(hex).substring(1)
   const [r, g, b, a] = chunkString(hexLongWtihoutHashtag, 2)
-
   // convert each color component to number
   const r0255 = hexAlphaTo0255(r)
   const g0255 = hexAlphaTo0255(g)
   const b0255 = hexAlphaTo0255(b)
   const rgb = { r: r0255, g: g0255, b: b0255 }
-
   if (a) return { ...rgb, a: hexToAlpha(a, ALPHA_PRECISION) }
   return rgb
+}
+/**
+ * Convert a hex to a rgb or rgba color (depends on hex format).
+ * @param hex color to convert to rgb or rgba
+ * @returns rgb or rgba object
+ * @deprecated since version 1.3.0, use `hexToRgbOrRgba` instead
+ */
+export function hex2rgbOrRgba(hex: HEX) {
+  return obsolete(
+    hexToRgbOrRgba,
+    'hex2rgbOrRgba',
+    'hexToRgbOrRgba',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -55,13 +70,30 @@ export function hexToRgb(hex: HEX): RGB {
  * @param alpha opacity value in range [0, 1]
  * @returns rbga color
  */
-export function hex2rgba(hex: HEX, alpha = 1): RGBA {
+export function hexToRgba(hex: HEX, alpha = 1): RGBA {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hex2rgba', hex))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2rgba', alpha))
 
-  const rgbOrRgba = hex2rgbOrRgba(hex)
+  const rgbOrRgba = hexToRgbOrRgba(hex)
   if (isRgb(rgbOrRgba)) return { ...rgbOrRgba, a: alpha }
   return rgbOrRgba
+}
+/**
+ * Convert a hex to a rgba object, by default alpha is 1.
+ * @param hex color to convert to rgba
+ * @param alpha opacity value in range [0, 1]
+ * @returns rbga color
+ * @deprecated since version 1.3.0, use `hex2rgba` instead
+ */
+export function hex2rgba(hex: HEX, alpha = 1): RGBA {
+  return obsolete(
+    hexToRgba,
+    'hex2rgba',
+    'hexToRgba',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -70,9 +102,10 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * @param alpha opacity value in range [0, 1]
  * @returns hex color with opacity
  */
-export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2hexWithAlpha', hex))
-  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2hexWithAlpha', alpha))
+export function hexToHexWithAlpha(hex: HEX, alpha = 1): HEX {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHexWithAlpha', hex))
+  if (!between(alpha, [0, 1]))
+    throw new Error(notValidAlphaValueMessage('hexToHexWithAlpha', alpha))
 
   const longHex = shortToLongHex(hex)
   if (HEX_REGEX.longWithAlpha.test(longHex)) return longHex
@@ -80,17 +113,50 @@ export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
   const alphaHex = alphaToHex(alpha)
   return `${longHex}${alphaHex}`
 }
+/**
+ * Convert a hex to another hex with the given alpha.
+ * @param hex original hex
+ * @param alpha opacity value in range [0, 1]
+ * @returns hex color with opacity
+ * @deprecated since version 1.3.0, use `hexToHexWithAlpha` instead
+ */
+export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
+  return obsolete(
+    hexToHexWithAlpha,
+    'hex2hexWithAlpha',
+    'hexToHexWithAlpha',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
+}
 
 /**
  * Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.
  * @param hex color to convert to cmyk
  * @returns cmyk color object
  */
-export function hex2cmyk(hex: HEX): CMYK {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2cmyk', hex))
+export function hexToCmyk(hex: HEX): CMYK {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToCmyk', hex))
 
   const rgb = hexToRgb(hex)
-  return rgb2cmyk(rgb)
+  return rgbToCmyk(rgb)
+}
+/**
+ * Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.
+ * @param hex color to convert to cmyk
+ * @returns cmyk color object
+ * @deprecated since version 1.3.0, use `hexToCmyk` instead
+ */
+export function hex2cmyk(hex: HEX): CMYK {
+  return obsolete(
+    hexToCmyk,
+    'hex2cmyk',
+    'hexToCmyk',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -98,11 +164,20 @@ export function hex2cmyk(hex: HEX): CMYK {
  * @param hex color to convert to hsl
  * @returns hsl color object
  */
-export function hex2hsl(hex: HEX): HSL {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2hsl', hex))
+export function hexToHsl(hex: HEX): HSL {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHsl', hex))
 
   const rgb = hexToRgb(hex)
-  return rgb2hsl(rgb)
+  return rgbToHsl(rgb)
+}
+/**
+ * Convert a hex color string to a hsl object. It ignores opacity.
+ * @param hex color to convert to hsl
+ * @returns hsl color object
+ * @deprecated since version 1.3.0, use `hexToHsl` instead
+ */
+export function hex2hsl(hex: HEX): HSL {
+  return obsolete(hexToHsl, 'hex2hsl', 'hexToHsl', DEPRECATE_VERSION_2, DELETE_VERSION_2, arguments)
 }
 
 /**
@@ -117,8 +192,8 @@ export function hexToHsla(hex: HEX, alpha = 1): HSLA {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHsla', hex))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hexToHsla', alpha))
 
-  const rgbOrRgba = hex2rgbOrRgba(hex)
-  if (isRgb(rgbOrRgba)) return { ...rgb2hsl(rgbOrRgba), a: alpha }
+  const rgbOrRgba = hexToRgbOrRgba(hex)
+  if (isRgb(rgbOrRgba)) return { ...rgbToHsl(rgbOrRgba), a: alpha }
   else return rgbaToHsla(rgbOrRgba)
 }
 
@@ -146,9 +221,9 @@ export function colorToHex(color: Color): HEX {
   if (!isColor(color)) throw new Error(notValidColorMessage('colorToHex', color))
 
   if (isHex(color)) return color
-  else if (isRgb(color)) return rgb2hex(color)
+  else if (isRgb(color)) return rgbToHex(color)
   else if (isRgba(color)) return rgbaToHex(color)
-  else if (isCmyk(color)) return cmyk2hex(color)
-  else if (isHsl(color)) return hsl2hex(color)
+  else if (isCmyk(color)) return cmykToHex(color)
+  else if (isHsl(color)) return hslToHex(color)
   else return hslaToHex(color) // hsla
 }

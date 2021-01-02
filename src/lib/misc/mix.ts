@@ -1,5 +1,5 @@
 import { Color, RGB } from '../types/types'
-import { color2rgb } from '../color-models/rgb'
+import { colorToRgb } from '../color-models/rgb'
 import { sum, sumBy, round } from 'lodash'
 import { applyFnToEachObjValue } from '../../utils/utils'
 
@@ -20,7 +20,7 @@ export function mix(colors: Color[], weights?: number[]): RGB {
   const ws = getWeights(colors, weights)
 
   // convert colors in rgb
-  const rgbs = colors.map(color2rgb)
+  const rgbs = colors.map(colorToRgb)
 
   // create the mixed color
 

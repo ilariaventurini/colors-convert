@@ -1,6 +1,6 @@
 import { HSL, RGB, CMYK, HEX, HSLA, RGBA, Color } from '../types/types'
 import { isCmyk, isColor, isHex, isHsl, isHsla, isRgb, isRgba } from '../types/isType'
-import { hsl2cmyk, hsl2hex, hsl2rgb, hslToHsla } from './hsl'
+import { hslToCmyk, hslToHex, hslToRgb, hslToHsla } from './hsl'
 import { alphaToHex } from '../../utils/hex-utils'
 import { hexToHsla } from './hex'
 import { rgbToHsla } from './rgb'
@@ -23,7 +23,7 @@ export function hslaToHex(hsla: HSLA): HEX {
   if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToHex', hsla))
 
   const { h, s, l, a } = hsla
-  const hex = hsl2hex({ h, s, l })
+  const hex = hslToHex({ h, s, l })
   return `${hex}${alphaToHex(a)}`
 }
 
@@ -36,7 +36,7 @@ export function hslaToRgb(hsla: HSLA): RGB {
   if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToRgb', hsla))
 
   const { h, s, l } = hsla
-  return hsl2rgb({ h, s, l })
+  return hslToRgb({ h, s, l })
 }
 
 /**
@@ -48,7 +48,7 @@ export function hslaToRgba(hsla: HSLA): RGBA {
   if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToRgba', hsla))
 
   const { h, s, l, a } = hsla
-  const rgb = hsl2rgb({ h, s, l })
+  const rgb = hslToRgb({ h, s, l })
   return { ...rgb, a }
 }
 
@@ -74,7 +74,7 @@ export function hslaToCmyk(hsla: HSLA): CMYK {
   if (!isHsla(hsla)) throw new Error(notValidHslaMessage('hslaToCmyk', hsla))
 
   const { h, s, l } = hsla
-  return hsl2cmyk({ h, s, l })
+  return hslToCmyk({ h, s, l })
 }
 
 /**
