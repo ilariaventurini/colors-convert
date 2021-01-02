@@ -137,11 +137,28 @@ export function rgb2hsl(rgb: RGB): HSL {
  * @param alpha opacity value in range [0, 1]
  * @returns rgba color object
  */
-export function rgb2rgba(rgb: RGB, alpha = 1): RGBA {
-  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2rgba', rgb))
-  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgb2rgba', alpha))
+export function rgbToRgba(rgb: RGB, alpha = 1): RGBA {
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToRgba', rgb))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgbToRgba', alpha))
 
   return { r: rgb.r, g: rgb.g, b: rgb.b, a: alpha }
+}
+/**
+ * Convert an rgb color to a rgba color.
+ * @param rgb color to convert to rgba
+ * @param alpha opacity value in range [0, 1]
+ * @returns rgba color object
+ * @deprecated since version 1.3.0, use `rgbToRgba` instead
+ */
+export function rgb2rgba(rgb: RGB, alpha = 1): RGBA {
+  return obsolete(
+    rgbToRgba,
+    'rgb2rgba',
+    'rgbToRgba',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -152,7 +169,7 @@ export function rgb2rgba(rgb: RGB, alpha = 1): RGBA {
  */
 export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
   if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToHsla', rgb))
-  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgb2rgba', alpha))
+  if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgbToRgba', alpha))
 
   const hsl = rgbToHsl(rgb)
   return { ...hsl, a: alpha }

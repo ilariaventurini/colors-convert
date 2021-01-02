@@ -7,7 +7,7 @@ import { cmykToRgba } from './cmyk'
 import { hexToRgba } from './hex'
 import { hslToRgba } from './hsl'
 import { hslaToRgba } from './hsla'
-import { rgbToCmyk, rgbToHex, rgbToHsl, rgb2rgba } from './rgb'
+import { rgbToCmyk, rgbToHex, rgbToHsl, rgbToRgba } from './rgb'
 import { notValidRgbaMessage, notValidRgbaStringMessage } from '../../utils/logs-utils'
 
 /**
@@ -80,7 +80,7 @@ export function colorToRgba(color: Color): RGBA {
   if (!isColor(color)) throw new Error(notValidRgbaMessage('colorToRgba', color))
 
   if (isHex(color)) return hexToRgba(color)
-  else if (isRgb(color)) return rgb2rgba(color)
+  else if (isRgb(color)) return rgbToRgba(color)
   else if (isRgba(color)) return color
   else if (isCmyk(color)) return cmykToRgba(color)
   else if (isHsl(color)) return hslToRgba(color)

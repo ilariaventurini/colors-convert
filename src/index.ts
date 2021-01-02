@@ -25,6 +25,7 @@ export {
   rgbToHsl,
   rgbToHsla,
   rgb2rgba,
+  rgbToRgba,
   color2rgb,
   rgbString2Object,
 } from './lib/color-models/rgb'

@@ -1,6 +1,6 @@
 import {
   rgbToHex,
-  rgb2rgba,
+  rgbToRgba,
   rgbToCmyk,
   rgbToHsl,
   rgbToHsla,
@@ -51,15 +51,15 @@ test(`rgbToHsl`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// rgb2rgba
+// rgbToRgba
 ////////////////////////////////////////////////////////
 
-test(`rgb2rgba`, () => {
-  expect(rgb2rgba({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
-  expect(rgb2rgba({ r: 0, g: 0, b: 0 }, 0.3)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0.3 })
+test(`rgbToRgba`, () => {
+  expect(rgbToRgba({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0, a: 1 })
+  expect(rgbToRgba({ r: 0, g: 0, b: 0 }, 0.3)).toStrictEqual({ r: 0, g: 0, b: 0, a: 0.3 })
 
-  expect(() => rgb2rgba({ r: 100, g: 0, b: 0 }, 10)).toThrowError()
-  expect(() => rgb2rgba({ r: 600, g: 0, b: 0 })).toThrowError()
+  expect(() => rgbToRgba({ r: 100, g: 0, b: 0 }, 10)).toThrowError()
+  expect(() => rgbToRgba({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
