@@ -6,7 +6,7 @@ import { rgb2hex, rgb2cmyk, rgb2hsl } from './rgb'
 import { between } from '../../utils/math-utils'
 import { fromLongToShortFormat, shortHslFormatToHslObject } from '../../utils/hsl-utils'
 import { HSL_REGEX } from '../../constants/regex'
-import { hex2hsl } from './hex'
+import { hexToHsl } from './hex'
 import { rgbaToHsl } from './rgba'
 import { cmyk2hsl } from './cmyk'
 import { hslaToHsl } from './hsla'
@@ -124,7 +124,7 @@ export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
 export function colorToHsl(color: Color): HSL {
   if (!isColor(color)) throw new Error(notValidColorMessage('colorToHsl', color))
 
-  if (isHex(color)) return hex2hsl(color)
+  if (isHex(color)) return hexToHsl(color)
   else if (isRgb(color)) return rgb2hsl(color)
   else if (isRgba(color)) return rgbaToHsl(color)
   else if (isCmyk(color)) return cmyk2hsl(color)

@@ -11,6 +11,7 @@ export {
   hex2cmyk,
   hexToCmyk,
   hex2hsl,
+  hexToHsl,
   hexToHsla,
   shortToLongHex,
   colorToHex,

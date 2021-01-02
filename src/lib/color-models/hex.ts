@@ -164,11 +164,20 @@ export function hex2cmyk(hex: HEX): CMYK {
  * @param hex color to convert to hsl
  * @returns hsl color object
  */
-export function hex2hsl(hex: HEX): HSL {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2hsl', hex))
+export function hexToHsl(hex: HEX): HSL {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHsl', hex))
 
   const rgb = hexToRgb(hex)
   return rgb2hsl(rgb)
+}
+/**
+ * Convert a hex color string to a hsl object. It ignores opacity.
+ * @param hex color to convert to hsl
+ * @returns hsl color object
+ * @deprecated since version 1.3.0, use `hexToHsl` instead
+ */
+export function hex2hsl(hex: HEX): HSL {
+  return obsolete(hexToHsl, 'hex2hsl', 'hexToHsl', DEPRECATE_VERSION_2, DELETE_VERSION_2, arguments)
 }
 
 /**

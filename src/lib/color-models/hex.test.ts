@@ -4,7 +4,7 @@ import {
   hexToRgba,
   hexToHexWithAlpha,
   hexToCmyk,
-  hex2hsl,
+  hexToHsl,
   hexToHsla,
   shortToLongHex,
   colorToHex,
@@ -109,25 +109,25 @@ test(`hexToCmyk`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// hex2hsl
+// hexToHsl
 ////////////////////////////////////////////////////////
 
-test(`hex2hsl`, () => {
-  expect(hex2hsl('#000000')).toEqual({ h: 0, s: 0, l: 0 })
-  expect(hex2hsl('#000000FF')).toEqual({ h: 0, s: 0, l: 0 })
-  expect(hex2hsl('#FFFFFF')).toEqual({ h: 0, s: 0, l: 100 })
-  expect(hex2hsl('#F2B90D')).toEqual({ h: 45, s: 90, l: 50 })
-  expect(hex2hsl('#F2F20D')).toEqual({ h: 60, s: 90, l: 50 })
-  expect(hex2hsl('#CCF20D')).toEqual({ h: 70, s: 90, l: 50 })
-  expect(hex2hsl('#0DF233')).toEqual({ h: 130, s: 90, l: 50 })
-  expect(hex2hsl('#0DDFF2')).toEqual({ h: 185, s: 90, l: 50 })
-  expect(hex2hsl('#590DF2')).toEqual({ h: 260, s: 90, l: 50 })
-  expect(hex2hsl('#F20DCC')).toEqual({ h: 310, s: 90, l: 50 })
-  expect(hex2hsl('#F20D11')).toEqual({ h: 359, s: 90, l: 50 })
-  expect(hex2hsl('#000')).toEqual({ h: 0, s: 0, l: 0 })
-  expect(hex2hsl('#000F')).toEqual({ h: 0, s: 0, l: 0 })
+test(`hexToHsl`, () => {
+  expect(hexToHsl('#000000')).toEqual({ h: 0, s: 0, l: 0 })
+  expect(hexToHsl('#000000FF')).toEqual({ h: 0, s: 0, l: 0 })
+  expect(hexToHsl('#FFFFFF')).toEqual({ h: 0, s: 0, l: 100 })
+  expect(hexToHsl('#F2B90D')).toEqual({ h: 45, s: 90, l: 50 })
+  expect(hexToHsl('#F2F20D')).toEqual({ h: 60, s: 90, l: 50 })
+  expect(hexToHsl('#CCF20D')).toEqual({ h: 70, s: 90, l: 50 })
+  expect(hexToHsl('#0DF233')).toEqual({ h: 130, s: 90, l: 50 })
+  expect(hexToHsl('#0DDFF2')).toEqual({ h: 185, s: 90, l: 50 })
+  expect(hexToHsl('#590DF2')).toEqual({ h: 260, s: 90, l: 50 })
+  expect(hexToHsl('#F20DCC')).toEqual({ h: 310, s: 90, l: 50 })
+  expect(hexToHsl('#F20D11')).toEqual({ h: 359, s: 90, l: 50 })
+  expect(hexToHsl('#000')).toEqual({ h: 0, s: 0, l: 0 })
+  expect(hexToHsl('#000F')).toEqual({ h: 0, s: 0, l: 0 })
 
-  expect(() => hex2hsl('#')).toThrowError()
+  expect(() => hexToHsl('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
