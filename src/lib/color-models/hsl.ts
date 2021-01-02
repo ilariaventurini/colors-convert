@@ -2,7 +2,7 @@ import { HSL, RGB, CMYK, HEX, RGBA, HSLA, Color } from '../types/types'
 import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../types/isType'
 import { applyFnToEachObjValue } from '../../utils/utils'
 import { round } from 'lodash'
-import { rgbToHex, rgbToCmyk, rgb2hsl } from './rgb'
+import { rgbToHex, rgbToCmyk, rgbToHsl } from './rgb'
 import { between } from '../../utils/math-utils'
 import { fromLongToShortFormat, shortHslFormatToHslObject } from '../../utils/hsl-utils'
 import { HSL_REGEX } from '../../constants/regex'
@@ -125,7 +125,7 @@ export function colorToHsl(color: Color): HSL {
   if (!isColor(color)) throw new Error(notValidColorMessage('colorToHsl', color))
 
   if (isHex(color)) return hexToHsl(color)
-  else if (isRgb(color)) return rgb2hsl(color)
+  else if (isRgb(color)) return rgbToHsl(color)
   else if (isRgba(color)) return rgbaToHsl(color)
   else if (isCmyk(color)) return cmyk2hsl(color)
   else if (isHsl(color)) return color

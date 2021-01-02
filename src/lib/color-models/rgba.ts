@@ -7,7 +7,7 @@ import { cmykToRgba } from './cmyk'
 import { hexToRgba } from './hex'
 import { hslToRgba } from './hsl'
 import { hslaToRgba } from './hsla'
-import { rgbToCmyk, rgbToHex, rgb2hsl, rgb2rgba } from './rgb'
+import { rgbToCmyk, rgbToHex, rgbToHsl, rgb2rgba } from './rgb'
 import { notValidRgbaMessage, notValidRgbaStringMessage } from '../../utils/logs-utils'
 
 /**
@@ -57,7 +57,7 @@ export function rgbaToHsl(rgba: RGBA): HSL {
   if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToHsl', rgba))
 
   const { r, g, b } = rgba
-  return rgb2hsl({ r, g, b })
+  return rgbToHsl({ r, g, b })
 }
 
 /**

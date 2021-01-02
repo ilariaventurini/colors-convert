@@ -89,8 +89,8 @@ export function rgb2cmyk(rgb: RGB): CMYK {
  * @param rgb color to convert to HSL
  * @returns hsl color object
  */
-export function rgb2hsl(rgb: RGB): HSL {
-  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2hsl', rgb))
+export function rgbToHsl(rgb: RGB): HSL {
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToHsl', rgb))
 
   const { r, g, b } = rgb
   const max = Math.max(r, g, b)
@@ -121,6 +121,15 @@ export function rgb2hsl(rgb: RGB): HSL {
 
   return hslRounded
 }
+/**
+ * Convert a rgb object to hsl object.
+ * @param rgb color to convert to HSL
+ * @returns hsl color object
+ * @deprecated since version 1.3.0, use `rgbToHsl` instead
+ */
+export function rgb2hsl(rgb: RGB): HSL {
+  return obsolete(rgbToHsl, 'rgb2hsl', 'rgbToHsl', DEPRECATE_VERSION_2, DELETE_VERSION_2, arguments)
+}
 
 /**
  * Convert an rgb color to a rgba color.
@@ -145,7 +154,7 @@ export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
   if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToHsla', rgb))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('rgb2rgba', alpha))
 
-  const hsl = rgb2hsl(rgb)
+  const hsl = rgbToHsl(rgb)
   return { ...hsl, a: alpha }
 }
 
