@@ -6,7 +6,7 @@ import { hexToRgba } from './hex'
 import { cmyk2rgb } from './cmyk'
 import { hsl2rgb } from './hsl'
 import { number0255ToHex } from '../../utils/hex-utils'
-import { rgba2rgb } from './rgba'
+import { rgbaToRgb } from './rgba'
 import { hslaToRgb } from './hsla'
 import { fromLongToShortRgbFormat, shortRgbFormatToRgbObject } from '../../utils/rgb-utils'
 import { RGB_REGEX } from '../../constants/regex'
@@ -183,9 +183,9 @@ export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
 export function colorToRgb(color: Color): RGB {
   if (!isColor(color)) throw new Error(notValidColorMessage('colorToRgb', color))
 
-  if (isHex(color)) return rgba2rgb(hexToRgba(color))
+  if (isHex(color)) return rgbaToRgb(hexToRgba(color))
   else if (isRgb(color)) return color
-  else if (isRgba(color)) return rgba2rgb(color)
+  else if (isRgba(color)) return rgbaToRgb(color)
   else if (isCmyk(color)) return cmyk2rgb(color)
   else if (isHsl(color)) return hsl2rgb(color)
   else return hslaToRgb(color) // hsla

@@ -34,11 +34,13 @@ export {
 export {
   rgbaToHex,
   rgba2rgb,
+  rgbaToRgb,
   rgbaToCmyk,
   rgbaToHsl,
   rgbaToHsla,
   colorToRgba,
   rgbaString2Object,
+  rgbaStringToObject,
 } from './lib/color-models/rgba'
 export {
   cmyk2hex,

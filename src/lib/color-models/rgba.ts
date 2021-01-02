@@ -9,6 +9,8 @@ import { hslToRgba } from './hsl'
 import { hslaToRgba } from './hsla'
 import { rgbToCmyk, rgbToHex, rgbToHsl, rgbToRgba } from './rgb'
 import { notValidRgbaMessage, notValidRgbaStringMessage } from '../../utils/logs-utils'
+import { obsolete } from '../../utils/obsolete'
+import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
 
 /**
  * Convert a rgba color object to a hex color.
@@ -29,10 +31,26 @@ export function rgbaToHex(rgba: RGBA): HEX {
  * @param rgba color to convert to rgb
  * @returns rgb color object
  */
-export function rgba2rgb(rgba: RGBA): RGB {
-  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgba2rgb', rgba))
+export function rgbaToRgb(rgba: RGBA): RGB {
+  if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToRgb', rgba))
 
   return { r: rgba.r, g: rgba.g, b: rgba.b }
+}
+/**
+ * Convert a rgba color object to a rgb color removing the alpha value.
+ * @param rgba color to convert to rgb
+ * @returns rgb color object
+ * @deprecated since version 1.3.0, use `rgbaToRgb` instead
+ */
+export function rgba2rgb(rgba: RGBA): RGB {
+  return obsolete(
+    rgbaToRgb,
+    'rgba2rgb',
+    'rgbaToRgb',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -94,17 +112,35 @@ export function colorToRgba(color: Color): RGBA {
  * @param rgbaString rgba string
  * @returns rgba object
  */
-export function rgbaString2Object(rgbaString: string): RGBA {
+export function rgbaStringToObject(rgbaString: string): RGBA {
   // check short and long formats
   const isShortFormat = RGBA_REGEX.short.test(rgbaString)
   const isLongFormat = RGBA_REGEX.long.test(rgbaString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(notValidRgbaStringMessage('rgbaString2Object', rgbaString))
+    throw new Error(notValidRgbaStringMessage('rgbaStringToObject', rgbaString))
 
   // convert rgbString to short format: 'R, G, B'
   const rgbaStringCleanShortFormat = isShortFormat
     ? rgbaString
     : fromLongToShortRgbaFormat(rgbaString)
   return shortRgbaFormatToRgbaObject(rgbaStringCleanShortFormat)
+}
+/**
+ * Covert a string in these two formats to a rgba object:
+ *  - 255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}
+ *  - rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}.
+ * @param rgbaString rgba string
+ * @returns rgba object
+ * @deprecated since version 1.3.0, use `rgbaStringToObject` instead
+ */
+export function rgbaString2Object(rgbaString: string): RGBA {
+  return obsolete(
+    rgbaStringToObject,
+    'rgbaString2Object',
+    'rgbaStringToObject',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
