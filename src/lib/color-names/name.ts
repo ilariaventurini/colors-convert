@@ -1,5 +1,5 @@
 import { Color, RGB } from '../types/types'
-import { color2rgb } from '../color-models/rgb'
+import { colorToRgb } from '../color-models/rgb'
 import { colorNames } from '../../constants/colorNames'
 import { minBy } from 'lodash'
 import { isColor, isRgb } from '../types/isType'
@@ -13,7 +13,7 @@ import { notValidColorMessage, notValidRgbMessage } from '../../utils/logs-utils
 export function name(color: Color): string {
   if (!isColor(color)) throw new Error(notValidColorMessage('name', color))
 
-  const colorRgb = color2rgb(color)
+  const colorRgb = colorToRgb(color)
   const distances = colorNames.map(({ name, rgb }) => ({ name, distance: distance(rgb, colorRgb) }))
   const nearestColor = minBy(distances, 'distance') as { name: string; distance: number }
   return nearestColor.name
@@ -29,8 +29,8 @@ function distance(color1: Color, color2: Color): number {
   if (!isColor(color1)) throw new Error(notValidColorMessage('distance', color1))
   if (!isColor(color2)) throw new Error(notValidColorMessage('distance', color2))
 
-  const c1Rgb = color2rgb(color1)
-  const c2Rgb = color2rgb(color2)
+  const c1Rgb = colorToRgb(color1)
+  const c2Rgb = colorToRgb(color2)
   const distance = euclideanRgbDistance(c1Rgb, c2Rgb)
   return distance
 }

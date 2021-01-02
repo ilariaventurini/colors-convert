@@ -4,7 +4,7 @@ import {
   rgbToCmyk,
   rgbToHsl,
   rgbToHsla,
-  color2rgb,
+  colorToRgb,
   rgbString2Object,
 } from '../../index'
 
@@ -77,18 +77,18 @@ test(`rgbToHsla`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// color2rgb
+// colorToRgb
 ////////////////////////////////////////////////////////
 
-test(`color2rgb`, () => {
-  expect(color2rgb('#FFFFFF')).toStrictEqual({ r: 255, g: 255, b: 255 })
-  expect(color2rgb({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
-  expect(color2rgb({ r: 0, g: 0, b: 0, a: 1 })).toStrictEqual({ r: 0, g: 0, b: 0 })
-  expect(color2rgb({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual({ r: 255, g: 255, b: 255 })
-  expect(color2rgb({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
-  expect(color2rgb({ h: 0, s: 0, l: 0, a: 1 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+test(`colorToRgb`, () => {
+  expect(colorToRgb('#FFFFFF')).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(colorToRgb({ r: 0, g: 0, b: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(colorToRgb({ r: 0, g: 0, b: 0, a: 1 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(colorToRgb({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(colorToRgb({ h: 0, s: 0, l: 0 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(colorToRgb({ h: 0, s: 0, l: 0, a: 1 })).toStrictEqual({ r: 0, g: 0, b: 0 })
 
-  expect(() => color2rgb('#')).toThrowError()
+  expect(() => colorToRgb('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

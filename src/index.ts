@@ -27,6 +27,7 @@ export {
   rgb2rgba,
   rgbToRgba,
   color2rgb,
+  colorToRgb,
   rgbString2Object,
 } from './lib/color-models/rgb'
 export {

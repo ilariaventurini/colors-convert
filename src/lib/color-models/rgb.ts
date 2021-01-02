@@ -180,8 +180,8 @@ export function rgbToHsla(rgb: RGB, alpha = 1): HSLA {
  * @param color color to convert to rgb
  * @returns rgb color object
  */
-export function color2rgb(color: Color): RGB {
-  if (!isColor(color)) throw new Error(notValidColorMessage('color2rgb', color))
+export function colorToRgb(color: Color): RGB {
+  if (!isColor(color)) throw new Error(notValidColorMessage('colorToRgb', color))
 
   if (isHex(color)) return rgba2rgb(hexToRgba(color))
   else if (isRgb(color)) return color
@@ -189,6 +189,22 @@ export function color2rgb(color: Color): RGB {
   else if (isCmyk(color)) return cmyk2rgb(color)
   else if (isHsl(color)) return hsl2rgb(color)
   else return hslaToRgb(color) // hsla
+}
+/**
+ * Convert a generic color to rgb.
+ * @param color color to convert to rgb
+ * @returns rgb color object
+ * @deprecated since version 1.3.0, use `colorToRgb` instead
+ */
+export function color2rgb(color: Color): RGB {
+  return obsolete(
+    colorToRgb,
+    'color2rgb',
+    'colorToRgb',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
