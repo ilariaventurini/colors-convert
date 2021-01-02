@@ -18,6 +18,7 @@ export {
 } from './lib/color-models/hex'
 export {
   rgb2hex,
+  rgbToHex,
   rgb2cmyk,
   rgb2hsl,
   rgbToHsla,

@@ -10,7 +10,7 @@ import {
 import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
 import { obsolete } from '../../utils/obsolete'
 import { HEX_REGEX } from '../../constants/regex'
-import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'
+import { rgb2cmyk, rgbToHex, rgb2hsl } from './rgb'
 import { rgbaToHex, rgbaToHsla } from './rgba'
 import { ALPHA_PRECISION } from '../../constants/rgba'
 import { cmyk2hex } from './cmyk'
@@ -221,7 +221,7 @@ export function colorToHex(color: Color): HEX {
   if (!isColor(color)) throw new Error(notValidColorMessage('colorToHex', color))
 
   if (isHex(color)) return color
-  else if (isRgb(color)) return rgb2hex(color)
+  else if (isRgb(color)) return rgbToHex(color)
   else if (isRgba(color)) return rgbaToHex(color)
   else if (isCmyk(color)) return cmyk2hex(color)
   else if (isHsl(color)) return hsl2hex(color)

@@ -17,19 +17,30 @@ import {
   notValidRgbMessage,
   notValidRgbStringMessage,
 } from '../../utils/logs-utils'
+import { obsolete } from '../../utils/obsolete'
+import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
 
 /**
  * Convert an rgb object to hex.
  * @param rgb color object to convert to hex
  * @returns hex color
  */
-export function rgb2hex(rgb: RGB): HEX {
-  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2hex', rgb))
+export function rgbToHex(rgb: RGB): HEX {
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToHex', rgb))
 
   const hex = Object.values(rgb)
     .map((n) => number0255ToHex(n))
     .join('')
   return `#${hex}`
+}
+/**
+ * Convert an rgb object to hex.
+ * @param rgb color object to convert to hex
+ * @returns hex color
+ * @deprecated since version 1.3.0, use `rgbToHex` instead
+ */
+export function rgb2hex(rgb: RGB): HEX {
+  return obsolete(rgbToHex, 'rgb2hex', 'rgbToHex', DEPRECATE_VERSION_2, DELETE_VERSION_2, arguments)
 }
 
 /**

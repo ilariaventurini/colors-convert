@@ -1,5 +1,5 @@
 import {
-  rgb2hex,
+  rgbToHex,
   rgb2rgba,
   rgb2cmyk,
   rgb2hsl,
@@ -9,14 +9,14 @@ import {
 } from '../../index'
 
 ////////////////////////////////////////////////////////
-// rgb2hex
+// rgbToHex
 ////////////////////////////////////////////////////////
 
-test(`rgb2hex`, () => {
-  expect(rgb2hex({ r: 0, g: 0, b: 0 })).toBe('#000000')
-  expect(rgb2hex({ r: 255, g: 255, b: 255 })).toBe('#FFFFFF')
+test(`rgbToHex`, () => {
+  expect(rgbToHex({ r: 0, g: 0, b: 0 })).toBe('#000000')
+  expect(rgbToHex({ r: 255, g: 255, b: 255 })).toBe('#FFFFFF')
 
-  expect(() => rgb2hex({ r: 600, g: 0, b: 0 })).toThrowError()
+  expect(() => rgbToHex({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

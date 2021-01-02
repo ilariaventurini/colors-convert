@@ -2,7 +2,7 @@ import { HSL, RGB, CMYK, HEX, RGBA, HSLA, Color } from '../types/types'
 import { isCmyk, isColor, isHex, isHsl, isRgb, isRgba } from '../types/isType'
 import { applyFnToEachObjValue } from '../../utils/utils'
 import { round } from 'lodash'
-import { rgb2hex, rgb2cmyk, rgb2hsl } from './rgb'
+import { rgbToHex, rgb2cmyk, rgb2hsl } from './rgb'
 import { between } from '../../utils/math-utils'
 import { fromLongToShortFormat, shortHslFormatToHslObject } from '../../utils/hsl-utils'
 import { HSL_REGEX } from '../../constants/regex'
@@ -26,7 +26,7 @@ export function hsl2hex(hsl: HSL): HEX {
   if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2hex', hsl))
 
   const rgb = hsl2rgb(hsl)
-  return rgb2hex(rgb)
+  return rgbToHex(rgb)
 }
 
 /**
