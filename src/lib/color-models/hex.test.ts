@@ -3,7 +3,7 @@ import {
   hexToRgb,
   hexToRgba,
   hexToHexWithAlpha,
-  hex2cmyk,
+  hexToCmyk,
   hex2hsl,
   hexToHsla,
   shortToLongHex,
@@ -94,18 +94,18 @@ test(`hexToHexWithAlpha`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// hex2cmyk
+// hexToCmyk
 ////////////////////////////////////////////////////////
 
-test(`hex2cmyk`, () => {
-  expect(hex2cmyk('#FFFFFF')).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
-  expect(hex2cmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hex2cmyk('#4287F5')).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
-  expect(hex2cmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hex2cmyk('#000F')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(hex2cmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+test(`hexToCmyk`, () => {
+  expect(hexToCmyk('#FFFFFF')).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(hexToCmyk('#000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(hexToCmyk('#4287F5')).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
+  expect(hexToCmyk('#000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(hexToCmyk('#000F')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(hexToCmyk('#00000000')).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
 
-  expect(() => hex2cmyk('#')).toThrowError()
+  expect(() => hexToCmyk('#')).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

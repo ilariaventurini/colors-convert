@@ -9,6 +9,7 @@ export {
   hex2hexWithAlpha,
   hexToHexWithAlpha,
   hex2cmyk,
+  hexToCmyk,
   hex2hsl,
   hexToHsla,
   shortToLongHex,

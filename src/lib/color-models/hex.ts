@@ -136,11 +136,27 @@ export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
  * @param hex color to convert to cmyk
  * @returns cmyk color object
  */
-export function hex2cmyk(hex: HEX): CMYK {
-  if (!isHex(hex)) throw new Error(notValidHexMessage('hex2cmyk', hex))
+export function hexToCmyk(hex: HEX): CMYK {
+  if (!isHex(hex)) throw new Error(notValidHexMessage('hexToCmyk', hex))
 
   const rgb = hexToRgb(hex)
   return rgb2cmyk(rgb)
+}
+/**
+ * Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.
+ * @param hex color to convert to cmyk
+ * @returns cmyk color object
+ * @deprecated since version 1.3.0, use `hexToCmyk` instead
+ */
+export function hex2cmyk(hex: HEX): CMYK {
+  return obsolete(
+    hexToCmyk,
+    'hex2cmyk',
+    'hexToCmyk',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**

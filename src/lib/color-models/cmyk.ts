@@ -6,7 +6,7 @@ import { rgb2cmyk, rgb2hex, rgb2hsl } from './rgb'
 import { between } from '../../utils/math-utils'
 import { CMYK_REGEX } from '../../constants/regex'
 import { fromLongToShortCmykFormat, shortCmykFormatToCmykObject } from '../../utils/cmyk-utils'
-import { hex2cmyk } from './hex'
+import { hexToCmyk } from './hex'
 import { rgbaToCmyk } from './rgba'
 import { hsl2cmyk } from './hsl'
 import { hslaToCmyk } from './hsla'
@@ -95,7 +95,7 @@ export function cmykToHsla(cmyk: CMYK, alpha = 1): HSLA {
 export function colorToCmyk(color: Color): CMYK {
   if (!isColor(color)) throw new Error(notValidColorMessage('colorToCmyk', color))
 
-  if (isHex(color)) return hex2cmyk(color)
+  if (isHex(color)) return hexToCmyk(color)
   else if (isRgb(color)) return rgb2cmyk(color)
   else if (isRgba(color)) return rgbaToCmyk(color)
   else if (isCmyk(color)) return color
