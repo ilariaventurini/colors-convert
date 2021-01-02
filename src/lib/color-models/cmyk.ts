@@ -99,11 +99,27 @@ export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
  * @param cmyk color to convert to hsl
  * @returns hsl object
  */
-export function cmyk2hsl(cmyk: CMYK): HSL {
-  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2hsl', cmyk))
+export function cmykToHsl(cmyk: CMYK): HSL {
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToHsl', cmyk))
 
   const rgb = cmykToRgb(cmyk)
   return rgbToHsl(rgb)
+}
+/**
+ * Convert a cmyk color to a hsl.
+ * @param cmyk color to convert to hsl
+ * @returns hsl object
+ * @deprecated since version 1.3.0, use `cmykToHsl` instead
+ */
+export function cmyk2hsl(cmyk: CMYK): HSL {
+  return obsolete(
+    cmykToHsl,
+    'cmyk2hsl',
+    'cmykToHsl',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -144,15 +160,33 @@ export function colorToCmyk(color: Color): CMYK {
  * @param cmykString string to convert to cmyk
  * @returns cmyk object
  */
-export function cmykString2Object(cmykString: string): CMYK {
+export function cmykStringToObject(cmykString: string): CMYK {
   const isShortFormat = CMYK_REGEX.short.test(cmykString)
   const isLongFormat = CMYK_REGEX.long.test(cmykString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(notValidCmykStringMessage('cmykString2Object', cmykString))
+    throw new Error(notValidCmykStringMessage('cmykStringToObject', cmykString))
 
   const cmykStringCleanShortFormat = isShortFormat
     ? cmykString
     : fromLongToShortCmykFormat(cmykString)
   return shortCmykFormatToCmykObject(cmykStringCleanShortFormat)
+}
+/**
+ * Covert a string in these two formats to a cmyk object:
+ *  - 0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}
+ *  - cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}.
+ * @param cmykString string to convert to cmyk
+ * @returns cmyk object
+ * @deprecated since version 1.3.0, use `cmykStringToObject` instead
+ */
+export function cmykString2Object(cmykString: string): CMYK {
+  return obsolete(
+    cmykStringToObject,
+    'cmykString2Object',
+    'cmykStringToObject',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }

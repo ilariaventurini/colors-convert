@@ -49,9 +49,11 @@ export {
   cmykToRgb,
   cmykToRgba,
   cmyk2hsl,
+  cmykToHsl,
   cmykToHsla,
   colorToCmyk,
   cmykString2Object,
+  cmykStringToObject,
 } from './lib/color-models/cmyk'
 export {
   hsl2hex,

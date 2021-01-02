@@ -8,7 +8,7 @@ import { fromLongToShortFormat, shortHslFormatToHslObject } from '../../utils/hs
 import { HSL_REGEX } from '../../constants/regex'
 import { hexToHsl } from './hex'
 import { rgbaToHsl } from './rgba'
-import { cmyk2hsl } from './cmyk'
+import { cmykToHsl } from './cmyk'
 import { hslaToHsl } from './hsla'
 import {
   notValidAlphaValueMessage,
@@ -127,7 +127,7 @@ export function colorToHsl(color: Color): HSL {
   if (isHex(color)) return hexToHsl(color)
   else if (isRgb(color)) return rgbToHsl(color)
   else if (isRgba(color)) return rgbaToHsl(color)
-  else if (isCmyk(color)) return cmyk2hsl(color)
+  else if (isCmyk(color)) return cmykToHsl(color)
   else if (isHsl(color)) return color
   else return hslaToHsl(color) // hsla
 }
