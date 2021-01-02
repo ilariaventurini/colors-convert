@@ -16,17 +16,28 @@ import {
   notValidHslMessage,
   notValidHslStringMessage,
 } from '../../utils/logs-utils'
+import { obsolete } from '../../utils/obsolete'
+import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
 
 /**
  * Convert a hsl object to hex.
  * @param hsl color to convert to hex
  * @returns hex color
  */
-export function hsl2hex(hsl: HSL): HEX {
-  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2hex', hsl))
+export function hslToHex(hsl: HSL): HEX {
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToHex', hsl))
 
-  const rgb = hsl2rgb(hsl)
+  const rgb = hslToRgb(hsl)
   return rgbToHex(rgb)
+}
+/**
+ * Convert a hsl object to hex.
+ * @param hsl color to convert to hex
+ * @returns hex color
+ * @deprecated since version 1.3.0, use `hslToHex` instead
+ */
+export function hsl2hex(hsl: HSL): HEX {
+  return obsolete(hslToHex, 'hsl2hex', 'hslToHex', DEPRECATE_VERSION_2, DELETE_VERSION_2, arguments)
 }
 
 /**
@@ -34,8 +45,8 @@ export function hsl2hex(hsl: HSL): HEX {
  * @param hsl color to convert to rgb color object
  * @returns rgb color object
  */
-export function hsl2rgb(hsl: HSL): RGB {
-  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2rgb', hsl))
+export function hslToRgb(hsl: HSL): RGB {
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToRgb', hsl))
 
   const { h, s, l } = hsl
   // normalize values
@@ -75,6 +86,15 @@ export function hsl2rgb(hsl: HSL): RGB {
   const rgb = applyFnToEachObjValue(rgb01, (c: number) => round(c * 255)) as RGB
   return rgb
 }
+/**
+ * Convert a hsl object to rgb color object.
+ * @param hsl color to convert to rgb color object
+ * @returns rgb color object
+ * @deprecated since version 1.3.0, use `hslToRgb` instead
+ */
+export function hsl2rgb(hsl: HSL): RGB {
+  return obsolete(hslToRgb, 'hsl2rgb', 'hslToRgb', DEPRECATE_VERSION_2, DELETE_VERSION_2, arguments)
+}
 
 /**
  * Convert a hsl object to rgba.
@@ -86,7 +106,7 @@ export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
   if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToRgba', hsl))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hslToRgba', alpha))
 
-  const rgb = hsl2rgb(hsl)
+  const rgb = hslToRgb(hsl)
   return { ...rgb, a: alpha }
 }
 
@@ -95,12 +115,28 @@ export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
  * @param hsl color to convert to cmyk
  * @returns cmyk object
  */
-export function hsl2cmyk(hsl: HSL): CMYK {
-  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hsl2cmyk', hsl))
+export function hslToCmyk(hsl: HSL): CMYK {
+  if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToCmyk', hsl))
 
-  const rgb = hsl2rgb(hsl)
+  const rgb = hslToRgb(hsl)
   const cmyk = rgbToCmyk(rgb)
   return cmyk
+}
+/**
+ * Convert a hsl object to cmyk.
+ * @param hsl color to convert to cmyk
+ * @returns cmyk object
+ * @deprecated since version 1.3.0, use `hslToCmyk` instead
+ */
+export function hsl2cmyk(hsl: HSL): CMYK {
+  return obsolete(
+    hslToCmyk,
+    'hsl2cmyk',
+    'hslToCmyk',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -139,13 +175,31 @@ export function colorToHsl(color: Color): HSL {
  * @param hsl string to convert to hsl object
  * @returns hsl object
  */
-export function hslString2Object(hslString: string): HSL {
+export function hslStringToObject(hslString: string): HSL {
   const isShortFormat = HSL_REGEX.short.test(hslString)
   const isLongFormat = HSL_REGEX.long.test(hslString)
 
   if (!isShortFormat && !isLongFormat)
-    throw new Error(notValidHslStringMessage('hslString2Object', hslString))
+    throw new Error(notValidHslStringMessage('hslStringToObject', hslString))
 
   const hslStringCleanShortFormat = isShortFormat ? hslString : fromLongToShortFormat(hslString)
   return shortHslFormatToHslObject(hslStringCleanShortFormat)
+}
+/**
+ * Covert a string in these two formats to a hsl object:
+ *  - 322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
+ *  - hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.
+ * @param hsl string to convert to hsl object
+ * @returns hsl object
+ * @deprecated since version 1.3.0, use `hslStringToObject` instead
+ */
+export function hslString2Object(hslString: string): HSL {
+  return obsolete(
+    hslStringToObject,
+    'hslString2Object',
+    'hslStringToObject',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }

@@ -8,7 +8,7 @@ import { CMYK_REGEX } from '../../constants/regex'
 import { fromLongToShortCmykFormat, shortCmykFormatToCmykObject } from '../../utils/cmyk-utils'
 import { hexToCmyk } from './hex'
 import { rgbaToCmyk } from './rgba'
-import { hsl2cmyk } from './hsl'
+import { hslToCmyk } from './hsl'
 import { hslaToCmyk } from './hsla'
 import {
   notValidAlphaValueMessage,
@@ -149,7 +149,7 @@ export function colorToCmyk(color: Color): CMYK {
   else if (isRgb(color)) return rgbToCmyk(color)
   else if (isRgba(color)) return rgbaToCmyk(color)
   else if (isCmyk(color)) return color
-  else if (isHsl(color)) return hsl2cmyk(color)
+  else if (isHsl(color)) return hslToCmyk(color)
   else return hslaToCmyk(color) // hsla
 }
 

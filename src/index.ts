@@ -57,12 +57,16 @@ export {
 } from './lib/color-models/cmyk'
 export {
   hsl2hex,
+  hslToHex,
   hsl2rgb,
+  hslToRgb,
   hslToRgba,
   hsl2cmyk,
+  hslToCmyk,
   hslToHsla,
   colorToHsl,
   hslString2Object,
+  hslStringToObject,
 } from './lib/color-models/hsl'
 export {
   hslaToHex,

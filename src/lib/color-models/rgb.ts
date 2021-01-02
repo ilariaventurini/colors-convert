@@ -4,7 +4,7 @@ import { isRgb, isRgba, isHex, isCmyk, isHsl, isColor } from '../types/isType'
 import { applyFnToEachObjValue } from '../../utils/utils'
 import { hexToRgba } from './hex'
 import { cmykToRgb } from './cmyk'
-import { hsl2rgb } from './hsl'
+import { hslToRgb } from './hsl'
 import { number0255ToHex } from '../../utils/hex-utils'
 import { rgbaToRgb } from './rgba'
 import { hslaToRgb } from './hsla'
@@ -187,7 +187,7 @@ export function colorToRgb(color: Color): RGB {
   else if (isRgb(color)) return color
   else if (isRgba(color)) return rgbaToRgb(color)
   else if (isCmyk(color)) return cmykToRgb(color)
-  else if (isHsl(color)) return hsl2rgb(color)
+  else if (isHsl(color)) return hslToRgb(color)
   else return hslaToRgb(color) // hsla
 }
 /**
