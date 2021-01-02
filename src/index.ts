@@ -20,6 +20,7 @@ export {
   rgb2hex,
   rgbToHex,
   rgb2cmyk,
+  rgbToCmyk,
   rgb2hsl,
   rgbToHsla,
   rgb2rgba,

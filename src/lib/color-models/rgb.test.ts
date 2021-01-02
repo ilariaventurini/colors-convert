@@ -1,7 +1,7 @@
 import {
   rgbToHex,
   rgb2rgba,
-  rgb2cmyk,
+  rgbToCmyk,
   rgb2hsl,
   rgbToHsla,
   color2rgb,
@@ -20,15 +20,15 @@ test(`rgbToHex`, () => {
 })
 
 ////////////////////////////////////////////////////////
-// rgb2cmyk
+// rgbToCmyk
 ////////////////////////////////////////////////////////
 
-test(`rgb2cmyk`, () => {
-  expect(rgb2cmyk({ r: 0, g: 0, b: 0 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
-  expect(rgb2cmyk({ r: 255, g: 255, b: 255 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
-  expect(rgb2cmyk({ r: 66, g: 135, b: 245 })).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
+test(`rgbToCmyk`, () => {
+  expect(rgbToCmyk({ r: 0, g: 0, b: 0 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 100 })
+  expect(rgbToCmyk({ r: 255, g: 255, b: 255 })).toStrictEqual({ c: 0, m: 0, y: 0, k: 0 })
+  expect(rgbToCmyk({ r: 66, g: 135, b: 245 })).toStrictEqual({ c: 73, m: 45, y: 0, k: 4 })
 
-  expect(() => rgb2cmyk({ r: 600, g: 0, b: 0 })).toThrowError()
+  expect(() => rgbToCmyk({ r: 600, g: 0, b: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

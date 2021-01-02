@@ -48,8 +48,8 @@ export function rgb2hex(rgb: RGB): HEX {
  * @param rgb color object to convert to cmyk
  * @returns cmyk color
  */
-export function rgb2cmyk(rgb: RGB): CMYK {
-  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgb2cmyk', rgb))
+export function rgbToCmyk(rgb: RGB): CMYK {
+  if (!isRgb(rgb)) throw new Error(notValidRgbMessage('rgbToCmyk', rgb))
 
   const { r, g, b } = rgb
   // normalize r,g,b values (from 0-255 to 0-1)
@@ -66,6 +66,22 @@ export function rgb2cmyk(rgb: RGB): CMYK {
 
   const roundedCmyk = applyFnToEachObjValue({ c, m, y, k }, (c: number) => round(c * 100)) as CMYK
   return roundedCmyk
+}
+/**
+ * Convert a rgb object to a cmyk object.
+ * @param rgb color object to convert to cmyk
+ * @returns cmyk color
+ * @deprecated since version 1.3.0, use `rgbToCmyk` instead
+ */
+export function rgb2cmyk(rgb: RGB): CMYK {
+  return obsolete(
+    rgbToCmyk,
+    'rgb2cmyk',
+    'rgbToCmyk',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**

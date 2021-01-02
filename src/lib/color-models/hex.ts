@@ -10,7 +10,7 @@ import {
 import { hexAlphaTo0255, hexToAlpha, alphaToHex } from '../../utils/hex-utils'
 import { obsolete } from '../../utils/obsolete'
 import { HEX_REGEX } from '../../constants/regex'
-import { rgb2cmyk, rgbToHex, rgb2hsl } from './rgb'
+import { rgbToCmyk, rgbToHex, rgb2hsl } from './rgb'
 import { rgbaToHex, rgbaToHsla } from './rgba'
 import { ALPHA_PRECISION } from '../../constants/rgba'
 import { cmyk2hex } from './cmyk'
@@ -140,7 +140,7 @@ export function hexToCmyk(hex: HEX): CMYK {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hexToCmyk', hex))
 
   const rgb = hexToRgb(hex)
-  return rgb2cmyk(rgb)
+  return rgbToCmyk(rgb)
 }
 /**
  * Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.

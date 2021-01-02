@@ -7,7 +7,7 @@ import { cmykToRgba } from './cmyk'
 import { hexToRgba } from './hex'
 import { hslToRgba } from './hsl'
 import { hslaToRgba } from './hsla'
-import { rgb2cmyk, rgb2hex, rgb2hsl, rgb2rgba } from './rgb'
+import { rgbToCmyk, rgbToHex, rgb2hsl, rgb2rgba } from './rgb'
 import { notValidRgbaMessage, notValidRgbaStringMessage } from '../../utils/logs-utils'
 
 /**
@@ -19,7 +19,7 @@ export function rgbaToHex(rgba: RGBA): HEX {
   if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToHex', rgba))
 
   const { r, g, b, a } = rgba
-  const rgbHex = rgb2hex({ r, g, b })
+  const rgbHex = rgbToHex({ r, g, b })
   const alphaHex = alphaToHex(a)
   return `${rgbHex}${alphaHex}`
 }
@@ -45,7 +45,7 @@ export function rgbaToCmyk(rgba: RGBA): CMYK {
   if (!isRgba(rgba)) throw new Error(notValidRgbaMessage('rgbaToCmyk', rgba))
 
   const { r, g, b } = rgba
-  return rgb2cmyk({ r, g, b })
+  return rgbToCmyk({ r, g, b })
 }
 
 /**
