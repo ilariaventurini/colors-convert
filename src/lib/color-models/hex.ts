@@ -13,7 +13,7 @@ import { HEX_REGEX } from '../../constants/regex'
 import { rgbToCmyk, rgbToHex, rgbToHsl } from './rgb'
 import { rgbaToHex, rgbaToHsla } from './rgba'
 import { ALPHA_PRECISION } from '../../constants/rgba'
-import { cmyk2hex } from './cmyk'
+import { cmykToHex } from './cmyk'
 import { hsl2hex } from './hsl'
 import { hslaToHex } from './hsla'
 import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
@@ -223,7 +223,7 @@ export function colorToHex(color: Color): HEX {
   if (isHex(color)) return color
   else if (isRgb(color)) return rgbToHex(color)
   else if (isRgba(color)) return rgbaToHex(color)
-  else if (isCmyk(color)) return cmyk2hex(color)
+  else if (isCmyk(color)) return cmykToHex(color)
   else if (isHsl(color)) return hsl2hex(color)
   else return hslaToHex(color) // hsla
 }

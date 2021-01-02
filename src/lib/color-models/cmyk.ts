@@ -16,17 +16,35 @@ import {
   notValidCmykStringMessage,
   notValidColorMessage,
 } from '../../utils/logs-utils'
+import { obsolete } from '../../utils/obsolete'
+import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
 
 /**
  * Convert a cmyk color to a hex.
  * @param cmyk color to convert to hex
  * @returns hex color
  */
-export function cmyk2hex(cmyk: CMYK): HEX {
-  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2hex', cmyk))
+export function cmykToHex(cmyk: CMYK): HEX {
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToHex', cmyk))
 
-  const rgb = cmyk2rgb(cmyk)
+  const rgb = cmykToRgb(cmyk)
   return rgbToHex(rgb)
+}
+/**
+ * Convert a cmyk color to a hex.
+ * @param cmyk color to convert to hex
+ * @returns hex color
+ * @deprecated since version 1.3.0, use `cmykToHex` instead
+ */
+export function cmyk2hex(cmyk: CMYK): HEX {
+  return obsolete(
+    cmykToHex,
+    'cmyk2hex',
+    'cmykToHex',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -34,8 +52,8 @@ export function cmyk2hex(cmyk: CMYK): HEX {
  * @param cmyk color to convert to rgb
  * @returns rgb object
  */
-export function cmyk2rgb(cmyk: CMYK): RGB {
-  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2rgb', cmyk))
+export function cmykToRgb(cmyk: CMYK): RGB {
+  if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToRgb', cmyk))
 
   const { c, m, y, k } = applyFnToEachObjValue(cmyk, (col: number) => col / 100) as CMYK
   const rgb01 = {
@@ -44,6 +62,22 @@ export function cmyk2rgb(cmyk: CMYK): RGB {
     b: 1 - Math.min(1, y * (1 - k) + k),
   }
   return applyFnToEachObjValue(rgb01, (col: number) => round(col * 255)) as RGB
+}
+/**
+ * Convert a cmyk color to a rgb.
+ * @param cmyk color to convert to rgb
+ * @returns rgb object
+ * @deprecated since version 1.3.0, use `cmykToRgb` instead
+ */
+export function cmyk2rgb(cmyk: CMYK): RGB {
+  return obsolete(
+    cmykToRgb,
+    'cmyk2rgb',
+    'cmykToRgb',
+    DEPRECATE_VERSION_2,
+    DELETE_VERSION_2,
+    arguments
+  )
 }
 
 /**
@@ -56,7 +90,7 @@ export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
   if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToRgba', cmyk))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('cmykToRgba', alpha))
 
-  const rgb = cmyk2rgb(cmyk)
+  const rgb = cmykToRgb(cmyk)
   return { ...rgb, a: alpha }
 }
 
@@ -68,7 +102,7 @@ export function cmykToRgba(cmyk: CMYK, alpha = 1): RGBA {
 export function cmyk2hsl(cmyk: CMYK): HSL {
   if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmyk2hsl', cmyk))
 
-  const rgb = cmyk2rgb(cmyk)
+  const rgb = cmykToRgb(cmyk)
   return rgbToHsl(rgb)
 }
 
@@ -82,7 +116,7 @@ export function cmykToHsla(cmyk: CMYK, alpha = 1): HSLA {
   if (!isCmyk(cmyk)) throw new Error(notValidCmykMessage('cmykToHsla', cmyk))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('cmykToHsla', alpha))
 
-  const rgb = cmyk2rgb(cmyk)
+  const rgb = cmykToRgb(cmyk)
   const hsl = rgbToHsl(rgb)
   return { ...hsl, a: alpha }
 }

@@ -1,6 +1,6 @@
 import {
-  cmyk2hex,
-  cmyk2rgb,
+  cmykToHex,
+  cmykToRgb,
   cmykToRgba,
   cmyk2hsl,
   cmykToHsla,
@@ -9,27 +9,27 @@ import {
 } from '../../index'
 
 ////////////////////////////////////////////////////////
-// cmyk2hex
+// cmykToHex
 ////////////////////////////////////////////////////////
 
-test(`cmyk2hex`, () => {
-  expect(cmyk2hex({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual('#FFFFFF')
-  expect(cmyk2hex({ c: 0, m: 0, y: 0, k: 100 })).toStrictEqual('#000000')
-  expect(cmyk2hex({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual('#4287F5')
+test(`cmykToHex`, () => {
+  expect(cmykToHex({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual('#FFFFFF')
+  expect(cmykToHex({ c: 0, m: 0, y: 0, k: 100 })).toStrictEqual('#000000')
+  expect(cmykToHex({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual('#4287F5')
 
-  expect(() => cmyk2hex({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
+  expect(() => cmykToHex({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////
-// cmyk2rgb
+// cmykToRgb
 ////////////////////////////////////////////////////////
 
-test(`cmyk2rgb`, () => {
-  expect(cmyk2rgb({ c: 0, m: 0, y: 0, k: 100 })).toStrictEqual({ r: 0, g: 0, b: 0 })
-  expect(cmyk2rgb({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual({ r: 255, g: 255, b: 255 })
-  expect(cmyk2rgb({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual({ r: 66, g: 135, b: 245 })
+test(`cmykToRgb`, () => {
+  expect(cmykToRgb({ c: 0, m: 0, y: 0, k: 100 })).toStrictEqual({ r: 0, g: 0, b: 0 })
+  expect(cmykToRgb({ c: 0, m: 0, y: 0, k: 0 })).toStrictEqual({ r: 255, g: 255, b: 255 })
+  expect(cmykToRgb({ c: 73, m: 45, y: 0, k: 4 })).toStrictEqual({ r: 66, g: 135, b: 245 })
 
-  expect(() => cmyk2rgb({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
+  expect(() => cmykToRgb({ c: -1, m: 0, y: 0, k: 0 })).toThrowError()
 })
 
 ////////////////////////////////////////////////////////

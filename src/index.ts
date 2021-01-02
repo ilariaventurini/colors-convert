@@ -44,7 +44,9 @@ export {
 } from './lib/color-models/rgba'
 export {
   cmyk2hex,
+  cmykToHex,
   cmyk2rgb,
+  cmykToRgb,
   cmykToRgba,
   cmyk2hsl,
   cmykToHsla,
