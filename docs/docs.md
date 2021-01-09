@@ -2,153 +2,472 @@
 
 ### Table of Contents
 
--   [cmyk2hex][1]
-    -   [Parameters][2]
--   [cmyk2rgb][3]
-    -   [Parameters][4]
--   [cmykToRgba][5]
-    -   [Parameters][6]
--   [cmyk2hsl][7]
-    -   [Parameters][8]
--   [cmykToHsla][9]
-    -   [Parameters][10]
--   [colorToCmyk][11]
-    -   [Parameters][12]
--   [cmykString2Object][13]
-    -   [Parameters][14]
--   [color2string][15]
-    -   [Parameters][16]
--   [color2cssString][17]
-    -   [Parameters][18]
--   [hex2rgbOrRgba][19]
-    -   [Parameters][20]
--   [hexToRgb][21]
-    -   [Parameters][22]
--   [hex2rgba][23]
-    -   [Parameters][24]
--   [hex2hexWithAlpha][25]
-    -   [Parameters][26]
--   [hex2cmyk][27]
-    -   [Parameters][28]
--   [hex2hsl][29]
-    -   [Parameters][30]
--   [hexToHsla][31]
-    -   [Parameters][32]
--   [shortToLongHex][33]
-    -   [Parameters][34]
--   [colorToHex][35]
-    -   [Parameters][36]
--   [hsl2hex][37]
-    -   [Parameters][38]
--   [hsl2rgb][39]
+-   [hex][1]
+    -   [isHex][2]
+        -   [Parameters][3]
+    -   [hex2rgbOrRgba][4]
+        -   [Parameters][5]
+    -   [hexToRgb][6]
+        -   [Parameters][7]
+    -   [hex2rgba][8]
+        -   [Parameters][9]
+    -   [hex2hexWithAlpha][10]
+        -   [Parameters][11]
+    -   [hex2cmyk][12]
+        -   [Parameters][13]
+    -   [hex2hsl][14]
+        -   [Parameters][15]
+    -   [hexToHsla][16]
+        -   [Parameters][17]
+    -   [shortToLongHex][18]
+        -   [Parameters][19]
+    -   [colorToHex][20]
+        -   [Parameters][21]
+-   [rgb][22]
+    -   [isRgb][23]
+        -   [Parameters][24]
+    -   [rgb2hex][25]
+        -   [Parameters][26]
+    -   [rgb2cmyk][27]
+        -   [Parameters][28]
+    -   [rgb2hsl][29]
+        -   [Parameters][30]
+    -   [rgbToHsla][31]
+        -   [Parameters][32]
+    -   [rgb2rgba][33]
+        -   [Parameters][34]
+    -   [color2rgb][35]
+        -   [Parameters][36]
+    -   [rgbString2Object][37]
+        -   [Parameters][38]
+-   [cmykToHex][39]
     -   [Parameters][40]
--   [hslToRgba][41]
+-   [cmyk2hex][41]
     -   [Parameters][42]
--   [hsl2cmyk][43]
+-   [cmykToRgb][43]
     -   [Parameters][44]
--   [hslToHsla][45]
+-   [cmyk2rgb][45]
     -   [Parameters][46]
--   [colorToHsl][47]
+-   [cmykToRgba][47]
     -   [Parameters][48]
--   [hslString2Object][49]
+-   [cmykToHsl][49]
     -   [Parameters][50]
--   [hslaToHex][51]
+-   [cmyk2hsl][51]
     -   [Parameters][52]
--   [hslaToRgb][53]
+-   [cmykToHsla][53]
     -   [Parameters][54]
--   [hslaToRgba][55]
+-   [colorToCmyk][55]
     -   [Parameters][56]
--   [hslaToHsl][57]
+-   [cmykStringToObject][57]
     -   [Parameters][58]
--   [hslaToCmyk][59]
+-   [cmykString2Object][59]
     -   [Parameters][60]
--   [colorToHsla][61]
+-   [colorToString][61]
     -   [Parameters][62]
--   [hslaStringToObject][63]
+-   [color2string][63]
     -   [Parameters][64]
--   [rgb2hex][65]
+-   [colorToCssString][65]
     -   [Parameters][66]
--   [rgb2cmyk][67]
+-   [color2cssString][67]
     -   [Parameters][68]
--   [rgb2hsl][69]
+-   [hexToRgbOrRgba][69]
     -   [Parameters][70]
--   [rgb2rgba][71]
+-   [hexToRgba][71]
     -   [Parameters][72]
--   [rgbToHsla][73]
+-   [hexToHexWithAlpha][73]
     -   [Parameters][74]
--   [color2rgb][75]
+-   [hexToCmyk][75]
     -   [Parameters][76]
--   [rgbString2Object][77]
+-   [hexToHsl][77]
     -   [Parameters][78]
--   [rgbaToHex][79]
+-   [hslToHex][79]
     -   [Parameters][80]
--   [rgba2rgb][81]
+-   [hsl2hex][81]
     -   [Parameters][82]
--   [rgbaToCmyk][83]
+-   [hslToRgb][83]
     -   [Parameters][84]
--   [rgbaToHsl][85]
+-   [hsl2rgb][85]
     -   [Parameters][86]
--   [rgbaToHsla][87]
+-   [hslToRgba][87]
     -   [Parameters][88]
--   [colorToRgba][89]
+-   [hslToCmyk][89]
     -   [Parameters][90]
--   [rgbaString2Object][91]
+-   [hsl2cmyk][91]
     -   [Parameters][92]
--   [name][93]
+-   [hslToHsla][93]
     -   [Parameters][94]
--   [distance][95]
+-   [colorToHsl][95]
     -   [Parameters][96]
--   [euclideanRgbDistance][97]
+-   [hslStringToObject][97]
     -   [Parameters][98]
--   [mix][99]
+-   [hslString2Object][99]
     -   [Parameters][100]
--   [weightedRgb][101]
+-   [hslaToHex][101]
     -   [Parameters][102]
--   [getWeights][103]
+-   [hslaToRgb][103]
     -   [Parameters][104]
--   [checkWeights][105]
+-   [hslaToRgba][105]
     -   [Parameters][106]
--   [isHex][107]
+-   [hslaToHsl][107]
     -   [Parameters][108]
--   [isRgb][109]
+-   [hslaToCmyk][109]
     -   [Parameters][110]
--   [isRgba][111]
+-   [colorToHsla][111]
     -   [Parameters][112]
--   [isCmyk][113]
+-   [hslaStringToObject][113]
     -   [Parameters][114]
--   [isHsl][115]
+-   [rgbToHex][115]
     -   [Parameters][116]
--   [isHsla][117]
+-   [rgbToCmyk][117]
     -   [Parameters][118]
--   [isColor][119]
+-   [rgbToHsl][119]
     -   [Parameters][120]
--   [HEX][121]
--   [RGB][122]
-    -   [r][123]
-    -   [g][124]
-    -   [b][125]
--   [RGBA][126]
-    -   [r][127]
-    -   [g][128]
-    -   [b][129]
-    -   [a][130]
--   [CMYK][131]
-    -   [c][132]
-    -   [m][133]
-    -   [y][134]
-    -   [k][135]
--   [HSL][136]
-    -   [h][137]
-    -   [s][138]
-    -   [l][139]
--   [HSLA][140]
-    -   [h][141]
-    -   [s][142]
-    -   [l][143]
-    -   [a][144]
--   [Color][145]
--   [ColorFormat][146]
--   [ColorName][147]
+-   [rgbToRgba][121]
+    -   [Parameters][122]
+-   [colorToRgb][123]
+    -   [Parameters][124]
+-   [rgbStringToObject][125]
+    -   [Parameters][126]
+-   [rgbaToHex][127]
+    -   [Parameters][128]
+-   [rgbaToRgb][129]
+    -   [Parameters][130]
+-   [rgba2rgb][131]
+    -   [Parameters][132]
+-   [rgbaToCmyk][133]
+    -   [Parameters][134]
+-   [rgbaToHsl][135]
+    -   [Parameters][136]
+-   [rgbaToHsla][137]
+    -   [Parameters][138]
+-   [colorToRgba][139]
+    -   [Parameters][140]
+-   [rgbaStringToObject][141]
+    -   [Parameters][142]
+-   [rgbaString2Object][143]
+    -   [Parameters][144]
+-   [name][145]
+    -   [Parameters][146]
+-   [distance][147]
+    -   [Parameters][148]
+-   [euclideanRgbDistance][149]
+    -   [Parameters][150]
+-   [mix][151]
+    -   [Parameters][152]
+-   [weightedRgb][153]
+    -   [Parameters][154]
+-   [getWeights][155]
+    -   [Parameters][156]
+-   [checkWeights][157]
+    -   [Parameters][158]
+-   [isRgba][159]
+    -   [Parameters][160]
+-   [isCmyk][161]
+    -   [Parameters][162]
+-   [isHsl][163]
+    -   [Parameters][164]
+-   [isHsla][165]
+    -   [Parameters][166]
+-   [isColor][167]
+    -   [Parameters][168]
+-   [HEX][169]
+-   [RGB][170]
+    -   [r][171]
+    -   [g][172]
+    -   [b][173]
+-   [RGBA][174]
+    -   [r][175]
+    -   [g][176]
+    -   [b][177]
+    -   [a][178]
+-   [CMYK][179]
+    -   [c][180]
+    -   [m][181]
+    -   [y][182]
+    -   [k][183]
+-   [HSL][184]
+    -   [h][185]
+    -   [s][186]
+    -   [l][187]
+-   [HSLA][188]
+    -   [h][189]
+    -   [s][190]
+    -   [l][191]
+    -   [a][192]
+-   [Color][193]
+-   [ColorFormat][194]
+-   [ColorName][195]
+
+## hex
+
+
+
+
+### isHex
+
+Accept:
+
+-   \#RRGGBB[AA] \(6/8-digit, long form)
+-   \#RGB[A] \(3/4-digit, short form)
+    where R, G, B, A are in [0-9a-fA-F].
+
+#### Parameters
+
+-   `color` **any** color to check if it is in the right hex format
+
+Returns **any** true if color is in the right hex format, false otherwise
+
+### hex2rgbOrRgba
+
+Convert a hex to a rgb or rgba color (depends on hex format).
+
+#### Parameters
+
+-   `hex` **[HEX][196]** color to convert to rgb or rgba
+
+Returns **any** rgb or rgba object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hexToRgbOrRgba` instead
+
+
+### hexToRgb
+
+Convert a hex to a rgb color, if hex color has opacity, it will be lost.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** color to convert to rgb
+
+Returns **[RGB][197]** rgb object
+
+### hex2rgba
+
+Convert a hex to a rgba object, by default alpha is 1.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** color to convert to rgba
+-   `alpha`  opacity value in range [0, 1] (optional, default `1`)
+
+Returns **[RGBA][198]** rbga color
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hex2rgba` instead
+
+
+### hex2hexWithAlpha
+
+Convert a hex to another hex with the given alpha.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** original hex
+-   `alpha`  opacity value in range [0, 1] (optional, default `1`)
+
+Returns **[HEX][196]** hex color with opacity
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hexToHexWithAlpha` instead
+
+
+### hex2cmyk
+
+Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** color to convert to cmyk
+
+Returns **[CMYK][199]** cmyk color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hexToCmyk` instead
+
+
+### hex2hsl
+
+Convert a hex color string to a hsl object. It ignores opacity.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** color to convert to hsl
+
+Returns **[HSL][200]** hsl color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hexToHsl` instead
+
+
+### hexToHsla
+
+Convert a hex color string to a hsla object.
+Hex can have opacity or not, if not you can use the alpha parameter.
+If hex has opacity and alpha != undefined, then the returned alpha value is the hex related one.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** color to convert to hsla
+-   `alpha`  opacity value in range [0, 1] (optional, default `1`)
+
+Returns **[HSLA][201]** hsla color object
+
+### shortToLongHex
+
+Expand the 3-digit hexadecimal form to the 6-digit form doubling each digit.
+For example #09C becomes #0099CC and #09CA becomes #0099CCAA.
+If hex is in the long format, return it.
+
+#### Parameters
+
+-   `hex` **[HEX][196]** in the short form
+
+Returns **[HEX][196]** hex in the long form
+
+### colorToHex
+
+Convert a generic color to hex string.
+
+#### Parameters
+
+-   `color` **[Color][202]** color to convert to hex
+
+Returns **[HEX][196]** hex string
+
+## rgb
+
+
+
+
+### isRgb
+
+Accept an object like this {r, g, b} with r, b, g numeric values in [0, 255].
+
+#### Parameters
+
+-   `color` **any** color to check if it is in the right rgb format
+
+Returns **any** true if color is in the right rgb format, false otherwise
+
+### rgb2hex
+
+Convert an rgb object to hex.
+
+#### Parameters
+
+-   `rgb` **[RGB][197]** color object to convert to hex
+
+Returns **[HEX][196]** hex color
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbToHex` instead
+
+
+### rgb2cmyk
+
+Convert a rgb object to a cmyk object.
+
+#### Parameters
+
+-   `rgb` **[RGB][197]** color object to convert to cmyk
+
+Returns **[CMYK][199]** cmyk color
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbToCmyk` instead
+
+
+### rgb2hsl
+
+Convert a rgb object to hsl object.
+
+#### Parameters
+
+-   `rgb` **[RGB][197]** color to convert to HSL
+
+Returns **[HSL][200]** hsl color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbToHsl` instead
+
+
+### rgbToHsla
+
+Convert a rgb color object to a hsla object.
+
+#### Parameters
+
+-   `rgb` **[RGB][197]** color object to convert to hsla
+-   `alpha`  opacity value in range [0, 1] (optional, default `1`)
+
+Returns **[HSLA][201]** hsla color object
+
+### rgb2rgba
+
+Convert an rgb color to a rgba color.
+
+#### Parameters
+
+-   `rgb` **[RGB][197]** color to convert to rgba
+-   `alpha`  opacity value in range [0, 1] (optional, default `1`)
+
+Returns **[RGBA][198]** rgba color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbToRgba` instead
+
+
+### color2rgb
+
+Convert a generic color to rgb.
+
+#### Parameters
+
+-   `color` **[Color][202]** color to convert to rgb
+
+Returns **[RGB][197]** rgb color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `colorToRgb` instead
+
+
+### rgbString2Object
+
+Convert a string in these two formats to a rgb object:
+
+-   255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}
+-   rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}.
+
+#### Parameters
+
+-   `rgbString` **[string][203]** rgb string color to convert to rgb
+
+Returns **[RGB][197]** rgb color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbStringToObject` instead
+
+
+## cmykToHex
+
+Convert a cmyk color to a hex.
+
+### Parameters
+
+-   `cmyk` **[CMYK][199]** color to convert to hex
+
+Returns **[HEX][196]** hex color
 
 ## cmyk2hex
 
@@ -156,9 +475,24 @@ Convert a cmyk color to a hex.
 
 ### Parameters
 
--   `cmyk` **[CMYK][148]** color to convert to hex
+-   `cmyk` **[CMYK][199]** color to convert to hex
 
-Returns **[HEX][149]** hex color
+Returns **[HEX][196]** hex color
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `cmykToHex` instead
+
+
+## cmykToRgb
+
+Convert a cmyk color to a rgb.
+
+### Parameters
+
+-   `cmyk` **[CMYK][199]** color to convert to rgb
+
+Returns **[RGB][197]** rgb object
 
 ## cmyk2rgb
 
@@ -166,9 +500,14 @@ Convert a cmyk color to a rgb.
 
 ### Parameters
 
--   `cmyk` **[CMYK][148]** color to convert to rgb
+-   `cmyk` **[CMYK][199]** color to convert to rgb
 
-Returns **[RGB][150]** rgb object
+Returns **[RGB][197]** rgb object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `cmykToRgb` instead
+
 
 ## cmykToRgba
 
@@ -176,10 +515,20 @@ Convert a cmyk color to a rgba.
 
 ### Parameters
 
--   `cmyk` **[CMYK][148]** color to convert to rgba
+-   `cmyk` **[CMYK][199]** color to convert to rgba
 -   `alpha`  opacity value in range [0, 1] (optional, default `1`)
 
-Returns **[RGBA][151]** rgba object
+Returns **[RGBA][198]** rgba object
+
+## cmykToHsl
+
+Convert a cmyk color to a hsl.
+
+### Parameters
+
+-   `cmyk` **[CMYK][199]** color to convert to hsl
+
+Returns **[HSL][200]** hsl object
 
 ## cmyk2hsl
 
@@ -187,9 +536,14 @@ Convert a cmyk color to a hsl.
 
 ### Parameters
 
--   `cmyk` **[CMYK][148]** color to convert to hsl
+-   `cmyk` **[CMYK][199]** color to convert to hsl
 
-Returns **[HSL][152]** hsl object
+Returns **[HSL][200]** hsl object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `cmykToHsl` instead
+
 
 ## cmykToHsla
 
@@ -197,10 +551,10 @@ Convert a cmyk color to a hsla.
 
 ### Parameters
 
--   `cmyk` **[CMYK][148]** color to convert to hsla
+-   `cmyk` **[CMYK][199]** color to convert to hsla
 -   `alpha`  opacity value in range [0, 1] (optional, default `1`)
 
-Returns **[HSLA][153]** hsla object
+Returns **[HSLA][201]** hsla object
 
 ## colorToCmyk
 
@@ -208,9 +562,22 @@ Convert a generic color to cmyk.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to cmyk
+-   `color` **[Color][202]** color to convert to cmyk
 
-Returns **[CMYK][148]** cmyk color object
+Returns **[CMYK][199]** cmyk color object
+
+## cmykStringToObject
+
+Covert a string in these two formats to a cmyk object:
+
+-   0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}
+-   cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}.
+
+### Parameters
+
+-   `cmykString` **[string][203]** string to convert to cmyk
+
+Returns **[CMYK][199]** cmyk object
 
 ## cmykString2Object
 
@@ -221,9 +588,24 @@ Covert a string in these two formats to a cmyk object:
 
 ### Parameters
 
--   `cmykString` **[string][155]** string to convert to cmyk
+-   `cmykString` **[string][203]** string to convert to cmyk
 
-Returns **[CMYK][148]** cmyk object
+Returns **[CMYK][199]** cmyk object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `cmykStringToObject` instead
+
+
+## colorToString
+
+Convert a color to a string format.
+
+### Parameters
+
+-   `color` **[Color][202]** color to convert to string
+
+Returns **[string][203]** string representing the color
 
 ## color2string
 
@@ -231,9 +613,24 @@ Convert a color to a string format.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to string
+-   `color` **[Color][202]** color to convert to string
 
-Returns **[string][155]** string representing the color
+Returns **[string][203]** string representing the color
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `colorToString` instead
+
+
+## colorToCssString
+
+Convert a color to a string format usable in CSS.
+
+### Parameters
+
+-   `color` **[Color][202]** color to convert to string
+
+Returns **[string][203]** string representing the color
 
 ## color2cssString
 
@@ -241,106 +638,76 @@ Convert a color to a string format usable in CSS.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to string
+-   `color` **[Color][202]** color to convert to string
 
-Returns **[string][155]** string representing the color
+Returns **[string][203]** string representing the color
 
-## hex2rgbOrRgba
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `colorToCssString` instead
+
+
+## hexToRgbOrRgba
 
 Convert a hex to a rgb or rgba color (depends on hex format).
 
 ### Parameters
 
--   `hex` **[HEX][149]** color to convert to rgb or rgba
+-   `hex` **[HEX][196]** color to convert to rgb or rgba
 
-Returns **([RGB][150] \| [RGBA][151])** rgb or rgba object
+Returns **any** rgb or rgba object
 
-## hexToRgb
-
-Convert a hex to a rgb color, if hex color has opacity, it will be lost.
-
-### Parameters
-
--   `hex` **[HEX][149]** color to convert to rgb
-
-Returns **[RGB][150]** rgb object
-
-## hex2rgba
+## hexToRgba
 
 Convert a hex to a rgba object, by default alpha is 1.
 
 ### Parameters
 
--   `hex` **[HEX][149]** color to convert to rgba
+-   `hex` **[HEX][196]** color to convert to rgba
 -   `alpha`  opacity value in range [0, 1] (optional, default `1`)
 
-Returns **[RGBA][151]** rbga color
+Returns **[RGBA][198]** rbga color
 
-## hex2hexWithAlpha
+## hexToHexWithAlpha
 
 Convert a hex to another hex with the given alpha.
 
 ### Parameters
 
--   `hex` **[HEX][149]** original hex
+-   `hex` **[HEX][196]** original hex
 -   `alpha`  opacity value in range [0, 1] (optional, default `1`)
 
-Returns **[HEX][149]** hex color with opacity
+Returns **[HEX][196]** hex color with opacity
 
-## hex2cmyk
+## hexToCmyk
 
 Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.
 
 ### Parameters
 
--   `hex` **[HEX][149]** color to convert to cmyk
+-   `hex` **[HEX][196]** color to convert to cmyk
 
-Returns **[CMYK][148]** cmyk color object
+Returns **[CMYK][199]** cmyk color object
 
-## hex2hsl
+## hexToHsl
 
 Convert a hex color string to a hsl object. It ignores opacity.
 
 ### Parameters
 
--   `hex` **[HEX][149]** color to convert to hsl
+-   `hex` **[HEX][196]** color to convert to hsl
 
-Returns **[HSL][152]** hsl color object
+Returns **[HSL][200]** hsl color object
 
-## hexToHsla
+## hslToHex
 
-Convert a hex color string to a hsla object.
-Hex can have opacity or not, if not you can use the alpha parameter.
-If hex has opacity and alpha != undefined, then the returned alpha value is the hex related one.
+Convert a hsl object to hex.
 
 ### Parameters
 
--   `hex` **[HEX][149]** color to convert to hsla
--   `alpha`  opacity value in range [0, 1] (optional, default `1`)
+-   `hsl` **[HSL][200]** color to convert to hex
 
-Returns **[HSLA][153]** hsla color object
-
-## shortToLongHex
-
-Expand the 3-digit hexadecimal form to the 6-digit form doubling each digit.
-For example #09C becomes #0099CC and #09CA becomes #0099CCAA.
-If hex is in the long format, return it.
-
-### Parameters
-
--   `hex` **[HEX][149]** in the short form
-
-Returns **[HEX][149]** hex in the long form
-
-## colorToHex
-
-Convert a generic color to hex string.
-
-### Parameters
-
--   `color` **[Color][154]** color to convert to hex
-
-Returns **[HEX][149]** hex string
+Returns **[HEX][196]** hex color
 
 ## hsl2hex
 
@@ -348,9 +715,24 @@ Convert a hsl object to hex.
 
 ### Parameters
 
--   `hsl` **[HSL][152]** color to convert to hex
+-   `hsl` **[HSL][200]** color to convert to hex
 
-Returns **[HEX][149]** hex color
+Returns **[HEX][196]** hex color
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hslToHex` instead
+
+
+## hslToRgb
+
+Convert a hsl object to rgb color object.
+
+### Parameters
+
+-   `hsl` **[HSL][200]** color to convert to rgb color object
+
+Returns **[RGB][197]** rgb color object
 
 ## hsl2rgb
 
@@ -358,9 +740,14 @@ Convert a hsl object to rgb color object.
 
 ### Parameters
 
--   `hsl` **[HSL][152]** color to convert to rgb color object
+-   `hsl` **[HSL][200]** color to convert to rgb color object
 
-Returns **[RGB][150]** rgb color object
+Returns **[RGB][197]** rgb color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hslToRgb` instead
+
 
 ## hslToRgba
 
@@ -368,10 +755,20 @@ Convert a hsl object to rgba.
 
 ### Parameters
 
--   `hsl` **[HSL][152]** color to convert to rgba
+-   `hsl` **[HSL][200]** color to convert to rgba
 -   `alpha`  opacity value in [0, 1] (optional, default `1`)
 
-Returns **[RGBA][151]** rgba object
+Returns **[RGBA][198]** rgba object
+
+## hslToCmyk
+
+Convert a hsl object to cmyk.
+
+### Parameters
+
+-   `hsl` **[HSL][200]** color to convert to cmyk
+
+Returns **[CMYK][199]** cmyk object
 
 ## hsl2cmyk
 
@@ -379,9 +776,14 @@ Convert a hsl object to cmyk.
 
 ### Parameters
 
--   `hsl` **[HSL][152]** color to convert to cmyk
+-   `hsl` **[HSL][200]** color to convert to cmyk
 
-Returns **[CMYK][148]** cmyk object
+Returns **[CMYK][199]** cmyk object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hslToCmyk` instead
+
 
 ## hslToHsla
 
@@ -389,10 +791,10 @@ Convert a hsl object to hsla.
 
 ### Parameters
 
--   `hsl` **[HSL][152]** color to convert to hsla
+-   `hsl` **[HSL][200]** color to convert to hsla
 -   `alpha`  opacity value in range [0, 1] (optional, default `1`)
 
-Returns **[HSLA][153]** hsla object
+Returns **[HSLA][201]** hsla object
 
 ## colorToHsl
 
@@ -400,9 +802,23 @@ Convert a generic color to hsl.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to hsl
+-   `color` **[Color][202]** color to convert to hsl
 
-Returns **[HSL][152]** hsl color object
+Returns **[HSL][200]** hsl color object
+
+## hslStringToObject
+
+Covert a string in these two formats to a hsl object:
+
+-   322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }
+-   hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.
+
+### Parameters
+
+-   `hslString` **[string][203]** 
+-   `hsl`  string to convert to hsl object
+
+Returns **[HSL][200]** hsl object
 
 ## hslString2Object
 
@@ -413,10 +829,15 @@ Covert a string in these two formats to a hsl object:
 
 ### Parameters
 
--   `hslString` **[string][155]** 
+-   `hslString` **[string][203]** 
 -   `hsl`  string to convert to hsl object
 
-Returns **[HSL][152]** hsl object
+Returns **[HSL][200]** hsl object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `hslStringToObject` instead
+
 
 ## hslaToHex
 
@@ -424,9 +845,9 @@ Convert a hsla object to hex long format #RRGGBBAA.
 
 ### Parameters
 
--   `hsla` **[HSLA][153]** color to convert to hex
+-   `hsla` **[HSLA][201]** color to convert to hex
 
-Returns **[HEX][149]** hex color string
+Returns **[HEX][196]** hex color string
 
 ## hslaToRgb
 
@@ -434,9 +855,9 @@ Convert a hsla object to and rgb color object.
 
 ### Parameters
 
--   `hsla` **[HSLA][153]** color to convert to rgba
+-   `hsla` **[HSLA][201]** color to convert to rgba
 
-Returns **[RGB][150]** rgb color object
+Returns **[RGB][197]** rgb color object
 
 ## hslaToRgba
 
@@ -444,9 +865,9 @@ Convert a hsla object to and rgba color object.
 
 ### Parameters
 
--   `hsla` **[HSLA][153]** color to convert to rgba
+-   `hsla` **[HSLA][201]** color to convert to rgba
 
-Returns **[RGBA][151]** rgba color object
+Returns **[RGBA][198]** rgba color object
 
 ## hslaToHsl
 
@@ -454,9 +875,9 @@ Convert a hsla object to and hsl color object.
 
 ### Parameters
 
--   `hsla` **[HSLA][153]** color to convert to hsl
+-   `hsla` **[HSLA][201]** color to convert to hsl
 
-Returns **[HSL][152]** hsl color object
+Returns **[HSL][200]** hsl color object
 
 ## hslaToCmyk
 
@@ -465,9 +886,9 @@ It ignores opacity because cmyk doens't support it.
 
 ### Parameters
 
--   `hsla` **[HSLA][153]** color to convert to cmyk
+-   `hsla` **[HSLA][201]** color to convert to cmyk
 
-Returns **[CMYK][148]** cmyk color object
+Returns **[CMYK][199]** cmyk color object
 
 ## colorToHsla
 
@@ -475,9 +896,9 @@ Convert a generic color to hsla.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to hsla
+-   `color` **[Color][202]** color to convert to hsla
 
-Returns **[HSLA][153]** hsla color object
+Returns **[HSLA][201]** hsla color object
 
 ## hslaStringToObject
 
@@ -488,74 +909,63 @@ Covert a string in these two formats to a hsla object:
 
 ### Parameters
 
--   `hslaString` **[string][155]** 
+-   `hslaString` **[string][203]** 
 -   `hsls`  string to convert to hsla object
 
-Returns **[HSLA][153]** hsla object
+Returns **[HSLA][201]** hsla object
 
-## rgb2hex
+## rgbToHex
 
 Convert an rgb object to hex.
 
 ### Parameters
 
--   `rgb` **[RGB][150]** color object to convert to hex
+-   `rgb` **[RGB][197]** color object to convert to hex
 
-Returns **[HEX][149]** hex color
+Returns **[HEX][196]** hex color
 
-## rgb2cmyk
+## rgbToCmyk
 
 Convert a rgb object to a cmyk object.
 
 ### Parameters
 
--   `rgb` **[RGB][150]** color object to convert to cmyk
+-   `rgb` **[RGB][197]** color object to convert to cmyk
 
-Returns **[CMYK][148]** cmyk color
+Returns **[CMYK][199]** cmyk color
 
-## rgb2hsl
+## rgbToHsl
 
 Convert a rgb object to hsl object.
 
 ### Parameters
 
--   `rgb` **[RGB][150]** color to convert to HSL
+-   `rgb` **[RGB][197]** color to convert to HSL
 
-Returns **[HSL][152]** hsl color object
+Returns **[HSL][200]** hsl color object
 
-## rgb2rgba
+## rgbToRgba
 
 Convert an rgb color to a rgba color.
 
 ### Parameters
 
--   `rgb` **[RGB][150]** color to convert to rgba
+-   `rgb` **[RGB][197]** color to convert to rgba
 -   `alpha`  opacity value in range [0, 1] (optional, default `1`)
 
-Returns **[RGBA][151]** rgba color object
+Returns **[RGBA][198]** rgba color object
 
-## rgbToHsla
-
-Convert a rgb color object to a hsla object.
-
-### Parameters
-
--   `rgb` **[RGB][150]** color object to convert to hsla
--   `alpha`  opacity value in range [0, 1] (optional, default `1`)
-
-Returns **[HSLA][153]** hsla color object
-
-## color2rgb
+## colorToRgb
 
 Convert a generic color to rgb.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to rgb
+-   `color` **[Color][202]** color to convert to rgb
 
-Returns **[RGB][150]** rgb color object
+Returns **[RGB][197]** rgb color object
 
-## rgbString2Object
+## rgbStringToObject
 
 Convert a string in these two formats to a rgb object:
 
@@ -564,9 +974,9 @@ Convert a string in these two formats to a rgb object:
 
 ### Parameters
 
--   `rgbString` **[string][155]** rgb string color to convert to rgb
+-   `rgbString` **[string][203]** rgb string color to convert to rgb
 
-Returns **[RGB][150]** rgb color object
+Returns **[RGB][197]** rgb color object
 
 ## rgbaToHex
 
@@ -574,9 +984,19 @@ Convert a rgba color object to a hex color.
 
 ### Parameters
 
--   `rgba` **[RGBA][151]** color to convert to hex
+-   `rgba` **[RGBA][198]** color to convert to hex
 
-Returns **[HEX][149]** hex color
+Returns **[HEX][196]** hex color
+
+## rgbaToRgb
+
+Convert a rgba color object to a rgb color removing the alpha value.
+
+### Parameters
+
+-   `rgba` **[RGBA][198]** color to convert to rgb
+
+Returns **[RGB][197]** rgb color object
 
 ## rgba2rgb
 
@@ -584,9 +1004,14 @@ Convert a rgba color object to a rgb color removing the alpha value.
 
 ### Parameters
 
--   `rgba` **[RGBA][151]** color to convert to rgb
+-   `rgba` **[RGBA][198]** color to convert to rgb
 
-Returns **[RGB][150]** rgb color object
+Returns **[RGB][197]** rgb color object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbaToRgb` instead
+
 
 ## rgbaToCmyk
 
@@ -595,9 +1020,9 @@ It ignores opacity because cmyk doens't support it.
 
 ### Parameters
 
--   `rgba` **[RGBA][151]** color to convert to cmyk
+-   `rgba` **[RGBA][198]** color to convert to cmyk
 
-Returns **[CMYK][148]** cmyk color object
+Returns **[CMYK][199]** cmyk color object
 
 ## rgbaToHsl
 
@@ -605,9 +1030,9 @@ Convert a rgba color object to a hsl color object removing the alpha value.
 
 ### Parameters
 
--   `rgba` **[RGBA][151]** color to convert to hsl
+-   `rgba` **[RGBA][198]** color to convert to hsl
 
-Returns **[HSL][152]** hsl color object
+Returns **[HSL][200]** hsl color object
 
 ## rgbaToHsla
 
@@ -615,9 +1040,9 @@ Convert a rgba color object to a hsla color object.
 
 ### Parameters
 
--   `rgba` **[RGBA][151]** color to convert to hsla
+-   `rgba` **[RGBA][198]** color to convert to hsla
 
-Returns **[HSLA][153]** hsla color object
+Returns **[HSLA][201]** hsla color object
 
 ## colorToRgba
 
@@ -625,9 +1050,22 @@ Convert a generic color to rgba.
 
 ### Parameters
 
--   `color` **[Color][154]** color to convert to rgba
+-   `color` **[Color][202]** color to convert to rgba
 
-Returns **[RGBA][151]** rgba color object
+Returns **[RGBA][198]** rgba color object
+
+## rgbaStringToObject
+
+Covert a string in these two formats to a rgba object:
+
+-   255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}
+-   rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}.
+
+### Parameters
+
+-   `rgbaString` **[string][203]** rgba string
+
+Returns **[RGBA][198]** rgba object
 
 ## rgbaString2Object
 
@@ -638,9 +1076,14 @@ Covert a string in these two formats to a rgba object:
 
 ### Parameters
 
--   `rgbaString` **[string][155]** rgba string
+-   `rgbaString` **[string][203]** rgba string
 
-Returns **[RGBA][151]** rgba object
+Returns **[RGBA][198]** rgba object
+
+**Meta**
+
+-   **deprecated**: since version 1.3.0, use `rgbaStringToObject` instead
+
 
 ## name
 
@@ -648,9 +1091,9 @@ Return the name of the color passed in input.
 
 ### Parameters
 
--   `color` **[Color][154]** colr to be named
+-   `color` **[Color][202]** colr to be named
 
-Returns **[string][155]** color name
+Returns **[string][203]** color name
 
 ## distance
 
@@ -658,10 +1101,10 @@ Return the Euclidean distance between two colors.
 
 ### Parameters
 
--   `color1` **[Color][154]** first color
--   `color2` **[Color][154]** second color
+-   `color1` **[Color][202]** first color
+-   `color2` **[Color][202]** second color
 
-Returns **[number][156]** Euclidean distance between two colors
+Returns **[number][204]** Euclidean distance between two colors
 
 ## euclideanRgbDistance
 
@@ -672,10 +1115,10 @@ The maximum distance is ≈ 441.67 between black and white.
 
 ### Parameters
 
--   `color1` **[RGB][150]** first rgb color
--   `color2` **[RGB][150]** second rgb color
+-   `color1` **[RGB][197]** first rgb color
+-   `color2` **[RGB][197]** second rgb color
 
-Returns **[number][156]** numeric value in [0, ≈ 441.67] that represents the Euclidean difference between two rgb colors
+Returns **[number][204]** numeric value in [0, ≈ 441.67] that represents the Euclidean difference between two rgb colors
 
 ## mix
 
@@ -689,10 +1132,10 @@ Given [c1, c2, c3, ...] and [w1, w2, w3, ...], it returns:
 
 ### Parameters
 
--   `colors` **[Array][157]&lt;[Color][154]>** array of Colors
--   `weights` **[Array][157]&lt;[number][156]>?** array of weights
+-   `colors` **[Array][205]&lt;[Color][202]>** array of Colors
+-   `weights` **[Array][205]&lt;[number][204]>?** array of weights
 
-Returns **[RGB][150]** RGB object
+Returns **[RGB][197]** RGB object
 
 ## weightedRgb
 
@@ -700,8 +1143,8 @@ Weigh each color component (r, g, b) of the color.
 
 ### Parameters
 
--   `rgb` **[RGB][150]** color to be weighted
--   `weight` **[number][156]** weight value
+-   `rgb` **[RGB][197]** color to be weighted
+-   `weight` **[number][204]** weight value
 
 Returns **any** weighted rgb color
 
@@ -712,10 +1155,10 @@ If weight is undefined, fill it with the default values (1 / colors.lenght) and 
 
 ### Parameters
 
--   `colors` **[Array][157]&lt;[Color][154]>** array of colors
--   `weights` **[Array][157]&lt;[number][156]>?** array of weights
+-   `colors` **[Array][205]&lt;[Color][202]>** array of colors
+-   `weights` **[Array][205]&lt;[number][204]>?** array of weights
 
-Returns **[Array][157]&lt;[number][156]>** array of weights.
+Returns **[Array][205]&lt;[number][204]>** array of weights.
 
 ## checkWeights
 
@@ -723,34 +1166,10 @@ Check that the sum of weights is 1 and that colors and weights have the same len
 
 ### Parameters
 
--   `colors` **[Array][157]&lt;[Color][154]>** array of colors
--   `weights` **[Array][157]&lt;[number][156]>** array of weights
+-   `colors` **[Array][205]&lt;[Color][202]>** array of colors
+-   `weights` **[Array][205]&lt;[number][204]>** array of weights
 
 Returns **any** true if the sum of weights is 1 and if colors and weights have the same lenght, false otherwise
-
-## isHex
-
-Accept:
-
--   \#RRGGBB[AA] \(6/8-digit, long form)
--   \#RGB[A] \(3/4-digit, short form)
-    where R, G, B, A are in [0-9a-fA-F].
-
-### Parameters
-
--   `color` **any** color to check if it is in the right hex format
-
-Returns **any** true if color is in the right hex format, false otherwise
-
-## isRgb
-
-Accept an object like this {r, g, b} with r, b, g numeric values in [0, 255].
-
-### Parameters
-
--   `color` **any** color to check if it is in the right rgb format
-
-Returns **any** true if color is in the right rgb format, false otherwise
 
 ## isRgba
 
@@ -815,7 +1234,7 @@ Returns **any** true if color is in the right Color format, false otherwise
 
 Hex type, basically a string.
 
-Type: [string][155]
+Type: [string][203]
 
 ## RGB
 
@@ -825,19 +1244,19 @@ Rgb interface.
 
 red
 
-Type: [number][156]
+Type: [number][204]
 
 ### g
 
 green
 
-Type: [number][156]
+Type: [number][204]
 
 ### b
 
 blue
 
-Type: [number][156]
+Type: [number][204]
 
 ## RGBA
 
@@ -847,25 +1266,25 @@ Rgba interface.
 
 red
 
-Type: [number][156]
+Type: [number][204]
 
 ### g
 
 green
 
-Type: [number][156]
+Type: [number][204]
 
 ### b
 
 blue
 
-Type: [number][156]
+Type: [number][204]
 
 ### a
 
 alpha
 
-Type: [number][156]
+Type: [number][204]
 
 ## CMYK
 
@@ -875,25 +1294,25 @@ Cmyk interface.
 
 cyan
 
-Type: [number][156]
+Type: [number][204]
 
 ### m
 
 magenta
 
-Type: [number][156]
+Type: [number][204]
 
 ### y
 
 yellow
 
-Type: [number][156]
+Type: [number][204]
 
 ### k
 
 key (black)
 
-Type: [number][156]
+Type: [number][204]
 
 ## HSL
 
@@ -903,19 +1322,19 @@ Hsl interface.
 
 hue
 
-Type: [number][156]
+Type: [number][204]
 
 ### s
 
 saturation
 
-Type: [number][156]
+Type: [number][204]
 
 ### l
 
 lightness
 
-Type: [number][156]
+Type: [number][204]
 
 ## HSLA
 
@@ -925,31 +1344,31 @@ Hsla interface.
 
 hue
 
-Type: [number][156]
+Type: [number][204]
 
 ### s
 
 saturation
 
-Type: [number][156]
+Type: [number][204]
 
 ### l
 
 lightness
 
-Type: [number][156]
+Type: [number][204]
 
 ### a
 
 alpha
 
-Type: [number][156]
+Type: [number][204]
 
 ## Color
 
 Color type. A color should be HEX, RGB, RGBA, CMYK, HSL or HSLA.
 
-Type: ([HEX][149] \| [RGB][150] \| [RGBA][151] \| [CMYK][148] \| [HSL][152] \| [HSLA][153])
+Type: ([HEX][196] \| [RGB][197] \| [RGBA][198] \| [CMYK][199] \| [HSL][200] \| [HSLA][201])
 
 ## ColorFormat
 
@@ -961,316 +1380,412 @@ Type: (`"hex"` \| `"rgb"` \| `"rgba"` \| `"cmyk"` \| `"hsl"` \| `"hsla"`)
 
 ColorName interface.
 
-[1]: #cmyk2hex
+[1]: #hex
 
-[2]: #parameters
+[2]: #ishex
 
-[3]: #cmyk2rgb
+[3]: #parameters
 
-[4]: #parameters-1
+[4]: #hex2rgborrgba
 
-[5]: #cmyktorgba
+[5]: #parameters-1
 
-[6]: #parameters-2
+[6]: #hextorgb
 
-[7]: #cmyk2hsl
+[7]: #parameters-2
 
-[8]: #parameters-3
+[8]: #hex2rgba
 
-[9]: #cmyktohsla
+[9]: #parameters-3
 
-[10]: #parameters-4
+[10]: #hex2hexwithalpha
 
-[11]: #colortocmyk
+[11]: #parameters-4
 
-[12]: #parameters-5
+[12]: #hex2cmyk
 
-[13]: #cmykstring2object
+[13]: #parameters-5
 
-[14]: #parameters-6
+[14]: #hex2hsl
 
-[15]: #color2string
+[15]: #parameters-6
 
-[16]: #parameters-7
+[16]: #hextohsla
 
-[17]: #color2cssstring
+[17]: #parameters-7
 
-[18]: #parameters-8
+[18]: #shorttolonghex
 
-[19]: #hex2rgborrgba
+[19]: #parameters-8
 
-[20]: #parameters-9
+[20]: #colortohex
 
-[21]: #hextorgb
+[21]: #parameters-9
 
-[22]: #parameters-10
+[22]: #rgb
 
-[23]: #hex2rgba
+[23]: #isrgb
 
-[24]: #parameters-11
+[24]: #parameters-10
 
-[25]: #hex2hexwithalpha
+[25]: #rgb2hex
 
-[26]: #parameters-12
+[26]: #parameters-11
 
-[27]: #hex2cmyk
+[27]: #rgb2cmyk
 
-[28]: #parameters-13
+[28]: #parameters-12
 
-[29]: #hex2hsl
+[29]: #rgb2hsl
 
-[30]: #parameters-14
+[30]: #parameters-13
 
-[31]: #hextohsla
+[31]: #rgbtohsla
 
-[32]: #parameters-15
+[32]: #parameters-14
 
-[33]: #shorttolonghex
+[33]: #rgb2rgba
 
-[34]: #parameters-16
+[34]: #parameters-15
 
-[35]: #colortohex
+[35]: #color2rgb
 
-[36]: #parameters-17
+[36]: #parameters-16
 
-[37]: #hsl2hex
+[37]: #rgbstring2object
 
-[38]: #parameters-18
+[38]: #parameters-17
 
-[39]: #hsl2rgb
+[39]: #cmyktohex
 
-[40]: #parameters-19
+[40]: #parameters-18
 
-[41]: #hsltorgba
+[41]: #cmyk2hex
 
-[42]: #parameters-20
+[42]: #parameters-19
 
-[43]: #hsl2cmyk
+[43]: #cmyktorgb
 
-[44]: #parameters-21
+[44]: #parameters-20
 
-[45]: #hsltohsla
+[45]: #cmyk2rgb
 
-[46]: #parameters-22
+[46]: #parameters-21
 
-[47]: #colortohsl
+[47]: #cmyktorgba
 
-[48]: #parameters-23
+[48]: #parameters-22
 
-[49]: #hslstring2object
+[49]: #cmyktohsl
 
-[50]: #parameters-24
+[50]: #parameters-23
 
-[51]: #hslatohex
+[51]: #cmyk2hsl
 
-[52]: #parameters-25
+[52]: #parameters-24
 
-[53]: #hslatorgb
+[53]: #cmyktohsla
 
-[54]: #parameters-26
+[54]: #parameters-25
 
-[55]: #hslatorgba
+[55]: #colortocmyk
 
-[56]: #parameters-27
+[56]: #parameters-26
 
-[57]: #hslatohsl
+[57]: #cmykstringtoobject
 
-[58]: #parameters-28
+[58]: #parameters-27
 
-[59]: #hslatocmyk
+[59]: #cmykstring2object
 
-[60]: #parameters-29
+[60]: #parameters-28
 
-[61]: #colortohsla
+[61]: #colortostring
 
-[62]: #parameters-30
+[62]: #parameters-29
 
-[63]: #hslastringtoobject
+[63]: #color2string
 
-[64]: #parameters-31
+[64]: #parameters-30
 
-[65]: #rgb2hex
+[65]: #colortocssstring
 
-[66]: #parameters-32
+[66]: #parameters-31
 
-[67]: #rgb2cmyk
+[67]: #color2cssstring
 
-[68]: #parameters-33
+[68]: #parameters-32
 
-[69]: #rgb2hsl
+[69]: #hextorgborrgba
 
-[70]: #parameters-34
+[70]: #parameters-33
 
-[71]: #rgb2rgba
+[71]: #hextorgba
 
-[72]: #parameters-35
+[72]: #parameters-34
 
-[73]: #rgbtohsla
+[73]: #hextohexwithalpha
 
-[74]: #parameters-36
+[74]: #parameters-35
 
-[75]: #color2rgb
+[75]: #hextocmyk
 
-[76]: #parameters-37
+[76]: #parameters-36
 
-[77]: #rgbstring2object
+[77]: #hextohsl
 
-[78]: #parameters-38
+[78]: #parameters-37
 
-[79]: #rgbatohex
+[79]: #hsltohex
 
-[80]: #parameters-39
+[80]: #parameters-38
 
-[81]: #rgba2rgb
+[81]: #hsl2hex
 
-[82]: #parameters-40
+[82]: #parameters-39
 
-[83]: #rgbatocmyk
+[83]: #hsltorgb
 
-[84]: #parameters-41
+[84]: #parameters-40
 
-[85]: #rgbatohsl
+[85]: #hsl2rgb
 
-[86]: #parameters-42
+[86]: #parameters-41
 
-[87]: #rgbatohsla
+[87]: #hsltorgba
 
-[88]: #parameters-43
+[88]: #parameters-42
 
-[89]: #colortorgba
+[89]: #hsltocmyk
 
-[90]: #parameters-44
+[90]: #parameters-43
 
-[91]: #rgbastring2object
+[91]: #hsl2cmyk
 
-[92]: #parameters-45
+[92]: #parameters-44
 
-[93]: #name
+[93]: #hsltohsla
 
-[94]: #parameters-46
+[94]: #parameters-45
 
-[95]: #distance
+[95]: #colortohsl
 
-[96]: #parameters-47
+[96]: #parameters-46
 
-[97]: #euclideanrgbdistance
+[97]: #hslstringtoobject
 
-[98]: #parameters-48
+[98]: #parameters-47
 
-[99]: #mix
+[99]: #hslstring2object
 
-[100]: #parameters-49
+[100]: #parameters-48
 
-[101]: #weightedrgb
+[101]: #hslatohex
 
-[102]: #parameters-50
+[102]: #parameters-49
 
-[103]: #getweights
+[103]: #hslatorgb
 
-[104]: #parameters-51
+[104]: #parameters-50
 
-[105]: #checkweights
+[105]: #hslatorgba
 
-[106]: #parameters-52
+[106]: #parameters-51
 
-[107]: #ishex
+[107]: #hslatohsl
 
-[108]: #parameters-53
+[108]: #parameters-52
 
-[109]: #isrgb
+[109]: #hslatocmyk
 
-[110]: #parameters-54
+[110]: #parameters-53
 
-[111]: #isrgba
+[111]: #colortohsla
 
-[112]: #parameters-55
+[112]: #parameters-54
 
-[113]: #iscmyk
+[113]: #hslastringtoobject
 
-[114]: #parameters-56
+[114]: #parameters-55
 
-[115]: #ishsl
+[115]: #rgbtohex
 
-[116]: #parameters-57
+[116]: #parameters-56
 
-[117]: #ishsla
+[117]: #rgbtocmyk
 
-[118]: #parameters-58
+[118]: #parameters-57
 
-[119]: #iscolor
+[119]: #rgbtohsl
 
-[120]: #parameters-59
+[120]: #parameters-58
 
-[121]: #hex
+[121]: #rgbtorgba
 
-[122]: #rgb
+[122]: #parameters-59
 
-[123]: #r
+[123]: #colortorgb
 
-[124]: #g
+[124]: #parameters-60
 
-[125]: #b
+[125]: #rgbstringtoobject
 
-[126]: #rgba
+[126]: #parameters-61
 
-[127]: #r-1
+[127]: #rgbatohex
 
-[128]: #g-1
+[128]: #parameters-62
 
-[129]: #b-1
+[129]: #rgbatorgb
 
-[130]: #a
+[130]: #parameters-63
 
-[131]: #cmyk
+[131]: #rgba2rgb
 
-[132]: #c
+[132]: #parameters-64
 
-[133]: #m
+[133]: #rgbatocmyk
 
-[134]: #y
+[134]: #parameters-65
 
-[135]: #k
+[135]: #rgbatohsl
 
-[136]: #hsl
+[136]: #parameters-66
 
-[137]: #h
+[137]: #rgbatohsla
 
-[138]: #s
+[138]: #parameters-67
 
-[139]: #l
+[139]: #colortorgba
 
-[140]: #hsla
+[140]: #parameters-68
 
-[141]: #h-1
+[141]: #rgbastringtoobject
 
-[142]: #s-1
+[142]: #parameters-69
 
-[143]: #l-1
+[143]: #rgbastring2object
 
-[144]: #a-1
+[144]: #parameters-70
 
-[145]: #color
+[145]: #name
 
-[146]: #colorformat
+[146]: #parameters-71
 
-[147]: #colorname
+[147]: #distance
 
-[148]: #cmyk
+[148]: #parameters-72
 
-[149]: #hex
+[149]: #euclideanrgbdistance
 
-[150]: #rgb
+[150]: #parameters-73
 
-[151]: #rgba
+[151]: #mix
 
-[152]: #hsl
+[152]: #parameters-74
 
-[153]: #hsla
+[153]: #weightedrgb
 
-[154]: #color
+[154]: #parameters-75
 
-[155]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[155]: #getweights
 
-[156]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[156]: #parameters-76
 
-[157]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[157]: #checkweights
+
+[158]: #parameters-77
+
+[159]: #isrgba
+
+[160]: #parameters-78
+
+[161]: #iscmyk
+
+[162]: #parameters-79
+
+[163]: #ishsl
+
+[164]: #parameters-80
+
+[165]: #ishsla
+
+[166]: #parameters-81
+
+[167]: #iscolor
+
+[168]: #parameters-82
+
+[169]: #hex-1
+
+[170]: #rgb-1
+
+[171]: #r
+
+[172]: #g
+
+[173]: #b
+
+[174]: #rgba
+
+[175]: #r-1
+
+[176]: #g-1
+
+[177]: #b-1
+
+[178]: #a
+
+[179]: #cmyk
+
+[180]: #c
+
+[181]: #m
+
+[182]: #y
+
+[183]: #k
+
+[184]: #hsl
+
+[185]: #h
+
+[186]: #s
+
+[187]: #l
+
+[188]: #hsla
+
+[189]: #h-1
+
+[190]: #s-1
+
+[191]: #l-1
+
+[192]: #a-1
+
+[193]: #color
+
+[194]: #colorformat
+
+[195]: #colorname
+
+[196]: #hex
+
+[197]: #rgb
+
+[198]: #rgba
+
+[199]: #cmyk
+
+[200]: #hsl
+
+[201]: #hsla
+
+[202]: #color
+
+[203]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[204]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[205]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

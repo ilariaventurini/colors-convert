@@ -181,9 +181,29 @@
               
                 
                 <li><a
+                  href='#cmyktohex'
+                  class="">
+                  cmykToHex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#cmyk2hex'
                   class="">
                   cmyk2hex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyktorgb'
+                  class="">
+                  cmykToRgb
                   
                 </a>
                 
@@ -204,6 +224,16 @@
                   href='#cmyktorgba'
                   class="">
                   cmykToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cmyktohsl'
+                  class="">
+                  cmykToHsl
                   
                 </a>
                 
@@ -241,9 +271,29 @@
               
                 
                 <li><a
+                  href='#cmykstringtoobject'
+                  class="">
+                  cmykStringToObject
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#cmykstring2object'
                   class="">
                   cmykString2Object
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colortostring'
+                  class="">
+                  colorToString
                   
                 </a>
                 
@@ -261,6 +311,16 @@
               
                 
                 <li><a
+                  href='#colortocssstring'
+                  class="">
+                  colorToCssString
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#color2cssstring'
                   class="">
                   color2cssString
@@ -271,9 +331,79 @@
               
                 
                 <li><a
+                  href='#hextorgborrgba'
+                  class="">
+                  hexToRgbOrRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hextorgba'
+                  class="">
+                  hexToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hextohexwithalpha'
+                  class="">
+                  hexToHexWithAlpha
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hextocmyk'
+                  class="">
+                  hexToCmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hextohsl'
+                  class="">
+                  hexToHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsltohex'
+                  class="">
+                  hslToHex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#hsl2hex'
                   class="">
                   hsl2hex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsltorgb'
+                  class="">
+                  hslToRgb
                   
                 </a>
                 
@@ -294,6 +424,16 @@
                   href='#hsltorgba'
                   class="">
                   hslToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hsltocmyk'
+                  class="">
+                  hslToCmyk
                   
                 </a>
                 
@@ -324,6 +464,16 @@
                   href='#colortohsl'
                   class="">
                   colorToHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#hslstringtoobject'
+                  class="">
+                  hslStringToObject
                   
                 </a>
                 
@@ -411,9 +561,79 @@
               
                 
                 <li><a
+                  href='#rgbtohex'
+                  class="">
+                  rgbToHex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbtocmyk'
+                  class="">
+                  rgbToCmyk
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbtohsl'
+                  class="">
+                  rgbToHsl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbtorgba'
+                  class="">
+                  rgbToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#colortorgb'
+                  class="">
+                  colorToRgb
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbstringtoobject'
+                  class="">
+                  rgbStringToObject
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#rgbatohex'
                   class="">
                   rgbaToHex
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbatorgb'
+                  class="">
+                  rgbaToRgb
                   
                 </a>
                 
@@ -464,6 +684,16 @@
                   href='#colortorgba'
                   class="">
                   colorToRgba
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#rgbastringtoobject'
+                  class="">
+                  rgbaStringToObject
                   
                 </a>
                 
@@ -999,11 +1229,14 @@ where R, G, B, A are in [0-9a-fA-F].</li>
 
   <p>Convert a hex to a rgb or rgba color (depends on hex format).</p>
 
-    <div class='pre p1 fill-light mt0'>hex2rgbOrRgba(hex: <a href="#hex">HEX</a>): (<a href="#rgb">RGB</a> | <a href="#rgba">RGBA</a>)</div>
+    <div class='pre p1 fill-light mt0'>hex2rgbOrRgba(hex: <a href="#hex">HEX</a>): any</div>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hexToRgbOrRgba</code>
+ instead
+</div>
   
   
   
@@ -1031,7 +1264,7 @@ where R, G, B, A are in [0-9a-fA-F].</li>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>(<a href="#rgb">RGB</a> | <a href="#rgba">RGBA</a>)</code>:
+      <code>any</code>:
         rgb or rgba object
 
       
@@ -1145,7 +1378,10 @@ where R, G, B, A are in [0-9a-fA-F].</li>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hex2rgba</code>
+ instead
+</div>
   
   
   
@@ -1227,7 +1463,10 @@ where R, G, B, A are in [0-9a-fA-F].</li>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hexToHexWithAlpha</code>
+ instead
+</div>
   
   
   
@@ -1309,7 +1548,10 @@ where R, G, B, A are in [0-9a-fA-F].</li>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hexToCmyk</code>
+ instead
+</div>
   
   
   
@@ -1380,7 +1622,10 @@ where R, G, B, A are in [0-9a-fA-F].</li>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hexToHsl</code>
+ instead
+</div>
   
   
   
@@ -1806,7 +2051,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbToHex</code>
+ instead
+</div>
   
   
   
@@ -1877,7 +2125,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbToCmyk</code>
+ instead
+</div>
   
   
   
@@ -1948,7 +2199,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbToHsl</code>
+ instead
+</div>
   
   
   
@@ -2101,7 +2355,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbToRgba</code>
+ instead
+</div>
   
   
   
@@ -2183,7 +2440,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>colorToRgb</code>
+ instead
+</div>
   
   
   
@@ -2258,7 +2518,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbStringToObject</code>
+ instead
+</div>
   
   
   
@@ -2330,8 +2593,8 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='cmyk2hex'>
-      cmyk2hex
+    <h3 class='fl m0' id='cmyktohex'>
+      cmykToHex
     </h3>
     
     
@@ -2340,7 +2603,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a cmyk color to a hex.</p>
 
-    <div class='pre p1 fill-light mt0'>cmyk2hex(cmyk: <a href="#cmyk">CMYK</a>): <a href="#hex">HEX</a></div>
+    <div class='pre p1 fill-light mt0'>cmykToHex(cmyk: <a href="#cmyk">CMYK</a>): <a href="#hex">HEX</a></div>
   
   
 
@@ -2402,6 +2665,153 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='cmyk2hex'>
+      cmyk2hex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a hex.</p>
+
+    <div class='pre p1 fill-light mt0'>cmyk2hex(cmyk: <a href="#cmyk">CMYK</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  <div>Deprecated: since version 1.3.0, use 
+<code>cmykToHex</code>
+ instead
+</div>
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cmyktorgb'>
+      cmykToRgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a rgb.</p>
+
+    <div class='pre p1 fill-light mt0'>cmykToRgb(cmyk: <a href="#cmyk">CMYK</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='cmyk2rgb'>
       cmyk2rgb
     </h3>
@@ -2416,7 +2826,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>cmykToRgb</code>
+ instead
+</div>
   
   
   
@@ -2557,6 +2970,78 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='cmyktohsl'>
+      cmykToHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a cmyk color to a hsl.</p>
+
+    <div class='pre p1 fill-light mt0'>cmykToHsl(cmyk: <a href="#cmyk">CMYK</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmyk</span> <code class='quiet'>(<a href="#cmyk">CMYK</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='cmyk2hsl'>
       cmyk2hsl
     </h3>
@@ -2571,7 +3056,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>cmykToHsl</code>
+ instead
+</div>
   
   
   
@@ -2784,8 +3272,8 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='cmykstring2object'>
-      cmykString2Object
+    <h3 class='fl m0' id='cmykstringtoobject'>
+      cmykStringToObject
     </h3>
     
     
@@ -2798,7 +3286,7 @@ If hex is in the long format, return it.</p>
 <li>cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}.</li>
 </ul>
 
-    <div class='pre p1 fill-light mt0'>cmykString2Object(cmykString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#cmyk">CMYK</a></div>
+    <div class='pre p1 fill-light mt0'>cmykStringToObject(cmykString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#cmyk">CMYK</a></div>
   
   
 
@@ -2860,6 +3348,157 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='cmykstring2object'>
+      cmykString2Object
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a cmyk object:</p>
+<ul>
+<li>0, 50, 20, 100 (short format) -> {c: 0, m: 50, y: 20, k: 100}</li>
+<li>cmyk(0, 50, 20, 100) (long format) -> {c: 0, m: 50, y: 20, k: 100}.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>cmykString2Object(cmykString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  <div>Deprecated: since version 1.3.0, use 
+<code>cmykStringToObject</code>
+ instead
+</div>
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmykString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    string to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortostring'>
+      colorToString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a color to a string format.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToString(color: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        string representing the color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='color2string'>
       color2string
     </h3>
@@ -2871,6 +3510,81 @@ If hex is in the long format, return it.</p>
   <p>Convert a color to a string format.</p>
 
     <div class='pre p1 fill-light mt0'>color2string(color: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+  
+  
+
+  <div>Deprecated: since version 1.3.0, use 
+<code>colorToString</code>
+ instead
+</div>
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        string representing the color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortocssstring'>
+      colorToCssString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a color to a string format usable in CSS.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToCssString(color: <a href="#color">Color</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
   
   
 
@@ -2946,7 +3660,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>colorToCssString</code>
+ instead
+</div>
   
   
   
@@ -3004,8 +3721,390 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='hsl2hex'>
-      hsl2hex
+    <h3 class='fl m0' id='hextorgborrgba'>
+      hexToRgbOrRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hex to a rgb or rgba color (depends on hex format).</p>
+
+    <div class='pre p1 fill-light mt0'>hexToRgbOrRgba(hex: <a href="#hex">HEX</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to rgb or rgba
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        rgb or rgba object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hextorgba'>
+      hexToRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hex to a rgba object, by default alpha is 1.</p>
+
+    <div class='pre p1 fill-light mt0'>hexToRgba(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rbga color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hextohexwithalpha'>
+      hexToHexWithAlpha
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hex to another hex with the given alpha.</p>
+
+    <div class='pre p1 fill-light mt0'>hexToHexWithAlpha(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    original hex
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color with opacity
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hextocmyk'>
+      hexToCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hex to a cmyk. It ignores opacity because cmyk doens't support it.</p>
+
+    <div class='pre p1 fill-light mt0'>hexToCmyk(hex: <a href="#hex">HEX</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hextohsl'>
+      hexToHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hex color string to a hsl object. It ignores opacity.</p>
+
+    <div class='pre p1 fill-light mt0'>hexToHsl(hex: <a href="#hex">HEX</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hex</span> <code class='quiet'>(<a href="#hex">HEX</a>)</code>
+	    color to convert to hsl
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsltohex'>
+      hslToHex
     </h3>
     
     
@@ -3014,7 +4113,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a hsl object to hex.</p>
 
-    <div class='pre p1 fill-light mt0'>hsl2hex(hsl: <a href="#hsl">HSL</a>): <a href="#hex">HEX</a></div>
+    <div class='pre p1 fill-light mt0'>hslToHex(hsl: <a href="#hsl">HSL</a>): <a href="#hex">HEX</a></div>
   
   
 
@@ -3076,6 +4175,153 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='hsl2hex'>
+      hsl2hex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to hex.</p>
+
+    <div class='pre p1 fill-light mt0'>hsl2hex(hsl: <a href="#hsl">HSL</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  <div>Deprecated: since version 1.3.0, use 
+<code>hslToHex</code>
+ instead
+</div>
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='hsltorgb'>
+      hslToRgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to rgb color object.</p>
+
+    <div class='pre p1 fill-light mt0'>hslToRgb(hsl: <a href="#hsl">HSL</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to rgb color object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='hsl2rgb'>
       hsl2rgb
     </h3>
@@ -3090,7 +4336,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hslToRgb</code>
+ instead
+</div>
   
   
   
@@ -3231,6 +4480,78 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='hsltocmyk'>
+      hslToCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a hsl object to cmyk.</p>
+
+    <div class='pre p1 fill-light mt0'>hslToCmyk(hsl: <a href="#hsl">HSL</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(<a href="#hsl">HSL</a>)</code>
+	    color to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='hsl2cmyk'>
       hsl2cmyk
     </h3>
@@ -3245,7 +4566,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hslToCmyk</code>
+ instead
+</div>
   
   
   
@@ -3458,6 +4782,90 @@ If hex is in the long format, return it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='hslstringtoobject'>
+      hslStringToObject
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a hsl object:</p>
+<ul>
+<li>322, 79%, 52% (short format) -> { h: 322, s: 79, l: 52 }</li>
+<li>hsl(322, 79%, 52%) (long format) -> { h: 322, s: 79, l: 52 }.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>hslStringToObject(hslString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, hsl: any): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hslString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hsl</span> <code class='quiet'>(any)</code>
+	    string to convert to hsl object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='hslstring2object'>
       hslString2Object
     </h3>
@@ -3476,7 +4884,10 @@ If hex is in the long format, return it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>hslStringToObject</code>
+ instead
+</div>
   
   
   
@@ -4059,6 +5470,453 @@ It ignores opacity because cmyk doens't support it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='rgbtohex'>
+      rgbToHex
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert an rgb object to hex.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbToHex(rgb: <a href="#rgb">RGB</a>): <a href="#hex">HEX</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color object to convert to hex
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hex">HEX</a></code>:
+        hex color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbtocmyk'>
+      rgbToCmyk
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgb object to a cmyk object.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbToCmyk(rgb: <a href="#rgb">RGB</a>): <a href="#cmyk">CMYK</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color object to convert to cmyk
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#cmyk">CMYK</a></code>:
+        cmyk color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbtohsl'>
+      rgbToHsl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgb object to hsl object.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbToHsl(rgb: <a href="#rgb">RGB</a>): <a href="#hsl">HSL</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color to convert to HSL
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#hsl">HSL</a></code>:
+        hsl color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbtorgba'>
+      rgbToRgba
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert an rgb color to a rgba color.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbToRgba(rgb: <a href="#rgb">RGB</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgb</span> <code class='quiet'>(<a href="#rgb">RGB</a>)</code>
+	    color to convert to rgba
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            = <code>1</code>)</code>
+	    opacity value in range 
+[0, 1]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='colortorgb'>
+      colorToRgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a generic color to rgb.</p>
+
+    <div class='pre p1 fill-light mt0'>colorToRgb(color: <a href="#color">Color</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>color</span> <code class='quiet'>(<a href="#color">Color</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='rgbstringtoobject'>
+      rgbStringToObject
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a string in these two formats to a rgb object:</p>
+<ul>
+<li>255, 0, 255 (short format) -> {r: 255, g: 0, b: 255}</li>
+<li>rgb(255, 0, 255) (long format) -> {r: 255, g: 0, b: 255}.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>rgbStringToObject(rgbString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgbString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    rgb string color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='rgbatohex'>
       rgbaToHex
     </h3>
@@ -4131,6 +5989,78 @@ It ignores opacity because cmyk doens't support it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='rgbatorgb'>
+      rgbaToRgb
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Convert a rgba color object to a rgb color removing the alpha value.</p>
+
+    <div class='pre p1 fill-light mt0'>rgbaToRgb(rgba: <a href="#rgba">RGBA</a>): <a href="#rgb">RGB</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgba</span> <code class='quiet'>(<a href="#rgba">RGBA</a>)</code>
+	    color to convert to rgb
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgb">RGB</a></code>:
+        rgb color object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='rgba2rgb'>
       rgba2rgb
     </h3>
@@ -4145,7 +6075,10 @@ It ignores opacity because cmyk doens't support it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbaToRgb</code>
+ instead
+</div>
   
   
   
@@ -4492,6 +6425,82 @@ It ignores opacity because cmyk doens't support it.</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='rgbastringtoobject'>
+      rgbaStringToObject
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Covert a string in these two formats to a rgba object:</p>
+<ul>
+<li>255, 0, 255, 0.5 (short format) -> {r: 255, g: 0, b: 255, a: 0.5}</li>
+<li>rgba(255, 0, 255, 0.5) (long format) -> {r: 255, g: 0, b: 255, a: 0.5}.</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>rgbaStringToObject(rgbaString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="#rgba">RGBA</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgbaString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    rgba string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#rgba">RGBA</a></code>:
+        rgba object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='rgbastring2object'>
       rgbaString2Object
     </h3>
@@ -4510,7 +6519,10 @@ It ignores opacity because cmyk doens't support it.</p>
   
   
 
-  
+  <div>Deprecated: since version 1.3.0, use 
+<code>rgbaStringToObject</code>
+ instead
+</div>
   
   
   
