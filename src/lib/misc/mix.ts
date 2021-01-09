@@ -40,6 +40,7 @@ export function mix(colors: Color[], weights?: number[]): RGB {
  * @param rgb color to be weighted
  * @param weight weight value
  * @returns weighted rgb color
+ * @private
  */
 function weightedRgb(rgb: RGB, weight: number) {
   const { r, g, b } = rgb
@@ -54,7 +55,8 @@ function weightedRgb(rgb: RGB, weight: number) {
  * If weight is undefined, fill it with the default values (1 / colors.lenght) and returns it.
  * @param colors array of colors
  * @param weights array of weights
- * @returns array of weights.
+ * @returns array of weights
+ * @private
  */
 function getWeights(colors: Color[], weights?: number[]): number[] {
   const defaultWeight = 1 / colors.length
@@ -68,6 +70,7 @@ function getWeights(colors: Color[], weights?: number[]): number[] {
  * @param colors array of colors
  * @param weights array of weights
  * @returns true if the sum of weights is 1 and if colors and weights have the same lenght, false otherwise
+ * @private
  */
 function checkWeights(colors: Color[], weights: number[]) {
   const tot = sum(weights)

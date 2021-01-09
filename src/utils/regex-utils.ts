@@ -7,6 +7,7 @@
  *
  * @param regexes regex expressions to combine
  * @param flag regex flag
+ * @private
  */
 export function orRegex(regexes: RegExp[], flag = 'i'): RegExp {
   return new RegExp(regexes.map((r) => r.source).join('|'), flag)

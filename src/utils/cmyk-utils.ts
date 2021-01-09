@@ -10,6 +10,7 @@ import { CMYK } from '../lib/types/types'
  * Convert a string in format '0, 50, 20, 100' (short format) to a RGB object {c: 0, m: 50, y: 20, k: 100}.
  * @param cmykString string to convert to cmyk
  * @returns cmyk object
+ * @private
  */
 export function shortCmykFormatToCmykObject(cmykString: string): CMYK {
   if (!CMYK_REGEX.short.test(cmykString))
@@ -26,6 +27,7 @@ export function shortCmykFormatToCmykObject(cmykString: string): CMYK {
  * Convert a string in format 'cmyk(0, 50, 20, 100)' (long format) to '0, 50, 20, 100' (short format).
  * @param cmykStringLongFormat string to convert to short format
  * @returns cmyk short format
+ * @private
  */
 export function fromLongToShortCmykFormat(cmykStringLongFormat: string): string {
   if (!CMYK_REGEX.long.test(cmykStringLongFormat))

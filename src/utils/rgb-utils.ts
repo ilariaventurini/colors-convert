@@ -10,6 +10,7 @@ import { RGB } from '../lib/types/types'
  * Convert a string in format '255, 0, 255' (short format) to a rgb object {r: 255, g: 0, b: 255}.
  * @param rgbString rgb string color to convert to rgb object
  * @returns rgb color object
+ * @private
  */
 export function shortRgbFormatToRgbObject(rgbString: string): RGB {
   if (!RGB_REGEX.short.test(rgbString))
@@ -26,6 +27,7 @@ export function shortRgbFormatToRgbObject(rgbString: string): RGB {
  * Convert 'rgb(N, N, N)' to 'N, N, N'.
  * @param rgbStringLongFormat long format
  * @returns short format
+ * @private
  */
 export function fromLongToShortRgbFormat(rgbStringLongFormat: string): string {
   if (!RGB_REGEX.long.test(rgbStringLongFormat))

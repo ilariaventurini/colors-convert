@@ -8,6 +8,7 @@
  * @param sinceDeprecatedVersion library version in which the old function is deprecated
  * @param deletedVersion library version in which the old function will be deleted
  * @returns the old/new function result
+ * @private
  */
 export function obsolete(
   newFunction: Function,

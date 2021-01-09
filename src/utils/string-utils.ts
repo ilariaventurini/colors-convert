@@ -4,6 +4,7 @@
  * @param toAdd new string to join with str
  * @param position index position
  * @returns a new string with toAdd in the right position
+ * @private
  */
 export function insertAt(str: string, toAdd: string, position: number) {
   if (position < 0 || position > str.length)
@@ -17,6 +18,7 @@ export function insertAt(str: string, toAdd: string, position: number) {
  * @param str is the string to split
  * @param  size is the size you of the cuts
  * @return an rray with the strings
+ * @private
  */
 export function chunkString(str: string, size: number) {
   return str.match(new RegExp('.{1,' + size + '}', 'g'))

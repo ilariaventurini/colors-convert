@@ -10,6 +10,7 @@ import { HSL } from '../lib/types/types'
  * Convert a string in format '322, 79%, 52%' (short format) to a hsl object { h: 322, s: 79, l: 52 }.
  * @param hslString string to convert to hsl object
  * @returns hsl object
+ * @private
  */
 export function shortHslFormatToHslObject(hslString: string): HSL {
   if (!HSL_REGEX.short.test(hslString))
@@ -29,6 +30,7 @@ export function shortHslFormatToHslObject(hslString: string): HSL {
  * Convert a string in format 'hsl(0, 50, 20)' (long format) to '0, 50, 20' (short format).
  * @param hslStringLongFormat string to convert to short format
  * @returns hsl short format
+ * @private
  */
 export function fromLongToShortFormat(hslStringLongFormat: string): string {
   if (!HSL_REGEX.long.test(hslStringLongFormat))
