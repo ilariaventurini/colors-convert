@@ -1374,7 +1374,7 @@ where R, G, B, A are in [0-9a-fA-F].</li>
 
   <p>Convert a hex to a rgba object, by default alpha is 1.</p>
 
-    <div class='pre p1 fill-light mt0'>hex2rgba(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+    <div class='pre p1 fill-light mt0'>hex2rgba(hex: <a href="#hex">HEX</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#rgba">RGBA</a></div>
   
   
 
@@ -1403,7 +1403,7 @@ where R, G, B, A are in [0-9a-fA-F].</li>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -1459,7 +1459,7 @@ where R, G, B, A are in [0-9a-fA-F].</li>
 
   <p>Convert a hex to another hex with the given alpha.</p>
 
-    <div class='pre p1 fill-light mt0'>hex2hexWithAlpha(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#hex">HEX</a></div>
+    <div class='pre p1 fill-light mt0'>hex2hexWithAlpha(hex: <a href="#hex">HEX</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#hex">HEX</a></div>
   
   
 
@@ -1488,7 +1488,7 @@ where R, G, B, A are in [0-9a-fA-F].</li>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -1694,7 +1694,7 @@ where R, G, B, A are in [0-9a-fA-F].</li>
 Hex can have opacity or not, if not you can use the alpha parameter.
 If hex has opacity and alpha != undefined, then the returned alpha value is the hex related one.</p>
 
-    <div class='pre p1 fill-light mt0'>hexToHsla(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+    <div class='pre p1 fill-light mt0'>hexToHsla(hex: <a href="#hex">HEX</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#hsla">HSLA</a></div>
   
   
 
@@ -1720,7 +1720,7 @@ If hex has opacity and alpha != undefined, then the returned alpha value is the 
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -2269,7 +2269,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a rgb color object to a hsla object.</p>
 
-    <div class='pre p1 fill-light mt0'>rgbToHsla(rgb: <a href="#rgb">RGB</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+    <div class='pre p1 fill-light mt0'>rgbToHsla(rgb: <a href="#rgb">RGB</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#hsla">HSLA</a></div>
   
   
 
@@ -2295,7 +2295,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -2351,7 +2351,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert an rgb color to a rgba color.</p>
 
-    <div class='pre p1 fill-light mt0'>rgb2rgba(rgb: <a href="#rgb">RGB</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+    <div class='pre p1 fill-light mt0'>rgb2rgba(rgb: <a href="#rgb">RGB</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#rgba">RGBA</a></div>
   
   
 
@@ -2380,7 +2380,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -2897,7 +2897,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a cmyk color to a rgba.</p>
 
-    <div class='pre p1 fill-light mt0'>cmykToRgba(cmyk: <a href="#cmyk">CMYK</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+    <div class='pre p1 fill-light mt0'>cmykToRgba(cmyk: <a href="#cmyk">CMYK</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#rgba">RGBA</a></div>
   
   
 
@@ -2923,7 +2923,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -3127,7 +3127,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a cmyk color to a hsla.</p>
 
-    <div class='pre p1 fill-light mt0'>cmykToHsla(cmyk: <a href="#cmyk">CMYK</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+    <div class='pre p1 fill-light mt0'>cmykToHsla(cmyk: <a href="#cmyk">CMYK</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#hsla">HSLA</a></div>
   
   
 
@@ -3153,7 +3153,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -3803,7 +3803,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a hex to a rgba object, by default alpha is 1.</p>
 
-    <div class='pre p1 fill-light mt0'>hexToRgba(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+    <div class='pre p1 fill-light mt0'>hexToRgba(hex: <a href="#hex">HEX</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#rgba">RGBA</a></div>
   
   
 
@@ -3829,7 +3829,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -3886,7 +3886,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a hex to another hex with the given alpha.</p>
 
-    <div class='pre p1 fill-light mt0'>hexToHexWithAlpha(hex: <a href="#hex">HEX</a>, alpha: any): <a href="#hex">HEX</a></div>
+    <div class='pre p1 fill-light mt0'>hexToHexWithAlpha(hex: <a href="#hex">HEX</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#hex">HEX</a></div>
   
   
 
@@ -3912,7 +3912,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -4407,7 +4407,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a hsl object to rgba.</p>
 
-    <div class='pre p1 fill-light mt0'>hslToRgba(hsl: <a href="#hsl">HSL</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+    <div class='pre p1 fill-light mt0'>hslToRgba(hsl: <a href="#hsl">HSL</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#rgba">RGBA</a></div>
   
   
 
@@ -4433,7 +4433,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in 
 [0, 1]
@@ -4637,7 +4637,7 @@ If hex is in the long format, return it.</p>
 
   <p>Convert a hsl object to hsla.</p>
 
-    <div class='pre p1 fill-light mt0'>hslToHsla(hsl: <a href="#hsl">HSL</a>, alpha: any): <a href="#hsla">HSLA</a></div>
+    <div class='pre p1 fill-light mt0'>hslToHsla(hsl: <a href="#hsl">HSL</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#hsla">HSLA</a></div>
   
   
 
@@ -4663,7 +4663,7 @@ If hex is in the long format, return it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
@@ -5696,7 +5696,7 @@ It ignores opacity because cmyk doens't support it.</p>
 
   <p>Convert an rgb color to a rgba color.</p>
 
-    <div class='pre p1 fill-light mt0'>rgbToRgba(rgb: <a href="#rgb">RGB</a>, alpha: any): <a href="#rgba">RGBA</a></div>
+    <div class='pre p1 fill-light mt0'>rgbToRgba(rgb: <a href="#rgb">RGB</a>, alpha: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="#rgba">RGBA</a></div>
   
   
 
@@ -5722,7 +5722,7 @@ It ignores opacity because cmyk doens't support it.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>alpha</span> <code class='quiet'>(any
+            <span class='code bold'>alpha</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
             = <code>1</code>)</code>
 	    opacity value in range 
 [0, 1]
