@@ -42,7 +42,8 @@
     "coverage-watch": "yarn test --watchAll --coverage",
     "coverage-interactive-watch": "npx live-server --port=9000 coverage",
     "docs:html": "documentation build --config documentation.yml src/lib/**/*.ts --parse-extension ts --format html --output docs",
-    "docs:md": "documentation build --config documentation.yml src/lib/**/*.ts --parse-extension ts --format md --output docs/docs.md"
+    "docs:md": "documentation build --config documentation.yml src/lib/**/*.ts --parse-extension ts --format md --output docs/docs.md",
+    "docs": "yarn docs:html && yarn docs:md"
   },
   "devDependencies": {
     "@types/jest": "^24.0.21",
