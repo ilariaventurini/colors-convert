@@ -15,11 +15,15 @@ Using `colors-convert` you can:
 
 ## How to use
 
-    yarn add colors-convert
+```bash
+yarn add colors-convert
+```
 
 or
 
-    npm install --save colors-convert
+```bash
+npm install --save colors-convert
+```
 
 ## API
 
