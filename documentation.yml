@@ -1,17 +1,6 @@
 toc:
   - name: Color formats
-    description: Supported color formats interfaces
-    children:
-      - HEX
-      - RGB
-      - RGBA
-      - HSL
-      - HSLA
-      - CMYK
-      - Color
-      - ColorFormat
-  - name: Check a color
-    description: Functions about color checking
+    description: Supported color formats
     children:
       - isHex
       - isRgb
