@@ -5,5 +5,5 @@
 - [ ] make a demo page
 - [ ] test: case insensitive
 - [ ] check che import siano da index se disponibili o comunque decidi, che sia uniforme
-- [ ] migliora messaggi di errore e doc
-- [ ] use jsodc (@deprecated, @example, @throws, @todo, @type, @type)
+- [ ] deploy docs folder
+- [x] new version 1.3.0
