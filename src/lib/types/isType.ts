@@ -5,9 +5,9 @@ import { HEX_REGEX } from '../../constants/regex'
 
 /**
  * Accept:
- *  - #RRGGBB[AA] (6/8-digit, long form)
- *  - #RGB[A] (3/4-digit, short form)
- * where R, G, B, A are in [0-9a-fA-F].
+ *  - #rrggbb[aa] (6/8-digit, long form)
+ *  - #rgb[a] (3/4-digit, short form)
+ * with r, g, b, a in [0-9a-fA-F].
  * @param color color to check if it is in the right hex format
  * @returns true if color is in the right hex format, false otherwise
  */
