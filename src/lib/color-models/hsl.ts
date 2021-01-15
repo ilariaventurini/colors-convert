@@ -102,7 +102,7 @@ export function hsl2rgb(hsl: HSL): RGB {
  * @param alpha opacity value in [0, 1]
  * @returns rgba object
  */
-export function hslToRgba(hsl: HSL, alpha = 1): RGBA {
+export function hslToRgba(hsl: HSL, alpha: number = 1): RGBA {
   if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToRgba', hsl))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hslToRgba', alpha))
 
@@ -145,7 +145,7 @@ export function hsl2cmyk(hsl: HSL): CMYK {
  * @param alpha opacity value in range [0, 1]
  * @returns hsla object
  */
-export function hslToHsla(hsl: HSL, alpha = 1): HSLA {
+export function hslToHsla(hsl: HSL, alpha: number = 1): HSLA {
   if (!isHsl(hsl)) throw new Error(notValidHslMessage('hslToHsla', hsl))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hslToHsla', alpha))
 

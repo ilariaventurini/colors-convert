@@ -10,6 +10,7 @@ import { HSLA } from '../lib/types/types'
  * Convert a string in format 'A, N%, N%, a' (short format) to a hsla object { h: A, s: N, l: N, a: a }.
  * @param hslaString string to convert to hsla object
  * @returns hsla object
+ * @private
  */
 export function shortHslaFormatToHslaObject(hslaString: string): HSLA {
   if (!HSLA_REGEX.short.test(hslaString))
@@ -29,6 +30,7 @@ export function shortHslaFormatToHslaObject(hslaString: string): HSLA {
  * Convert a string in format 'hsla(0, 50, 20, 1)' (long format) to '0, 50, 20, 1' (short format).
  * @param hslaStringLongFormat string to convert to short format
  * @returns hsla short format
+ * @private
  */
 export function fromLongToShortFormat(hslaStringLongFormat: string): string {
   if (!HSLA_REGEX.long.test(hslaStringLongFormat))

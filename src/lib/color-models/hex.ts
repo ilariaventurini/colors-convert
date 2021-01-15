@@ -70,7 +70,7 @@ export function hexToRgb(hex: HEX): RGB {
  * @param alpha opacity value in range [0, 1]
  * @returns rbga color
  */
-export function hexToRgba(hex: HEX, alpha = 1): RGBA {
+export function hexToRgba(hex: HEX, alpha: number = 1): RGBA {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hex2rgba', hex))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hex2rgba', alpha))
 
@@ -85,7 +85,7 @@ export function hexToRgba(hex: HEX, alpha = 1): RGBA {
  * @returns rbga color
  * @deprecated since version 1.3.0, use `hex2rgba` instead
  */
-export function hex2rgba(hex: HEX, alpha = 1): RGBA {
+export function hex2rgba(hex: HEX, alpha: number = 1): RGBA {
   return obsolete(
     hexToRgba,
     'hex2rgba',
@@ -102,7 +102,7 @@ export function hex2rgba(hex: HEX, alpha = 1): RGBA {
  * @param alpha opacity value in range [0, 1]
  * @returns hex color with opacity
  */
-export function hexToHexWithAlpha(hex: HEX, alpha = 1): HEX {
+export function hexToHexWithAlpha(hex: HEX, alpha: number = 1): HEX {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHexWithAlpha', hex))
   if (!between(alpha, [0, 1]))
     throw new Error(notValidAlphaValueMessage('hexToHexWithAlpha', alpha))
@@ -120,7 +120,7 @@ export function hexToHexWithAlpha(hex: HEX, alpha = 1): HEX {
  * @returns hex color with opacity
  * @deprecated since version 1.3.0, use `hexToHexWithAlpha` instead
  */
-export function hex2hexWithAlpha(hex: HEX, alpha = 1): HEX {
+export function hex2hexWithAlpha(hex: HEX, alpha: number = 1): HEX {
   return obsolete(
     hexToHexWithAlpha,
     'hex2hexWithAlpha',
@@ -188,7 +188,7 @@ export function hex2hsl(hex: HEX): HSL {
  * @param alpha opacity value in range [0, 1]
  * @returns hsla color object
  */
-export function hexToHsla(hex: HEX, alpha = 1): HSLA {
+export function hexToHsla(hex: HEX, alpha: number = 1): HSLA {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hexToHsla', hex))
   if (!between(alpha, [0, 1])) throw new Error(notValidAlphaValueMessage('hexToHsla', alpha))
 

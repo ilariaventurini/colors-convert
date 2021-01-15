@@ -82,6 +82,6 @@ export {
   colorToHsla,
   hslaStringToObject,
 } from './lib/color-models/hsla'
-export { getRandomColor } from './lib/misc/random'
+export { getRandomColor, randomHex } from './lib/misc/random'
 export { mix } from './lib/misc/mix'
 export { name } from './lib/color-names/name'

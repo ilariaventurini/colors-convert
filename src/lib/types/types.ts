@@ -1,5 +1,6 @@
 /**
  * Hex type, basically a string.
+ * @private
  */
 export type HEX = string
 
@@ -9,6 +10,7 @@ export type HEX = string
  * @property RGB.r - red
  * @property RGB.g - green
  * @property RGB.b - blue
+ * @private
  */
 export interface RGB {
   /** red */
@@ -26,6 +28,7 @@ export interface RGB {
  * @property RGBA.g - green
  * @property RGBA.b - blue
  * @property RGBA.a - alpha
+ * @private
  */
 export interface RGBA {
   /** red */
@@ -45,6 +48,7 @@ export interface RGBA {
  * @property CMYK.m - magenta
  * @property CMYK.y - yellow
  * @property CMYK.k - key (black)
+ * @private
  */
 export interface CMYK {
   /** cyan */
@@ -63,6 +67,7 @@ export interface CMYK {
  * @property HSL.h - hue
  * @property HSL.s - saturation
  * @property HSL.l - lightness
+ * @private
  */
 export interface HSL {
   /** hue */
@@ -80,6 +85,7 @@ export interface HSL {
  * @property HSLA.s - saturation
  * @property HSLA.l - lightness
  * @property HSLA.a - alpha
+ * @private
  */
 export interface HSLA {
   /** hue */
@@ -95,12 +101,14 @@ export interface HSLA {
 /**
  * Color type. A color should be HEX, RGB, RGBA, CMYK, HSL or HSLA.
  * @typedef Color
+ * @private
  */
 export type Color = HEX | RGB | RGBA | CMYK | HSL | HSLA
 
 /**
  * ColorFormat type. A color format should be 'hex', 'rgb', 'rgba', 'cmyk', 'hsl' or 'hsla'.
  * @typedef ColorFormat
+ * @private
  */
 export type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'cmyk' | 'hsl' | 'hsla'
 
@@ -110,6 +118,7 @@ export type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'cmyk' | 'hsl' | 'hsla'
  * @property ColorName.name - color name
  * @property ColorName.hex - color hex format
  * @property ColorName.rgb - color rgb format
+ * @private
  */
 export interface ColorName {
   name: string

@@ -24,6 +24,7 @@ export function name(color: Color): string {
  * @param color1 first color
  * @param color2 second color
  * @returns Euclidean distance between two colors
+ * @private
  */
 function distance(color1: Color, color2: Color): number {
   if (!isColor(color1)) throw new Error(notValidColorMessage('distance', color1))
@@ -43,6 +44,7 @@ function distance(color1: Color, color2: Color): number {
  * @param color1 first rgb color
  * @param color2 second rgb color
  * @returns numeric value in [0, ≈ 441.67] that represents the Euclidean difference between two rgb colors
+ * @private
  */
 function euclideanRgbDistance(color1: RGB, color2: RGB): number {
   if (!isRgb(color1)) throw new Error(notValidRgbMessage('euclideanRgbDistance', color1))

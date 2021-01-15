@@ -11,6 +11,7 @@ import { HEX_REGEX } from '../constants/regex'
  * Convert a value number in range [0, 1] to a hexadecimal string of lenght 2.
  * @param alpha number to convert in base 16 in range [0, 1]
  * @returns hexadecimal value
+ * @private
  */
 export function alphaToHex(alpha: number): string {
   if (!between(alpha, [0, 1])) throw new Error(`${alpha} is not in the range [0, 1].`)
@@ -29,6 +30,7 @@ export function alphaToHex(alpha: number): string {
  * @param hex hexadecimal value of lenght 2
  * @param precision the precision to round to
  * @returns value number in range [0, 1]
+ * @private
  */
 export function hexToAlpha(hex: string, precision = 2): number {
   if (!HEX_REGEX.alpha.test(hex)) throw new Error(`${hex} is not a valid hex color.`)
@@ -43,6 +45,7 @@ export function hexToAlpha(hex: string, precision = 2): number {
  * Convert a 2-digit hexadecimal string to a number in range [0, 255].
  * @param hexAlpha hexadecimal value of lenght 2
  * @returns value number in range [0, 255]
+ * @private
  */
 export function hexAlphaTo0255(hexAlpha: string): number {
   return Math.round(hexToAlpha(hexAlpha) * 255)
@@ -52,6 +55,7 @@ export function hexAlphaTo0255(hexAlpha: string): number {
  * Convert a number in [0, 255] to a hexadecimal string of lenght 2.
  * @param value number in [0, 255]
  * @returns hexadecimal string of lenght 2
+ * @private
  */
 export function number0255ToHex(value: number): string {
   if (!between(value, [0, 255])) throw new Error(`${value} must be in [0, 255].`)

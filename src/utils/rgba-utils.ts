@@ -10,6 +10,7 @@ import { RGBA } from '../lib/types/types'
  * Convert a string in format '255, 0, 255, 0.5' (short format) to a RGBA object {r: 255, g: 0, b: 255, a: 0.5}.
  * @param rgbaString rgba string
  * @returns rgba color object
+ * @private
  */
 export function shortRgbaFormatToRgbaObject(rgbaString: string): RGBA {
   if (!RGBA_REGEX.short.test(rgbaString))
@@ -26,6 +27,7 @@ export function shortRgbaFormatToRgbaObject(rgbaString: string): RGBA {
  * Convert 'rgba(N, N, N, N)' to 'N, N, N, N'.
  * @param rgbaStringLongFormat long format
  * @returns short format
+ * @private
  */
 export function fromLongToShortRgbaFormat(rgbaStringLongFormat: string): string {
   if (!RGBA_REGEX.long.test(rgbaStringLongFormat))

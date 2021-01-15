@@ -1,0 +1,114 @@
+toc:
+  - name: Color formats
+    description: Supported color formats
+    children:
+      - isHex
+      - isRgb
+      - isRgba
+      - isHsl
+      - isHsla
+      - isCmyk
+      - isColor
+  - name: Color to string
+    description: Functions to convert a color object to a string
+    children:
+      - color2string
+      - colorToString
+      - color2cssString
+      - colorToCssString
+  - name: Hex
+    description: Functions about hex color format
+    children:
+      - hex2rgbOrRgba
+      - hexToRgbOrRgba
+      - hexToRgb
+      - hex2rgba
+      - hexToRgba
+      - hex2hexWithAlpha
+      - hexToHexWithAlpha
+      - hex2cmyk
+      - hexToCmyk
+      - hex2hsl
+      - hexToHsl
+      - hexToHsla
+      - shortToLongHex
+      - colorToHex
+  - name: Rgb
+    description: Functions about rgb color format
+    children:
+      - rgb2hex
+      - rgbToHex
+      - rgb2cmyk
+      - rgbToCmyk
+      - rgb2hsl
+      - rgbToHsl
+      - rgbToHsla
+      - rgb2rgba
+      - rgbToRgba
+      - color2rgb
+      - colorToRgb
+      - rgbString2Object
+      - rgbStringToObject
+  - name: Rgba
+    description: Functions about rgba color format
+    children:
+      - rgbaToHex
+      - rgba2rgb
+      - rgbaToRgb
+      - rgbaToCmyk
+      - rgbaToHsl
+      - rgbaToHsla
+      - colorToRgba
+      - rgbaString2Object
+      - rgbaStringToObject
+  - name: Hsl
+    description: Functions about hsl color format
+    children:
+      - hsl2hex
+      - hslToHex
+      - hsl2rgb
+      - hslToRgb
+      - hslToRgba
+      - hsl2cmyk
+      - hslToCmyk
+      - hslToHsla
+      - colorToHsl
+      - hslString2Object
+      - hslStringToObject
+  - name: Hsla
+    description: Functions about hsla color format
+    children:
+      - hslaToHex
+      - hslaToRgb
+      - hslaToRgba
+      - hslaToHsl
+      - hslaToCmyk
+      - colorToHsla
+      - hslaStringToObject
+  - name: Cmyk
+    description: Functions about cmyk color format
+    children:
+      - cmyk2hex
+      - cmykToHex
+      - cmyk2rgb
+      - cmykToRgb
+      - cmykToRgba
+      - cmyk2hsl
+      - cmykToHsl
+      - cmykToHsla
+      - colorToCmyk
+      - cmykString2Object
+      - cmykStringToObject
+  - name: Random
+    description: Random color generation
+    children:
+      - getRandomColor
+      - randomHex
+  - name: Mix
+    description: Functions about mixing colors
+    children:
+      - mix
+  - name: Naming
+    description: Functions about naming colors
+    children:
+      - name
