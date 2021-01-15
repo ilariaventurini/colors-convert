@@ -6,6 +6,7 @@ import { HEX } from '../types/types'
 // TODO: choose hue, saturation, ...
 // TODO: create a random color similar to another
 
+// TODO: choose opacity
 /**
  * Create a random hex.
  * @returns a random hex color
