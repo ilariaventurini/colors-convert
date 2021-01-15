@@ -21,6 +21,7 @@
     "rgba",
     "cmyk",
     "hsl",
+    "hsla",
     "color-model"
   ],
   "main": "dist/index.js",
