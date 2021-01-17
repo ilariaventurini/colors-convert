@@ -50,11 +50,6 @@ A valid rgb color is an object like this `{r, g, b}` with `r, b, g` numeric valu
 #### Rgba
 
 A valid rgba color is an object like this `{r, g, b, a}` with `r, g, b` numeric values in `[0, 255]` and `a` in `[0, 1]`.
-
-#### Cmyk
-
-A valid cmyk color is an object like this `{c, m, y, k}` with `c, m, y, k` numeric values in `[0, 100]`.
-
 #### Hsl
 
 A valid hsl color is an object like this `{h, s, l}` with:
@@ -62,6 +57,19 @@ A valid hsl color is an object like this `{h, s, l}` with:
 - `h` (hue): `[0-359]°`
 - `s` (saturation): `[0-100]%`
 - `l` (lightness): `[0-100]%`.
+  
+#### Hsla
+
+A valid hsl color is an object like this `{h, s, l}` with:
+
+- `h` (hue): `[0-359]°`
+- `s` (saturation): `[0-100]%`
+- `l` (lightness): `[0-100]%`
+- `a` (alpha): `[0-1]`.
+
+#### Cmyk
+
+A valid cmyk color is an object like this `{c, m, y, k}` with `c, m, y, k` numeric values in `[0, 100]`.
 
 ---
 
@@ -91,6 +99,20 @@ Go [here]() to take a look at the complete API.
 - `mix(colors: Color[], weights?: number[]): rgb`: mix two or more colors based on their weights.
 
 - `randomHex(): HEX`: return a random hex.
+
+## 🎉 What's new in 1.3.0
+
+- **[add]** add the following functions: `colorToHex`, `color2rgba`, `rgbaToHex`, `cmykToRgba`, `cmykToHsla`, `hexToHsla`, `rgbToHsla`, `rgbaToHsla`, `hslToRgba`, `colorToCmyk`, `colorToHsl`, `hslToHsla`, `colorToHsla`, `hslaStringToObject`, `hexToRgb`, `hexToRgba`, `shortToLongHex`
+- **[add]** add hsla color format
+- **[add]** test coverage > 97%
+- **[add]** add api page
+- **[add]** add a new logo
+- **[change]** set as deprecated the following functions: `color2string`, `color2cssString`, `hex2rgbOrRgba`, `hex2rgba`, `hex2hexWithAlpha`, `hex2cmyk`, `hex2hsl`, `rgb2hex`, `rgb2cmyk`, `rgb2hsl`, `rgb2rgba`, `color2rgb`, `rgbString2Object`, `rgba2rgb`, `rgbaString2Object`, `cmyk2hex`, `cmyk2rgb`, `cmyk2hsl`, `cmykString2Object`, `hsl2hex`, `hsl2rgb`, `hsl2cmyk`, `hslString2Object`, `getRandomColor`,
+- **[change]** `rgb2rgba` has optional alpha parameter
+- **[change]** `ColorName` type: is no more a string but an object with name, hex and rgb
+- **[fix]** `#00000` is not a valid hex color
+
+Go [here](https://github.com/ilariaventurini/colors-convert/blob/master/CHANGELOG.md) to see the CHANGELOG.
 
 # License
 
