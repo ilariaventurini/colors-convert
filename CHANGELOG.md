@@ -10,7 +10,7 @@ All notable changes to **colors-convert** library are be documented here.
 - **[fix]** `#00000` is not a valid hex color
 - **[add]** add the following functions: `colorToHex`, `color2rgba`, `rgbaToHex`, `cmykToRgba`, `cmykToHsla`, `hexToHsla`, `rgbToHsla`, `rgbaToHsla`, `hslToRgba`, `colorToCmyk`, `colorToHsl`, `hslToHsla`, `colorToHsla`, `hslaStringToObject`, `hexToRgb`, `hexToRgba`, `shortToLongHex`
 - **[add]** add hsla color format
-- **[add]** add documentation
+- **[add]** add api page
 - **[add]** test coverage > 97%
 - **[add]** add a new logo
 - **[change]** set as deprecated the following functions: `color2string`, `color2cssString`, `hex2rgbOrRgba`, `hex2rgba`, `hex2hexWithAlpha`, `hex2cmyk`, `hex2hsl`, `rgb2hex`, `rgb2cmyk`, `rgb2hsl`, `rgb2rgba`, `color2rgb`, `rgbString2Object`, `rgba2rgb`, `rgbaString2Object`, `cmyk2hex`, `cmyk2rgb`, `cmyk2hsl`, `cmykString2Object`, `hsl2hex`, `hsl2rgb`, `hsl2cmyk`, `hslString2Object`, `getRandomColor`,
