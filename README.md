@@ -30,7 +30,8 @@ npm install --save colors-convert
 
 ## API overview
 
-<!-- Go [here]() to take a look at the complete API. -->
+Go [here](https://colors-convert-documentation.netlify.app/) to take a look at the complete API.
+
 ### Color formats
 
 Different color formats are supported: hex, rgb, rgba, hsl, hsla and cmyk.
@@ -90,7 +91,7 @@ You can convert a color in any format to any other supported format.
 ### Specific functions by color format
 
 Then there are more specific color format functions. You can also convert a Color to a redeable string format or a CSS string format.
-<!-- Go [here]() to take a look at the complete API. -->
+Go [here](https://colors-convert-documentation.netlify.app/) to take a look at the complete API.
 
 ### Other useful functions
 
