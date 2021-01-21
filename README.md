@@ -1,5 +1,5 @@
 <div align="center" style="text-align: center">
-  <img src="./public/peacock.svg" width="90%" style="max-width: 250px">
+  <img src="./public/peacock.svg" width="250">
   
   <h1>Colors convert</h1>
   <div>A simple colors library</div>
