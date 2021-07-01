@@ -60,7 +60,7 @@ export function hex2rgbOrRgba(hex: HEX) {
 export function hexToRgb(hex: HEX): RGB {
   if (!isHex(hex)) throw new Error(notValidHexMessage('hexToRgb', hex))
 
-  const { r, g, b } = hex2rgba(hex)
+  const { r, g, b } = hexToRgba(hex)
   return { r, g, b }
 }
 
