@@ -1,4 +1,4 @@
-import { hex2rgbOrRgba, hexToRgbOrRgba } from '../dist'
+import { hex2rgbOrRgba, hexToRgbOrRgba } from '../dist/esm'
 
 const whiteHex = '#FFFFFF'
 
