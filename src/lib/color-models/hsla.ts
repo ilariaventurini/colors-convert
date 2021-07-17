@@ -96,7 +96,7 @@ export function colorToHsla(color: Color): HSLA {
 /**
  * Covert a string in these two formats to a hsla object:
  *  - 322, 79%, 52%, 0.5 (short format) -> { h: 322, s: 79, l: 52, a: 0.5 }
- *  - hsls(322, 79%, 52%, 0.5) (long format) -> { h: 322, s: 79, l: 52, a: 0.5 }.
+ *  - hsla(322, 79%, 52%, 0.5) (long format) -> { h: 322, s: 79, l: 52, a: 0.5 }.
  * @param hsls string to convert to hsla object
  * @returns hsla object
  */
