@@ -1,9 +1,26 @@
 import { Color } from '../types/types'
-import { isHex, isRgb, isRgba, isCmyk, isHsl, isColor } from '../types/isType'
+import {
+  isHex,
+  isRgb,
+  isRgba,
+  isCmyk,
+  isHsl,
+  isColor,
+  isRgbString,
+  isRgbaString,
+  isCmykString,
+  isHslString,
+  isHslaString,
+} from '../types/isType'
 import { toUpper } from 'lodash'
 import { notValidColorMessage } from '../../utils/logs-utils'
 import { obsolete } from '../../utils/obsolete'
 import { DELETE_VERSION_2, DEPRECATE_VERSION_2 } from '../../constants/constants'
+import { rgbStringToObject } from './rgb'
+import { rgbaStringToObject } from './rgba'
+import { cmykStringToObject } from './cmyk'
+import { hslStringToObject } from './hsl'
+import { hslaStringToObject } from './hsla'
 
 /**
  * Convert a color to a string format.
@@ -69,4 +86,23 @@ export function color2cssString(color: Color): string {
     DELETE_VERSION_2,
     arguments
   )
+}
+
+/**
+ * Check if a string is a valid color and if so, transform it to the right Color.
+ * @param string to convert to a Color
+ * @returns Color
+ */
+export function stringToColor(stringColor: string): Color {
+  if (typeof stringColor !== 'string')
+    throw new Error(`${stringToColor}: "${stringColor}" is not a string.`)
+
+  if (isHex(stringColor)) return toUpper(stringColor)
+  if (isRgbString(stringColor)) return rgbStringToObject(stringColor)
+  if (isRgbaString(stringColor)) return rgbaStringToObject(stringColor)
+  if (isCmykString(stringColor)) return cmykStringToObject(stringColor)
+  if (isHslString(stringColor)) return hslStringToObject(stringColor)
+  if (isHslaString(stringColor)) return hslaStringToObject(stringColor)
+
+  throw new Error(`${stringToColor}: "${stringColor}" is not a valid color string.`)
 }

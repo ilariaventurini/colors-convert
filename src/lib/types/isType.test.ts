@@ -1,4 +1,17 @@
-import { isHex, isRgb, isRgba, isCmyk, isHsl, isHsla, isColor } from '../../index'
+import {
+  isHex,
+  isRgb,
+  isRgbString,
+  isRgba,
+  isRgbaString,
+  isCmyk,
+  isCmykString,
+  isHsl,
+  isHslString,
+  isHsla,
+  isHslaString,
+  isColor,
+} from '../../index'
 
 ////////////////////////////////////////////////////////
 // isHex
@@ -41,6 +54,17 @@ test(`isRgb`, () => {
 })
 
 ////////////////////////////////////////////////////////
+// isRgbString
+////////////////////////////////////////////////////////
+
+test(`isRgbString`, () => {
+  expect(isRgbString('255, 0, 255')).toBe(true)
+  expect(isRgbString('rgb(255, 0, 255)')).toBe(true)
+
+  expect(isRgbString('')).toBe(false)
+})
+
+////////////////////////////////////////////////////////
 // isRgba
 ////////////////////////////////////////////////////////
 
@@ -56,6 +80,17 @@ test(`isRgba`, () => {
   expect(isRgba({ r: 300, g: 0, b: 0, a: 0 })).toBe(false)
   expect(isRgba({ r: 'zero', g: 0, b: 0, a: 0 })).toBe(false)
   expect(isRgba({ r: 0, g: 0, b: 0, a: 3 })).toBe(false)
+})
+
+////////////////////////////////////////////////////////
+// isRgbaString
+////////////////////////////////////////////////////////
+
+test(`isRgbaString`, () => {
+  expect(isRgbaString('255, 0, 255, 1')).toBe(true)
+  expect(isRgbaString('rgba(255, 0, 255, 1)')).toBe(true)
+
+  expect(isRgbaString('')).toBe(false)
 })
 
 ////////////////////////////////////////////////////////
@@ -78,6 +113,17 @@ test(`isCmyk`, () => {
 })
 
 ////////////////////////////////////////////////////////
+// isCmykString
+////////////////////////////////////////////////////////
+
+test(`isCmykString`, () => {
+  expect(isCmykString('0, 50, 20, 100')).toBe(true)
+  expect(isCmykString('cmyk(0, 50, 20, 100)')).toBe(true)
+
+  expect(isCmykString('')).toBe(false)
+})
+
+////////////////////////////////////////////////////////
 // isHsl
 ////////////////////////////////////////////////////////
 
@@ -93,6 +139,17 @@ test(`isHsl`, () => {
 })
 
 ////////////////////////////////////////////////////////
+// isHslString
+////////////////////////////////////////////////////////
+
+test(`isHslString`, () => {
+  expect(isHslString('322, 79%, 52%')).toBe(true)
+  expect(isHslString('hsl(322, 79%, 52%)')).toBe(true)
+
+  expect(isHslString('')).toBe(false)
+})
+
+////////////////////////////////////////////////////////
 // isHsla
 ////////////////////////////////////////////////////////
 
@@ -105,6 +162,17 @@ test(`isHsla`, () => {
   expect(isHsla({ h: 366, s: 100, l: 100 })).toBe(false)
   expect(isHsla({ h: 0, s: 0, l: 0, c: 0 })).toBe(false)
   expect(isHsla({ h: 'twenty', s: 0, l: 0, a: 0 })).toBe(false)
+})
+
+////////////////////////////////////////////////////////
+// isHslaString
+////////////////////////////////////////////////////////
+
+test(`isHslaString`, () => {
+  expect(isHslaString('322, 79%, 52%, 0.5')).toBe(true)
+  expect(isHslaString('hsla(322, 79%, 52%, 0.5)')).toBe(true)
+
+  expect(isHslaString('')).toBe(false)
 })
 
 ////////////////////////////////////////////////////////

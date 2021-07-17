@@ -1,7 +1,15 @@
 import { between } from '../../utils/math-utils'
 import { sameContent } from '../../utils/utils'
 import { HEX, RGB, RGBA, CMYK, HSL, HSLA, Color } from './types'
-import { HEX_REGEX } from '../../constants/regex'
+import {
+  CMYK_REGEX,
+  HEX_REGEX,
+  HSLA_REGEX,
+  HSL_REGEX,
+  RGBA_REGEX,
+  RGB_REGEX,
+} from '../../constants/regex'
+import { notValidRgbStringMessage } from '../../utils/logs-utils'
 
 /**
  * Accept:
@@ -34,6 +42,22 @@ export function isRgb(color: any): color is RGB {
 }
 
 /**
+ * Check if a string is in these two formats:
+ *  - 255, 0, 255 (short format)
+ *  - rgb(255, 0, 255) (long format).
+ * @param rgbString rgb string color to check to be a valid rgb string
+ * @returns true if rgbString is a valid format, false otherwise
+ */
+export function isRgbString(rgbString: string): rgbString is string {
+  // check short and long formats
+  const isShortFormat = RGB_REGEX.short.test(rgbString)
+  const isLongFormat = RGB_REGEX.long.test(rgbString)
+
+  if (!isShortFormat && !isLongFormat) return false
+  else return true
+}
+
+/**
  * Accept an object like this {r, g, b, a} with r, g, b numeric values in [0, 255] and a in [0, 1].
  * @param color color to check if it is in the right rgba format
  * @returns true if color is in the right rgba format, false otherwise
@@ -48,6 +72,22 @@ export function isRgba(color: any): color is RGBA {
   const isValidRgb = isRgb({ r, g, b })
   const a = typeof color.a === 'number' && between(color.a, [0, 1])
   return isValidRgb && a
+}
+
+/**
+ * Check if a string is in these two formats:
+ *  - 255, 0, 255 (short format)
+ *  - rgba(255, 0, 255) (long format).
+ * @param rgbaString rgba string color to check to be a valid rgba string
+ * @returns true if rgbaString is a valid format, false otherwise
+ */
+export function isRgbaString(rgbaString: string): rgbaString is string {
+  // check short and long formats
+  const isShortFormat = RGBA_REGEX.short.test(rgbaString)
+  const isLongFormat = RGBA_REGEX.long.test(rgbaString)
+
+  if (!isShortFormat && !isLongFormat) return false
+  else return true
 }
 
 /**
@@ -66,6 +106,22 @@ export function isCmyk(color: any): color is CMYK {
   const y = isValid(color.y)
   const k = isValid(color.k)
   return c && m && y && k
+}
+
+/**
+ * Check if a string is in these two formats:
+ *  - 0, 50, 20, 100 (short format)
+ *  - cmyk(0, 50, 20, 100) (long format).
+ * @param cmykString cmyk string color to check to be a valid cmyk string
+ * @returns true if cmykString is a valid format, false otherwise
+ */
+export function isCmykString(cmykString: string): cmykString is string {
+  // check short and long formats
+  const isShortFormat = CMYK_REGEX.short.test(cmykString)
+  const isLongFormat = CMYK_REGEX.long.test(cmykString)
+
+  if (!isShortFormat && !isLongFormat) return false
+  else return true
 }
 
 /**
@@ -89,6 +145,22 @@ export function isHsl(color: any): color is HSL {
 }
 
 /**
+ * Check if a string is in these two formats:
+ *  - 322, 79%, 52% (short format)
+ *  - hsl(322, 79%, 52%) (long format).
+ * @param hslString hsl string color to check to be a valid hsl string
+ * @returns true if hslString is a valid format, false otherwise
+ */
+export function isHslString(hslString: string): hslString is string {
+  // check short and long formats
+  const isShortFormat = HSL_REGEX.short.test(hslString)
+  const isLongFormat = HSL_REGEX.long.test(hslString)
+
+  if (!isShortFormat && !isLongFormat) return false
+  else return true
+}
+
+/**
  * Accept hsla colors with:
  *  - h (hue): [0-359]°
  *  - s (saturation): [0-100]%
@@ -105,6 +177,22 @@ export function isHsla(color: any): color is HSLA {
   const isValidHsl = isHsl({ h, s, l })
   const a = typeof color.a === 'number' && between(color.a, [0, 1])
   return isValidHsl && a
+}
+
+/**
+ * Check if a string is in these two formats:
+ *  - 322, 79%, 52%, 0.5 (short format)
+ *  - hsla(322, 79%, 52%, 0.5) (long format).
+ * @param hslaString hsl string color to check to be a valid hsla string
+ * @returns true if hslaString is a valid format, false otherwise
+ */
+export function isHslaString(hslaString: string): hslaString is string {
+  // check short and long formats
+  const isShortFormat = HSLA_REGEX.short.test(hslaString)
+  const isLongFormat = HSLA_REGEX.long.test(hslaString)
+
+  if (!isShortFormat && !isLongFormat) return false
+  else return true
 }
 
 /**

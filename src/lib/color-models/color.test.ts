@@ -1,4 +1,5 @@
-import { colorToString, colorToCssString } from '../../index'
+import { colorToString, colorToCssString, stringToColor, isHex } from '../../index'
+import { isCmyk, isColor, isHsl, isHsla, isRgb, isRgba } from '../types/isType'
 
 ////////////////////////////////////////////////////////
 // colorToString
@@ -28,4 +29,20 @@ test(`colorToCssString`, () => {
   expect(colorToCssString({ h: 0, s: 0, l: 0, a: 0 })).toBe('hsla(0, 0%, 0%, 0)')
 
   expect(() => colorToCssString('#')).toThrowError()
+})
+
+////////////////////////////////////////////////////////
+// stringToColor
+////////////////////////////////////////////////////////
+
+test(`stringToColor`, () => {
+  expect(isHex(stringToColor('#000000'))).toBe(true)
+  expect(isHex(stringToColor('#ffF000'))).toBe(true)
+  expect(isRgb(stringToColor('rgb(0, 0, 0)'))).toBe(true)
+  expect(isRgba(stringToColor('rgba(0, 0, 0, 1)'))).toBe(true)
+  expect(isCmyk(stringToColor('cmyk(0, 0, 0, 0)'))).toBe(true)
+  expect(isHsl(stringToColor('hsl(0, 0%, 0%)'))).toBe(true)
+  expect(isHsla(stringToColor('hsla(0, 0%, 0%, 0)'))).toBe(true)
+
+  expect(() => stringToColor('#')).toThrowError()
 })
