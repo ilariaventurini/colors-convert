@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>colors-convert 1.2.4 | Documentation</title>
+  <title>colors-convert 1.4.0 | Documentation</title>
   <meta name='description' content='A simple color library'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -16,7 +16,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>colors-convert</h3>
-          <div class='mb1'><code>1.2.4</code></div>
+          <div class='mb1'><code>1.4.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -747,6 +747,66 @@
                   
                   
                 </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#stringtocolor'
+                  class="">
+                  stringToColor
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isrgbstring'
+                  class="">
+                  isRgbString
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isrgbastring'
+                  class="">
+                  isRgbaString
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#iscmykstring'
+                  class="">
+                  isCmykString
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ishslstring'
+                  class="">
+                  isHslString
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#ishslastring'
+                  class="">
+                  isHslaString
+                  
+                </a>
                 
                 </li>
               
@@ -5926,7 +5986,7 @@ It ignores opacity because cmyk doens't support it.</p>
   <p>Covert a string in these two formats to a hsla object:</p>
 <ul>
 <li>322, 79%, 52%, 0.5 (short format) -> { h: 322, s: 79, l: 52, a: 0.5 }</li>
-<li>hsls(322, 79%, 52%, 0.5) (long format) -> { h: 322, s: 79, l: 52, a: 0.5 }.</li>
+<li>hsla(322, 79%, 52%, 0.5) (long format) -> { h: 322, s: 79, l: 52, a: 0.5 }.</li>
 </ul>
 
     <div class='pre p1 fill-light mt0'>hslaStringToObject(hslaString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, hsls: any): HSLA</div>
@@ -7316,6 +7376,466 @@ b: sqrt(b1^2 <em> w1 + b2^2 </em> w2 + b3^2 * w3 + ...)
     </div>
   
 </div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='stringtocolor'>
+      stringToColor
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check if a string is a valid color and if so, transform it to the right Color.</p>
+
+    <div class='pre p1 fill-light mt0'>stringToColor(stringColor: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, string: any): Color</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>stringColor</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>string</span> <code class='quiet'>(any)</code>
+	    to convert to a Color
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Color</code>:
+        Color
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isrgbstring'>
+      isRgbString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check if a string is in these two formats:</p>
+<ul>
+<li>255, 0, 255 (short format)</li>
+<li>rgb(255, 0, 255) (long format).</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isRgbString(rgbString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgbString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    rgb string color to check to be a valid rgb string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if rgbString is a valid format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isrgbastring'>
+      isRgbaString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check if a string is in these two formats:</p>
+<ul>
+<li>255, 0, 255 (short format)</li>
+<li>rgba(255, 0, 255) (long format).</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isRgbaString(rgbaString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>rgbaString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    rgba string color to check to be a valid rgba string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if rgbaString is a valid format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='iscmykstring'>
+      isCmykString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check if a string is in these two formats:</p>
+<ul>
+<li>0, 50, 20, 100 (short format)</li>
+<li>cmyk(0, 50, 20, 100) (long format).</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isCmykString(cmykString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cmykString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    cmyk string color to check to be a valid cmyk string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if cmykString is a valid format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ishslstring'>
+      isHslString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check if a string is in these two formats:</p>
+<ul>
+<li>322, 79%, 52% (short format)</li>
+<li>hsl(322, 79%, 52%) (long format).</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isHslString(hslString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hslString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    hsl string color to check to be a valid hsl string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if hslString is a valid format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='ishslastring'>
+      isHslaString
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check if a string is in these two formats:</p>
+<ul>
+<li>322, 79%, 52%, 0.5 (short format)</li>
+<li>hsla(322, 79%, 52%, 0.5) (long format).</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>isHslaString(hslaString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>hslaString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    hsl string color to check to be a valid hsla string
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        true if hslaString is a valid format, false otherwise
+
+      
+    
+  
+
+  
+
+  
+
+  
 
   
 

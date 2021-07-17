@@ -51,6 +51,7 @@ A valid rgb color is an object like this `{r, g, b}` with `r, b, g` numeric valu
 #### Rgba
 
 A valid rgba color is an object like this `{r, g, b, a}` with `r, g, b` numeric values in `[0, 255]` and `a` in `[0, 1]`.
+
 #### Hsl
 
 A valid hsl color is an object like this `{h, s, l}` with:

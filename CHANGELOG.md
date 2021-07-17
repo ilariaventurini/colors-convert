@@ -4,8 +4,13 @@ All notable changes to **colors-convert** library are be documented here.
 
 ## Unreleased
 
-- 
-## 1.0.3
+-
+
+## 1.4.0
+
+- **[add]** add the following functions: `isRgbString`, `isRgbaString`, `isCmykString`, `isHslString`, `isHslaString`, `stringToColor`
+
+## 1.3.0
 
 - **[fix]** `#00000` is not a valid hex color
 - **[add]** add the following functions: `colorToHex`, `color2rgba`, `rgbaToHex`, `cmykToRgba`, `cmykToHsla`, `hexToHsla`, `rgbToHsla`, `rgbaToHsla`, `hslToRgba`, `colorToCmyk`, `colorToHsl`, `hslToHsla`, `colorToHsla`, `hslaStringToObject`, `hexToRgb`, `hexToRgba`, `shortToLongHex`
